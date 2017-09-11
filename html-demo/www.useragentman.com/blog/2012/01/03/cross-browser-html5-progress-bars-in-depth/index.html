@@ -1,0 +1,1725 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive has-jquery post-4016" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Cross Browser HTML5 Progress Bars In Depth</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<link href="/shared/js/lea.verou.me/progressPolyfill/progress-polyfill.css" type="text/css" rel="stylesheet" />
+<link type="text/css" rel="stylesheet" href="/css/4016.css" />
+
+<script src="/shared/js/html5.js"></script>
+<script src="/shared/js/jquery.1.7.1.min.js"></script>
+<script src="/js/4016.js"></script>
+<!-- ID is 4016 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Cross Browser HTML5 Progress Bars In Depth Comments Feed" href="http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Cross Browser CSS cursor Images In Depth' href='http://www.useragentman.com/blog/2011/12/21/cross-browser-css-cursor-images-in-depth/' />
+<link rel='next' title='Caching Images With JavaScript and HTML5 progress Bars' href='http://www.useragentman.com/blog/2012/01/16/caching-images-with-javascript-and-html5-progress-bars/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/" />
+<link rel='shortlink' href='http://useragentman.com/blog/d1eEm' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2012%2F01%2F03%2Fcross-browser-html5-progress-bars-in-depth%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2012%2F01%2F03%2Fcross-browser-html5-progress-bars-in-depth%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2011/12/21/cross-browser-css-cursor-images-in-depth/" rel="prev">Cross Browser CSS <code>cursor</code> Images In Depth</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2012/01/16/caching-images-with-javascript-and-html5-progress-bars/" rel="next">Caching Images With JavaScript and HTML5 <code>progress</code> Bars</a> &raquo;</span>
+</div>
+
+
+			<h1>Cross Browser HTML5 Progress Bars In Depth</h1>
+			<h4 class="meta">January 3rd, 2012 by zoltan &middot; <a href="http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/#comments">45 Comments</a></h4>
+			<div class="entry">
+				<div class="importantNotes">
+<h3>Update (March 9, 2012):</h3>
+<p>I have updated this document to include styling information for Internet Explorer 10.</p>
+</div>
+<p><div id="attachment_4224" style="width: 260px" class="wp-caption alignleft"><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/01/intro.png" alt="" title="intro" width="250" height="180" class="size-full wp-image-4224" /><p class="wp-caption-text">Screenshots of HTML5 progress bars with different styles applied.  Details given below.</p></div> As a web application developer,<strong> progress bars are great when you want to show the user that some action is happening,</strong> especially when it can take a long time.  They can be <strong>animated</strong> (like the one in Gmail does when it shows the user how long it is going to take for it to load and initialize), <strong>or static</strong> (like some shopping cart applications have to show the user how many pages it will take to check out an order).  I used to <a href="http://css-tricks.com/css3-progress-bars/">create progress bars using <code>&lt;div&gt;</code> tags, CSS and a litle bit of math</a>, but now I like to do it the HTML5 way using the <code>&lt;progress&gt;</code> tag.  This article will discuss <strong>how this tag is rendered by default</strong> in all operating systems and browsers and how to <strong>style the <code>progress</code> tag with CSS</strong>, even in browsers that don&#8217;t officially support the it.  It will also discuss some interesting <strong>limitations of all the browser implementations</strong> amd show some <strong>interesting examples using advanced CSS3 techniques.</strong></p>
+<h2>The HTML: Simple</h2>
+<p>The HTML for a Progress bar is dead simple:</p>
+<blockquote class="code">
+<pre>
+&lt;progress max="100" value="60"&gt;
+  &lt;strong&gt;Progress: 60% done.&lt;/strong&gt;
+&lt;/progress&gt;
+</pre>
+</blockquote>
+<div class="example">
+<progress max="100" value="60"><strong>Progress: 60% done.</strong></progress>
+</div>
+<p><strong>Note that the HTML inside the <code>&lt;progress&gt;</code> tag is the fallback for browsers that do not support it.</strong>  That, unfortunately, includes all versions of IE and Safari so far, as well older versions of Firefox (5.x and lower) and Opera (10.x and lower).  Although the fallback is acceptable, we can go a step further and use <strong><a href="http://lea.verou.me/">Lea Verou&#8217;s</a> excellent <a href="http://lea.verou.me/2011/07/a-polyfill-for-html5-progress-element-the-obsessive-perfectionist-way/"><code>&lt;progress&gt;</code> tag polyfill</a></strong>, which adds pretty much full-support for all of these browsers <strong>except for Safari 5 and lower</strong> (so you should <em><strong>always put in the fallback HTML just to be on the safe side</strong></em>).  Let&#8217;s take a look at these screenshots to see what how <code>&lt;progress&gt;</code> looks across the browserverse:</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th></th>
+<th>Windows 7</th>
+<th>Windows XP</th>
+<th>Mac OS X</th>
+<th>Ubuntu Linux</th>
+</thead>
+<tbody>
+<tr>
+<th>Firefox</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultFirefoxWin.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultFirefoxWinXP.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultFirefoxMac.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultFirefoxLinux.png" alt=""  /></td>
+</tr>
+<tr>
+<th>Chrome</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultChromeWin.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultChromeWinXP.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultChromeMac.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultChromeLinux.png" alt=""  /></td>
+</tr>
+<tr>
+<th>IE7-9 (polyfill)</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultSafariWin_poly.png" alt=""  /></td>
+<td colspan="3" class="na">N/A</td>
+</tr>
+<tr>
+<th>IE10</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/01/defaultIE10Win.png" alt=""  /></td>
+<td colspan="3" class="na">N/A</td>
+</tr>
+<tr>
+<th>Safari 5.1+ (polyfill)</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultSafariWin_poly.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultSafariWin_poly.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultSafariWin_poly.png" alt=""  /></td>
+<td class="na">N/A</td>
+</tr>
+<tr>
+<th>Opera</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultOperaWin.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultOperaWin.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultOperaMac.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/defaultOperaLinux.png" alt=""  /></td>
+</tr>
+</tbody>
+</table>
+<p>Note that:</p>
+<ul>
+<li>Firefox and Chrome will render the progress bar the same way that the host operating system would &#8230; except for Chrome for Linux, which uses it&#8217;s own custom style (thanks to <a href="http://blog.oldworld.fr/">Mounir Lamouri</a> for correcting me on this exception).</li>
+<li>The color of the Opera progress value is always green (more on this later).</li>
+<li>The browsers that use the polyfill all render the progress bar with a nice bluish gradient effect</li>
+</ul>
+<p>A progress bar <strong>can also have an <em>&#8220;indeterminate&#8221;</em> state</strong>, which happens when there is <strong>no value attribute</strong>. </p>
+<blockquote class="code">
+<pre>
+&lt;progress max="100"&gt;
+  &lt;strong&gt;Progress: 60% done.&lt;/strong&gt;
+&lt;/progress&gt;
+</pre>
+</blockquote>
+<div class="example">
+<progress max="100" ><strong>Progress: 60% done.</strong></progress>
+</div>
+<p>This effect is used to show that the state of progress is currently unknown (e.g. how long it will take for a web server to initiate the download of a file if is generating it on the fly).  How this looks varies from browser to browser as well.</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th></th>
+<th>Windows 7</th>
+<th>Windows XP</th>
+<th>Mac OS X</th>
+<th>Ubuntu Linux</th>
+</thead>
+<tbody>
+<tr>
+<th>Firefox</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterFirefoxWin.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterFirefoxWinXP.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterFirefoxMac.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterFirefoxLinux.png" alt=""  /></td>
+</tr>
+<tr>
+<th>Chrome</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterChromeWin.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterChromeWinXP.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterChromeMac.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterChromeLinux.png" alt=""  /></td>
+</tr>
+<tr>
+<th>IE7-9 (polyfill)</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterSafariWin_poly.png" alt=""  /></td>
+<td colspan="3" class="na">N/A</td>
+</tr>
+<tr>
+<th>IE10</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/01/indeterIE10Win.png" alt=""  /></td>
+<td colspan="3" class="na">N/A</td>
+</tr>
+<tr>
+<th>Safari 5.1+ (polyfill)</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterSafariWin_poly.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterSafariWin_poly.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterSafariWin_poly.png" alt=""  /></td>
+<td class="na">N/A</td>
+</tr>
+<tr>
+<th>Opera</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterOperaWin.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterOperaWin.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterOperaMac.png" alt=""  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/indeterOperaLinux.png" alt=""  /></td>
+</tr>
+</tbody>
+</table>
+<p>Note that:</p>
+<ul>
+<li>Opera is the only browser that doesn&#8217;t distinguish between a progress bar with an indeterminate state and one with a value of zero.</li>
+<li>All of the other browsers (including the ones that use the polyfill) animate the indeterminate states.  (I have opted to not show all the animations here to avoid readers getting seizures &#8230; I hear that would be a bad thing).</li>
+</ul>
+<p>One changes the value of the progress bar by changing its DOM node&#8217;s <code>.value</code> property.  Easy peasy.</p>
+<h2>But I Want To Style Them My Way!</h2>
+<p>If you are particular in how you want your <code>&lt;progress&gt;</code> tags to look, the good news is that <strong>you can pretty much style them any way you want</strong>.  You must, however, <strong>be aware about the browser quirks</strong> that can trip you up &#8230; and it isn&#8217;t all IE&#8217;s fault this time!  Follow this three-to-four-step process, and you&#8217;ll be styling progress bars in your sleep in no time:</p>
+<h3>Step 1: Turn off default styling</h3>
+<p>The first step is to turn off the default styling in all browsers:</p>
+<blockquote class="code">
+<pre>
+progress,          /* All HTML5 progress enabled browsers */
+progress[role]     /* polyfill */
+{
+
+	/* Turns off styling - not usually needed, but good to know. */
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+
+	/* gets rid of default border in Firefox and Opera. */ 
+	border: none;
+
+	/* Needs to be in here for Safari polyfill so background images work as expected. */
+	background-size: auto;
+	
+	/* Dimensions */
+	width: 400px;
+	height: 60px;
+	
+}
+
+/* Polyfill */
+progress[role]:after {
+	background-image: none; /* removes default background from polyfill */
+}
+
+/* Ensure fallback text doesn't appear in polyfill */
+progress[role] strong {
+	display: none;
+}
+
+</pre>
+</blockquote>
+<div class="example">
+<progress class="example1 a" min="0" max="100" value="50">
+<strong>Progress: 60% done.</strong>
+</progress>
+</div>
+<p>Simple stuff: remove the border and add a specific width and height.  I added the second rule to remove the background image inserted by the polyfill&#8217;s stylesheet, but if you wanted, you can  modify the polyfill&#8217;s stylesheet directly (or leave it out completely if you elect not to use the polyfill).   The final rule is to ensure the polyfill doesn&#8217;t display the fallback content &mdash; it assumes that is always wrapped in a <code>&lt;strong&gt;</code> tag, so this may be something you should keep in mind when setting the default content (if you don&#8217;t like using a <code>&lt;strong&gt;</code> tag as a wrapper for your fallback content, use whatever tag you like).</p>
+<p>Note that the <code>appearance</code> property (and its vendor-specific brethren) are there to turn off the default operating-system styling on the progress bar &mdash; it doesn&#8217;t seem like it is really necessary, but I put it here for reference in case it becomes mandatory in the future.</p>
+<h3>Step 2: The Progress Bar Background.</h3>
+<p>Now let&#8217;s change the background color of the progress bar to a light red.  </p>
+<blockquote class="code">
+<pre>
+progress,                          /* Firefox  */ 
+progress[role][aria-valuenow] {    /* Polyfill */
+   background: #ffeeee !important; /* !important is needed by the polyfill */
+}
+
+/* Chrome */
+progress::-webkit-progress-bar {
+    background: #ffeeee;
+}
+</pre>
+</blockquote>
+<div class="example">
+<progress class="example1 a b" min="0" max="100" value="50"></progress>
+</div>
+<p>Notice that with Firefox and the polyfilled browsers, all you need to do is change the background of just the <code>progress</code> tag itself, while in Chrome (and I assume future versions of Safari) it is necessary to use the <code>-webkit-progress-bar</code> pseudo-element. Note that even though the code inside these rules are the same,<strong> you cannot put all of these selectors in one rule</strong>: doing so breaks Firefox and Opera (so much for degrading gracefully).</p>
+<h3>Step 3: The Progress Bar Value</h3>
+<p>Now let&#8217;s change the color of progress bar value to black.  The CSS is a <em>wee bit longer than it really should be</em>:</p>
+<blockquote class="code">
+<pre>
+
+/* IE10 */
+progress {
+    color: black;
+}
+
+/* Firefox */
+progress::-moz-progress-bar { 
+    background: black;	
+}
+
+/* Chrome */
+progress::-webkit-progress-value {
+    background: black;
+}
+
+/* Polyfill */
+progress[aria-valuenow]:before  {
+    background: black;
+}
+</pre>
+</blockquote>
+<div class="example">
+<progress class="example1 a b c" min="0" max="100" value="50"></progress>
+</div>
+<p><strike>Yes, three rules to rule them all!</strike> Yes, <strong>four</strong> rules are needed now if you include IE 10!  Again, putting them all together in one selector breaks every browser on the planet (including the polyfilled ones), so we have to write three separate rules with the same CSS properties in them! &lt;sarcasm&gt;Yaaayyy!!!!&lt;/sarcasm&gt;</p>
+<p><strong>Note that there is no way that I know of to style the progress bar value in Opera 11.52 and lower.</strong>  It just stays the same green no matter what you do. :-( If anyone is reading this and knows otherwise, I would be indebted to you to let me know how.   Note also that as of this writing, <strong>the preview release of Internet Explorer 10 does not allow styling of the progress bar value with an image</strong>, only a color using the <code>color</code> attribute, so some of these examples do not look as intended in that browser)</p>
+<h3>Step 4: The Indeterminate Value</h3>
+<p>This part is optional, and I would only put these rules in if I know I&#8217;ll need a style for the indeterminate value (not all applications need it):</p>
+<blockquote class="code">
+<pre>
+/* Firefox */
+progress:not([value])::-moz-progress-bar { 
+  background-image:  url(../images/indeter.gif);	
+}
+
+/* Chrome */
+progress:not([value])::-webkit-progress-bar {
+  background-image:  url(../images/indeter.gif);	
+}
+
+/* Polyfill - IE */
+progress[role]{
+	background-image: url(../images/indeter.gif) !important;
+}
+
+/* Polyfill - Safari */
+progress:not([value])  {
+	background-image: url(../images/indeter.gif) !important;
+	background-size: auto;  /* Needs to be in here for Safari */
+}
+</pre>
+</blockquote>
+<div class="example">
+<progress class="example1 a b c d" min="0" max="100"></progress>
+</div>
+<p>It even works in Opera! Note that the <code>background-size</code> must be set to <code>auto</code> in order to override the default style in the polyfill.  :-)</p>
+<p><a href="http://www.useragentman.com/examples/progress/" class="exampleLink">See the above CSS in action in a &#8220;clean room&#8221; page</a></p>
+<h2>That&#8217;s Too Basic! I Want Fancy-Pants&trade; Progress Bars</h2>
+<p>So, now that you know the basics, let&#8217;s take a look at some more complicated and interesting progress bars:</p>
+<h3>Two Image Effect</h3>
+<p>This progress bar uses two versions of the same image (one grey-scale, one color) to differentiate between the progress bar background and value: </p>
+<div class="example">
+<progress class="example2" min="0" max="100" value="60"></progress>
+</div>
+<p><a href="http://www.useragentman.com/examples/progress/uam.html" class="exampleLink">See the above example in action in a &#8220;clean room&#8221; page</a></p>
+<p>Unfortunately, this example doesn&#8217;t work in Opera and IE10, since at this time one cannot style the progress bar value with an image in those browsers.</p>
+<h3>Gradients</h3>
+<p>Note that  not only can you use <code>background-color</code>s and <code>-image</code>s, but also use the variety of gradients that are available for developers today in supported browsers (this does <strong>not</strong> include IE9 and lower).  To prove this, I took Chris Croyer beautiful <code>&lt;div&gt;</code> style progress bars from his <a href="http://css-tricks.com/css3-progress-bars/">blog post on CSS3 based progress bars</a> and HTML5-ified&trade; them here:</p>
+<div class="example">
+<progress class="example3" min="0" max="100" value="60"></progress>
+</div>
+<div class="example">
+<progress class="example4" min="0" max="100" value="60"></progress>
+</div>
+<p>Unfortunately, due to CSS gradients being implemented by the browser vendors using vendor-specific prefixes, the CSS tends to be a wee long.  Here is the CSS of the first example (scroll the code to see the whole lot of it):</p>
+<blockquote class="code shortened">
+<pre>
+/*
+ * Gradient Shadow
+ */
+
+/* All HTML5 progress enabled browsers */
+progress.example3 {
+
+	/* Turns off styling - not usually needed, but good to know. */
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	/* gets rid of default border in Firefox and Opera. */
+	border: solid #cccccc 5px;
+	border-radius: 10px;
+	/* Dimensions */
+	width: 238px;
+	height: 45px;
+}
+
+/* Polyfill */
+progress.example3[role]:after {
+	background-image: none; /* removes default background from polyfill */
+}
+
+/*
+ * Background of the progress bar background
+ */
+
+/* Firefox and Polyfill */
+progress.example3 {
+	background: #cccccc !important; /* !important only needed in polyfill */
+}
+
+/* Chrome */
+progress.example3::-webkit-progress-bar {
+	background: #cccccc;
+}
+
+/*
+ * Background of the progress bar value
+ */
+
+/* Firefox */
+progress.example3::-moz-progress-bar {
+	border-radius: 5px;
+	background-image: -moz-linear-gradient(
+		center bottom,
+		rgb(43,194,83) 37%,
+		rgb(84,240,84) 69%
+	);
+}
+
+/* Chrome */
+progress.example3::-webkit-progress-value {
+	border-radius: 5px;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(43,194,83)),
+		color-stop(1, rgb(84,240,84))
+	);
+	background-image: -webkit-linear-gradient(
+		center bottom,
+		rgb(43,194,83) 37%,
+		rgb(84,240,84) 69%
+	);
+}
+
+/* Polyfill */
+progress.example3[aria-valuenow]:before {
+	border-radius: 5px;
+	background-image: -moz-linear-gradient(
+		center bottom,
+		rgb(43,194,83) 37%,
+		rgb(84,240,84) 69%
+	);
+	background-image: -ms-linear-gradient(
+		center bottom,
+		rgb(43,194,83) 37%,
+		rgb(84,240,84) 69%
+	);
+	background-image: -o-linear-gradient(
+		center bottom,
+		rgb(43,194,83) 37%,
+		rgb(84,240,84) 69%
+	);
+	
+}
+</pre>
+</blockquote>
+<p>This example doesn&#8217;t work in any version of IE (since that browser can only change the color, not the background image, of a progress bar value) or Opera (since it can&#8217;t style the progress bar at all).  Also, note that I did not use the <a href="http://msdn.microsoft.com/en-us/library/ms532997%28v=vs.85%29.aspx"><code>Gradient</code> filter</a> to polyfill CSS3 gradients in IE6-9.  This is because Visual Filters don&#8217;t work in CSS3 pseudo-elements like <code>:before</code> or <code>:after</code>.  Oh well.   </p>
+<p><a href="http://www.useragentman.com/examples/progress/striping.html" class="exampleLink">See the above CSS in action in a “clean room” page</a></p>
+<h3>Monkeys!</h3>
+<p>What blog post about HTML5 progress tags would be complete without monkeys?  These simians appear in all browser except for IE8 and lower (as explained below).  </p>
+
+<div class="example">
+<progress class="monkey" min="0" max="100" value="60"></progress><div class="after"></div>
+</div>
+<p>Apologies to the great <a href="http://banksy.co.uk/">Banksy</a> &mdash; it&#8217;s not <a href="http://www.guyhepner.com/index.php?url=images/get/509x397/3087/banksy-paintings-laugh-now-but-one-day-we-ll-be-in-charge.jpg">his monkey</a> but one grabbed from <a href="http://www.animatedgif.net/clockscounters/clockscounters3.shtml">this Animated GIF site</a> and converted into a <a href="http://www.alistapart.com/articles/sprites">CSS sprite</a> using <a href="http://blog.somepixels.net/">André Gil&#8217;s</a> super-cool <a href="http://labs.andregil.net/Gif2TileSet/Gif2TileSet.html">Gif2TileSet tool</a>.  I took this sprite and animated the monkey using blitting whenever the progress bar changes values (thanks to my friend and colleague <a href="http://noel.tibbles.ca/">Noel Tibbles</a> for turning me on to this technique).</p>
+<p>Note the HTML has an extra <code>&lt;div&gt;</code> tag so the monkey has a place to live:</p>
+<blockquote class="code">
+<pre>
+&lt;progress class="monkey" min="0" max="100" value="60"&gt;&lt;/progress&gt;
+&lt;div class="after"&gt;&lt;/div&gt;
+</pre>
+</blockquote>
+<p><strong>I wish that I could have used <code>:after</code> (or <code>::after</code>) rules</strong> instead, but these pseudo-elements <strong>don&#8217;t work with the <code>progress</code> tags in <em>any</em> browser that doesn&#8217;t use the polyfill</strong>.  And no, <code>:before</code> doesn&#8217;t work either.  I have no idea why it doesn&#8217;t work, but it&#8217;s a shame &mdash; using them would be perfect to get rid of the extra markup.</p>
+<p>The CSS that makes the monkey animate when the progress bar changes values is here:</p>
+<blockquote class="code">
+<pre>
+progress.monkey[value="0"] +  .after{
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif');
+} 
+
+progress.monkey[value^="1"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -77px ;
+}
+
+progress.monkey[value^="2"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -154px ;
+}
+
+progress.monkey[value^="3"] +  .after,
+progress.monkey[value="100"] +  .after  {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -231px !important ;
+}
+
+progress.monkey[value^="4"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -308px ;
+}
+
+progress.monkey[value^="5"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -385px ;
+}
+
+progress.monkey[value^="6"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -462px ;
+}
+
+progress.monkey[value^="7"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -539px ;
+}
+
+progress.monkey[value^="8"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -616px ;
+}
+
+progress.monkey[value^="9"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -693px ;
+}
+</pre>
+</blockquote>
+<p>Each of these rules are applied when the first digit changes in the progress bar, which is done using the ^= attribute rules. This works because the progress bar goes from 0 &#8211; 100 and the progress bar increments by 10.  They monkeys don&#8217;t appear in IE8 and under because of it&#8217;s lack of support of the ^= attribute selector (but it works well in IE9).</p>
+<p>Note that <strong>this would be much easier if CSS allowed us to combine the CSS3 <code>calc()</code> and <code>attr()</code> attributes together</strong> like <a href="http://lea.verou.me/2010/09/on-attr-and-calc/">Lea Verou dreams about in one of her blog posts</a>:</p>
+<blockquote class="code">
+<pre>
+/*
+ * Don't try this - it doesn't work in any browser, but it would be nice if it did.
+ */
+
+progress.monkey::after {
+   background-image: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif');
+   background-position-x: 0;
+   background-position-y: calc(-77 * attr(value), 'px');
+}
+</pre>
+</blockquote>
+<p>Hopefully this will come to pass in the future.</p>
+<p><a href="http://www.useragentman.com/examples/progress/blit.html" class="exampleLink">See the above CSS in action in a “clean room” page</a></p>
+<h3>Speedometer</h3>
+<p>My last example is radically different than the others.  How about we apply the speedometer metephor to the progress bar with some fancy-pants CSS3?   This example in all browsers except IE8 and lower (due to lack of support for native CSS3 <code>transform</code>) </p>
+
+<div class="example speedometer">
+<div id="progressContainer">
+  <progress id="rot" class="example_r" min="0" max="100" value="60"></progress>
+  <div data-arrow-for="rot" class="arrow"><img src="/blog/wp-content/uploads/2012/01/hand.png" /></div>
+</div>
+</div>
+<p>The CSS is similar to the monkey example in that I add an extra <code>&lt;div&gt;</code> after the progress tag, except that it has an image of a pointer inside of it.</p>
+<blockquote class="code">
+<pre>
+&lt;div id="progressContainer"&gt;
+  &lt;progress id="rot" class="example_r" min="0" max="100" value="60"&gt;&lt;/progress&gt;
+  &lt;div data-arrow-for="rot" class="arrow"&gt;&lt;img src="/blog/wp-content/uploads/2012/01/hand.png" /&gt;&lt;/div&gt;
+&lt;/div&gt;
+</pre>
+</blockquote>
+<p>I wrapped both these tags inside a relatively positioned container <code>&lt;div&gt;</code>.  This is so I could absolutely position both the progress bar and the arrow in order for them to line up properly.  I make the progress bar into a semi-circle by using <code>border-radius</code> and part of a <a href="http://www.flickr.com/photos/listener42/4991330345/">photo from Flickr user &#8216;listener42&#8217;</a> &#8230;</p>
+<blockquote class="code">
+<pre>
+progress.example_r {
+
+	/* gets rid of default border in Firefox and Opera. */
+	border: solid 1px black;
+	display: inline-block;
+	
+	/* Produces the semi-circle */
+	<span class="hilite">border-radius: 238px 238px 0 0;</span>
+
+	/* Dimensions */
+	width: 238px;
+	height: 126px;
+	padding: 0;
+
+        /* IE needs this to hide the native progress bar value */
+        color: transparent;
+}
+</pre>
+</blockquote>
+<p>&#8230; and make the arrow rotate as the progress bar increments by using CSS transforms: </p>
+<blockquote class="code shortened">
+<pre>
+progress.example_r[value="0"] + .arrow {
+	-moz-transform: rotate(270deg);
+	-webkit-transform: rotate(270deg);
+	-o-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);
+}
+
+progress.example_r[value^="1"]:not([value="1"]):not([value="100"]) + .arrow {
+	-moz-transform: rotate(288deg);
+	-webkit-transform: rotate(288deg);
+	-o-transform: rotate(288deg);
+	-ms-transform: rotate(288deg);
+}
+
+progress.example_r[value^="2"]:not([value="2"]) + .arrow {
+	-moz-transform: rotate(306deg);
+	-webkit-transform: rotate(306deg);
+	-o-transform: rotate(306deg);
+	-ms-transform: rotate(306deg);
+}
+
+progress.example_r[value^="3"]:not([value="3"]) + .arrow {
+	-moz-transform: rotate(324deg);
+	-webkit-transform: rotate(324deg);
+	-o-transform: rotate(324deg);
+	-ms-transform: rotate(324deg);
+}
+
+progress.example_r[value^="4"]:not([value="4"]) + .arrow {
+	-moz-transform: rotate(342deg);
+	-webkit-transform: rotate(342deg);
+	-o-transform: rotate(342deg);
+	-ms-transform: rotate(342deg);
+}
+
+progress.example_r[value^="5"]:not([value="5"]) + .arrow {
+	-moz-transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+	-o-transform: rotate(360deg);
+	-ms-transform: rotate(360deg);
+}
+
+progress.example_r[value^="6"]:not([value="6"]) + .arrow {
+	-moz-transform: rotate(378deg);
+	-webkit-transform: rotate(378deg);
+	-o-transform: rotate(378deg);
+	-ms-transform: rotate(378deg);
+}
+
+progress.example_r[value^="7"]:not([value="7"]) + .arrow {
+	-moz-transform: rotate(396deg);
+	-webkit-transform: rotate(396deg);
+	-o-transform: rotate(396deg);
+	-ms-transform: rotate(396deg);
+}
+
+progress.example_r[value^="8"]:not([value="8"]) + .arrow {
+	-moz-transform: rotate(414deg);
+	-webkit-transform: rotate(414deg);
+	-o-transform: rotate(414deg);
+	-ms-transform: rotate(414deg);
+}
+
+progress.example_r[value^="9"]:not([value="9"]) + .arrow {
+	-moz-transform: rotate(432deg);
+	-webkit-transform: rotate(432deg);
+	-o-transform: rotate(432deg);
+	-ms-transform: rotate(432deg);
+}
+
+progress.example_r[value="100"] + .arrow {
+	-moz-transform: rotate(450deg);
+	-webkit-transform: rotate(450deg);
+	-o-transform: rotate(450deg);
+	-ms-transform: rotate(450deg);
+}
+</pre>
+</blockquote>
+<p>Again, the CSS would be much smaller in size if I could use <code>calc()</code> and <code>attr()</code> together, but again, oh well.   Furthermore, that this example doesn&#8217;t work in Opera very well because we cannot turn of the green in the progress bar value.  Although we can hide this bar in IE10 by setting the progress bar&#8217;s color to <code>transparent</code> a thin line can be seen where the end of the progresss bar used to be.  Ugh&#8230; :-(</p>
+<p><a href="http://www.useragentman.com/examples/progress/rotate.html" class="exampleLink">See the above CSS in action in a “clean room” page</a></p>
+<h2>Summary of Gotchas</h2>
+<p>As mentioned before, there are a few annoyances I have found with they way the browsers have implemented HTML5 progress bars:</p>
+<ol>
+<li>You cannot use <code>:before</code>/<code>::before</code> or <code>:after</code>/<code>::after</code> pseudo-elements on the <code>progress</code> element.  Why this is not allowed is unclear to me, and I hope this is allowed in the future.</li>
+<li>Safari 5.0 and lower cannot use the polyfill, so you should always use the fallback HTML inside the <code>&lt;progress&gt;</code> tag.</li>
+<li>It seems like it is impossible to change Opera&#8217;s progress bar value style to anything besides green.</li>
+<li>While you can change the progress bar value color in IE10, as far as I know it is impossible to apply a background image to it.</li>
+<li>There is a <strong>small bug in the polyfill</strong> when applying borders to the progress bar.  I have <a href="https://github.com/zoltan-dulac/HTML5-Progress-polyfill">a fix</a> that has been <a href="https://github.com/LeaVerou/HTML5-Progress-polyfill/pull/6">submitted as a pull request</a> and I assume being reviewed, but in the meantime, you can <a href="https://github.com/zoltan-dulac/HTML5-Progress-polyfill">get my forked version of the polyfill (with the bug fix) on GitHub</a>.</li>
+</ol>
+<h2>Help Me Keep This Page Up-To-Date!</h2>
+<p>If you find out more information about the HTML5 <code>progress</code> tag, I&#8217;d love to hear from you!  Please let me know in the comments below.  I will add relevant information to the above article and credit you fully. :-)</p>
+<p><script src="/shared/js/lea.verou.me/progressPolyfill/progress-polyfill.js"></script></p>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/technologies/css/css3/" rel="category tag">CSS3</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/forms/" rel="category tag">Forms</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" rel="category tag">gradients</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/" rel="category tag">HTML</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/html5/" rel="category tag">HTML5</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" rel="category tag">Polyfills</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" rel="category tag">progress</a> </p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">45 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						
+						
+						<li class="comment   " id="comment-30153 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30153" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.twitter.com/Cyberdemon'><img alt='' src='http://1.gravatar.com/avatar/7d9c03de6056a82585befa9fd7991f52?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/7d9c03de6056a82585befa9fd7991f52?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.twitter.com/Cyberdemon' rel='external nofollow' class='url'>Cyberdemon</a> </strong>
+				<span class="comment_time">// Jan 4, 2012 at 12:56 am</span>
+			</p>
+			<div class="entry">
+				<p>Mind = blown.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30154 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30154" title="Permalink to this comment">4</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://cgsabari.wordpress.com/'><img alt='' src='http://2.gravatar.com/avatar/89f9b56d804ddd238ffcfa04538ab634?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/89f9b56d804ddd238ffcfa04538ab634?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://cgsabari.wordpress.com/' rel='external nofollow' class='url'>sabari</a> </strong>
+				<span class="comment_time">// Jan 4, 2012 at 1:10 am</span>
+			</p>
+			<div class="entry">
+				<p>its amazing and very useful to me.. thank u :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30168 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30168" title="Permalink to this comment">5</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.cavico.com.br'><img alt='' src='http://2.gravatar.com/avatar/2b7cf7d13ed4a48a5788acbb217ecd9b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/2b7cf7d13ed4a48a5788acbb217ecd9b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.cavico.com.br' rel='external nofollow' class='url'>Camilo</a> </strong>
+				<span class="comment_time">// Jan 4, 2012 at 2:07 am</span>
+			</p>
+			<div class="entry">
+				<p>Great article!<br />
+It would be nice if select and input files actually have a similar selectors to customize them like that.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30187 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30187" title="Permalink to this comment">6</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://jsdo.it/TheSisb'><img alt='' src='http://1.gravatar.com/avatar/18b27f51dfb27be87eb5cfaf0aabf632?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/18b27f51dfb27be87eb5cfaf0aabf632?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://jsdo.it/TheSisb' rel='external nofollow' class='url'>TheSisb</a> </strong>
+				<span class="comment_time">// Jan 4, 2012 at 4:46 am</span>
+			</p>
+			<div class="entry">
+				<p>This is indeed an excellent, in-depth article.<br />
+Thanks for taking the time to explain this so fully!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30198 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30198" title="Permalink to this comment">7</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://sobolev.us'><img alt='' src='http://2.gravatar.com/avatar/5a887a4e47deaa6e8a69e13bd71fe031?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/5a887a4e47deaa6e8a69e13bd71fe031?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://sobolev.us' rel='external nofollow' class='url'>Vladimir</a> </strong>
+				<span class="comment_time">// Jan 4, 2012 at 5:37 am</span>
+			</p>
+			<div class="entry">
+				<p>Great article, thanks! What about IE7-8, and fallback? Some small jQuery wrapper or pure js plugin will be useful (just a bg position is ok for old browsers)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-30219 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30219" title="Permalink to this comment">9</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.crystal-asia.com'><img alt='' src='http://1.gravatar.com/avatar/414306f44fc7545368bd23584e47dcbd?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/414306f44fc7545368bd23584e47dcbd?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.crystal-asia.com' rel='external nofollow' class='url'>Ryan</a> </strong>
+				<span class="comment_time">// Jan 4, 2012 at 9:19 am</span>
+			</p>
+			<div class="entry">
+				<p>Superb :) Filled in a few blanks but like to see it out there!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-30224 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30224" title="Permalink to this comment">10</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 4, 2012 at 9:50 am</span>
+			</p>
+			<div class="entry">
+				<p>@Vladamir: I believe you are refer to the last example, and yes, it is quite possible to use a js library like my own cssSandpaper to do the animated rotation of the spedometer dial. I just wanted to show how it is now possible to do complex styling of progress elements without any additional JavaScript.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30225 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30225" title="Permalink to this comment">11</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.technbuzz.com'><img alt='' src='http://2.gravatar.com/avatar/e88f20b04bd9703e2523f1efd505e2bb?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/e88f20b04bd9703e2523f1efd505e2bb?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.technbuzz.com' rel='external nofollow' class='url'>Samiullah Khan</a> </strong>
+				<span class="comment_time">// Jan 4, 2012 at 9:54 am</span>
+			</p>
+			<div class="entry">
+				<p>Great Analogy of Html5 progress bars;<br />
+The one with gradients are promising!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30226 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30226" title="Permalink to this comment">12</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/d5c273f85328f750aabdfa8fc4222efc?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/d5c273f85328f750aabdfa8fc4222efc?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Ed </strong>
+				<span class="comment_time">// Jan 4, 2012 at 10:01 am</span>
+			</p>
+			<div class="entry">
+				<p>Thanks for sharing this information. The summary of gotchas is nice. The second gotcha, about Safari 5.0 seems to have something missing. If I have followed correctly, I think you meant to point out that with Safari 5.0 and lower you should always use the fallback markup. If I haven&#8217;t followed correctly, I&#8217;ll blame my lack of coffee this morning!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30232 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30232" title="Permalink to this comment">13</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://nobbz.de/blog/'><img alt='' src='http://1.gravatar.com/avatar/ae5bf6a2566204b386bf2898443be58d?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/ae5bf6a2566204b386bf2898443be58d?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://nobbz.de/blog/' rel='external nofollow' class='url'>NobbZ</a> </strong>
+				<span class="comment_time">// Jan 4, 2012 at 10:30 am</span>
+			</p>
+			<div class="entry">
+				<p>Thank you! And all the past I thought  is not stylable because I did not found any informations about styling it&#8230; So I sticked to divs until today&#8230;</p>
+<p>I bookmarked this page and hope it will help me in the future, to rebuild my project!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-30247 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30247" title="Permalink to this comment">14</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 4, 2012 at 12:04 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Ed: Oops. Typo.. thanks for pointing it out. You are correct&#8230; fallback text is good, even when using the polyfill. :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30251 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30251" title="Permalink to this comment">15</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.steveambielli.com'><img alt='' src='http://0.gravatar.com/avatar/cfb1232e492a4abdf42e56f74674a212?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/cfb1232e492a4abdf42e56f74674a212?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.steveambielli.com' rel='external nofollow' class='url'>Steve</a> </strong>
+				<span class="comment_time">// Jan 4, 2012 at 12:28 pm</span>
+			</p>
+			<div class="entry">
+				<p>This is really cool! I&#8217;m lovin&#8217; HTML5. Thanks for the write up.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30264 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30264" title="Permalink to this comment">16</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.webmentor.cr/'><img alt='' src='http://1.gravatar.com/avatar/40802d5e44a294cbf3989e60691f271d?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/40802d5e44a294cbf3989e60691f271d?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.webmentor.cr/' rel='external nofollow' class='url'>Marco</a> </strong>
+				<span class="comment_time">// Jan 4, 2012 at 1:56 pm</span>
+			</p>
+			<div class="entry">
+				<p>Awesome stuff Zoltan.  I definitely will go back to this when I have a project that needs it. Thank you!!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30309 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30309" title="Permalink to this comment">17</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.nilock.com'><img alt='' src='http://0.gravatar.com/avatar/9532f9f6d5bf49219121047f66dc378c?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9532f9f6d5bf49219121047f66dc378c?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.nilock.com' rel='external nofollow' class='url'>左撇子</a> </strong>
+				<span class="comment_time">// Jan 4, 2012 at 9:11 pm</span>
+			</p>
+			<div class="entry">
+				<p>that is really cool, nice post! Thank you!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30425 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30425" title="Permalink to this comment">18</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://gundars.me'><img alt='' src='http://2.gravatar.com/avatar/5ee1a41cda529202894328064bef65cd?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/5ee1a41cda529202894328064bef65cd?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://gundars.me' rel='external nofollow' class='url'>Gundars</a> </strong>
+				<span class="comment_time">// Jan 5, 2012 at 2:16 pm</span>
+			</p>
+			<div class="entry">
+				<p>Awesome! CTRL+D</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30428 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30428" title="Permalink to this comment">19</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.hybridixstudio.com'><img alt='' src='http://2.gravatar.com/avatar/8a0f65f64153b3fa32f8edaf34abd87c?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/8a0f65f64153b3fa32f8edaf34abd87c?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.hybridixstudio.com' rel='external nofollow' class='url'>Diseño de Paginas Web en Tijuana</a> </strong>
+				<span class="comment_time">// Jan 5, 2012 at 2:34 pm</span>
+			</p>
+			<div class="entry">
+				<p>I liked the article would use some of this in future website but with better design! Thanks for sharing.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30429 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30429" title="Permalink to this comment">20</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://uxtraordinary.com'><img alt='' src='http://1.gravatar.com/avatar/119a32d3cc6e8c10d2012b4aa93fdaf3?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/119a32d3cc6e8c10d2012b4aa93fdaf3?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://uxtraordinary.com' rel='external nofollow' class='url'>Alex</a> </strong>
+				<span class="comment_time">// Jan 5, 2012 at 2:35 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thanks for the highly useful info! I&#8217;m impressed at Opera&#8217;s consistency across OS in the default bars &#8211; and I love the speedometer example.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30492 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30492" title="Permalink to this comment">21</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/feb246b8690785fcc7f0e6c0fac2bcca?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/feb246b8690785fcc7f0e6c0fac2bcca?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Subash Aryal </strong>
+				<span class="comment_time">// Jan 6, 2012 at 12:24 am</span>
+			</p>
+			<div class="entry">
+				<p>A good read and easily understood. nice post. Thank you, keep up doing good stuffs like this :)</p>
+<p>me @webaryal in Twitter&#8230;</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-30493 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30493" title="Permalink to this comment">22</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 6, 2012 at 12:29 am</span>
+			</p>
+			<div class="entry">
+				<p>@Vladimir: Apologies!  I was taking a look at this article in IE8 and noticed that the progress bars were not showing up due to the stylesheet not being picked up correctly, which explains your comment.  I have fixed this mistake.   Thanks for bringing this to my attention. :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30495 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30495" title="Permalink to this comment">23</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://sobolev.us'><img alt='' src='http://2.gravatar.com/avatar/5a887a4e47deaa6e8a69e13bd71fe031?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/5a887a4e47deaa6e8a69e13bd71fe031?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://sobolev.us' rel='external nofollow' class='url'>Vladimir</a> </strong>
+				<span class="comment_time">// Jan 6, 2012 at 12:40 am</span>
+			</p>
+			<div class="entry">
+				<p>@zoltan: You welcome!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30521 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30521" title="Permalink to this comment">24</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://kloningspoon.com'><img alt='' src='http://0.gravatar.com/avatar/65bfb01d47b8af662b093bd8a5efa6f5?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/65bfb01d47b8af662b093bd8a5efa6f5?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://kloningspoon.com' rel='external nofollow' class='url'>Darto KLoning</a> </strong>
+				<span class="comment_time">// Jan 6, 2012 at 5:01 am</span>
+			</p>
+			<div class="entry">
+				<p>This is so much awesome on the simplicity.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30547 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30547" title="Permalink to this comment">25</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://sarbazinfo.com'><img alt='' src='http://1.gravatar.com/avatar/ac7d956124f2ea3495225089820551a7?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/ac7d956124f2ea3495225089820551a7?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://sarbazinfo.com' rel='external nofollow' class='url'>mohsen</a> </strong>
+				<span class="comment_time">// Jan 6, 2012 at 9:12 am</span>
+			</p>
+			<div class="entry">
+				<p>thank you ,very useful</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-31300 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-31300" title="Permalink to this comment">26</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/a32cbc4cc5dbcc880e675c467dc07e12?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/a32cbc4cc5dbcc880e675c467dc07e12?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Jason </strong>
+				<span class="comment_time">// Jan 11, 2012 at 9:48 pm</span>
+			</p>
+			<div class="entry">
+				<p>This looks great &#8211; i have been really getting into HTML5 but obviously not enough as i didnt even realise this existed! I would love to implement this as a page / image preloader &#8211; can anyone provide a simple example or link to this?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-31369 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-31369" title="Permalink to this comment">27</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 12, 2012 at 9:17 am</span>
+			</p>
+			<div class="entry">
+				<p>@Jason: Out of coincidence, the new article I am working on talks about that. Stay tuned! :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-31409 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-31409" title="Permalink to this comment">28</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/a32cbc4cc5dbcc880e675c467dc07e12?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/a32cbc4cc5dbcc880e675c467dc07e12?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Jason </strong>
+				<span class="comment_time">// Jan 12, 2012 at 5:52 pm</span>
+			</p>
+			<div class="entry">
+				<p>Good stuff Zoltan, you&#8217;re site is now in my Xmarks! :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-31981 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-31981" title="Permalink to this comment">29</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 17, 2012 at 1:01 am</span>
+			</p>
+			<div class="entry">
+				<p>@Jason: Take a look at <a href="http://www.useragentman.com/blog/2012/01/16/caching-images-with-javascript-and-html5-progress-bars/" rel="nofollow">my new blog post</a> for an image preloader example.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-33002 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-33002" title="Permalink to this comment">30</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://beben-koben.blogspot.com/'><img alt='' src='http://0.gravatar.com/avatar/cf9cb254911bfdde830be11e164db78f?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/cf9cb254911bfdde830be11e164db78f?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://beben-koben.blogspot.com/' rel='external nofollow' class='url'>Beben Koben</a> </strong>
+				<span class="comment_time">// Jan 25, 2012 at 10:56 pm</span>
+			</p>
+			<div class="entry">
+				<p>experience anymore&#8230;hohoho ty</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-33685 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-33685" title="Permalink to this comment">31</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://fedemp.com.ar'><img alt='' src='http://0.gravatar.com/avatar/f663783f35c2fbf89fc5f64f6c363377?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f663783f35c2fbf89fc5f64f6c363377?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://fedemp.com.ar' rel='external nofollow' class='url'>Federico</a> </strong>
+				<span class="comment_time">// Feb 1, 2012 at 10:07 am</span>
+			</p>
+			<div class="entry">
+				<p>::before and ::after do not work cause they are create _inside_ the PROGRESS element. And content of this element is replaced with a progress bar. The same goes for the OBJECT element.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-38698 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-38698" title="Permalink to this comment">32</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.digitalcraftstudios.com'><img alt='' src='http://2.gravatar.com/avatar/56efadb0a841ba1d4fcf214586858f75?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/56efadb0a841ba1d4fcf214586858f75?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.digitalcraftstudios.com' rel='external nofollow' class='url'>digitalcraftstudios</a> </strong>
+				<span class="comment_time">// Mar 12, 2012 at 5:54 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thanks, will use classic gif animation activity indicator as fall back</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-38838 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-38838" title="Permalink to this comment">33</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Mar 13, 2012 at 10:38 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Federico: Even though the content would be created inside the <code>progress</code> element, I thought the content would appear inside the progress bar, and could be moved outside the element using absolute positioning (like it would with a <code>div</code> element.  It&#8217;s too bad, since it would be nice to be able to use these pseudo-elements to do some pretty cool styling.  :-/</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-42853 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-42853" title="Permalink to this comment">34</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/f53fadeac3d6dcb4c2693a7330c74eb8?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f53fadeac3d6dcb4c2693a7330c74eb8?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>RAHUL </strong>
+				<span class="comment_time">// Apr 14, 2012 at 2:36 am</span>
+			</p>
+			<div class="entry">
+				<p>awesome, very useful post&#8230;</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-44268 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-44268" title="Permalink to this comment">35</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.thomasvanhoutte.be'><img alt='' src='http://1.gravatar.com/avatar/a08303614f409b1f991ebe1eaa4291ac?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/a08303614f409b1f991ebe1eaa4291ac?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.thomasvanhoutte.be' rel='external nofollow' class='url'>Thomas Vanhoutte</a> </strong>
+				<span class="comment_time">// Apr 24, 2012 at 1:38 pm</span>
+			</p>
+			<div class="entry">
+				<p>That is what I call &#8216;progress&#8217;, HTML5 will rock the internet!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-61305 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-61305" title="Permalink to this comment">36</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/6050eb25b90bec782244bbd3cf46f058?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/6050eb25b90bec782244bbd3cf46f058?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Jo </strong>
+				<span class="comment_time">// Aug 15, 2012 at 2:50 pm</span>
+			</p>
+			<div class="entry">
+				<p>Hi,</p>
+<p>Using it vertically, is it possible?<br />
+And using multiple color? 0% = red 100%=green ?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-62796 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-62796" title="Permalink to this comment">37</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Aug 24, 2012 at 4:27 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Jo: Yes, both are possible.  <a href="http://stackoverflow.com/questions/9702829/html5-vertical-progress-bar-in-chrome" rel="nofollow">Stack Overflow</a> has a great discussion on vertical progress bars (or you can just use CSS3 transforms to turn the progress 90 degrees if you are feeling very lazy).  As for the multiple color issue, I am assuming that you mean that the bar will be red at 0% and as the number approaches 100%, the hue of the progress bar will change gradually to green.  If that is the case, you can use a variation of the attribute selectors used in the monkey example to do this.  I will, however, leave it as an exercise for the reader to implement it (or until I have a few cycles to actually do this myself).</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-65663 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-65663" title="Permalink to this comment">38</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.onixmediadesign.com'><img alt='' src='http://2.gravatar.com/avatar/268b2e8981c9a3e656b25f5e29418a5a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/268b2e8981c9a3e656b25f5e29418a5a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.onixmediadesign.com' rel='external nofollow' class='url'>Onixmediadesign</a> </strong>
+				<span class="comment_time">// Sep 10, 2012 at 7:04 pm</span>
+			</p>
+			<div class="entry">
+				<p>Excelent post thank you very much!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-77433 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-77433" title="Permalink to this comment">39</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.salttechno.com'><img alt='' src='http://0.gravatar.com/avatar/6f5bc913a7b2c247cd49cbf24db1e52b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/6f5bc913a7b2c247cd49cbf24db1e52b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.salttechno.com' rel='external nofollow' class='url'>Nilesh</a> </strong>
+				<span class="comment_time">// Oct 31, 2012 at 3:11 am</span>
+			</p>
+			<div class="entry">
+				<p>Awesome&#8230; : )<br />
+Thanks a lot&#8230;</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-99508 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-99508" title="Permalink to this comment">40</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/4a43996d9ee5973e1177a08e7be645f0?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/4a43996d9ee5973e1177a08e7be645f0?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Nima </strong>
+				<span class="comment_time">// Jan 5, 2013 at 9:26 am</span>
+			</p>
+			<div class="entry">
+				<p>It was mind blowing, thanks.<br />
+one of the best tutorials I have ever seen.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-113716 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-113716" title="Permalink to this comment">41</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/e72ec5feca4bd6a8362c81bedd69dc50?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/e72ec5feca4bd6a8362c81bedd69dc50?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Joker </strong>
+				<span class="comment_time">// Feb 28, 2013 at 1:25 am</span>
+			</p>
+			<div class="entry">
+				<p>Whats the code for the button Test Progress Bar?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment  myComment " id="comment-115452 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-115452" title="Permalink to this comment">43</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Mar 7, 2013 at 7:20 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Joker: I&#8217;ll answer this question from two different perspectives: </p>
+<ol>
+<li><em><strong>In general</strong></em>, if you want to change the value of a progress bar DOM element, you simply set the <code>.value</code> property of the object.</li>
+<li><em><strong>For my examples specifically</strong></em>, here is a simplified version of the jQuery code, given the &#8220;Test Progress Bar&#8221; button has a class of <code>progressTest</code>:<br />
+<blockquote class="code">
+<pre>
+function initDemo () {
+    $('.progressTest').click(function (e) {
+        e.preventDefault();
+        var id = $(e.target).attr('data-for');
+        
+        var el = $('#' + id ).get(0);
+        
+        //$arrow.addClass('noTransition');
+        //el.value=0;
+        setTimeout(function () {
+            startHelper(el);
+        }, 200);
+    });
+}
+
+function startHelper(el) {
+    startTimeout(0, el, 100);    
+}
+    
+function startTimeout(n, el, ms) {
+     
+    var val = parseInt(el.value);
+    el.value = n;
+    
+    if (parseInt(el.value) &lt; 100) {
+        setTimeout(function() {
+            startTimeout(n+10, el, ms)
+        }, ms);
+    }    
+}
+
+$(document).ready(initDemo);
+</pre>
+</blockquote>
+<p>You can see <a href="http://www.useragentman.com/js/4016.js" rel="nofollow">the exact code the blog post uses</a> if you&#8217;d like.</li>
+</ol>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-535134 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-535134" title="Permalink to this comment">44</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/641f5e6371c8075f8ec8dcafee368fb3?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/641f5e6371c8075f8ec8dcafee368fb3?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Jane </strong>
+				<span class="comment_time">// Oct 8, 2014 at 11:11 pm</span>
+			</p>
+			<div class="entry">
+				<p>I just want to test the comment box.It&#8217;s beautiful.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-1061557 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1061557" title="Permalink to this comment">45</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/8cc013e273973488f23192092795281e?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/8cc013e273973488f23192092795281e?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>WSN </strong>
+				<span class="comment_time">// Mar 19, 2016 at 3:29 am</span>
+			</p>
+			<div class="entry">
+				<p>Awesome article, too content of the web site! </p>
+<p>Thanks you Zoltan.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="4016" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="474937a739" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,13 @@
+iframe {
+  margin-bottom: 20px !important;
+}
+
+
+@media only screen and (max-width: 320px) {
+}
+
+@media only screen and (max-width: 768px) {
+  iframe {
+    width: 95% !important;
+  }
+}

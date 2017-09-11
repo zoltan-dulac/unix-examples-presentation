@@ -1,0 +1,1315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive has-jquery post-5227" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Cross Browser GPU Acceleration and requestAnimationFrame in Depth</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<link rel="stylesheet" href="/tests/polyClip-2.0/css/style.css" type="text/css"/>
+<!-- <link rel="stylesheet" href="/shared/js/jQuery-visualize/css/visualize.css" type="text/css"/>
+<link rel="stylesheet" href="/shared/js/jQuery-visualize/css/visualize-dark.css" type="text/css"/> -->
+			
+
+<script src="/tests/polyClip-2.0/js/jquery-1.7.2.min.js"></script>
+<script src="/tests/polyClip-2.0/js/jquery.easing.1.3.js"></script>
+<script src="/tests/polyClip-2.0/js/jquery.dataset.js"></script>
+
+
+
+<!--[if lt IE 9 ]>
+	<script src="/tests/polyClip-2.0/js/excanvas.compiled.js"></script>
+<![endif]-->
+		
+<script src="/tests/polyClip-2.0/js/polyclip.js"></script>
+<script src="/tests/polyClip-2.0/js/jshashtable-2.1.js"></script>
+<script src="/tests/polyClip-2.0/js/silk.js"></script>
+<script src="/tests/polyClip-2.0/js/querystring.js"></script>
+
+
+<script src="/tests/polyClip-2.0/js/example1.js"></script>
+
+
+<!-- ID is 5227 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Cross Browser GPU Acceleration and requestAnimationFrame in Depth Comments Feed" href="http://www.useragentman.com/blog/2012/09/23/cross-browser-gpu-acceleration-and-requestanimationframe-in-depth/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='A Developer I Admire &mdash; Walter Zorn' href='http://www.useragentman.com/blog/2012/08/26/a-developer-i-admire-walter-zorn/' />
+<link rel='next' title='CSS3 Pseudo-Classes and HTML5 Forms: Their Limitations and a Possible Solution' href='http://www.useragentman.com/blog/2012/11/05/css3-pseudo-classes-and-html5-forms-their-limitations-and-a-possible-solution/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2012/09/23/cross-browser-gpu-acceleration-and-requestanimationframe-in-depth/" />
+<link rel='shortlink' href='http://useragentman.com/blog/WKkzK' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2012%2F09%2F23%2Fcross-browser-gpu-acceleration-and-requestanimationframe-in-depth%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2012%2F09%2F23%2Fcross-browser-gpu-acceleration-and-requestanimationframe-in-depth%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2012/08/26/a-developer-i-admire-walter-zorn/" rel="prev">A Developer I Admire &mdash; Walter Zorn</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2012/11/05/css3-pseudo-classes-and-html5-forms-their-limitations-and-a-possible-solution/" rel="next">CSS3 Pseudo-Classes and HTML5 Forms: Their Limitations and a Possible Solution</a> &raquo;</span>
+</div>
+
+
+			<h1>Cross Browser GPU Acceleration and requestAnimationFrame in Depth</h1>
+			<h4 class="meta">September 23rd, 2012 by zoltan &middot; <a href="http://www.useragentman.com/blog/2012/09/23/cross-browser-gpu-acceleration-and-requestanimationframe-in-depth/#comments">4 Comments</a></h4>
+			<div class="entry">
+				<div class="importantNotes">
+<h3>Update Jan 2, 2013</h3>
+<p><strong>This article and included examples have been updated to reflect changes in the <code>requestAnimationFrame()</code> specification which affect Internet Explorer 10</strong>.  More information is available in <a href="http://stackoverflow.com/questions/13936131/requestanimationframe-is-passing-unexpected-parameters-in-ie10">this Stack Overflow Article</a>.  Thanks to <a href="http://balpha.de">Benjamin Dumke-von der Ehe</a> for sharing this information.
+</div>
+<p>For a few of the projects I have done recently, there has been a need for animated masking of images (i.e. clipping an image into an irregular shape, and then animating that clipping area).  Let&#8217;s look at a simple example I mean by this by looking at a demo using photos from one of my favorite television shows from the 1960&#8217;s, <a href="http://en.wikipedia.org/wiki/The_Mod_Squad">The Mod Squad</a></p>
+
+<div id="frameContainer">
+<div id="frame">
+			
+			<img id="full-cast" src="/blog/wp-content/uploads/2012/08/Mod_Squad_cast_photo_1969-small.jpg" data-tagline="" data-polyclip="
+				0, 0,
+				0, 939, 
+				726, 939, 
+				726, 0"/>	
+				
+			<img id="clarence" src="/blog/wp-content/uploads/2012/08/Clarence_Williams_III_Mod_Squad_1971-color-small.jpg" data-tagline="Linc" data-polyclip="
+				0, 0,
+				0, 939, 
+				726, 939, 
+				726, 0"  />
+			<img id="michael" src="/blog/wp-content/uploads/2012/08/Michael_Cole_Mod_Squad_1973-color-small.jpg" data-tagline="Peter" data-polyclip="
+				0, 0,
+				0, 939, 
+				726, 939, 
+				726, 0" />
+			<img id="peggy" src="/blog/wp-content/uploads/2012/08/Peggy_Lipton_Mod_Squad-color-small.jpg" data-tagline="Julie" data-polyclip="
+				0, 0,
+				0, 939, 
+				726, 939, 
+				726, 0" />
+			<div id="title"><div>Mod Squad</div></div>
+			<div id="finalText">
+				<h1>Mod Squad</h1>
+				<p class="time"> TUESDAYS 8PM / 7 Central <img src="/blog/wp-content/uploads/2012/08/abc-vector-small.png" /></p>
+				<p id="startAgain">Play Demo Again</p>
+			</div>
+			<div id="startDemo">Start Demo</div>
+			</div>
+		
+		</div>
+		<pre id="stats">
+		</pre>
+<p>Note the masking of the images going on in this example.  If the shape of the masks were rectangles, we could use the CSS2 clip property to animate the mask, but there is no way to clip a image into an arbitrary polygon fusing just CSS, so I refactored my <a href="/blog/2011/10/29/clipping-jpeg-images-into-non-rectangular-polygons-using-polyclip-js/">polyClip.js</a> library (which was able to do this on page load) to dynamically change the clip path in JavaScript in order to animate the clip path.  While I was at it, I thought I would try my hand at using this <code>requestAnimationFrame</code> that all the cool kids are talking about. </p>
+<p>Although a simple idea, it took longer than I thought it would because of all the things I didn&#8217;t know about how <code>requestAnimationFrame</code> works,  how different browsers behave with it, and how well browsers are at animating both Canvas and SVG.  In the end, it was well worth the time spent &mdash; what I learned will help when I do any type of future animation work in JavaScript.  This article will be a brain dump of all I have learned so far (a future blog post will discuss the newly refactored polyClip.js)</p>
+<h2>Things You Should Know About First.</h2>
+<p>Animations made with <code>requestAnimationFrame</code> appear less jumpy and stuttery than those using <code>setTimeout</code> or <code>jQuery.animate</code> by ensuring that animation frames are generated at the most optimal times according to the CPU load, what the browser is doing, what the graphics card is doing, etc.  If you aren&#8217;t up-to-speed on how and why it works, I suggest these two articles:</p>
+<ul>
+<li><a href="http://creativejs.com/resources/requestanimationframe/">requestAnimationFrame: The secret to silky smooth JavaScript animation!</a> from <a href="http://creativejs.com">creativeJS.com</a>.</li>
+<li><a href="http://paulirish.com">Paul Irish&#8217;s</a> <a href="http://paulirish.com/2011/requestanimationframe-for-smart-animating/">requestAnimationFrame For Smart Animating</a> which includes the IE7-8 polyfill that is used in the examples in this article</li>
+</ul>
+<p>Note that vendor-specific variations of <code>requestAnimationFrame</code> (e.g. <code>mozRequestAnimationFrame</code>) are currently supported by Firefox 12+, Chrome 20+, IE 10+ and Safari 6+.  For all the other browsers, I have used <a href="https://gist.github.com/1579671">this polyfill</a> (which also normalizes the vendor specific variations to the generic <code>requestAnimationFrame</code>.  The polyfill doesn&#8217;t do any of the fancier features that a native <code>requestAnimationFrame</code> has (i.e. generate less frames when the tab is hidden, or wait until the optimal time when the GPU is ready to render another frame), it just &#8220;does it&#8217;s best&#8221; to execute at the same speed and smoothness as a native implementation. </p>
+<h2>Is GPU Acceleration Enabled On Your Browser/OS Combination?</h2>
+<p>GPU acceleration (also known as <em>hardware acceleration</em>) pushes all the processor-intensive graphical work from the CPU to the graphics card, which makes animations smoother and more battery efficient.  It has been implemented in <strong>Chrome 18+, Firefox 4+, Internet Explorer 9+, Safari 5.1+, and Opera 12+.</strong>  However, GPU acceleration support is not as simple as &#8220;version X and higher of browser Y&#8221; &mdash; <strong>the browser must be able to use the driver of the graphics card installed on the host OS.</strong>  Furthermore, just because the GPU acceleration is available on one browser on a given machine doesn&#8217;t mean that it will be true with all browsers.   For example, I have a Lenovo G560 with an built-in Intel HD Graphics Card.  Google Chrome on this system uses hardware acceleration, but Firefox and Internet Explorer 9 don&#8217;t (funny enough, there is an updated driver for this card, but it won&#8217;t install because it is not supported by Lenovo &mdash; so frustrating!).</code>.  In addition, <strong>Opera has hardware acceleration turned <em>off</em> by default</strong>.  More on this later.  </p>
+<p>If there is one take-away from this article that I would stress the most, it&#8217;s that <strong>you should <em>never</em> assume that a desktop browser, even on a new machine, will have hardware acceleration on by default</strong> (even on browsers on new mobile devices, as the Chrome for Android stats show), and that you should test your animations with or without hardware acceleration.  So, the question is, how can you figure out if the browser you are using can support hardware acceleration with your machine&#8217;s graphics card?   Here is a table that can help you out.</p>
+
+<table id="support-table">
+<thead>
+  <tr>
+   <th>Browser</th>
+   <th>How to detect GPU Acceleration</th>
+   <th>How to turn off GPU Acceleration</th>
+  </tr>
+</thead>
+<tbody>
+	<tr>
+		<th>Firefox </th>
+		<td>Enter <strong>about:support</strong> into the browser Location bar.  On the support page, scroll down to the <strong>Graphics</strong> section and look at the <strong>GPU Accelerated Windows</strong> entry.  You will <strong>not</strong> have GPU acceleration if the entry values is something like "Blocked for your graphics driver version".More information in Joe Drew's article <a href="http://blog.mozilla.org/joe/2010/11/10/how-to-tell-if-youre-using-hardware-acceleration/">How to tell if you’re using hardware acceleration</a></td>
+                <td>Through Firefox preferences or via <strong>about:config</strong>.  More info available on <a href="http://blog.acsystem.sk/">Peter Mikeska's</a> article, <a href="http://blog.acsystem.sk/windows-7/how-disable-gpu-acceleration-in-ie9">How disable GPU acceleration in IE9 and Firefox 4</a>.</td>
+	</tr>
+	<tr>
+		<th>Chrome </th>
+		<td>Enter <strong>chrome://gpu</strong> into the browser Location bar.  More information available in <a href="http://betanews.com/author/mwilliams/">Mike Williams'</a> article <a href="http://betanews.com/2012/03/28/chrome-18-arrives-with-gpu-acceleration-get-it-now/">
+		Chrome 18 arrives, with GPU acceleration -- get it now!</a>  Remember, to make full use of hardware-acceleration with <code>requestAnimationFrame</code>, <a href="http://www.html5rocks.com/en/tutorials/speed/html5/#transanim"><strong>you should set
+the <code>-webkit-transform</code> style of the object to <code>translateZ(0)</code></strong></a>. If the property is already set, to add it on at the end of all the other transforms.  If <code>translateZ</code> is set to any other number, you don't need to add it.</td>
+                <td>
+                 Through a variety of command line options.  More details at<a href="http://jamisondance.com/post/22387219496/turning-off-gpu-acceleration-in-google-chrome/">Jamison Dance's blog</a>:
+<!--
+<ul>
+<li>--blacklist-accelerated-compositing: Blacklist the GPU for accelerated compositing</li>
+<li>--blacklist-webgl: Blacklist the GPU for WebGL</li>
+<li>--disable-accelerated-2d-canvas: Disable gpu-accelerated 2d canvas</li>
+<li>--disable-accelerated-compositing: Disables accelerated compositing</li>
+<li>--disable-accelerated-layers: Disables the hardware acceleration of 3D CSS and animation</li>
+</ul>
+-->               
+</td>
+	</tr>
+	<tr>
+		<th>Opera</th>
+		<td>Enter <strong>opera:gpu</strong> into the browser Location bar.  More information in the Opera Desktop Team's blog post <a href="my.opera.com/desktopteam/blog/2011/10/12/hardware-acceleratio">Hardware acceleration</a> by
+			<a href="http://my.opera.com/toman/blog/">Tommy A. Olsen</a>.  <strong>Note that hardware
+accelleration is <em>not</em> turned on by default at the time of this writing</strong> due to <a href="http://my.opera.com/desktopteam/blog/2012/04/20/update-on-hardware-acceleration-in-opera-12">Opera 12's software backend being faster</a>.</td>
+                <td>Via <strong>opera:config</strong>.  More information in the article <a href="http://techdows.com/2012/06/turn-on-hardware-acceleration-and-webgl-in-opera-12.html">How to Enable Hardware Acceleration and WebGL in Opera 12</a> by <a href="https://twitter.com/techvenkat">Venkat</a>. </td>
+	</tr>
+	<tr>
+		<th>Internet Explorer 9+</th>
+		<td>Go to Tools &gt; Internet Option Menu Item, click on the Advanced tab.  You can tell if IE9 is running in software mode by examining the “Use software rendering instead of GPU rendering” option on the Advanced tab of the Internet Options dialog. If the option is checked and disabled (grayed out), your GPU or driver are on the software fallback list and IE9 renders using software.  More information from the IEBlog article <a href="http://blogs.msdn.com/b/ie/archive/2011/04/01/getting-the-most-from-ie9-and-your-gpu.aspx">Getting the Most from IE9 and Your GPU</a> by Frank Olivier</td>
+                <td>Option available through IE's <strong>Internet Options</strong> menu.  More info available on <a href="http://blog.acsystem.sk/">Peter Mikeska's</a> article, <a href="http://blog.acsystem.sk/windows-7/how-disable-gpu-acceleration-in-ie9">How disable GPU acceleration in IE9 and Firefox 4</a>.</td>
+	</tr>
+	
+	<tr>
+		<th>Safari</th>
+		<td>You can find out what layers are hardware accelerated in Safari by starting it up at the command-line as described in <a href="http://mir.aculo.us/">Thomas Fuchs'</a> blog post <a href="http://mir.aculo.us/2011/02/08/visualizing-webkits-hardware-acceleration/">Visualizing WebKit’s hardware acceleration</a>.  Remember, to make full use of hardware-acceleration with <code>requestAnimationFrame</code>, <a href="http://www.html5rocks.com/en/tutorials/speed/html5/#transanim"><strong>you should set
+the <code>-webkit-transform</code> style of the object to <code>translateZ(0)</code></strong></a>. If the property is already set, to add it on at the end of all the other transforms.  If <code>translateZ</code> is set to any other number, you don't need to add it.</td>
+		<td>I am unaware of any method to turn off hardware acceleration (if anyone out there knows of a method, I would love to hear from you).</td>
+	</tr>
+</tbody>
+</table>					
+<p>Sadly, this information is not exposed in a JavaScript object (wouldn&#8217;t that be nice, though!  A lot of the pages that generate these screens get their information from JavaScript, after all &#8230;). </p>
+<p><strong>Note that Internet Explorer 9 periodically grabs <a href="http://ie9cvlist.ie.microsoft.com/ie9CompatViewList.xml">this XML file from their website</a> to determine if it should use GPU acceleration or not</strong> &mdash; take a look at <code>gpu</code> tags at the bottom and you will see the graphics card drivers that IE9 will <strong>not</strong> allow GPU acceleration with.   (As an interesting aside, it also has a <a href="http://msdn.microsoft.com/en-us/library/ie/gg622935%28v=vs.85%29.aspx">list of domains that have been deemed not compatible with IE9</a> &#8230; quite a long list, frighteningly enough).</p>
+<p>What does GPU acceleration have to do with <code>requestAnimationFrame</code>?  Most of the time, if GPU acceleration is active in a browser, it means that <code>requestAnimationFrame</code> callbacks happen a lot more frequently, resulting in a smoother animation.  The exception to this rule is Opera 12, which has a software rendering engine that is as good and sometimes better than its GPU rendering engine.  </p>
+<h2>Drawing Polygons In SVG Is (In General) Much Slower Than Canvas</h2>
+<p>When I first made polyClip.js, I used HTML5 Canvas to create the clipped shapes because (a) I knew how to do it already, and (b) because I could use the excanvas polyfill to make it work in IE8 and below.   When I started work on having it support animating the clip path, I assumed that I would need to refactor the library to use SVG instead of the <code>&lt;canvas&gt;</code> API to ensure animations were fast.  My reasoning was that since it is programmatically dead simple to modify the clipping path of an image test in SVG, it must be faster for the browser to render the new shape.  For example, let&#8217;s say you had a 726&#215;939 image, test,jpg, that you wanted to clip with a clipping path of <code>"0,0 ,0,939 ,726,939 ,726,0"</code>.  The corresponding SVG would be:</p>
+<blockquote class="code">
+<pre>
+&lt;svg xmlns="http://www.w3.org/2000/svg" version="1.1" 
+     xmlns:xlink="http://www.w3.org/1999/xlink" width="726" height="939" &gt;
+
+     &lt;defs&gt;
+          &lt;pattern <span class="hilite">id="polyClip-img-for-full-cast"</span> patternUnits="userSpaceOnUse" 
+                      width="726" height="939"&gt;
+             &lt;image xlink:href="test.jpg" 
+             x="0" y="0" width="726" height="939"/&gt;
+
+          &lt;/pattern&gt;
+     &lt;/defs&gt;
+     &lt;polygon id="myPoly" <span class="hilite2">points="0,0 ,0,939 ,726,939 ,726,0"</span>
+         <span class="hilite">style="fill:url('#polyClip-img-for-full-cast');"</span> /&gt;
+&lt;/svg&gt;
+</pre>
+</blockquote>
+<p>The <code>defs</code> tag contain a <code>pattern</code> that is used by the <code>polygon</code> tag to <code>fill</code> itself with.  In order to change this clipping path, all that is needed is to use jQuery to change the <code>points</code> attribute of the <code>polygon</code> tag, like this one-liner: </p>
+<blockquote class="code">
+<pre>
+document.getElementById('myPoly').setAttribute('points', "0,0 ,0,939 ,726,939 ,726,0");
+</pre>
+</blockquote>
+<p>Doing the same using Canvas requires a bit more work:</p>
+<blockquote class="code">
+<pre>
+/*
+ * Assume canvas is a canvas DOM node.and that points contains an array 
+ * of numbers representing all the x,y coordinates of the clippath.
+ */
+
+// get canvas context
+ctx = canvas.getContext("2d");
+
+// freeze the canvas while we are drawing so the animation doesn't flicker
+// (kind of like double buffering).
+ctx.save();
+
+// clear all the pixels in the canvas
+ctx.clearRect (0, 0 , canvas.width, canvas.height);
+
+// begin to draw the clipping path.
+ctx.beginPath();
+
+// for each point in the clipping path, draw a line.
+for (var i=0; i&lt;points.length; i+=2) {
+	
+	//var point = points[i].split(',');
+	var x = parseInt(jQuery.trim(points[i]));
+	var y = parseInt(jQuery.trim(points[i+1]));
+
+	if (i == 0) {
+		ctx.moveTo(x,y);
+	} else {
+		ctx.lineTo(x,y);
+	}
+	
+}
+
+// finish the clipping path.
+ctx.closePath()
+
+/*  
+ * excanvas doesn't implement fill with images, so we must hack the 
+ * resultant VML.
+ */
+if (window.G_vmlCanvasManager) {
+	ctx.fillStyle = '';
+	ctx.fill(); 
+	var fill = $('fill', canvas).get(0);
+	
+	fill.color = '';
+	fill.src = src;
+	fill.type = 'tile';
+	fill.alignShape = false;
+
+/*
+ * For true canvas complient browsers, fill the image using createPattern
+ * and fillStyle..
+ */	
+} else {
+	
+	// fillImage contains a DOM image object.  You should ensure the image
+	// is already in the image cache.  
+	// See http://html5canvastutorials.com/tutorials/html5-canvas-patterns-tutorial/
+	// for more info,
+	var imageObj = fillImage;
+   	
+    var pattern = ctx.createPattern(imageObj, "repeat");
+        
+    ctx.fillStyle = pattern;
+    ctx.fill();
+}
+ctx.restore();
+
+</pre>
+</blockquote>
+<p><strong>About as verbose as talking your parents through a tech support problem over the phone</strong>, isn&#8217;t it?  In general, however, <em><strong>Canvas code runs much faster</strong></em>, and when repeating this code over and over again with <code>requestAnimationFrame</code> to produce an animation effect, the canvas code is able to produce more <strong>frames per second</strong> (or <strong>fps</strong>) than the code using SVG, even when using <code>requestAnimationFrame</code>.  I found this out by<a href="/tests/requestAnimationFrame?noResize=1"> making a larger version of the animation above (726&#215;939)</a> that could do the animation with either <a href="/tests/requestAnimationFrame?noResize=1">Canvas</a> or <a href="/tests/requestAnimationFrame?noResize=1&#038;SVG=1">SVG</a> (according to the MSDN article <a href="http://msdn.microsoft.com/en-us/library/ie/gg193983%28v=vs.85%29.aspx">How To Choose Between SVG and Canvas</a>, Canvas performance degrades the larger the canvas is).  Let&#8217;s first take a look at a table that shows the number of frames per second generated for this larger version:</p>
+
+<div class="wp-caption aligncenter">
+<table>
+	<thead>
+		<tr>
+
+			<th colspan="2" rowspan="2"></th>
+			<th colspan="2">SVG</th>
+			<th colspan="2">Canvas</th>
+		</tr>
+		<tr>
+			<th>GPU Acceleration On</th>
+			<th>GPU Acceleration Off</th>
+			<th>GPU Acceleration On</th>
+			<th>GPU Acceleration Off</th>
+	</thead>
+	<tbody>
+		<tr>
+			<th rowspan="7" class="vert"><span>Windows</span></th>
+			<th>IE7<sup><a href="#footnote">*</a></sup><sup><a href="#footnote">‡</a></sup></th>
+			<td>N/A</td>
+			<td>N/A</td>
+			<td>N/A</td>
+			<td class="most">41-46</td>
+		</tr>
+		<tr>
+			<th>IE8<sup><a href="#footnote">*</a></sup><sup><a href="#footnote">‡</a></sup></th>
+			<td>N/A</td>
+			<td>N/A</td>
+			<td>N/A</td>
+			<td class="most">40-50</td>
+		</tr>
+		<tr>
+			<th>IE9<sup><a href="#footnote">*</a></sup></th>
+			<td class="most">23-25</td>
+			<td>11-17</td>
+			<td class="more">21-22</td>
+			<td>11-13</td>
+		</tr>
+		<tr>
+			<th>Firefox 15.0.1</th>
+			<td class="more">60-62</td>
+			<td>32-40</td>
+			<td class="most">59-62</td>
+			<td>48-56</td>
+		</tr>
+		<tr>
+			<th>Safari 5.1<sup><a href="#footnote">*</a></sup><sup><a href="#footnote">†</a></sup></th>
+			<td class="more">48-50</td>
+			<td>51-58<sup><a href="#footnote">1</a></sup></td>
+			<td class="most">49-54</td>
+			<td>61-62<sup><a href="#footnote">1</a></sup></td>
+		</tr>
+		<tr>
+			<th>Chrome 21<sup><a href="#footnote">†</a></sup></th>
+			
+			<td class="most">62</td>
+			<td>59-62</td>
+			<td class="more">60-62</td>
+			<td class="more">60-62</td>
+		</tr>
+		<tr>
+			<th>Opera 12.02<a href="#footnote">*</a></th>
+			<td>17-18</td>
+			<td class="more">31-41</td>
+			<td>16-17</td>
+			<td class="most">37-42</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<th rowspan="4"><span>Mac OSX</span></th>
+			<th>Firefox 15.0.1</th>
+			<td class="more">32-46</td>
+			<td>31-40</td>
+			<td class="most">63-66</td>
+			<td>36-37</td>
+
+		</tr>
+		<tr>
+			<th>Safari 5.1<sup><a href="#footnote">*</a></sup><sup><a href="#footnote">†</a></sup></th>
+			<td class="more">36-55</td>
+			<td>62-63<sup><a href="#footnote">1</a></sup></td>
+			<td class="most">59-60</td>
+			<td class="most">59-60</td>
+		</tr>
+		<tr>
+			<th>Chrome 21<sup><a href="#footnote">†</a></sup></th>
+			<td class="most">61</td>
+			<td>60-61</td>
+			<td class="more">59-60</td>
+			<td>58-60</td>
+		</tr>
+		<tr>
+			<th>Opera 12.02<a href="#footnote">*</a></th>
+			<td>39-61</td>
+			<td class="most">62</td>
+			<td>37-61</td>
+			<td class="most">62</td>
+		</tr>
+	</tbody>
+<!--
+	<tbody>
+		<tr>
+			<th rowspan="3"><span>Linux</span></th>
+			<th>Firefox</th>
+			<td></td>
+			<td>21-24</td>
+			<td></td>
+			<td>23-27</td>
+		</tr>
+
+		<tr>
+			<th>Chrome</th>
+			<td></td>
+			<td>32-35</td>
+			<td></td>
+			<td>29-37</td>
+		</tr>
+		<tr>
+			<th>Opera</th>
+			<td></td>
+			<td>13-17</td>
+			<td></td>
+			<td>17-19</td>
+		</tr>
+	</tbody>-->
+	<tbody>
+		<tr>
+			<th rowspan="1" class="small"><span>iOS</span></th>
+			<th class="more">Safari 5.1<sup><a href="#footnote">*</a></sup><sup><a href="#footnote">†</a></sup></th>
+			<td colspan="2">unusable</td>
+			<td>36-37</td>
+			<td>N/A</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<th rowspan="3"><span>Android</span></th>
+			<th>"Browser"</th>
+			<td class="more">38-42</td>
+			<td>N/A</td>
+			<td class="most">54-59</td>
+			<td>N/A</td>
+		</tr>
+		<tr>
+			<th>Chrome<sup><a href="#footnote">†</a></sup></th>
+			<td class="most">6-15</td>
+			<td>N/A</td>
+			<td class="more">2-3</td>
+			<td>N/A</td>
+		</tr>
+		<tr>
+			<th>Opera Mobile<a href="#footnote">*</a></th>
+			<td class="more">4-5</td>
+			<td></td>
+			<td class="most">6-7</td>
+			<td></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<th rowspan="1" class="small win7mobile"><span>Win7 Mobile</span></th>
+			<th>Internet Explorer 9</th>
+			<td class="more">10-20</td>
+			<td>N/A</td>
+			<td class="most">20-28</td>
+			<td>N/A</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<div class="importantNotes">
+<strong>You can see the version of the animation at the top of this article using either <a href="/tests/requestAnimationFrame?noResize=1&#038;showStats=1">Canvas</a> or <a href="/tests/requestAnimationFrame?noResize=1&#038;SVG=1&#038;showStats=1">SVG</a>.</strong>  Note that your numbers may be slightly different due to your computer/GPU, but they should be generally in line with what are presented here.  If you see some <em>wildly</em> different numbers, please let me know by commenting below.
+</div>
+<p>As you may expect, the higher the frame rate, the smoother the animation.  How many fps is acceptable?  A few fun-facts:</p>
+<ul>
+<li>The average film is shot at 24 fps.</li>
+<li>The average camcorder can record at 60 fps</li>
+<li><a href="http://en.wikipedia.org/wiki/The_Hobbit_%28film_series%29">The new Hobbit film series</a> is <a href="http://www.engadget.com/2012/05/28/editorial-48-fps-hobbit-preview-high-frame-rates/">apparently being filmed at 48 fps</a>.</li>
+</ul>
+<p>Browser manufacturers are aiming to give you tech that can produce 60 fps, since your average computer monitor has a screen refresh rate of 60 <a href="http://en.wikipedia.org/wiki/Cycle_per_second">cycles per second</a>, or <a href="http://en.wikipedia.org/wiki/Hertz">Hertz</a>. However, most animations are still acceptable at around 24 fps (they just won&#8217;t be as awesomely smooth).  As you can see from the stats, <strong>Canvas is much better when performing this task</strong> (and <strong>Opera 12&#8217;s non-accelerated graphics engine <em>is</em> about as fast or faster than the GPU accelerated one</strong>).  Surprisingly, Chrome for Android is incredibly slow compared to Android&#8217;s stock web browser (creatively named &#8220;Browser&#8221;), even though Chrome for Android&#8217;s literature says it has &#8220;<a href="https://developers.google.com/chrome/mobile/docs/overview">GPU acceleration for the canvas element</a>&#8220;.  Finally, Internet Explorer 9 has the worst framerate at 22 frames per second for a GPU accelerated animation using Canvas (25 using SVG) &mdash; <strong>IE9&#8217;s framerate is worse than using the excanvas polyfill in IE7 and 8, which report above 40 frames per second (!!!!!)</strong>.  I double-checked just to make sure .. I wonder if I can speed it IE9 a bit &#8230;.</p>
+<p>Just to take the test even further, I made the animation scale to the size of the browser&#8217;s window height when the page loads and when the window resizes (not only did I think this was a good way to stress the graphics card, I had a project where this was a requirement).  This is done with CSS3 Transforms in modern browsers and using the Matrix Filter for IE8.</p>
+
+<div class="wp-caption aligncenter">
+<table>
+	<thead>
+		<tr>
+
+			<th colspan="2" rowspan="2"></th>
+			<th colspan="2">SVG</th>
+			<th colspan="2">Canvas</th>
+		</tr>
+		<tr>
+			<th>GPU Acceleration On</th>
+			<th>GPU Acceleration Off</th>
+			<th>GPU Acceleration On</th>
+			<th>GPU Acceleration Off</th>
+	</thead>
+	<tbody>
+		<tr>
+			<th rowspan="7" class="vert"><span>Windows</span></th>
+			<th>IE7<sup><a href="#footnote">*</a></sup><sup><a href="#footnote">‡</a></sup></th>
+			<td colspan="3">N/A</td>
+			<td class="most">13-16</td>
+		</tr>
+		<tr>
+			<th>IE8<sup><a href="#footnote">*</a></sup><sup><a href="#footnote">‡</a></sup></th>
+			<td colspan="3">N/A</td>
+			<td class="most">13-16</td>
+		</tr>
+		<tr>
+			<th>IE9<sup><a href="#footnote">*</a></sup></th>
+			<td class="more">21-24</td>
+			<td>11-18</td>
+			<td class="most">26</td>
+			<td>11-13</td>
+		</tr>
+		<tr>
+			<th>Firefox 15.0.1</th>
+			<td class="more">41-53</td>
+			<td>10-21</td>
+			<td class="most">55-61</td>
+			<td>30-40</td>
+		</tr>
+		<tr>
+			<th>Safari 5.1<sup><a href="#footnote">*</a></sup><sup><a href="#footnote">†</a></sup></th>
+			<td class="more">31</td>
+			<td>40-46<sup>1</td>
+			<td class="most">46-53</td>
+			<td>15-16</td>
+		</tr>
+		<tr>
+			<th>Chrome 21<sup><a href="#footnote">†</a></sup></th>
+			
+			<td class="more">36-44</td>
+			<td>36-43</td>
+			<td class="most">58</td>
+			<td>30-51</td>
+		</tr>
+		<tr>
+			<th>Opera 12.02<a href="#footnote">*</a></th>
+			<td>14-16</td>
+			<td class="most">21-24</td>
+			<td>8-9</td>
+			<td class="more">10-16</td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<th rowspan="4"><span>Mac OSX</span></th>
+			<th>Firefox 15.0.1</th>
+			<td class="more">18-31</td>
+			<td>13-29</td>
+			<td class="most">63-64</td>
+			<td>21-22</td>
+
+		</tr>
+		<tr>
+			<th>Safari 5.1<sup><a href="#footnote">*</a></sup><sup><a href="#footnote">†</a></sup></th>
+			<td>36</td>
+			<td class="more">43-48</td>
+			<td>16-23</td>
+			<td class="most">56-61</td>
+		</tr>
+		<tr>
+			<th>Chrome 21<sup><a href="#footnote">†</a></sup></th>
+			<td class="more">61</td>
+			<td>59-60</td>
+			<td class="most">59-61</td>
+			<td>59-61</td>
+		</tr>
+		<tr>
+			<th>Opera 12.02<a href="#footnote">*</a></th>
+			<td class="most">50-59</td>
+			<td>53-54</td>
+			<td class="more">40-51</td>
+			<td>29-39</td>
+		</tr>
+	</tbody>
+<!--
+	<tbody>
+		<tr>
+			<th rowspan="3"><span>Linux</span></th>
+			<th class="no-gpu">Firefox</th>
+			<td></td>
+			<td class="choppy">9-11</td>
+			<td></td>
+			<td class="poor">9-11</td>
+		</tr>
+
+		<tr>
+			<th class="no-gpu">Chrome</th>
+			<td></td>
+			<td class="good">39-42</td>
+			<td></td>
+			<td class="good">20-31</td>
+		</tr>
+		<tr>
+			<th>Opera</th>
+			<td></td>
+			<td class="good">11-13</td>
+			<td></td>
+			<td class="choppy">7-10</td>
+		</tr>
+	</tbody>
+-->
+	<tbody>
+		<tr>
+			<th rowspan="1" class="small"><span>iOS</span></th>
+			<th>Safari<sup><a href="#footnote">*</a></sup><sup><a href="#footnote">†</a></sup></th>
+			<td colspan="2">unusable</td>
+			<td class="most">28-34</td>
+			<td>N/A</td>
+		</tr>
+		
+	</tbody>
+	<tbody>
+		<tr>
+			<th rowspan="3"><span>Android</span></th>
+			<th>"Browser"</th>
+			<td class="most">56-58</td>
+			<td>N/A</td>
+			<td class="more">35-38</td>
+			<td>N/A</td>
+		</tr>
+		<tr>
+			<th>Chrome<sup><a href="#footnote">†</a></sup></th>
+			<td class="most">14</td>
+			<td>N/A</td>
+			<td class="more">1-2</td>
+			<td>N/A</td>
+		</tr>
+		<tr>
+			<th>Opera Mobile<a href="#footnote">*</a></th>
+			<td class="most">3-4</td>
+			<td></td>
+			<td class="more">2-3</td>
+			<td></td>
+		</tr>
+	</tbody>
+	<tbody>
+		<tr>
+			<th rowspan="1" class="small win7mobile"><span>Win7 Mobile</span></th>
+			<th>Internet Explorer 9</th>
+			<td class="more">6-15</td>
+			<td>N/A</td>
+			<td class="most">18-25</td>
+			<td>N/A</td>
+		</tr>
+	</tbody>
+</table>
+</div>
+<div class="importantNotes">
+<strong>You can see the larger, rescaled version of the animation at the top of this article using either <a href="/tests/requestAnimationFrame?showStats=1">Canvas</a> or <a href="/tests/requestAnimationFrame?SVG=1&#038;showStats=1">SVG</a>.</strong>  Note that your numbers may be slightly different due to your computer/GPU, but they should be generally in line with what are presented here.  If you see some <em>wildly</em> different numbers, please let me know by commenting below.
+</div>
+<p>Note that, in general, the animations are much smoother <em>without</em> using CSS Transforms/IE Visual Filters to resize the animation, which is to be expected, since Transforms require a lot more <a href="http://en.wikipedia.org/wiki/Floating_point_arithmetic">floating-point arithmetic</a> (in IE7-8, it makes the animation slower than IE9).  However <strong>most GPU accelerated browsers stayed as smooth as your Dad when he was first introduced to your Mom</strong> (almost 40 fps or higher) since GPUs can do these scaling calculations a lot faster than the CPU can.</p>
+<h2>What&#8217;s requestAnimationFrame Doing When A Tab&#8217;s Not Visible?  Depends On The Browser!</h2>
+<p>As Paul Irish says, &#8220;if you&#8217;re running the animation loop in a tab that&#8217;s not visible, the browser won&#8217;t keep it running&#8221;.  However what this means differs slightly from browser to browser.  Firefox will run way less <code>requestAnimationFrame</code> callbacks, but will keep track of where the animation would have been if the tab was visible so that the user won&#8217;t notice any time delay.  <strong>Chrome, however, will do the same until the end of a <code>requestAnimationFrame</code> loops being run at the time the tab loses visibility, and will not run any new loops until the tab becomes visible again.</strong> What this means will still run the animation (albeit with fewer frames), but once that animation ends, it will not start another <code>requestAnimtionFrame</code> animation until the browser tab is visible again.  </p>
+<h2>Clean Up After Yourself When The Animation Is Done!</h2>
+<p>Let&#8217;s take a look at the following sample animation code:</p>
+<blockquote class="code">
+<pre>
+var startTime = null,
+    endTime = null;
+
+requestAnimationFrame(step);
+
+function step(time) {
+
+	/*
+	 * if this is the first time running this function,
+	 * set startTime and endTime. 
+	 */
+	if (startTime === null) {
+		startTime = time;
+		endTime = startTime + 3000; //(animation will end in 3 seconds)
+	}
+
+	var relTime = time - startTime;
+		
+	// animation logic goes here ..
+	.
+	.
+	.
+		
+	/*
+	 * If the animation isn't scheduled to end, do another 
+	 * requestAnimationFrame call. This will generate a
+	 * new frame when the GPU is ready.
+	 */
+	if (time < endTime) {
+		requestAnimationFrame(step);
+	} else {
+		// logic that happends when animation finishes. 
+	}
+}
+</pre>
+</blockquote>
+<p>This code assumes that the <code>requestAnimationFrame</code> callback will be run in between <code>startTime</code> and <code>endTime</code>. When the browser tab isn't visible for a long time, however, the final execution of the callback can happen way later than expected (i.e. when the tab gains focus again), so the callback should see if the time passed to it is greater than the <code>endTime</code>.  If it is, it should generate the last frame of the animation.  This can be done by setting its parameter (in this case, <code>time</code>) to the time index of the end of the animation (in this case, <code>endTime</code>):</p>
+<blockquote class="code">
+<pre>
+var startTime = null,
+    endTime = null;
+
+requestAnimationFrame(step);
+
+function step(time) {
+
+	/*
+	 * if this is the first time running this function,
+	 * set startTime and endTime. 
+	 */
+	if (startTime === null) {
+		startTime = time;
+		endTime = startTime + 3000; //(animation will end in 3 seconds)
+	}
+
+	var relTime = time - startTime;
+
+	<span class="hilite">/*
+	 * If the step function is being called after the animation
+	 * was scheduled to end, set time to the endTime in order
+	 * to generate the last frame of the animation.
+	 */
+	if (time > endTime) {
+		time = endTime
+	}</span>
+	
+		
+	// animation logic goes here ..
+	.
+	.
+	.	
+	
+	/*
+	 * If the animtion isn't scheduled to end, do another 
+	 * requestAnimationFrame call. This will generate a
+	 * new frame when the GPU is ready.
+	 */	
+	if (time < endTime) {
+		requestAnimationFrame(step);	
+	} else {
+		// logic that happends when animation finishes. 
+	}
+
+}
+</pre>
+</blockquote>
+<div class="importantNotes">
+<h3>Update Jan 2, 2013</h3>
+<p><strong>Note that these variables are set on the first execution of <code>step()</code></strong>.   In a previous version of this article, these variables were initialized at the top of the code when they were first declared.  This was changed due to a change in the <a href="http://dvcs.w3.org/hg/webperf/raw-file/tip/specs/RequestAnimationFrame/Overview.html">Editor's Draft of <code>requestAnimationFrame()</code></a>. IE10 follows this change, while all the other browsers that implement it currently use the <a href="http://www.w3.org/TR/animation-timing/"><em>Working</em> Draft</a>.  More information is available at <a href="http://stackoverflow.com/questions/13936131/requestanimationframe-is-passing-unexpected-parameters-in-ie10">this Stack Overflow Article</a>.  Thanks to <a href="http://balpha.de">Benjamin Dumke-von der Ehe</a> for sharing this information).
+</div>
+<h2>jQuery.animate() Does Not Use requestAnimationFrame (Yet).</h2>
+<p>I've known this for since the last jQuery conference I attended last year, but it's worth stating here: <code>jQuery.animate()</code>, which I have used in a number of projects, does not use <code>requestAnimationFrame</code> at the moment (version 1.8.).  This is due to <a href="http://stackoverflow.com/questions/7999680/why-doesnt-jquery-use-requestanimationframe">a number of issues that came up when trying to bake it into jQuery in the past</a>, but the <a href="bugs.jquery.com/ticket/9381#trac-change-29">jQuery team has promised that it will be baked into a future release</a>.  In the meantime, I have used a temporary subsitute, <a href="http://www.useragentman.com/tests/requestAnimationFrame/js/silk.js">Silk.js</a>, to do the animations in a similar way to jQuery using <code>requestAnimationFrame</code>.   Here is an example of how I used it to replace the <code>jQuery.animate()</code> code above:</p>
+<blockquote class="code">
+<pre>
+/*
+ * Let's animate $title to -320px in 3 secs.  We will also mask the image 
+ * represented by $jNode using the Silk's step property.
+ */
+var animation = new Silk($title, {
+	top: -320
+}, {
+	stepStart: 1439,
+	stepEnd: -70,
+	duration: 3000,
+	complete: function () {
+		stats.innerHTML += 'animation frames: ' + (animation.framesRendered / 3) + ' per second\n';
+		complete(); 
+	},
+	easing: 'easeInOutCubic',
+	step: function (now, fx) {
+		$jNode = polyClip.clipImage($jNode.get(0), '0, ' + now + ", 726, " + (now - 413) + "526, 726, 0, 0, 0");
+	}
+})
+</pre>
+</blockquote>
+<p>I look forward to using <code>jQuery.animate()</code> for these types of animations instead of Silk, since it has been tested a lot more than my code.  :-)</p>
+<h2>Firefox and Opera Eat A <em>Lot</em> of Memory While Animating Using the GPU and Canvas Compared to Chrome</h2>
+<p>While running the animation example linked above, Firefox eats up <em>way</em> more memory compared to Chrome.  To prove this, take a look at this video of the clean-room version of the demo above running under both browsers on a MacBook Pro running Mac OS X 10.6.8 with 8 GB of RAM Pay special attention to the green part of the pie chart on the right which shows how much free RAM is available.</p>
+
+<div class="wp-caption aligncenter">
+<video id="firefox-video" controls>
+  <source src="/blog/wp-content/uploads/2012/09/firefox-mem.m4v"  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+  <source src="/blog/wp-content/uploads/2012/09/firefox-mem.ogv"  type='video/ogg; codecs="theora, vorbis"'>
+
+  <!-- <object id="firefox-video-object" type="application/x-shockwave-flash" data="/shared/swf/flowplayer/flowplayer-3.2.13.swf" width="793" height="493"> 
+    <param name="movie" value="/shared/swf/flowplayer/flowplayer-3.2.13.swf" /> 
+    <param name="allowfullscreen" value="true" /> 
+    <param name="flashvars" value='config={"clip": {"url": "/blog/wp-content/uploads/2012/09/firefox-mem.m4v", "autoPlay":false, "autoBuffering":true}}' /> 
+    <p>Download video as <a href="/blog/wp-content/uploads/2012/09/firefox-mem.m4v">MP4</a>, <a href="/blog/wp-content/uploads/2012/09/firefox-mem.ogv">OGG</a>.</p> 
+  </object> -->
+</video>
+<p class="wp-caption-text">Video showing animation memory usage in Firefox 14.0.1 on OSX</p>
+</div>
+<p>Note how fast the memory increases when using Firefox for Mac.  This is not as pronounced in Google Chrome for Mac, and the memory that is used up by that browser is eventually freed up.</p>
+
+<div class="wp-caption aligncenter">
+<video id="chrome-video" controls>
+  <source src="/blog/wp-content/uploads/2012/09/chrome-mem.m4v"  type='video/mp4; codecs="avc1.42E01E, mp4a.40.2"'>
+  <source src="/blog/wp-content/uploads/2012/09/chrome-mem.ogv"  type='video/ogg; codecs="theora, vorbis"'>
+  <!-- <object id="chrome-video-object" type="application/x-shockwave-flash" data="/shared/swf/flowplayer/flowplayer-3.2.13.swf"  width="793" height="493"> 
+    <param name="movie" value="/shared/swf/flowplayer/flowplayer-3.2.13.swf" /> 
+    <param name="allowfullscreen" value="true" /> 
+    <param name="flashvars" value='config={"clip": {"url": "/blog/wp-content/uploads/2012/09/chrome-mem.m4v", "autoPlay":false, "autoBuffering":true}}' /> 
+    <p>Download video as <a href="/blog/wp-content/uploads/2012/09/chrome-mem.m4v">MP4</a>, <a href="/blog/wp-content/uploads/2012/09/chrome-mem.ogv">OGG</a>.</p> 
+  </object> -->
+</video>
+<p class="wp-caption-text">Video showing animation memory usage in Chrome 21.0.1180.89 on OSX</p>
+</div>
+<p>I have also noticed that Opera eats a lot more memory than Firefox when hardware acceleration is turned on, but since it is not on by default, this may not be an important consideration for developers.  In all browsers, when a machine starts running out of memory, animations become more &#8220;stuttery&#8221; since <code>requestAnimationFrame</code> is not able to generate as many frames.  Hopefully Opera and Firefox will fix these issues soon, but the take-away here is to <strong>test memory usage, especially for complex animations.</strong></p>
+<h2 id="filled-svg-polygon-bug" name="filled-svg-polygon-bug">Filled SVG Polygons Are Buggy in Safari (Mobile and Desktop)</h2>
+<p>Okay, this last bit doesn&#8217;t really have anything to do with GPU acceleration or <code>requestAnimationFrame</code>, but I think this is interesting to those interested in browser graphics and animation.  <strong>In <em>all</em> current iOS devices</strong> I tested with (iPhone and iPad), <strong>filling the SVG <code>polygon</code> with an image resulted in the image being shown upside down</strong>:</p>
+<p><div id="attachment_5110" style="width: 235px" class="wp-caption aligncenter"><a href="http://www.useragentman.com/blog/wp-content/uploads/2012/09/2012-09-04-17.41.34.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/09/2012-09-04-17.41.34-225x300.png" alt="Screenshot of SVG image fill in iPad2 (same happens in iPad3).  Not everything is upside down and not filled in haphazardly. Click to see full sized image." title="Screenshot of SVG image fill in iPad2 (same happens in iPad3).  Not everything is upside down and not filled in haphazardly. Click to see full sized image." width="225" height="300" class="size-medium wp-image-5110" srcset="http://www.useragentman.com/blog/wp-content/uploads/2012/09/2012-09-04-17.41.34-225x300.png 225w, http://www.useragentman.com/blog/wp-content/uploads/2012/09/2012-09-04-17.41.34.png 768w" sizes="(max-width: 225px) 100vw, 225px" /></a><p class="wp-caption-text">Screenshot of SVG image fill in iPad2 (same happens in iPad3).  Not everything is upside down and not filled in haphazardly.  Click to see full sized image.</p></div></p>
+<p>On the desktop version of Safari, when the user scrolls the SVG image on and off the screen, it seeems there are some refresh errors that occur:</p>
+<p><div id="attachment_5081" style="width: 310px" class="wp-caption aligncenter"><a href="http://www.useragentman.com/blog/wp-content/uploads/2012/08/screenshot-safariBuggySVG.jpg"><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/08/screenshot-safariBuggySVG-300x189.jpg" alt="Safari SVG Scroll Errors." title="screenshot-safariBuggySVG" width="300" height="189" class="size-medium wp-image-5081" srcset="http://www.useragentman.com/blog/wp-content/uploads/2012/08/screenshot-safariBuggySVG-300x189.jpg 300w, http://www.useragentman.com/blog/wp-content/uploads/2012/08/screenshot-safariBuggySVG-1024x647.jpg 1024w, http://www.useragentman.com/blog/wp-content/uploads/2012/08/screenshot-safariBuggySVG.jpg 1513w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">Graphic errors happen when the SVG image is scrolled on and off screen.  Click to see full image.</p></div></p>
+<p>Furthermore, according to <a href="http://caniuse.com">caniuse.com</a>, <a href="http://caniuse.com/#search=svg">SVG is <em>not</em> supported in Android&#8217;s stock browser prior to version 3</a>.  Canvas, however, is <a href="http://caniuse.com/#search=canvas">supported on all modern Android machines</a>.  This is yet another reason why Canvas is a much better choice for the use case I am working with (for the time being).</p>
+<h2>In Conclusion?</h2>
+<p>In this particular use case, Canvas wins over SVG, but this is probably not true always.  Since I have been doing a lot of animation work lately, I will be doing a lot more research on the subject.  If anyone has anything else to add to my findings above, please comment below: I&#8217;d love to get your input from your experiences.</p>
+<p><a name="footnote" id="footnote"></a></p>
+<h2>Footnotes</h2>
+<p><sup>*</sup> Uses <code>requestAnimationFrame</code> polyfill<br />
+<sup>‡</sup> Uses excanvas polyfill<br />
+<sup>†</sup> GPU acceleration enhanced by using the <code>-webkit-transform: translateZ(0)</code> trick.<br />
+<sup>1</sup> Although Safari for Windows reported more frames per second for SVG and Canvas <em>without</em> using <code>transform: translateZ(0)</code>, it definitely looks smoother with the transform set.</p>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" rel="category tag">canvas</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/" rel="category tag">HTML</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/html5/" rel="category tag">HTML5</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" rel="category tag">jQuery</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" rel="category tag">Polyfills</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" rel="category tag">SVG</a> &middot; <a href="http://www.useragentman.com/blog/category/uncategorized/" rel="category tag">Uncategorized</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" rel="category tag">VML</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/xml/" rel="category tag">XML</a> </p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">4 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						<li class="comment   " id="comment-75168 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-75168" title="Permalink to this comment">1</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/460c4836acf5174cb0c7ef1156c7735c?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/460c4836acf5174cb0c7ef1156c7735c?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Anton </strong>
+				<span class="comment_time">// Oct 23, 2012 at 6:48 pm</span>
+			</p>
+			<div class="entry">
+				<p>I am also currently work with animation at the mobile device. We also have html5 project, and also have same problem with animation at the Android device&#8230;.I am wondering, I have several very impressing games installed on my own Samsung Galaxy S 2 (such like GTA 3) and it plays smoothly without any bugs (very impressing, include fact, that graphics same as on PC Desktop). So assuming fact, that this device can perform such graphics &#8211; the browser can&#8217;t use it fully (if it use it at all :) ). I will create test (wrap web application to the UIWebkit, with helps Cordova framework, as native apk ), and hopefully will found &#8220;silver bullet&#8221; of this problems ;).<br />
+ P.S: If you have already made this test, please response of it result or in case you had already found another active method.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-76893 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-76893" title="Permalink to this comment">2</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Oct 28, 2012 at 10:39 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Anton: I have not did this test, and any more research you (or anyone else) can provide on mobile animations would be welcome and I would love to update this post with your (fully attributed) information.  :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-110850 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-110850" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/0a9c6b933c11e0bb01a636b3d8116ff5?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/0a9c6b933c11e0bb01a636b3d8116ff5?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Bob Myers </strong>
+				<span class="comment_time">// Feb 15, 2013 at 1:07 pm</span>
+			</p>
+			<div class="entry">
+				<p>What is the work-around, if any, for the Safari upside-down-SVG problem, which I am experiencing with text?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-111504 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-111504" title="Permalink to this comment">4</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Feb 18, 2013 at 9:08 am</span>
+			</p>
+			<div class="entry">
+				<p>@Bob: Unfortunately, I don&#8217;t know of any known workaround for this issue.  If I learn anything more, I&#8217;ll update this article and let you know.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="5227" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="fd617a2b9e" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

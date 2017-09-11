@@ -1,0 +1,196 @@
+.example {
+	background: #333333;
+	overflow: hidden;
+	background: url('../images/space.jpg');
+	position: relative;
+	display: block;
+	width: 830px;
+	border: none;
+	margin: 0 auto;
+	height: 400px;
+	overflow: hidden;
+}
+
+.steps .example {
+	width: 802px;
+}
+
+
+
+#sun {
+	position: absolute;
+    left: 336px;    
+    top: 163px;
+}
+
+
+/*
+ * Animation 1: for Saturn.  Keep the planet in the "upright position".
+ */
+.saturn {
+	position: absolute;
+	
+	/* This is the point we rotate the object around */
+	left: 315px;
+    top: 143px;
+}
+
+.saturn.animated {   
+	/*
+	 * CSS Please is your friend for ensuring cross browser syntax */
+	-webkit-animation: orbit 4s linear infinite; /* Chrome, Safari 5 */
+       -moz-animation: orbit 4s linear infinite; /* Firefox 5-15 */
+         -o-animation: orbit 4s linear infinite; /* Opera 12+ */
+            animation: orbit 4s linear infinite; /* Chrome, Firefox 16+, IE 10+, Safari 5 */
+	
+	
+	
+}
+
+
+@-webkit-keyframes orbit {
+	from { 	-webkit-transform: rotate(0deg) translateX(150px) rotate(0deg); }
+	to   {  -webkit-transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+}
+
+@-moz-keyframes orbit {
+	from { 	-moz-transform: rotate(0deg) translateX(150px) rotate(0deg); }
+	to   {  -moz-transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+}
+
+@-o-keyframes orbit {
+	from { 	-o-transform: rotate(0deg) translateX(150px) rotate(0deg); }
+	to   {  -o-transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+}
+
+@keyframes orbit {
+	from { 	transform: rotate(0deg) translateX(150px) rotate(0deg); }
+	to   {  transform: rotate(360deg) translateX(150px) rotate(-360deg); }
+}
+
+
+
+/*
+ * Animation for the Enterprise.  Same as planet one, but no final rotation
+ * at the end of the transforms.
+ */
+
+#enterprise {
+	position: absolute;
+	
+	/* This is the point we rotate the object around */
+	left: 344px;
+    top: 134px;
+	
+	/*
+	 * CSS Please is your friend for ensuring cross browser syntax */
+	-webkit-animation: ship_orbit 20s linear infinite; /* Chrome, Safari 5 */
+       -moz-animation: ship_orbit 20s linear infinite; /* Firefox 5-15 */
+         -o-animation: ship_orbit 20s linear infinite; /* Opera 12+ */
+            animation: ship_orbit 20s linear infinite; /* Chrome, Firefox 16+, IE 10+, Safari 5 */	
+}
+
+
+@-webkit-keyframes ship_orbit {
+	from { 	-webkit-transform: rotate(0deg) translateX(150px); }
+	to   {  -webkit-transform: rotate(360deg) translateX(150px); }
+}
+
+@-moz-keyframes ship_orbit {
+	from { 	-moz-transform: rotate(0deg) translateX(150px); }
+	to   {  -moz-transform: rotate(360deg) translateX(150px); }
+}
+
+@-o-keyframes ship_orbit {
+	from { 	-o-transform: rotate(0deg) translateX(150px); }
+	to   {  -o-transform: rotate(360deg) translateX(150px); }
+}
+
+@keyframes ship_orbit {
+	from { 	transform: rotate(0deg) translateX(150px); }
+	to   {  transform: rotate(360deg) translateX(150px); }
+}
+
+
+
+/*
+ * Step 2: position saturn on top of sun.
+ */
+
+#step2 .saturn {
+    -moz-transform: translateX(150px);
+    -ms-transform: translateX(150px);
+    -o-transform: translateX(150px);
+    -webkit-transform: translateX(150px);
+    
+    transform: translateX(150px);
+}
+
+#step2 .saturn {
+	-sand-transform: translateX(150px);
+}
+
+
+#step2 .ruler {
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    color: white;
+    font-size: 15px;
+    height: 4px;
+    left: 367px;
+    position: absolute;
+    top: 196px;
+    width: 150px;
+}
+
+#step2 .ruler .label {
+	position: absolute;
+	width: 100%;
+	text-align:center;
+	left: 0;
+	top: 20px; 
+}
+
+#step3a .saturn {
+	-moz-transform: rotate(45deg) translateX(150px);
+    -ms-transform: rotate(45deg) translateX(150px);
+    -o-transform: rotate(45deg) translateX(150px);
+    -webkit-transform: rotate(45deg) translateX(150px);
+    -sand-transform: rotate(45deg) translateX(150px);
+    transform: rotate(45deg) translateX(150px);
+}
+
+#step3a .angle {
+    left: 195px;
+    position: absolute;
+    top: 5px;
+}
+
+#step3b .saturn {
+	-moz-transform: rotate(45deg) translateX(150px) rotate(-45deg);
+    -ms-transform: rotate(45deg) translateX(150px) rotate(-45deg);
+    -o-transform: rotate(45deg) translateX(150px) rotate(-45deg);
+    -webkit-transform: rotate(45deg) translateX(150px) rotate(-45deg);
+    -sand-transform: rotate(45deg) translateX(150px) rotate(-45deg);
+    transform: rotate(45deg) translateX(150px) rotate(-45deg);
+}
+
+#step3b .angle {
+    left: 302px;
+    position: absolute;
+    top: 112px;
+}
+
+
+
+/*
+ * This is tacked on at the end to override a global style. 
+ */
+.entry img {
+	border: none;
+}
+
+.steps h3:first-child {
+	margin-top: 20px;
+}

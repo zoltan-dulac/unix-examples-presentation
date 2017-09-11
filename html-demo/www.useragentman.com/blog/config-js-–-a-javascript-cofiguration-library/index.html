@@ -1,0 +1,843 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive post-264" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Config.js – a JavaScript cofiguration library</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><script src="//code.jquery.com/jquery-1.10.2.js"></script>	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<!-- ID is 264 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Config.js – a JavaScript cofiguration library Comments Feed" href="http://www.useragentman.com/blog/config-js-%e2%80%93-a-javascript-cofiguration-library/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel="canonical" href="http://www.useragentman.com/blog/config-js-%e2%80%93-a-javascript-cofiguration-library/" />
+<link rel='shortlink' href='http://useragentman.com/blog/8Feey' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2Fconfig-js-%25e2%2580%2593-a-javascript-cofiguration-library%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2Fconfig-js-%25e2%2580%2593-a-javascript-cofiguration-library%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+	
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+	
+		<div id="content" class="pages bypass-block-target" tabindex="-1" role="main">
+
+						
+			<h1>Config.js – a JavaScript cofiguration library</h1>	
+			<div class="entry">		
+				<h2>Description</h2>
+<p>Config.js allows developers to configure their applications in an XML block instead of hard-coding values inside their scripts or in JSON objects.  The XML can be embedded inside an HTML document or in a separate XML file.  The configuration block may contain strings, numbers, arrays and HTML.  Furthermore, variables can be inserted into these values, allowing developers to use the XML block as a simple templating system for their applications.</p>
+<h2>Usage</h2>
+<p>For the majority of cases, using the library consists of three simple steps.</p>
+<ol>
+<li>Include the EventHelpers.js and config.js script in the &lt;head&gt; of your document:<br />
+<blockquote class="code">
+<pre>&lt;script type="text/javascript src="/path/to/EventHelpers.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="/path/to/config-2.0.js"&gt;&lt;/script&gt;</pre>
+</blockquote>
+</li>
+<li>The config block can be inserted into your HTML document by defining any HTML node with an <code>id</code> of <code>config</code>.  The only content inside this node should be an HTML comment with your configuration values inside.  Below is an example XML block that defines a configuration property <code>formValidator.errors.mandatoryField</code>:<br />
+<blockquote class="code">
+<pre>&lt;div id=”config”&gt;
+&lt;!--
+&lt;config&gt;
+  &lt;formValidator&gt;
+    &lt;errors&gt;
+      &lt;mandatoryField&gt;
+        The above field is mandatory
+      &lt;/mandatoryField&gt;
+    &lt;/errors&gt;
+  &lt;/formValidator&gt;
+&lt;/config&gt;
+--&gt;
+&lt;/div&gt;</pre>
+</blockquote>
+</li>
+<li>Accessing the data inside the configuration block can be done with JavaScript by using the <code>config.getValue()</code> function.  In the above example, the text inside the <code>mandatoryField</code> tag can be accessed inside JavaScript using the <code>config.getValue()</code> function like this:<br />
+<blockquote class="code">
+<pre>document.getElementById("message") =
+  config.getValue("formValidator.errors.mandatoryField");</pre>
+</blockquote>
+<p><strong>Note:</strong> any call to <code>config.getValue()</code> must be made <em>after</em> config.js loads the XML block into memory.  If you are initializing your own code with a <code>window.onload</code>, you should replace it with a call to <code>config.addLoadEvent()</code>.</p>
+<p>For example, replace</p>
+<blockquote class="code">
+<pre>window.onload=myObject.init</pre>
+</blockquote>
+<p>with:</p>
+<blockquote class="code">
+<pre>config.addLoadEvent(myObject.init)</pre>
+</blockquote>
+</li>
+</ol>
+<p>You can put as many values inside your XML as you like.  For example the values inside the XML configuration block below can be retrieved using <code>config.getValue('</code><code>formValidator.errors.mandatoryField</code><code>')</code>,  <code>config.getValue('</code><code>formValidator.errors.postalCode</code><code>')</code> and <code>config.getValue('</code><code>formValidator.alerts.success</code><code>')</code>.</p>
+<blockquote class="code">
+<pre>&lt;!--
+&lt;config&gt;
+  &lt;formValidator&gt;
+    &lt;errors&gt;
+      &lt;mandatoryField&gt;
+        The above field is mandatory
+      &lt;/mandatoryField&gt;
+      &lt;postalCodeError&gt;
+        You did not format the postal code correctly.
+      &lt;/postalCodeField&gt;
+     &lt;/errors&gt;
+     &lt;alerts&gt;
+      &lt;success&gt;
+        Your changes have been submitted.
+      &lt;/success&gt;
+     &lt;/alerts&gt;
+  &lt;/formValidator&gt;
+&lt;/config&gt;
+--&gt;
+&lt;/div&gt;</pre>
+</blockquote>
+<p>Note the object oriented &#8220;dot&#8221; notation of the configuration properties, which corresponds to the XML&#8217;s tree structure.  The usual convention I follow is:</p>
+<ol type="a">
+<li>I code all configuration values that have to do with the same script using the same top level object (in this case, the top-level object  is called <code>formValidator</code> since it is being accessed by a script called formValidator.js).</li>
+<li>I then create properties for that top level object that describe logical categories that I want to configure  (e.g. templates, errors, urls,  etc).</li>
+<li>I finally have the third level contain the actual configuration values.</li>
+</ol>
+<p>While I consider this best practice (insomuch as it works well for me), developers are of course not stuck with this convention, and can format their XML as they please, as long as there are no duplicate property names within an object.</p>
+<h2>HTML Values</h2>
+<p>Note that a developer can insert HTML inside the XML string by placing the HTML content inside a <code>CDATA</code> node:</p>
+<blockquote class="code">
+<pre>&lt;config&gt;
+  &lt;formValidator&gt;
+    &lt;templates&gt;
+      &lt;hasError&gt;&lt;![CDATA[
+        &lt;div id="errorMessage"&gt;
+        &lt;p&gt;There are errors with the information you are trying
+        to submit.  Please check the form below, correct the
+        errors and resubmit.&lt;/p&gt;
+        &lt;/div&gt;
+      ]]&gt;&lt;/hasError&gt;
+      &lt;submissionAlert&gt;
+        If this was a real form, the information above would
+        have been submitted.  Since this isn't, we won't submit
+        any of the form information.
+      &lt;/submissionAlert&gt;
+    &lt;/templates&gt;
+    &lt;errors&gt;
+      &lt;mandatoryField&gt;
+        The above field is mandatory
+      &lt;/mandatoryField&gt;
+    &lt;/errors&gt;
+  &lt;/formValidator&gt;
+&lt;/config&gt;</pre>
+</blockquote>
+<p><strong>Note that the CDATA node has to <em>immediately</em> follow the containing tag</strong> (in the above example, you&#8217;ll see there are no spaces hasError tag).  This restriction will probably be relaxed in a subsequent release.</p>
+<h2>Removing Extraneous Spaces</h2>
+<p>Let&#8217;s look at this example:</p>
+<blockquote class="code">
+<pre>&lt;config&gt;
+  &lt;formValidator&gt;
+    &lt;templates&gt;
+      &lt;submissionAlert&gt;
+      If this was a real form, the information above would
+      have been submitted.  Since this isn't, we won't submit
+      any of the form information.
+      &lt;/submissionAlert&gt;
+    &lt;/templates&gt;
+  &lt;/formValidator&gt;
+&lt;/config&gt;</pre>
+</blockquote>
+<p>If we tried to execute <code>window.alert("formValidator.templates.submissionError")</code>, we would get an alert box that would look something like this:</p>
+<p><div id="attachment_289" style="width: 572px" class="wp-caption aligncenter"><img class="size-full wp-image-289" title="alertWithBadSpacing" src="http://www.useragentman.com/blog/wp-content/uploads/2009/10/alertWithBadSpacing.png" alt="This alert has bad spacing due to the way the XML is formatted." width="562" height="130" srcset="http://www.useragentman.com/blog/wp-content/uploads/2009/10/alertWithBadSpacing.png 562w, http://www.useragentman.com/blog/wp-content/uploads/2009/10/alertWithBadSpacing-299x69.png 299w" sizes="(max-width: 562px) 100vw, 562px" /><p class="wp-caption-text">This alert has bad spacing due to the way the XML is formatted.</p></div></p>
+<p>Doesn&#8217;t that look ugly?  This is because the formatting of the text inside it&#8217;s configuration block is indented so that it is readable to the developer when viewing the code (Note that all carriage returns are ignored by config.js, but the spaces are left intact). In order to keep the pretty XML formatting while getting rid of the extra spacing inside the alert box, we can set the <code>removeMultispaces</code> attribute of it&#8217;s configuration tag to <code>"true"</code>:</p>
+<blockquote class="code">
+<pre>&lt;config&gt;
+  &lt;formValidator&gt;
+    &lt;templates&gt;
+      &lt;submissionAlert <span class="hilite">removeMultispaces="true"</span>&gt;
+      If this was a real form, the information above would
+      have been submitted.  Since this isn't, we won't submit
+      any of the form information.
+      &lt;/submissionAlert&gt;
+    &lt;/templates&gt;
+  &lt;/formValidator&gt;
+&lt;/config&gt;</pre>
+</blockquote>
+<p>This results in an alert box that is formatted as intended:</p>
+<p><div id="attachment_292" style="width: 572px" class="wp-caption aligncenter"><img class="size-full wp-image-292" title="alertWithGoodSpacing" src="http://www.useragentman.com/blog/wp-content/uploads/2009/10/alertWithGoodSpacing.png" alt="All the extraneous spacing has been removed, regardless of where it appears in the XML." width="562" height="119" srcset="http://www.useragentman.com/blog/wp-content/uploads/2009/10/alertWithGoodSpacing.png 562w, http://www.useragentman.com/blog/wp-content/uploads/2009/10/alertWithGoodSpacing-299x63.png 299w" sizes="(max-width: 562px) 100vw, 562px" /><p class="wp-caption-text">All the extraneous spacing has been removed, regardless of where it appears in the XML.</p></div></p>
+<h2>Dynamic Content:</h2>
+<p>Injecting variables into the contents of the configuration value can be achieved by using <code>config.getScriptedValue()</code>.   To do so, you first insert the variables into your XML using placeholders surrounded by @-symbols, which we&#8217;ll call <strong>&#8220;at values&#8221;</strong>:</p>
+<blockquote class="code">
+<pre>&lt;config&gt;
+  &lt;formValidator&gt;
+
+    &lt;submissionAlert&gt;
+    If this was a real form, the information above would
+    have been submitted.  Since this isn't, we won't submit
+    any of the form information, including the <span class="hilite">@ccType@</span> Credit Card number
+    <span class="hilite">@ccNum@</span>.
+    &lt;/submissionAlert&gt;
+
+  &lt;/formValidator&gt;
+&lt;/config&gt;</pre>
+</blockquote>
+<p>In this example, <code>@ccType@</code> and <code>@ccExp@</code> are the at-values that will contain dynamic content. The following JavaScript creates an alert containing the configuration value of <code>formValidator.templates.submissionAlert</code>, complete with dynamic content.</p>
+<blockquote class="code">
+<pre>var formToValidate = document.getElementById("formToValidate");
+var alertString = config.getScriptedValue(
+  "formValidator.templates.submissionAlert",
+  {
+    ccNum: formToValidate.ccNum.value,
+    ccType: formToValidate.ccType.value
+  });</pre>
+</blockquote>
+<p>This replaces the at-value placeholders <code>@ccNum@</code> and <code>@ccType@</code> with the values of the form fields <code>ccNum</code> and <code>ccType</code>, respectively.</p>
+<h2>External XML File</h2>
+<p>Instead of having the XML contained within an HTML comment, you can have the file loaded separately by defining the file name inside the config node like this:</p>
+<blockquote class="code">
+<pre>&lt;!--
+xml=xml/config.xml
+--&gt;
+&lt;/div&gt;</pre>
+</blockquote>
+<h2>Comments</h2>
+<p>If the XML is embedded in an HTML comment, then comments to the embedded XML must be put inside the XML block using JSP style <code>&lt;%-- --%&gt;</code> comment notation:</p>
+<blockquote class="code">
+<pre>&lt;config&gt;
+  &lt;formValidator&gt;
+<span class="hilite">    &lt;%--
+    This section contains english text that will
+    be inserted into the page
+    --%&gt;</span>
+    &lt;templates&gt;
+    &lt;hasError&gt;&lt;![CDATA[
+      &lt;div id="errorMessage"&gt;
+      &lt;p&gt;There are errors with the information you are trying
+      to submit.  Please check the form below, correct the
+      errors and resubmit.&lt;/p&gt;
+      &lt;/div&gt;
+    ]]&gt;&lt;/hasError&gt;
+    &lt;submissionAlert removeMultispaces="true"&gt;
+      If this was a real form, the information above would
+      have been submitted.  Since this isn't, we won't submit
+      any of the form information, including the @ccType@ Credit
+      Card number @ccNum@.
+    &lt;/submissionAlert&gt;
+  &lt;/templates&gt;
+&lt;/formValidator&gt;
+&lt;/config&gt;</pre>
+</blockquote>
+<p>If the configuration XML is stored in an external file, use regular XML<code>&lt;!-- --!&gt;</code> comment notation:</p>
+<blockquote class="code">
+<pre>&lt;config&gt;
+  &lt;formValidator&gt;
+<span class="hilite">    &lt;!--
+    This section contains english text that will
+    be inserted into the page
+    --!&gt;</span>
+    &lt;templates&gt;
+    &lt;hasError&gt;&lt;![CDATA[
+      &lt;div id="errorMessage"&gt;
+      &lt;p&gt;There are errors with the information you are trying
+      to submit.  Please check the form below, correct the
+      errors and resubmit.&lt;/p&gt;
+      &lt;/div&gt;
+    ]]&gt;&lt;/hasError&gt;
+    &lt;submissionAlert removeMultispaces="true"&gt;
+      If this was a real form, the information above would
+      have been submitted.  Since this isn't, we won't submit
+      any of the form information, including the @ccType@ Credit
+      Card number @ccNum@.
+    &lt;/submissionAlert&gt;
+  &lt;/templates&gt;
+&lt;/formValidator&gt;
+&lt;/config&gt;</pre>
+</blockquote>
+<h2>Object Arrays</h2>
+<p>Developers can also define arrays inside configuration files as well, by using the <code>datatype</code> attribute inside a tag.  In the following example, the configuration property <code>formValidator.creditCardForm.inputs</code> is an array containing three objects:</p>
+<blockquote class="code">
+<pre>&lt;config&gt;
+  &lt;formValidator&gt;
+    &lt;creditCardForm&gt;
+<span class="hilite">      &lt;inputs datatype="array"&gt;
+
+       &lt;ccType&gt;
+        &lt;postalCode&gt;
+          &lt;isMandatory&gt;true&lt;/isMandatory&gt;
+          &lt;%-- Note: We assume Canadian postal codes only - -%&gt;
+          &lt;pattern&gt;
+            ^[a-zA-Z]\d[a-zA-Z]\s*\d[a-zA-Z]\d$
+          &lt;/pattern&gt;
+          &lt;unmatchError&gt;
+            The postal code must be in a valid format.
+          &lt;/unmatchError&gt;
+        &lt;/postalCode&gt;
+      &lt;/ccType&gt;
+
+      &lt;ccNum&gt;
+        &lt;isMandatory&gt;true&lt;/isMandatory&gt;
+        &lt;pattern&gt;^\d{16}$&lt;/pattern&gt;
+        &lt;unmatchError&gt;
+          The credit card you entered is not valid.
+        &lt;/unmatchError&gt;
+      &lt;/ccNum&gt;
+
+      &lt;ccExp&gt;
+        &lt;isMandatory&gt;true&lt;/isMandatory&gt;
+        &lt;pattern&gt;^(0[1-9]|1[1-2])/\d{2}$&lt;/pattern&gt;
+        &lt;unmatchError&gt;
+          The expiry date must be in the form yy/mm.
+        &lt;/unmatchError&gt;
+      &lt;/ccExp&gt;
+
+    &lt;/inputs&gt;</span>
+  &lt;/creditCardForm&gt;
+&lt;/formValidator&gt;
+&lt;/config&gt;</pre>
+</blockquote>
+<p>Each of these elements have three properties (<code>isMandatory</code>, <code>pattern</code> and <code>unmatchError</code>).  Note that each element in the array don&#8217;t have to have the same properties, in the same way that a the elements in a JavaScript array doesn&#8217;t have the same type of object.  In the above example, we can  access these array values with the following script:</p>
+<blockquote class="code">
+<pre>var inputs = config.getValue("formValidator.creditCardForm.inputs");
+var ccExp = inputs["ccExp"]
+var ccExpError = ccExp.unmatchError;</pre>
+</blockquote>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 570px; width: 1px; height: 1px;">
+<pre>&lt;mandatoryField&gt;
+        The above field is mandatory
+      &lt;/mandatoryField&gt;</pre>
+</div>
+<h2>Examples</h2>
+<ul>
+<li>A very simple example can be found on my blog post <a href="/blog/?p=71">Configuring JavaScript Applications</a>.</li>
+<li><a href="/tests/config/creditCardForm.html">A more complicated example</a> showing how to do simple client-side form validation with regular expressions.  It uses code that is contained in this manual page.</li>
+<li>The same example as shown above <a href="/tests/config/creditCardFormOutsideConfig.html">using an external configuration file</a> (i.e. not embedded in the HTML page.</li>
+</ul>
+<h2>Download</h2>
+<p>You can get full source here:</p>
+<p><a class="exampleLink" href="/downloads/config.zip">config.js v.2.0 and example code (zip format)</a></p>
+<p>This code is released under the <a href="http://www.opensource.org/licenses/mit-license.php">MIT License</a>.  Although the license doesn&#8217;t compel you to do so, I would be happy to hear how this library is being used.  I would also like to see how people have improved or added to the code so I can share the changes with others.  Again, this is not something the license compels you to do &#8211; just consider it a courtesy.</p>
+							</div>
+						<p class="tagged"><a href="http://www.useragentman.com/blog/config-js-%e2%80%93-a-javascript-cofiguration-library/#comments">6 Comments</a></p>
+			<div class="clear"></div>
+						
+						
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">6 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						<li class="comment   " id="comment-11324 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11324" title="Permalink to this comment">1</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://syberchic.net/'><img alt='' src='http://2.gravatar.com/avatar/b15032ee97828c39d8b58b3920a9ac7b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b15032ee97828c39d8b58b3920a9ac7b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://syberchic.net/' rel='external nofollow' class='url'>syber</a> </strong>
+				<span class="comment_time">// Apr 14, 2011 at 10:05 am</span>
+			</p>
+			<div class="entry">
+				<p>Another great article Zed! I can see this making my life &#8211; and my localization work &#8211; much tidier :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-11344 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11344" title="Permalink to this comment">2</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Apr 14, 2011 at 10:38 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Syber: thanks for the feedback. I have found it useful for all my localization needs thus far. Plus it&#8217;s great to have a place to store HTML snippets without hard coding them in your scripts. :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-41759 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-41759" title="Permalink to this comment">4</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.digital-mojo.com'><img alt='' src='http://2.gravatar.com/avatar/e6b5b6e6b8409e4927bb9d2ebd14d4fa?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/e6b5b6e6b8409e4927bb9d2ebd14d4fa?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.digital-mojo.com' rel='external nofollow' class='url'>Gavin</a> </strong>
+				<span class="comment_time">// Apr 5, 2012 at 11:11 am</span>
+			</p>
+			<div class="entry">
+				<p>Nice! This is exactly what i was looking for, coming from a Flex background I wasn&#8217;t sure how people configured JS applications but its nice to see a similar solution to the one i&#8217;ve employed many times in my Flash/Flex projects.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-46151 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-46151" title="Permalink to this comment">5</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 8, 2012 at 11:06 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Gavin: Thanks for the kudos!  I really like this script, and I&#8217;m surprised it hasn&#8217;t gotten more attention than the other ones on this blog.  Appreciate the feedback!  :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-968973 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-968973" title="Permalink to this comment">6</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/29f8e5a5416255ad74bbeb7b498e0c65?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/29f8e5a5416255ad74bbeb7b498e0c65?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>kiran </strong>
+				<span class="comment_time">// Jul 28, 2015 at 2:25 am</span>
+			</p>
+			<div class="entry">
+				<p>Hello, nice article zed. Can we use Multiple XML files for configurations and decide on runtime that which file we should read the value.???</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="264" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="ebf0bbadf4" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		</div>
+		
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

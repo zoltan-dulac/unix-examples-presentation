@@ -1,0 +1,924 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive post-3893" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Cross Browser CSS cursor Images In Depth</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><script src="//code.jquery.com/jquery-1.10.2.js"></script>	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	
+		<link type="text/css" rel="stylesheet" href="/css/3893.css" />		
+		<link type="text/css" href="/examples/cursor/canvasPainter/canvas_painter_v0.1/CanvasPaint.css" rel="stylesheet" />
+		
+		<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+		<!--[if lte IE 8]>
+		<script type="text/javascript" src="/examples/cursor/canvasPainter/canvas_painter_v0.1/excanvas.js"></script>
+		<![endif]-->
+		<script type="text/javascript" src="/shared/js/DragDropHelpers.js"></script>
+		<script type="text/javascript" src="/js/3893.js"></script>
+
+		<script type="text/javascript" src="/examples/cursor/canvasPainter/canvas_painter_v0.1/cp_depends.js"></script>
+		
+		<script src="/examples/cursor/canvasPainter/canvas_painter_v0.1/CanvasWidget.js" type="text/javascript"></script>
+		<script src="/examples/cursor/canvasPainter/canvas_painter_v0.1/CanvasPainter.js" type="text/javascript"></script>
+		<script src="/examples/cursor/canvasPainter/canvas_painter_v0.1/CPWidgets.js" type="text/javascript"></script>
+		<script src="/examples/cursor/canvasPainter/canvas_painter_v0.1/CPAnimator.js" type="text/javascript"></script>
+		<script src="/examples/cursor/canvasPainter/canvas_painter_v0.1/CPDrawing.js" type="text/javascript"></script>
+		<script src="/examples/cursor/canvasPainter/canvas_painter_v0.1/jscolor/jscolor.js" type="text/javascript"></script>
+		<script src="/examples/cursor/canvasPainter/canvas_painter_v0.1/index.js" type="text/javascript"></script>		<!-- ID is 3893 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Cross Browser CSS cursor Images In Depth Comments Feed" href="http://www.useragentman.com/blog/2011/12/21/cross-browser-css-cursor-images-in-depth/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Clipping JPEG Images Into Non-Rectangular Polygons Using polyClip.js' href='http://www.useragentman.com/blog/2011/10/29/clipping-jpeg-images-into-non-rectangular-polygons-using-polyclip-js/' />
+<link rel='next' title='Cross Browser HTML5 Progress Bars In Depth' href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2011/12/21/cross-browser-css-cursor-images-in-depth/" />
+<link rel='shortlink' href='http://useragentman.com/blog/jFhgP' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2011%2F12%2F21%2Fcross-browser-css-cursor-images-in-depth%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2011%2F12%2F21%2Fcross-browser-css-cursor-images-in-depth%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2011/10/29/clipping-jpeg-images-into-non-rectangular-polygons-using-polyclip-js/" rel="prev">Clipping JPEG Images Into Non-Rectangular Polygons Using <code>polyClip.js</code></a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/" rel="next">Cross Browser HTML5 Progress Bars In Depth</a> &raquo;</span>
+</div>
+
+
+			<h1>Cross Browser CSS <code>cursor</code> Images In Depth</h1>
+			<h4 class="meta">December 21st, 2011 by zoltan &middot; <a href="http://www.useragentman.com/blog/2011/12/21/cross-browser-css-cursor-images-in-depth/#comments">15 Comments</a></h4>
+			<div class="entry">
+				
+<!--
+        This notice is required for the CanvasPainer widget below.
+
+	Copyright (c) 2005, 2006 Rafael Robayna
+
+	Permission is hereby granted, free of charge, to any person obtaining 
+	a copy of this software and associated documentation files (the "Software"), 
+	to deal in the Software without restriction, including without limitation 
+	the rights to use, copy, modify, merge, publish, distribute, sublicense, 
+	and/or sell copies of the Software, and to permit persons to whom the Software 
+	is furnished to do so, subject to the following conditions:
+	
+	The above copyright notice and this permission notice shall be included
+	in all copies or substantial portions of the Software.
+
+	THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, 
+	EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES 
+	OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. 
+	IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, 
+	DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR 
+	OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE 
+	OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+	Additional Contributions by: Morris Johns
+-->
+
+
+<div id="canvasPainter">
+<div id="controls">
+  <div class="ctr_btn" id="btn_1" >brush 2</div> 
+  <div class="ctr_btn" id="btn_2" >line</div> 
+  <div class="ctr_btn" id="btn_3" >rectangle</div> 
+  <div class="ctr_btn" id="btn_4" >circle</div> 
+  <div class="ctr_btn" id="btn_5" >clear</div> 
+  <div class="ctr_btn" id="btn_9">new</div>
+  <input class="color" id="color" value="#ff3333"></div>
+<canvas id="canvas" width="200" height="200"></canvas>
+<canvas id="canvasInterface" width="200" height="200"></canvas>
+<p class="description"><small>Paint widget a remix of <a href="http://caimansys.com/painter/">CanvasPainter</a> © <a href="http://caimansys.com/">Rafael Robayna</a></small></p>
+</div>
+<p><strong>If you are using a desktop browser (except for Opera), play with the paint widget on the left.</strong>  When you select a tool and mouse over the white canvas, your mouse arrow will change to a custom cursor representing that tool (&agrave; la Photoshop or The GIMP).  This is not done by creating a DOM object and moving it to the mouse&#8217;s coordinates &mdash; we are using CSS to do it using the <code>cursor</code> property&#8217;s <code>url()</code> function. <strong> When used properly, custom CSS cursors can add a little bit of polish</strong> to your web sites and applications.  However, <strong>doing this in a cross browser way can be a little confusing</strong> unless you know all the gotchas, and this article will go into depth about them.   We will also explore issues such as <strong>when to use custom cursors, performance, what makes good cursor design, cursor file formats, and cursor size.</strong></p>
+<h2>When Should I Use Custom Cursors Instead of the Built-in Ones?</h2>
+<p>In general, CSS cursors (built-in or custom) should be used as a hint to the user as to what action the mouse can perform.  Let&#8217;s take a look at an example that doesn&#8217;t use custom cursors to illustrate a common use-case: drag and drop.  To give users a visual cue that an item is draggable, it is common practice to set an object&#8217;s CSS <code>cursor</code> property to <code>move</code>.  Mouse over the object draggable object below to see how this works. </p>
+<div id="container">
+<a href="#" id="toDrag" draggable="true">Drag me!</a>
+</div>
+<p>This is done with the following CSS:</p>
+<blockquote class="code">
+<pre>
+a[draggable="true"] {
+    cursor: move;
+}
+</pre>
+</blockquote>
+<p>The code above ensure that when a user &#8220;mouses over&#8221; a link with the HTML5 Drag and Drop &#8220;draggable&#8221; attribute, the <code>move</code> cursor appears.  It is a great way to help the user &#8220;figure out&#8221; how to use the user interface with minimal instruction.  A list of the built-in cross-browser cursor property values can be seen at <a href="http://www.quirksmode.org/css/cursor.html">CSS2 Cursor Style Page</a>.</p>
+<p>The built-in cursors are great, but there are a few things to keep in mind.</p>
+<ul>
+<li><strong>Built-in cursors may look different depending on what browser/operating system is being used</strong>.  For example, some browsers (e.g. Firefox on Windows 7) will show the <code>move</code> cursor as a four-pointed arrow (<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/move_cursor.png" alt="[Four-Pointed Arrow Cursor]" class="inline" />) while others (e.g. Firefox on Mac OS X) will show a hand (<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/12/cursor-hand.png" alt="[Hand Cursor]" class="inline" />).  Using custom cursors, you can ensure all applications are using the same cursor for a more consistent expeience.  The example below is the same as the one above, except in all browsers, you will see the a hand icon.
+<div id="container2">
+<a href="#" id="toDrag2" draggable="true">Drag me!</a>
+</div>
+</li>
+<li><strong>Not all browsers support all the same &#8220;built-in&#8221; cursors, and custom cursors allows you to add support for them.</strong> For example, <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=258960">while Firefox on Windows doesn&#8217;t support <code>context-menu</code></a>, it seems to be the only browser that <a href="https://developer.mozilla.org/en/CSS/-moz-zoom-in">supports the zoom-in and -out cursors</a>.  Using custom cursors, you can implement all of these in all browsers.</li>
+<li><strong>There may not be a built-in cursor for the use-case you need to solve.</strong>  A good example is in the paint widget at the beginning of this article &mdash; none of those cursors exist natively in any browser.</li>
+<li><strong>It&#8217;s nice to design your own cursors</strong>, since sometimes the built-in ones may be a little basic looking (If you do this, please keep in mind that users are used to the built in ones, so your custom cursor shouldn&#8217;t look too much different than them if you want your application to be easy-to-use).
+</ul>
+<h2>The CSS of Custom Cursors</h2>
+<p>Here is some sameple CSS code that will show custom cursor when the user mouses over a <code>div</code> with an id of <code>dragMe</code>.  If the browser doesn&#8217;t do custom cursors (like Opera), the cursor fallback to the built-in <code>move</code> cursor.</p>
+<blockquote class="code">
+<pre>
+#dragMe {
+    cursor: url('customMoveCursor.cur'), move;
+}
+</pre>
+</blockquote>
+<p><strong>As long as your cursor is in the same directory as your stylesheet, and as long as it is an uncompressed .CUR file, it&#8217;s as simple as that.</strong> Note that <a href="http://en.wikipedia.org/wiki/ICO_%28file_format%29">a .CUR file is just an .ICO file with extra information</a> that allows the developer to define the &#8220;host spot&#8221; position of the cursor (i.e. the part of the image which points to the position of the mouse).  Note that <strong>.CUR files support 32-bit color</strong> (16.7 million colors plus alpha channel transparency), so designers can create cursors that have semitransparent areas like shadows and anti-aliasing.   </p>
+<p><strong>How does one create a .CUR file?</strong> Not too many graphic tools create .CUR files natively, but there are some easy solutions. If you are a Photoshop user, the <a href="http://www.telegraphics.com.au/svn/icoformat/trunk/dist/README.html">ICO (Windows Icon) file format plugin for Photoshop</a> is what you are looking for (I have not used it myself, but it apparently can save .CUR files directly.  Any comment on how well this works would be most welcome). If, like me, you use the GIMP, simply save the file as a .ICO file and convert it with <a href="http://www.janthor.com/sketches/index.php?/archives/10-A-Python-script-to-convert-ICO-to-CUR-files.html">this command line tool written in Python</a> by <a href="http://www.janthor.com">Jan Thor</a>. </p>
+<h2>The Gotchas of Custom CSS Cursors</h2>
+<p>There are a few things you need to remember when using CSS cursors</p>
+<ol>
+<li><strong>You must add a default &#8220;built-in&#8221; cursor after your custom cursor,</strong> or the custom cursor will not load in Firefox.  Think of it as Mozilla&#8217;s way of enforcing good web practices. :-)</li>
+<li><strong>Internet Explorer interprets relative URLs as <em>relative to the HTML document</em></strong>, and not the CSS file like God (and the W3C) intended (Sometimes it seems that IE goes out of its way to make lives difficult for us developers).  This is true for all versions of IE, even IE9. To ensure cross-browser compatibility, you must either use an absolute URL:<br />
+<blockquote class="code">
+<pre>
+#dragMe {
+    cursor: url('/cursors/customMoveCursor.cur'), move;
+}
+</pre>
+</blockquote>
+<p>or a fallback url for IE:</p>
+<blockquote class="code">
+<pre>
+/*
+ * Assume this the HTML is in a directory above this CSS file
+ */
+
+#dragMe {
+    cursor: url('../cursors/customMoveCursor.cur'),     /* Modern browsers    */
+            url('cursors/customMoveCursor.cur'),        /* Internet Explorer  */
+            move;                                       /* Older browsers     */
+}
+</pre>
+</blockquote>
+</li>
+<li><strong>It is best that your .CUR files are 32&#215;32 pixels in size.</strong>  IE9 seems to resize cursors that are smaller than this to 32&#215;32, and IE8 and under cannot show cursors larger than this size.  While it is true that you can fit multiple file sizes inside a .CUR file, sticking with one 32&#215;32 image will ensure cross-browser consistency.</li>
+<li>Although .CUR files can be saved in either a compressed or uncompressed format, <strong>not all browsers can read the compressed ones</strong>.  It is best to save your cursors in uncompressed format.  If you are using the GIMP to save to .ICO format first before you convert to .CUR, make sure that the .ICO is saved without compression.</li>
+</ol>
+<h2>Performance Issues</h2>
+<p>As mentioned earlier, a lot of browsers (like Firefox or IE6) cannot show <em><strong>compressed</strong></em> .CUR files, but they can show .PNG files.  Since we would like to use a compressed version if possible, one could do this:</p>
+<blockquote class="code">
+<pre>
+#dragMe {
+    cursor: url('/cursors/customMoveCursor.png'),      /* Modern browsers    */
+            url('/cursors/customMoveCursor.cur'),      /* Internet Explorer  */
+            move;                                      /* Older browsers     */
+}
+</pre>
+</blockquote>
+<p><strong>This works well as long as the cursor hotspot is 0,0.</strong>  You can define a PNG hotspot using the CSS3 cursor syntax, but it breaks IE:</strong></p>
+<blockquote class="code">
+<pre>
+#dragMe {
+    cursor: url('customMoveCursor.png') 5 15, /* Modern browsers, hotspot is (5, 15)            */
+            url('customMoveCursor.cur'),      /* IE chokes on the above line .. never gets here */       
+            move;                             /* Older browsers (IE never gets here either)     */
+}  
+</pre>
+</blockquote>
+<p>In order to fix this issue, one must you conditional comments to make a separate IE from everyone else.  Let&#8217;s use a variation of <a href="http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/">Paul Irish&#8217;s Conditional Comment pattern</a> to do this.  Change the <code>html</code> tag to this:</p>
+<blockquote class="code">
+<pre>
+&lt;!--[if (lte IE 9) ]&gt;&lt;html class="ie9 oldIE"&gt;    &lt;![endif]--&gt;
+&lt;!--[if (gt IE 9)  ]&gt;&lt;html class="modern"&gt;       &lt;![endif]--&gt;
+&lt;!--[!(IE)]&gt;&lt;!--&gt;    &lt;html class="notIE modern"&gt; &lt;!--&lt;![endif]--&gt;
+</pre>
+</blockquote>
+<p>Now we can use this CSS to ensure .PNG loads in non-IE browsers:</p>
+<blockquote class="code">
+<pre>
+html.modern #dragMe {
+  cursor: url('customMoveCursor.png') 5 15, /* Modern browsers, hotspot is (5, 15).   */
+          move;                             /* Older browsers                         */
+}
+
+html.oldIE #dragMe {
+  cursor: url('customMoveCursor.cur'),      /* IE .CUR file loads                     */       
+          move;                             /* In case IE can't load the above.       */
+}  
+</pre>
+</blockquote>
+<p>The extra bytes used to create the conditional comments may or may not be worth the trouble.  If you are using conditional comments (like I do all the time), it may be worth it.</p>
+<h2>A Final Word On Testing in IE </h2>
+<p>If you edit a .cur file on the web server and reload your page with that cursor in Internet Explorer, you may not see the edited change, since <strong>IE has kept the older cursor in cache and has a hard time letting go</strong>, kind of like <a href="http://www.youtube.com/watch?v=MBHOL1PcPR8">that person you dated in high-school</a>.  You will need to clear IE&#8217;s cache in order to see the new cursor.  This is quite annoying, and it is something you should keep in mind when troubleshooting in IE.</li>
+</ul>
+<h2>Further Reading</h2>
+<ul>
+<li><a href="http://beradrian.wordpress.com/2008/01/08/cross-browser-custom-css-cursors/">Cross-browser custom CSS cursors</a> by <a href="http://beradrian.wordpress.com/">Adrian Ber</a></li>
+</ul>
+<p><script type="text/javascript">
+doOnLoad()
+</script></p>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/technologies/css/" rel="category tag">CSS</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/css/css3/" rel="category tag">CSS3</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" rel="category tag">cursor</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/images/" rel="category tag">Images</a>  &middot; <a href="http://www.useragentman.com/blog/tag/bugs/" rel="tag">bugs</a>, <a href="http://www.useragentman.com/blog/tag/custom-cursors/" rel="tag">custom cursors</a>, <a href="http://www.useragentman.com/blog/tag/ie/" rel="tag">IE</a>, <a href="http://www.useragentman.com/blog/tag/internet-explorer/" rel="tag">Internet Explorer</a></p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">15 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						<li class="comment   " id="comment-28406 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-28406" title="Permalink to this comment">1</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.cursor.cc'><img alt='' src='http://0.gravatar.com/avatar/30f511b68bebca08aeaf4d3ae1ac22ee?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/30f511b68bebca08aeaf4d3ae1ac22ee?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.cursor.cc' rel='external nofollow' class='url'>Cursor Man</a> </strong>
+				<span class="comment_time">// Dec 21, 2011 at 9:30 pm</span>
+			</p>
+			<div class="entry">
+				<p>You can use cursor.cc to draw the .cur files.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-28448 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-28448" title="Permalink to this comment">2</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.p01.org/releases/'><img alt='' src='http://0.gravatar.com/avatar/349a2053bc0810202b4dad305bfadb60?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/349a2053bc0810202b4dad305bfadb60?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.p01.org/releases/' rel='external nofollow' class='url'>Mathieu 'p01' Henri</a> </strong>
+				<span class="comment_time">// Dec 22, 2011 at 5:26 am</span>
+			</p>
+			<div class="entry">
+				<p>FYI, Opera does NOT allow custom cursors for security and accessibility reasons.</p>
+<p>Custom cursors are a very easy and tempting way to fool users. Imagine a custom cursor that looks just like a normal one but offset by a few pixels. This can used in many many ways to trick people into clicking somewhere they don&#8217;t want to. Think click jacking but even more subtle.</p>
+<p>Also a custom cursor ( esp. one fully transparent or made of a few pixels ) could prove very difficult to see and use for people with vision impairment.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-28486 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-28486" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Dec 22, 2011 at 11:25 am</span>
+			</p>
+			<div class="entry">
+				<p>@Mathieu: Interesting commentary &#8212; thanks!  Is this Opera&#8217;s official position regarding custom cursors, or your own thoughts?</p>
+<p>I wonder if it is possible for browsers to support custom cursors and prevent the legitimate &#8220;click-jacking-like&#8221; situation like you describe.  For example: perhaps the browser can look at the cursor and see if the hotspot is transparent, and that it is attached to a substantial part of the image.  It would be great if Opera took the lead and showed how they could support this feature while taking care of potential abuses of the technology.</p>
+<p>As for the visual impairment issue you describe, it is definitely prone to that, and I think that some best practices can be developed to help developers in that area.  But maybe that is a topic of another blog post.  :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-31734 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-31734" title="Permalink to this comment">4</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://doodle.no.de'><img alt='' src='http://1.gravatar.com/avatar/d43937373428621f3edf4943527ac4fc?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/d43937373428621f3edf4943527ac4fc?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://doodle.no.de' rel='external nofollow' class='url'>Dylan Greene</a> </strong>
+				<span class="comment_time">// Jan 14, 2012 at 9:48 pm</span>
+			</p>
+			<div class="entry">
+				<p>You can also create cursors on the fly using Canvas.  Doodle or Die does this to make different color and sized paint brush cursors instead of downloading hundreds of cursor images.</p>
+<p><a href="http://doodle.no.de" rel="nofollow">http://doodle.no.de</a></p>
+<p>Note that this is currently disabled in Chrome because of this Chrome bug: <a href="http://crbug.com/109918" rel="nofollow">http://crbug.com/109918</a></p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-31744 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-31744" title="Permalink to this comment">5</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/b14a72841ee960a2718e42d3ad81b611?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b14a72841ee960a2718e42d3ad81b611?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Patrick Corcoran </strong>
+				<span class="comment_time">// Jan 15, 2012 at 12:32 am</span>
+			</p>
+			<div class="entry">
+				<p>@Mathieu: Your hypothetical Black Hat custom cursor attack is interesting theoretically.  But in practice I think it is a specious argument.  JavaScript can already &#8220;click&#8221; things the user didn&#8217;t intend to click.  If a web site is so untrustworthy as to deceive visitors with subtle click-near-here-but-exactly-here attacks, I&#8217;m sure they are already doing far worse things in script.  (I&#8217;m ignoring the non-JavaScript use case, because real users never disable JavaScript.  The class of users which are the paranoid elite are a powerful and important force among us, but they are also very few in number.)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-31763 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-31763" title="Permalink to this comment">6</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.p01.org/releases/'><img alt='' src='http://0.gravatar.com/avatar/349a2053bc0810202b4dad305bfadb60?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/349a2053bc0810202b4dad305bfadb60?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.p01.org/releases/' rel='external nofollow' class='url'>Mathieu 'p01' Henri</a> </strong>
+				<span class="comment_time">// Jan 15, 2012 at 4:28 am</span>
+			</p>
+			<div class="entry">
+				<p>@zoltan: It is Opera&#8217;s official stand on custom cursors. I wonder how the other vendors deal with the issues raised by custom cursors, if they even acknowledged the possible problems.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-31798 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-31798" title="Permalink to this comment">7</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 15, 2012 at 1:03 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Patrick: I can see both sides of this argument.  Ensuring applications are secure requires looking outside what you immediately see and look at things the way hackers (good and bad) do, and I always make a point of not dismissing point-of-view like Matthieu&#8217;s.  For example, who would have thought that the  <a href="http://jeremiahgrossman.blogspot.com/2006/08/i-know-where-youve-been.html" rel="nofollow"><code>:visted</code> CSS psudo-class could be used to steal a user&#8217;s browser history</a>?</p>
+<p>@Matthieu: Thanks you for clarifying!  That is a very interesting question.  If anyone from the other browser manufacturers has any comment on this issue, please comment below.  I&#8217;d love to hear everyone&#8217;s take on this. :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-31881 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-31881" title="Permalink to this comment">8</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.p01.org/releases/'><img alt='' src='http://0.gravatar.com/avatar/349a2053bc0810202b4dad305bfadb60?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/349a2053bc0810202b4dad305bfadb60?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.p01.org/releases/' rel='external nofollow' class='url'>Mathieu 'p01' Henri</a> </strong>
+				<span class="comment_time">// Jan 16, 2012 at 5:19 am</span>
+			</p>
+			<div class="entry">
+				<p>@Patrick: You know browsers DO check if clicks are triggered by the user or programmaticaly and apply security measures accordingly esp. when it applies to form elements or elements triggering a call to an API dealing with user data.</p>
+<p>In the vein of what @zoltan said above, when I made <a href="http://www.p01.org/releases/DEFENDER_of_the_favicon/" rel="nofollow">Defender of the Favicon</a>, it didn&#8217;t cross my mind that favicons could be used to deceive and phish people during a <a href="http://www.azarask.in/blog/post/a-new-type-of-phishing-attack/" rel="nofollow">tab napping</a>. Since then I have learnt to look even further when thinking outside of the box.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-31916 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-31916" title="Permalink to this comment">9</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 16, 2012 at 1:05 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Mathieu: Thanks for the tabnabbing link.  Yet another thing to keep in mind.  On a side note, even though it uses technology that could be used for evil purposes, your Defender of the Favicon is pretty frickin&#8217; aweome!   :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-41093 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-41093" title="Permalink to this comment">10</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/8cbd73293d1c322569463f5e74d9e7d2?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/8cbd73293d1c322569463f5e74d9e7d2?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Fabian </strong>
+				<span class="comment_time">// Mar 31, 2012 at 8:32 am</span>
+			</p>
+			<div class="entry">
+				<p>@Mathieu: Defender of the Favicon is friggin&#8217; awesome man :D</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-41465 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-41465" title="Permalink to this comment">11</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/3701d49ea6a775a0658e4505c94554b1?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/3701d49ea6a775a0658e4505c94554b1?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>mcmwhfy </strong>
+				<span class="comment_time">// Apr 3, 2012 at 2:13 am</span>
+			</p>
+			<div class="entry">
+				<p>Thank&#8217;s for this post, I don&#8217;t know why but for my project the performance is highly impacted if I use custom cursors :((  maybe because my project is based on wicket and java&#8230;<br />
+css:  *{cursor: url(../img/arrow1mc.cur),default;}<br />
+can anyone give me a suggestion why this happen?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-41511 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-41511" title="Permalink to this comment">12</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Apr 3, 2012 at 8:57 am</span>
+			</p>
+			<div class="entry">
+				<p>@mcmwhfy: It could be because you are using the universal selector (i.e. *). If you want your cursor to appear no matter where it is on the page, it would be better if you used the <code>body</code> selector.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-115371 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-115371" title="Permalink to this comment">13</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/202b1305ab8525ce3d91363b514c43cf?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/202b1305ab8525ce3d91363b514c43cf?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>VAT </strong>
+				<span class="comment_time">// Mar 7, 2013 at 11:57 am</span>
+			</p>
+			<div class="entry">
+				<p>Is it possible to save a cursor using ANY automated client script ??</p>
+<p>Well, I&#8217;m working on some security implementation using Custom Cursor Images.<br />
+I want to know whether it is possible to save a cursor being displayed over an HTML Division using some client script without accessing the server and on the same client machine where the HTML page has been rendered ??</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-115444 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-115444" title="Permalink to this comment">14</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Mar 7, 2013 at 6:53 pm</span>
+			</p>
+			<div class="entry">
+				<p>@VAT: It is possible.  Let&#8217;s say you have this DOM node you want to find the cursor for:</p>
+<blockquote class="code">
+<pre>
+&lt;div id="mydiv"&gt;&lt;/div&gt;
+</pre>
+</blockquote>
+<p>It&#8217;s trivial to find the URL of the cursor with this JavaScript snippet:</p>
+<blockquote class="code">
+<pre>
+function getCurrentStyle(obj)
+{
+  var computedStyle;
+  if (typeof obj.currentStyle != 'undefined')
+    { computedStyle = obj.currentStyle; }
+  else
+    { computedStyle = document.defaultView.getComputedStyle(obj, null); }
+
+  return computedStyle;
+}
+
+getCurrentStyle(document.getElementById('mydiv')).cursor
+</pre>
+</blockquote>
+<p>What security implications you are thinking of?  I would love to know your thoughts.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-115675 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-115675" title="Permalink to this comment">15</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/202b1305ab8525ce3d91363b514c43cf?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/202b1305ab8525ce3d91363b514c43cf?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>VAT </strong>
+				<span class="comment_time">// Mar 8, 2013 at 1:46 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thanks @zoltan.. but I just couldn&#8217;t understand your code. What is it doing ?? Could you please explain ?<br />
+Actually I&#8217;m working on an Image CAPTCHA scheme that utilizes images from mouse cursors which would never remain same (dynamically generated). Like, for every NEW reference/retrieval made for the cursor with a URL would result in a new cursor.<br />
+So is it possible for a hacker to copy and analyze that image (the one which is currently cursor on the DIV) ??</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="3893" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="cce78d00c1" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

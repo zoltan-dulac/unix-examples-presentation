@@ -1,0 +1,758 @@
+/*************************************************************************
+ *      Fonts
+ ************************************************************************/
+@font-face {
+	font-family: 'Quicksand';
+	src: url('../fonts/quicksand_book-webfont.eot');
+	src: local('?'), url('../fonts/quicksand_book-webfont.woff') format('woff'), url('../fonts/quicksand_book-webfont.ttf') format('truetype'), url('../fonts/quicksand_book-webfont.svg#webfontZRG8U2VV') format('svg');
+	font-weight: normal;
+}
+@font-face {
+	font-family: 'Quicksand';
+	src: url('../fonts/quicksand_bold-webfont.eot');
+	src: local('?'), url('../fonts/quicksand_bold-webfont.woff') format('woff'), url('../fonts/quicksand_bold-webfont.ttf') format('truetype'), url('../fonts/quicksand_bold-webfont.svg#webfontsz0CRbWC') format('svg');
+	font-weight: bold;
+}
+
+/*************************************************************************
+ *      Global Styles (body, paragraphs, lists, etc)
+ ************************************************************************/
+body {
+	margin: 0;
+	/* padding: 0 2%; */
+	background: url(../images/background.png);
+	color: #204D69;
+	font-family: Georgia, serif;
+	line-height: 1.6;
+}
+
+code, input.small, textarea {
+	font-family: "Consolas", "Courier New", "Courier", monospace;
+	font-size: 0.9em;
+}
+
+textarea {
+	height: 5em;
+}
+
+a {
+	color: #D95B43;
+}
+ul {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.resultsTable, pre.code {
+	width: auto;
+	margin: 0 auto;
+}
+
+#multipleFilters {
+	width: 800px;
+	overflow: auto;
+}
+
+#tableWrapper {
+	width: 100%;
+}
+
+table.resultsTable {
+	margin: 20px auto;
+}
+
+table.resultsTable td {
+	padding: 0 20px;
+}
+
+table.resultsTable td, table.resultsTable th {
+	vertical-align: top;
+	width: 50%;
+	overflow: hidden;
+	text-align: center;
+	
+}
+table.resultsTable td pre {
+	
+	height: 300px;
+	overflow: auto;
+	font-size: 0.8em !important;
+	
+	white-space: nowrap;
+}
+
+
+pre#css3, pre#matrixFilter {
+	width: 98%;
+}
+
+/* I hate IE6! */
+body.ie6 pre#css3, body.ie6 pre#matrixFilter {
+	width: 90%;
+}
+
+.initiallyHidden {
+	display: none !important;
+}
+
+.clearBoth {
+	clear: both;	
+}
+
+/*************************************************************************
+ *      Header
+ ************************************************************************/
+#header {
+	padding: 20px 40px;
+	
+}
+#sitename {
+	float: left;
+	position: relative;
+	
+	width: 8.5em;
+	margin: 0 0 40px 0;
+	font-family: Quicksand, "Century Gothic", sans-serif;
+	font-size: 180%;
+	font-weight: bold;
+	letter-spacing: -1px;
+	line-height: 1;
+}
+
+.left {
+	float: left;	
+}
+
+
+body.ie6 #sitename strong,
+body.ie7 #sitename strong,
+body.ie8 #sitename strong
+ {
+	background: white;
+}
+#sitename strong {
+	
+	position: relative;
+	display: block;
+	
+	font-size: 160%;
+	font-weight: bold;
+	
+	/* Transform code for modern web browsers */
+      -moz-transform:    rotate(-3deg);
+      -o-transform:      rotate(-3deg);
+      -webkit-transform: rotate(-3deg);
+      transform:         rotate(-3deg);
+	  width: 260px;
+	  
+	/* IE8+ */ 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Chroma(color='white'),progid:DXImageTransform.Microsoft.Matrix(M11=0.9986295347545738,M12=0.05233595624294388,M21=-0.05233595624294388,M22=0.9986295347545738,SizingMethod='auto expand')"; 
+      
+   /* IE6 and 7 */ 
+    filter: progid:DXImageTransform.Microsoft.Chroma(color='white'),
+			progid:DXImageTransform.Microsoft.Matrix(
+             M11=0.9986295347545738,
+             M12=0.05233595624294388,
+             M21=-0.05233595624294388,
+             M22=0.9986295347545738,
+             SizingMethod='auto expand');
+ 
+   
+    zoom: 1;
+}
+
+#blurb {
+	margin: 0 0 0 12em;
+	padding: .6em 0 0 0;
+	color: #D95B43;
+	font-family: Quicksand, "Century Gothic", sans-serif;
+	font-weight: bold;
+	letter-spacing: -1px;
+	line-height: 1.6;
+}
+
+/*************************************************************************
+ *      Page Structure
+ ************************************************************************/
+#wrapper {
+	min-width: 960px;
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 20px 0;
+	background: hsla(75, 60%, 80%, .3);
+	-moz-box-shadow: 0 0 1px 1px hsla(0, 0%, 0%, .05), 0 0 8px hsla(0, 0%, 0%, .1);
+	-webkit-box-shadow: 0 0 1px hsla(0, 0%, 0%, .05), 0 0 8px hsla(0, 0%, 0%, .1);
+	box-shadow: 0 0 1px 1px hsla(0, 0%, 0%, .05), 0 0 8px hsla(0, 0%, 0%, .1);
+}
+#content {
+	padding: 0px 40px 20px 40px;
+}
+#intro {
+	clear: both;
+	margin: 0px 0 20px 0;
+}
+#support {
+	float: left;
+	width: 8em;
+	padding: 1em;
+	background: hsla(0,0%,100%,.5);
+}
+#tool, #matrixFilterRow {
+	position: relative;
+	margin-left: 11em;
+}
+#input, #output {
+	margin-bottom: 40px;
+	padding: 1em;
+	background: hsla(177, 55%, 76%, .6);
+	
+}
+
+.code, pre {
+	overflow: auto;
+	/*width: 100%;*/
+	padding: 0.3em;
+	border: solid 3px #cccccc;
+	background: hsla(0,0%,100%,.5);
+	font-family:  "Consolas", "Courier New", "Courier", monospace;
+	font-size: 88%;	
+}
+
+.resultsTable pre {
+	white-space: normal;	
+}
+
+a.ajaxDialogue-openLayer {
+	text-decoration: underline !important;
+}
+
+/*************************************************************************
+ *      Headings
+ ************************************************************************/
+h1, h2, h3, h4, h5, h6 {
+	 margin-top: 0;
+	 line-height: 1.2;
+}
+h2, h3 {
+	font-family: Quicksand, "Century Gothic", sans-serif;
+
+}
+
+h3 {
+	margin-top: 1em;
+	margin-bottom: 2px;
+}
+ 
+/*************************************************************************
+ *      Text Styles
+ ************************************************************************/
+.hilite {
+	background-color: #ffcccc;
+}
+
+
+/*************************************************************************
+ *      Navigation
+ ************************************************************************/
+
+/*************************************************************************
+ *      Forms
+ ************************************************************************/
+form {
+	margin-top: -1em;
+}
+form div {
+	margin-bottom: 1em;
+}
+label {
+	text-transform: uppercase;
+}
+#label-height {
+	margin-left: 1em;
+}
+.formInstructions {
+	margin: 0 0 .5em 0;
+	color: #666;
+	font-size: 88%;
+}
+textarea {
+	width: 20em;
+}
+input.small {
+	width: 3em;
+}
+input[type=text], textarea {
+	border: 1px solid #999;
+	border-right: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+	background: #FEFFF7;
+}
+input[type=submit] {
+	width: 12em;
+	padding: .2em .5em;
+	border-width: 1px;
+	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
+	border-radius: 10px;
+	-moz-box-shadow: 0 0 6px hsla(0, 0%, 0%, .25);
+	-webkit-box-shadow: 0 0 6px hsla(0, 0%, 0%, .25);
+	box-shadow: 0 0 6px hsla(0, 0%, 0%, .25);
+	background: #D95B43;
+	color: #fff;
+	font-size: 150%;
+}
+
+/*************************************************************************
+ *      Comments
+ ************************************************************************/
+ 
+/************************************************************************
+ *      Extras
+ ************************************************************************/
+html.js .ajaxDialogue {
+	
+	border: solid 1px #000000 !important;
+	-sand-box-shadow: 5px 5px 5px #000000;
+	overflow: auto;
+	padding: 1em !important;
+	display: block;
+	top: -1000px;
+	left: -1000px;
+	width: 800px !important;
+	height: 450px !important;
+	overflow: hidden;
+	position: absolute;
+	zoom: 1;
+	background-color: #a0e3e0 !important;
+}
+
+html.js body.ie7 .ajaxDialogue,
+html.js body.ie8 .ajaxDialogue,
+html.js body.ie9 .ajaxDialogue,
+html.js body.modern .ajaxDialogue {
+	position: fixed;
+}
+
+.ajaxDialogue-content {
+	height: 300px;
+	width: 750px;
+	overflow-x: hidden;	
+	overflow-y: auto;
+	background-color: white;
+	border: solid 1px black;
+	padding: 1em;
+}
+
+.ajaxDialogue-messages {
+	display: none !important;
+}
+
+
+body.ie9 .ajaxDialogue,
+body.modern .ajaxDialogue {
+	position: fixed;
+}
+
+html.js .ajaxDialogue code,
+html.js .ajaxDialogue pre {
+	font-size: 1.2em;
+}
+
+#originalObject, .originalObject {
+	opacity: 0.3;
+}
+
+#transformCanvas, .transformCanvas {
+	position: relative;
+	top: 5em;
+	left: 25em;
+	width: 100px;	
+}
+
+.imageTransformCanvas {
+	width: 100px;
+	height: 100px;
+	margin: 0 auto;
+}
+
+.imageTransformCanvas img {
+	width: 100px;
+	height: 100px;
+}
+
+#transformedObject, #originalObject, .transformedObject, .originalObject  {
+	border: solid 1px red;
+	background: #ffffcc;
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+	font-family: "Arial", "Helvetica", sans-serif;
+	font-size: 1.2em;
+	
+}
+
+.theWrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+.transformedObject, .originalObject {
+	width: 100px;
+	height: 100px;
+	zoom: 1;
+	
+	
+}
+
+#originalObject, #transformedObject {
+	visibility: hidden;
+}
+
+.transformCanvas {
+	position: relative;
+	left: 0;
+	top: 0;
+	width: 230px;
+	height: 150px;
+	margin: 10px auto;
+}
+
+table#scaleTable th {
+	white-space: nowrap;
+}
+
+table#scaleTable td {
+	height: 150px;
+	
+}
+
+
+table#scaleTable td.wide {
+	width: 140px;
+	
+}
+
+body.ie6 table#scaleTable td.narrow,
+body.ie7 table#scaleTable td.narrow,
+body.ie8 table#scaleTable td.narrow {
+	
+	padding-left: 30px;
+}
+
+table.dataTable {
+	margin-right: 10px;
+}
+
+table.dataTable .transformCanvas {
+	float: none;
+	position: relative;
+	left: 60px;
+}
+
+table.dataTable td {
+	border: solid 1px black;
+}
+
+#rotateExample {
+	-moz-transform: rotate(45deg);
+	-webkit-transform: rotate(45deg);
+	-o-transform: rotate(45deg);
+	transform: rotate(45deg);
+	
+	/* IE8+ */     
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.7071067811865473,M12=-0.7071067811865477,M21=0.7071067811865477,M22=0.7071067811865473,SizingMethod='auto expand')";
+		
+	/* IE6 and 7 */
+	filter: progid:DXImageTransform.Microsoft.Matrix(             
+		M11=0.7071067811865473,             
+		M12=-0.7071067811865477,             
+		M21=0.7071067811865477,             
+		M22=0.7071067811865473,             
+		SizingMethod='auto expand');     
+	
+	
+}
+
+body.ie6 #rotateExample, body.ie7 #rotateExample, body.ie8 #rotateExample {
+	    margin-left: -23px !important;     
+	    margin-top: -24px !important;
+	   	
+}
+
+#skewXExample {
+	-moz-transform: skewX(25deg);
+	-o-transform: skewX(25deg);
+	-webkit-transform: skewX(25deg);
+	transform: skewX(25deg);
+	
+	
+	/* IE8+ */     
+	-ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1,M12=0.46630765815499936,M21=0,M22=1,SizingMethod='auto expand')";
+	
+	/* IE6 and 7 */
+	filter: progid:DXImageTransform.Microsoft.Matrix(
+		M11=1,
+		M12=0.46630765815499936,            
+		M21=0,
+		M22=1,
+		SizingMethod='auto expand');
+	
+}
+
+body.ie6 #skewXExample, body.ie7 #skewXExample, body.ie8 #skewXExample {
+    margin-left: -26px ;     
+    margin-top: 0px;
+    
+}
+
+#skewYExample {
+	-moz-transform: skewY(35deg);
+	-o-transform: skewY(35deg);
+	-webkit-transform: skewY(35deg);
+	transform: skewY(35deg);
+	
+	/* IE8+ */ 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1,M12=0,M21=0.7002075382097104,M22=1,SizingMethod='auto expand')";
+	
+    /* IE6 and 7 */ 
+    filter: progid:DXImageTransform.Microsoft.Matrix(
+             M11=1,
+             M12=0,
+             M21=0.7002075382097104,
+             M22=1,
+             SizingMethod='auto expand');
+ 
+    
+}
+
+body.ie6 #skewYExample, body.ie7 #skewYExample, body.ie8 #skewYExample {
+    margin-left: 0px;
+    margin-top: -38px;
+}
+
+#skewExample {
+	/* Transform code for modern web browsers */
+      -moz-transform:    skew(25deg, 35deg);
+      -o-transform:      skew(25deg, 35deg);
+      -webkit-transform: skew(25deg, 35deg);
+      transform:         skew(25deg, 35deg);
+	  
+    /* IE8+ */ 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1,M12=0.46630765815499936,M21=0.7002075382097104,M22=1,SizingMethod='auto expand')";  
+	
+	/* IE6 and 7 */ 
+    filter: progid:DXImageTransform.Microsoft.Matrix(
+             M11=1,
+             M12=0.46630765815499936,
+             M21=0.7002075382097104,
+             M22=1,
+             SizingMethod='auto expand');
+ 
+    
+}
+
+body.ie6 #skewExample, body.ie7 #skewExample, body.ie8 #skewExample {
+	margin-left: -26px; 
+    margin-top: -38px;
+}
+
+#translateExample {
+	/* Transform code for modern web browsers */
+      -moz-transform:    translate(40px, 30px);
+      -o-transform:      translate(40px, 30px);
+      -webkit-transform: translate(40px, 30px);
+      transform:         translate(40px, 30px);
+    
+	 /* IE8+ */ 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1,M12=0,M21=0,M22=1,SizingMethod='auto expand')";
+	  
+      /* IE6 and 7 */ 
+    filter: progid:DXImageTransform.Microsoft.Matrix(
+             M11=1,
+             M12=0,
+             M21=0,
+             M22=1,
+             SizingMethod='auto expand');
+ 
+   
+}
+
+body.ie6 #translateExample, body.ie7 #translateExample, body.ie8 #translateExample {
+	margin-left: 40px; 
+    margin-top: 30px;
+}
+
+#translateXExample {
+	 /* Transform code for modern web browsers */
+      -moz-transform:    translateX(40px);
+      -o-transform:      translateX(40px);
+      -webkit-transform: translateX(40px);
+      transform:         translateX(40px);
+    
+	/* IE8+ */ 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1,M12=0,M21=0,M22=1,SizingMethod='auto expand')";
+	  
+    /* IE6 and 7 */ 
+    filter: progid:DXImageTransform.Microsoft.Matrix(
+             M11=1,
+             M12=0,
+             M21=0,
+             M22=1,
+             SizingMethod='auto expand');
+ 
+    
+}
+
+body.ie6 #translateXExample, body.ie7 #translateXExample, body.ie8 #translateXExample {
+	margin-left: 40px; 
+    margin-top: 0px;
+}
+
+#translateYExample {
+	
+	 /* Transform code for modern web browsers */
+      -moz-transform:    translateY(30px);
+      -o-transform:      translateY(30px);
+      -webkit-transform: translateY(30px);
+      transform:         translateY(30px);
+    
+    /* IE8+ */ 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1,M12=0,M21=0,M22=1,SizingMethod='auto expand')";
+			   
+    /* IE6 and 7 */ 
+    filter: progid:DXImageTransform.Microsoft.Matrix(
+             M11=1,
+             M12=0,
+             M21=0,
+             M22=1,
+             SizingMethod='auto expand');
+ 
+}
+
+body.ie6 #translateYExample, body.ie7 #translateYExample, body.ie8 #translateYExample {
+	margin-left: 0px; 
+    margin-top: 30px;
+}
+
+#scaleExample {
+	/* Transform code for modern web browsers */
+      -moz-transform:    scale(0.5, 0.5);
+      -o-transform:      scale(0.5, 0.5);
+      -webkit-transform: scale(0.5, 0.5);
+      transform:         scale(0.5, 0.5);
+      
+    
+ 
+    /* IE8+ */ 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=0.5,M12=0,M21=0,M22=0.5,SizingMethod='auto expand')";
+			 
+	/* IE6 and 7 */ 
+    filter: progid:DXImageTransform.Microsoft.Matrix(
+             M11=0.5,
+             M12=0,
+             M21=0,
+             M22=0.5,
+             SizingMethod='auto expand');
+}
+
+body.ie6 #scaleExample, body.ie7 #scaleExample, body.ie8 #scaleExample {
+	
+}
+	
+#scaleXExample {
+	
+	/* Transform code for modern web browsers */
+      -moz-transform:    scaleX(1.3);
+      -o-transform:      scaleX(1.3);
+      -webkit-transform: scaleX(1.3);
+      transform:         scaleX(1.3);
+    
+	
+    /* IE8+ */ 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1.3,M12=0,M21=0,M22=1,SizingMethod='auto expand')";
+	
+   	/* IE6 and 7 */ 
+    filter: progid:DXImageTransform.Microsoft.Matrix(
+             M11=1.3,
+             M12=0,
+             M21=0,
+             M22=1,
+             SizingMethod='auto expand');
+ 
+}
+
+body.ie6 #scaleXExample, body.ie7 #scaleXExample, body.ie8 #scaleXExample {
+	
+}
+
+#scaleYExample {
+	/* Transform code for modern web browsers */
+      -moz-transform:    scaleY(1.3);
+      -o-transform:      scaleY(1.3);
+      -webkit-transform: scaleY(1.3);
+      transform:         scaleY(1.3);
+    
+    /* IE8+ */ 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1,M12=0,M21=0,M22=1.3,SizingMethod='auto expand')";
+			   
+    /* IE6 and 7 */ 
+    filter: progid:DXImageTransform.Microsoft.Matrix(
+             M11=1,
+             M12=0,
+             M21=0,
+             M22=1.3,
+             SizingMethod='auto expand');
+ 
+}
+
+body.ie6 #scaleYExample, body.ie7 #scaleYExample, body.ie8 #scaleYExample {
+	 
+    margin-top: 10px;
+}
+
+#invertScaleYExample {
+	/* Transform code for modern web browsers */
+      -moz-transform:    scaleY(-1);
+      -o-transform:      scaleY(-1);
+      -webkit-transform: scaleY(-1);
+      transform:         scaleY(-1);
+	  
+	/* IE8+ */ 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=1,M12=0,M21=0,M22=-1,SizingMethod='auto expand')";
+			   
+    /* IE6 and 7 */ 
+    filter: progid:DXImageTransform.Microsoft.Matrix(
+             M11=1,
+             M12=0,
+             M21=0,
+             M22=-1,
+             SizingMethod='auto expand');
+}
+
+
+#invertScaleXExample {
+	/* Transform code for modern web browsers */
+      -moz-transform:    scaleX(-1);
+      -o-transform:      scaleX(-1);
+      -webkit-transform: scaleX(-1);
+      transform:         scaleX(-1);
+	  
+	/* IE8+ */ 
+    -ms-filter: "progid:DXImageTransform.Microsoft.Matrix(M11=-1,M12=0,M21=0,M22=1,SizingMethod='auto expand')";
+			   
+    /* IE6 and 7 */ 
+    filter: progid:DXImageTransform.Microsoft.Matrix(
+             M11=-1,
+             M12=0,
+             M21=0,
+             M22=1,
+             SizingMethod='auto expand');
+}
+
+#transformedObject p , #originalObject p, .transformedObject, .originalObject {
+	padding: 0px 10px !important;
+	margin: 0;
+}

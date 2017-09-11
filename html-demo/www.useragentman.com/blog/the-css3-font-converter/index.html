@@ -1,0 +1,704 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive post-6441" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  The CSS3 Font Converter</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><script src="//code.jquery.com/jquery-1.10.2.js"></script>	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<!-- ID is 6441 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; The CSS3 Font Converter Comments Feed" href="http://www.useragentman.com/blog/the-css3-font-converter/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel="canonical" href="http://www.useragentman.com/blog/the-css3-font-converter/" />
+<link rel='shortlink' href='http://useragentman.com/blog/gy2v4' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2Fthe-css3-font-converter%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2Fthe-css3-font-converter%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+	
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+	
+		<div id="content" class="pages bypass-block-target" tabindex="-1" role="main">
+
+						
+			<h1>The CSS3 Font Converter</h1>	
+			<div class="entry">		
+				<div class="importantNotes">
+<h3>Note:</h3>
+<p>More details on this script can be seen on these posts:</p>
+<ul>
+<li><a href="http://www.useragentman.com/blog/2011/02/20/converting-font-face-fonts-quickly-in-any-os/">Converting @font-face Fonts Quickly In Any OS</a>
+<li><a href="http://www.useragentman.com/blog/2013/09/20/better-web-typography-with-font-weight-autohinting-and-font-feature-settings/">Better Web Typography With font-weight, Autohinting and font-feature-settings</a></li>
+</ul>
+<p>Also note that Michael of <a href="http://cfxdesign.com/">CFX Design</a> has been kind enough to publish <a href="https://gist.github.com/CFXd/9ddbba4607ceec5a2a2e">a gist that will help people get this up and running quickly</a>.
+</p>
+</div>
+<p>The CSS3 Font Converter is a command line script that converts TrueType and OpenType fonts to all the other @font-face formats (i.e. EOT, SVG and WOFF).  It also can implement auto-hinting, report on if a font supports and <code>font-feature-setting</code> tags (e.g. ligatures, true small-caps, old-style numerals, etc).  It can run on any operating system that can run Bash scripts, including Mac OS X, Linux and Windows (using Cygwin).</p>
+<p>If you are not familiar or comfortable with using the UNIX command line, this script may not be for you.  If you are willing to learn, I highly encourage it, since there have been many times in my web development career that it has proved useful and a huge time-saver.  A good place to start is <a href="http://freeengineer.org/learnUNIXin10minutes.html">Learn UNIX in 10 minutes</a> by <a href="http://freeengineer.org">Cliff Johnson</a>.</p>
+<h2>Installation</h2>
+<p>I have tried to make this tool as easy to use as possible.  If you follow these easy steps, it should work.  If you have trouble installing the tool after you have followed all these steps, please leave a comment at the end of this post &mdash; I really want to make this as bulletproof as possible.</p>
+<ol>
+<li><strong>If you are using Windows XP/Vista/7, install <a href="http://www.cygwin.com">Cygwin</a> with the FontForge package</strong>. If you have never done this before, <a href="http://www.useragentman.com/blog/?p=2339">I have created a supplementary blog post to walk you through the installation process</a>.  If you have installed Cygwin before, you still may want to read the last half of the article, since installing FontForge can be difficult under Cygwin (at least it was for me until I did some digging).</li>
+<li><strong>Download and Install <a href="http://fontforge.sourceforge.net/">FontForge</a> </strong>(if you are a Windows user, this is covered in step one). There are complete instructions on how to do this under <a href="http://fontforge.sourceforge.net/mac-install.html">OS X</a>, and <a href="http://fontforge.sourceforge.net/nix-install.html">Linux</a> as well.  <strong>Update (May 14, 2011):</strong> The Linux page doesn&#8217;t mention this, but if you are an Ubuntu user, you can use <code>apt-get</code> to do the installation for you easily:<br />
+<blockquote class="code">
+<pre>
+sudo apt-get install fontforge
+</pre>
+</blockquote>
+<p>Thanks to Richard Curran for pointing this out.</li>
+<li><strong>Download <a href="http://eotfast.com/">EOTFast</a></strong> (if you develop using Windows) <strong>or  <a href="http://code.google.com/p/ttf2eot/">ttf2eot</a></strong> (for OS X and Linux, <a href="http://www.tips-tricks.net/tag/ttf2eot/">installation instructions are here</a>).  </li>
+<li><strong>Download the <a href="http://people.mozilla.com/~jkew/woff/">sfnt2woff</a> package</strong> (this page has packages for Windows and OS X, as well as the source that one can compile for Linux).</li>
+<li><strong>Download <a href="http://www.freetype.org/ttfautohint/#download">ttfautohint</a> </strong> (this page has packages for Windows and OS X, as well as the source that one can compile for Linux).</li>
+<li><strong>Download the <a href="https://github.com/zoltan-dulac/css3FontConverter">CSS3 Font Converter</a></strong> from GitHub and unpack the contents in your path someplace.</li>
+<li><strong>Open up a terminal window</strong> (under Cygwin, that would be the either the &#8220;Cygwin Bash Shell&#8221;, or, better yet, &#8220;rxvt native&#8221; if you have that installed). Then, <code>cd</code> into the directory that you unpacked the CSS3 Font Converter, and edit <code>convertFonts.sh</code> (if you are using Windows, <strong>don&#8217;t use notepad to edit this file</strong>, since shell scripts don&#8217;t like to be saved as Windows text.  If you are familar with it, use <code>vim</code> instead).  You will need to edit the first few lines:<br />
+<blockquote class="code">
+<pre>
+#!/bin/bash
+
+#########################################################################
+## CONFIGURATION AREA: This stuff is the only stuff you may need to     #
+##                     change.                                          #
+#########################################################################
+
+# The path should contain the directories where EOTFAST-1.EXE, ttf2eot,
+# fontforge, and all the scripts in the @Font-Face Contruction Set reside.
+# Uncomment the line below with the right directories.  Remember the
+# $PATH at the beginning of the string, or the script will forget what
+# was originally in the PATH.
+<span class="hilite"># PATH="$PATH:/some/directory:/some/other/directory/"</span>
+
+....
+</pre>
+</blockquote>
+<p>If you haven&#8217;t installed the other packages in directories in your PATH, you must uncomment the <code>PATH</code> line and edit it so that it contains them.
+</li>
+<li><strong>If all is well, you should now be ready to convert fonts.</strong>  To test, create a new directory, download and unpack the <a href="http://www.dafont.com/old-london.font">Old London Font from Dafont.com</a> into it, and execute the following command:<br />
+<blockquote class="code">
+<pre>
+$ convertFonts.sh *.ttf
+</pre>
+</blockquote>
+<p>If all is successful, you should see output similar to this:</p>
+<blockquote class="code">
+<pre>
+Converting OldLondon to eot
+(Using EOTFAST)
+Converting font "Old London"
+Successfully written "OldLondon.eot"
+Converting OldLondon to svg
+Converting OldLondon to woff
+Converting OldLondonAlternate to eot
+(Using EOTFAST)
+Converting font "Old London Alternate"
+Successfully written "OldLondonAlternate.eot"
+Converting OldLondonAlternate to svg
+Converting OldLondonAlternate to woff
+Writing Stylesheet ...
+Extracting SVG ID
+Getting Font Name
+Extracting SVG ID
+Getting Font Name
+DONE!
+</pre>
+</blockquote>
+<p>Not only does it convert the TrueType font in all the web formats, it produces a nice style sheet you can<br />
+link to:</p>
+<blockquote class="code">
+<pre>
+@font-face {
+        font-family: 'OldLondon';
+        src: url('OldLondon.eot?') format('eot'), 
+             url('OldLondon.woff') format('woff'), 
+             url('OldLondon.ttf')  format('truetype'),
+             url('OldLondon.svg#OldLondon') format('svg');
+}
+
+@font-face {
+        font-family: 'OldLondonAlternate';
+        src: url('OldLondonAlternate.eot?') format('eot'), 
+             url('OldLondonAlternate.woff') format('woff'), 
+             url('OldLondonAlternate.ttf')  format('truetype'),
+             url('OldLondonAlternate.svg#OldLondonAlternate') format('svg');
+}
+</pre>
+</blockquote>
+</li>
+</ol>
+<h2>Options</h2>
+<p>The CSS3 Font Converter can not only convert Fonts in several different ways, but it can also give information about the fonts it generates</p>
+<h3><code>--use-font-weight</code></h3>
+<p>This option will merge all font-weights and styles under the same font name.  This option will likely crash Apple Mobile Safari running under iOS versions less than 4.0 &mdash; <strong>to avoid this, the converter will <em>not</em> convert fonts to SVG when this option is used.</strong>  Also note that only the first four weights and styles will be recognized under IE7 and 8.</p>
+<h3><code>--use-font-stretch</code></h3>
+<p>This option will merge all condensed and expanded fonts under the same font name as the normal font.  It is recommended *not* to use this method currently, since at the time of this writing, font-stretch is only supported by  Firefox =&gt; 9 and IE =&gt; 9.</p>
+<h3><code>--autohint</code></h3>
+<p>This option will hint/re-hint fonts (using ttfautohint by default, or Adobe Font Development Kit for OpenType if using &#8211;autohint=adobe). Note that this option will create a bunch of files prefixed with &#8216;hinted-&#8216;.  Attempting to use this option on files already prefixed with &#8216;hinted-&#8216; will result in an error.</p>
+<h3><code>--use-font-prefix</code></h3>
+<p>This option will put a prefix in front of a font name.  For example</p>
+<blockquote class="code">
+<pre>
+convertFonts.sh --use-font-prefix --autohint --use-font-prefix=<span class="hilite">new-</span> peanuts.ttf
+</pre>
+</blockquote>
+<p>will convert all the OTF fonts in the current working directory and produce a stylesheet that with the following font names:</p>
+<blockquote class="code">
+<pre>
+@font-face {
+  font-family: 'new-Peanuts';
+  src: url('<span class="hilite">new-</span>peanuts.eot?') format('eot'),
+       url('<span class="hilite">new-</span>peanuts.woff') format('woff'),
+       url('<span class="hilite">new-</span>peanuts.ttf')  format('truetype'),
+       url('<span class="hilite">new-</span>peanuts.svg#Peanuts') format('svg');
+}
+</pre>
+</blockquote>
+<p>Note it also changes the names of the converted font files as well.</p>
+<h3><code>--output</code></h3>
+<p>This option allows the user to change the file name of the font stylesheet the converter produces from <code>stylesheet.css</code>.  For example:</p>
+<blockquote class="code">
+<pre>
+convertFonts.sh <span class="hilite">--output=peanuts.css</span> peanuts.ttf
+</pre>
+</blockquote>
+<p>names the font&#8217;s stylesheet <code>peanuts.css</code></p>
+<h3><code>--show-features</code></h3>
+<p>Presents the user with a list of OpenType feature tags a font supports which can be used inside a style sheet using the CSS3 <code>font-feature-settings</code> property (more information about OpenType feature tags can be found in the article <a href="http://useragentman.com/blog/K7V7p">Better Web Typography With <code>font-weight</code>, Autohinting and <code>font-feature-settings</code></a>.  The font can be in either be OpenType or TrueType.  For example:</p>
+<blockquote class="code">
+<pre>
+convertFonts.sh <span class="hilite">--show-features</span> peanuts.ttf
+</pre>
+</blockquote>
+<p>will show the OpenType tag features in the following format:</p>
+<blockquote class="code">
+<pre>
+Font: Calendas-Plus.otf
+'kern' Horizontal Kerning in Latin lookup 0
+'aalt' Access All Alternates in Latin lookup 0
+'aalt' Access All Alternates in Latin lookup 1
+'smcp' Lowercase to Small Capitals in Latin lookup 2
+'onum' Oldstyle Figures in Latin lookup 3
+'lnum' Lining Figures in Latin lookup 4
+'case' Case-Sensitive Forms in Latin lookup 5
+'dlig' Discretionary Ligatures in Latin lookup 6
+'sups' Superscript in Latin lookup 7
+'liga' Standard Ligatures in Latin lookup 8
+'ornm' Ornaments in Latin lookup 9
+'swsh' Swash in Latin lookup 10
+'sinf' Scientific Inferiors in Latin lookup 11
+'numr' Numerators in Latin lookup 12
+'ordn' Ordinals in Latin lookup 13
+'frac' Diagonal Fractions in Latin lookup 14
+'dnom' Denominators in Latin lookup 15
+'salt' Stylistic Alternatives in Latin lookup 16
+
+Information on these features can be found at these URLS: 
+  - http://www.microsoft.com/typography/otspec/featurelist.htm
+  - http://partners.adobe.com/public/developer/opentype/index_tag3.html
+</pre>
+</blockquote>
+<p>Note that this option does <em>not</em> convert the font(s) given.</p>
+<h2>Download</h2>
+<p><a href="https://github.com/zoltan-dulac/css3FontConverter" class="exampleLink">Download the CSS3 Font Converter from GitHub</a></p>
+							</div>
+						<p class="tagged"><a href="http://www.useragentman.com/blog/the-css3-font-converter/#comments">3 Comments</a></p>
+			<div class="clear"></div>
+						
+						
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">3 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						<li class="comment   " id="comment-943518 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-943518" title="Permalink to this comment">1</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://cfxdesign.com'><img alt='' src='http://0.gravatar.com/avatar/956125030b216f4d83d0205bef388285?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/956125030b216f4d83d0205bef388285?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://cfxdesign.com' rel='external nofollow' class='url'>Michael</a> </strong>
+				<span class="comment_time">// Jun 26, 2015 at 2:13 pm</span>
+			</p>
+			<div class="entry">
+				<p>Zoltan, I really love this tool and I&#8217;ve been using it for ages. I somehow managed to get it setup on my previous machine which was very tedious. However I just completed a major machine upgrade which included an upgrade to OS X Yosemite and I had to reinstall my favorite tools. This was very high on the list and I was determined to find the quickest way to get up and running with css3FontConverter. I figured out the best way for Yosemite users and took a moment to document the steps which should have people up and running in a few short minutes. I put it on Gist to share and everyone can take advantage of it right here: <a href="https://gist.github.com/CFXd/9ddbba4607ceec5a2a2e" rel="nofollow">https://gist.github.com/CFXd/9ddbba4607ceec5a2a2e</a>.</p>
+<p>Please enjoy!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-944314 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-944314" title="Permalink to this comment">2</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jun 27, 2015 at 12:50 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Michael: Thanks so much for this!  I&#8217;m going to post this inside the article as well, since I&#8217;m sure a lot of people can benefit from this.  Cheers.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-1097832 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1097832" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://horstmann.com'><img alt='' src='http://0.gravatar.com/avatar/0b0bd09893dd4c6fef033228e486fa44?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/0b0bd09893dd4c6fef033228e486fa44?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://horstmann.com' rel='external nofollow' class='url'>Cay Horstmann</a> </strong>
+				<span class="comment_time">// Jan 24, 2017 at 12:11 am</span>
+			</p>
+			<div class="entry">
+				<p>On Ubuntu Linux 16.04, you can install ttfautohint with sudo apt install ttfautohint.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="6441" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="d486f30b1a" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		</div>
+		
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

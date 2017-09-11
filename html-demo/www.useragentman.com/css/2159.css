@@ -1,0 +1,215 @@
+.equation {
+	padding: 10px;
+	text-align: center;
+	border: solid 1px black;
+	margin: 20px 0px !important;
+	font-size: 0.9em;
+}
+
+
+body.ie6 .equation ,
+body.ie7 .equation ,
+body.ie8 .equation ,
+body.ie9 .equation  {
+	padding-bottom: 20px;
+} 
+
+#transformedObject {
+      position: relative;
+      display: block;
+      -sand-transform:  matrix(1.4488, -0.3882, 0.3882, 1.4489, 100, 80);
+      margin-bottom: 100px;
+	width: 200px;
+	height: 20px;
+	border: solid 1px black;
+background: white;
+}
+
+.exampleBackground {
+	position: relative;
+       background: white;
+	background-image: url("/tests/cssSandpaper/images/background.gif");
+       height: 151px;
+	
+}
+
+
+
+
+
+#exampleObject1 {
+     background-color: #ffcccc;
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width: 200px;
+     height: 80px;
+}
+
+
+#exampleObject2 {
+     background-color: #ffcccc;
+     position: absolute;
+     left: 0px;
+     top: 0px;
+     width: 200px;
+     height: 80px;
+     -sand-transform:  matrix(0.900, -0.050, -0.375, 1.375, 220.000, 20.000);
+	 -webkit-transform-origin: 0 0;
+	 
+	 -moz-transform-origin: 0px 0px;
+}
+
+body.ie6 #exampleObject2,
+body.ie7 #exampleObject2,
+body.ie8 #exampleObject2,
+body.ie9 #exampleObject2  {
+	top: 10px;
+	left: -25px;
+}
+
+
+#exampleRotation {
+	border: solid 1px black;
+	-sand-transform: rotate(45deg);
+	position: relative;
+       left: 100px;
+       top: 20px;
+	padding: 5px;
+	width: 90px;
+	height: 90px;
+	background-color: white;
+}
+
+.coord {
+	position: absolute;
+	padding: 2px 4px;
+	z-index: 200;
+}
+
+#exampleObject2 .coord {
+
+
+	-sand-transform: rotate(13deg);
+}
+
+.top {
+	top: 0;
+}
+
+.right {
+	right: 0;
+}
+
+.bottom {
+	bottom: 0;
+}
+
+.left {
+	left: 0;
+}
+
+.point {
+	position: absolute;
+	background: url(/matrix/images/crosshair.png); no-repeat;
+	
+	width: 35px;
+	height: 35px;
+	margin: -17px 0 0 -17px; 
+	z-index: 200;
+}
+
+#originalExample, #transformedExample {
+	margin: 30px 100px 30px 100px;
+}
+
+#originalExample .top-left-pt {
+	left: 0;
+	top: 0;
+}
+
+#originalExample .top-right-pt {
+	left: 200px;
+	top: 0;
+}
+
+#originalExample .bottom-right-pt {
+	left: 200px;
+	top: 80px;
+}
+
+#originalExample .bottom-left-pt {
+	left: 0;
+	top: 80px;
+}
+
+
+#transformedExample .top-left-pt {
+	left: 220px;
+	top: 20px;
+}
+
+#transformedExample .top-right-pt {
+	left: 400px;
+	top: 10px;
+}
+
+#transformedExample .bottom-left-pt {
+	left: 190px;
+	top: 130px;
+}
+
+#transformedExample .bottom-right-pt {
+	left: 370px;
+	top: 120px;
+}
+
+#originalExample .top-left {
+	left: -50px;
+	top: -30px;
+}
+
+#originalExample .top-right {
+	left: 210px;
+	top: -30px;
+}
+
+#originalExample .bottom-right {
+	left: 210px;
+	top: 80px;
+}
+
+#originalExample .bottom-left {
+	left: -60px;
+	top: 80px;
+	
+}
+
+#transformedExample .top-left {
+	left: 140px;
+	top: 10px;
+}
+
+#transformedExample .top-right {
+	left: 410px;
+	top: 0px;
+}
+
+
+#transformedExample .bottom-right {
+	left: 380px;
+	top: 120px;
+}
+
+#transformedExample .bottom-left {
+	left: 110px;
+	top: 120px;
+}
+
+body.ie6 .dataTable td ,
+body.ie7 .dataTable td ,
+body.ie8 .dataTable td ,
+body.ie9 .dataTable td  {
+	padding-bottom: 20px;
+}
+ 

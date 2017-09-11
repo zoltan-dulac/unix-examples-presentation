@@ -1,0 +1,736 @@
+/*
+ * Yes, this site is desktop first.
+ */
+
+@media only screen and (max-width: 320px) {
+	p, li {
+		-webkit-hyphens: none;
+		-moz-hyphens: none;
+		-ms-hyphens: none;
+		-o-hyphens: none;
+		hyphens: none;
+	}
+}
+
+@media only screen and (max-width: 768px) {
+	body {
+		position: relative;
+		overflow-x: hidden;
+		overflow-y: visible;
+	}
+	html {
+		box-sizing: border-box;
+	}
+	*, *:before, *:after {
+		box-sizing: inherit;
+	}
+
+	/* Scrollbars in mobile always visible. From http://stackoverflow.com/questions/22907777/make-scrollbar-visible-in-mobile-browsers */
+	::-webkit-scrollbar {
+		-webkit-appearance: none;
+	}
+
+	::-webkit-scrollbar:vertical {
+		width: 12px;
+	}
+
+	::-webkit-scrollbar:horizontal {
+		height: 12px;
+	}
+
+	::-webkit-scrollbar-thumb {
+		background-color: rgba(0, 0, 0, .5);
+		border-radius: 10px;
+		border: 2px solid #ffffff;
+	}
+
+	::-webkit-scrollbar-track {
+		border-radius: 10px;
+		background-color: #ffffff;
+	}
+
+	body {
+		width: 100vw;
+		overflow-x: hidden;
+	}
+
+	.alignLeft, .alignRight {
+		float: none !important;
+		width: 100% !important;
+	}
+	/* Break long words */
+	p {
+		word-wrap: break-word;
+	}
+
+	#sideNav {
+		display: none;
+	}
+
+	form#search {
+		display: none;
+	}
+
+	/* TITLE AREA */
+	#head, #freeSaeed {
+		display: block;
+		width: 100%;
+		text-align: center;
+		border: none;
+		vertical-align: auto;
+		position: static;
+		background: #9c6f39;
+	}
+
+	#head {
+		padding: 10px 0;
+	}
+
+	#freeSaeed {
+		display: none;
+	}
+
+	#freeSaeed img {
+		display: inline;
+	}
+
+	/* MAIN NAV */
+	ul#mainMenu {
+		line-height: 1.6;
+		text-align: center;
+		margin: 0 !important;
+	}
+
+	ul#mainMenu li {
+		display: inline;
+	}
+
+	/* CONTENT */
+	#content {
+		margin: 0;
+		border: none;
+		border-radius: 0;
+		padding: 1em;
+	}
+
+	ol, ul, .steps {
+		margin-left: 1em !important;
+		margin-right: 0;
+	}
+
+	/* Hide previous and next articles for now */
+	span.previous, span.next {
+		display: none;
+	}
+
+	.example {
+		float: none !important;
+		margin: 1em auto !important;
+		display: block;
+	}
+
+	.exampleLink {
+		width: 75vw;
+		display: block;
+		padding-top: 30px;
+		padding-bottom: 30px;
+	}
+
+	.exampleLinkList {
+		height: auto;
+		width: 100%;
+	}
+
+	.exampleLinkList .exampleLink {
+		display: block !important;
+		position: static;
+		margin: 0 auto;
+	}
+
+	/* ARTICLE SPECIFIC */
+	ul.right-of-float {
+		margin-left: 3em !important;
+	}
+
+	.wideImage {
+		overflow-x: visible;
+		overflow-y: visible;
+	}
+
+	.example, .tableWrap, .resizable, img, iframe, svg, canvas {
+		max-width: -webkit-calc(100vw - 2em) !important;
+		max-width: calc(100vw - 2em) !important;
+		position: relative;
+	}
+
+	.wideImageWrap {
+		position: relative;
+	}
+
+	ul li img, ol li img {
+		max-width: -webkit-calc(100vw - 4em) !important;
+		max-width: calc(100vw - 4em) !important;
+	}
+
+	video {
+		width: 100%;
+	}
+
+	.example, .tableWrap, .wideImageWrap, img, iframe, svg, canvas {
+		overflow-x: auto;
+	}
+
+	blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+		/*
+		 * For webkit browsers, use -webkit-mask-image; for other browsers
+		 * fall back to SVG mask.
+		 */
+
+		-webkit-mask-image: -webkit-gradient(
+		linear, left top, right top,
+		color-stop(0.00,  rgba(0,0,0,1)),
+		color-stop(0.8,  rgba(0,0,0,1)),
+		color-stop(0.9,  rgba(0,0,0,0.5)),
+		color-stop(1.00,  rgba(0,0,0,0)));
+		/*
+		 * Was going to do something like this, but it wasn't working, so I put the
+		 * SVG into the document.  I was going to make some effort to figure out
+		 * why this doesn't work, but it seems it isn't as efficient according to this
+		 * blog post, so I am going to keep it the way it is (not as bad as base64, but still
+		 * worth not doing).
+		 *
+		 * http://www.mobify.com/blog/base64-does-not-impact-data-uri-performance/
+		 */
+		/* mask: url('data:image/svg+xml;utf-8,%3Csvg%20width%3D%220%22%20height%3D%220%22%3E%0D%0A%20%20%3Cdefs%3E%0D%0A%20%20%20%20%3ClinearGradient%20id%3D%22gradient%22%20x1%3D%220%22%20y1%3D%2200%25%22%20x2%20%3D%22100%25%22%20y2%3D%220%25%22%3E%0D%0A%20%20%20%20%20%20%3Cstop%20stop-color%3D%22rgb%28255%2C%20255%2C%20255%29%22%20offset%3D%220%22%2F%3E%0D%0A%20%20%20%20%20%20%3Cstop%20stop-color%3D%22rgb%28255%2C%20255%2C%20255%29%22%20offset%3D%220.8%22%2F%3E%0D%0A%20%20%20%20%20%20%3Cstop%20stop-color%3D%22rgb%28128%2C%20128%2C%20128%29%22%20offset%3D%220.9%22%2F%3E%0D%0A%20%20%20%20%20%20%3Cstop%20stop-color%3D%22black%22%20offset%3D%221%22%2F%3E%0D%0A%20%20%20%20%3C%2FlinearGradient%3E%0D%0A%0D%0A%20%20%20%20%3Cmask%20id%3D%22masking%22%20maskUnits%3D%22objectBoundingBox%22%20maskContentUnits%3D%22objectBoundingBox%22%3E%0D%0A%20%20%20%20%20%20%3Crect%20y%3D%220%22%20width%3D%221%22%20height%3D%221%22%20fill%3D%22url%28%23gradient%29%22%20%2F%3E%0D%0A%20%20%20%20%20%0D%0A%20%20%20%20%3C%2Fmask%3E%0D%0A%20%20%3C%2Fdefs%3E%0D%0A%3C%2Fsvg%3E#masking'); */
+
+	}
+
+	blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+		-webkit-mask-image: none;
+	}
+
+	.wp-caption, .wp-caption img {
+		max-width: -webkit-calc(100vw - 5em) !important;
+		max-width: calc(100vw - 5em) !important;
+	}
+
+	table {
+		margin-bottom: 0;
+	}
+
+	.tableWrap, .wideImageWrap {
+		margin-bottom: 2em;
+		padding-right: 10%;
+		position: relative;
+	}
+
+	.wideImageContainer .wideImageWrap img {
+		max-width: inherit !important;
+		margin-bottom: 0 !important;
+	}
+
+	.tableContainer:before, blockquote.code:before, .wideImageContainer:before {
+		color: black;
+		font-size: 18px;
+		font-weight: normal;
+		position: static;
+		font-family: "DroidSansRegular", sans-serif !important;
+		margin-top: 2em;
+	}
+
+	.tableContainer.scrolled-to-end:before, blockquote.code.scrolled-to-end:before, .wideImageContainer.scrolled-to-end:before {
+		visibility: hidden;
+	}
+
+	.tableContainer:before, blockquote.code:before, .wideImageContainer:before {
+		font-size: 14px;
+	}
+
+	.tableContainer:before {
+		content: "Swipe to see full table  ☞";
+	}
+	blockquote.code:before {
+		content: "Swipe to see full source  ☞";
+	}
+
+	.wideImageContainer:before {
+		content: "Swipe to see the full image   ☞";
+	}
+
+	li blockquote.code {
+		margin-top: 10px;
+	}
+
+	.tableWrap table {
+		margin-top: 0;
+	}
+
+	.dataTable {
+		margin-top: 0;
+	}
+
+	.dataTable img {
+		display: inline-block;
+		margin: 0 !important;
+	}
+
+	/* COMMENTS */
+
+	#comments img[alt="An orange star"] {
+		display: inline;
+		margin: 0 !important;
+	}
+
+	#content #comments ul li {
+		left: 0;
+	}
+
+	ul#comment_list li.comment {
+		padding: 0;
+		margin-bottom: 110px;
+	}
+
+	ul#comment_list li.myComment {
+		margin-top: 0;
+	}
+
+	body.notIE ul#comment_list li.comment strong, body.notIE ul#comment_list li.comment .comment_time, body.notIE ul#comment_list li.myComment strong, body.notIE ul#comment_list li.myComment .comment_time {
+		position: relative;
+		left: 0;
+		bottom: 0;
+	}
+
+	body.notIE ul#comment_list li.comment img.avatar {
+		position: static;
+		width: 80px;
+		margin: 0;
+	}
+
+	body.notIE ul#comment_list li.myComment .avatar {
+
+	}
+
+	body.notIE ul#comment_list li.comment p.comment_meta {
+		position: absolute !important;
+		bottom: -115px;
+		left: inherit;
+		right: inherit;
+		margin: 0 !important;
+		float: 0 !important;
+		width: 100%;
+		text-align: right;
+	}
+
+	body.notIE ul#comment_list li.myComment p.comment_meta {
+		text-align: left;
+	}
+
+	body.notIE ul#comment_list li.comment p.comment_meta strong {
+		display: block !important;
+		position: relative;
+		width: 100%;
+	}
+
+	body.notIE ul#comment_list li.comment p.comment_meta .eg-image {
+		position: absolute;
+		bottom: 30px;
+		float: none !important;
+		left: inherit;
+		right: 0;
+		margin-left: 0;
+	}
+
+	body.notIE ul#comment_list li.myComment p.comment_meta .eg-image {
+		left: 0;
+		right: inherit;
+	}
+
+	body.notIE ul#comment_list li.comment p.comment_meta .eg-image img.avatar {
+		margin: 0 !important;
+		display: inline;
+	}
+
+	body.notIE ul#comment_list li.myComment p.comment_meta > strong > a, body.notIE ul#comment_list li.myComment p.comment_meta > span.comment_time {
+		position: static;: initial !important;
+	}
+
+	body.notIE ul#comment_list li.comment div.entry {
+		margin: 1em 0 1em 0;
+		-moz-border-image: url('/images/borders/balloon.mobile.png') 40 50 60 50 round;
+		-webkit-border-image: url('/images/borders/balloon.mobile.png') 40 50 60 50 round;
+		-o-border-image: url('/images/borders/balloon.mobile.png') 40 50 60 50 round;
+		border-image: url('/images/borders/balloon.mobile.png') 40 50 60 50 round;
+	}
+
+	body.notIE ul#comment_list li.myComment div.entry {
+		margin: 1em 0 1em 0 !important;
+		-moz-border-image: url('/images/borders/myBalloon.mobile.png') 40 50 60 50 round !important;
+		-webkit-border-image: url('/images/borders/myBalloon.mobile.png') 40 50 60 50 round !important;
+		-o-border-image: url('/images/borders/myBalloon.mobile.png') 40 50 60 50 round !important;
+		border-image: url('/images/borders/myBalloon.mobile.png') 40 50 60 50 round !important;
+	}
+
+	#content #comments .entry, #content #comments .entry p {
+		font-size: 0.9em;
+		line-height: 28px !important;
+		max-width: -webkit-calc(100vw - 30px);
+		max-width: calc(100vw - 30px);
+	}
+
+	.eg-image {
+		display: inline !important;
+		width: initial !important;
+	}
+
+	/* INTERESTING BUT RISKY GLOBAL CHANGE */
+	h1, h4.meta {
+		text-align: center;
+	}
+
+	.alignleft, .alignright, .aligncenter, img {
+		display: block;
+		margin: 1em auto !important;
+		float: none !important;
+		box-sizing: content-box;
+	}
+
+	img.inline {
+		margin: 0 !important;
+	}
+
+	.example img, .clipParent img {
+		margin: 0 auto !important;
+	}
+
+	.alignleft.resizable, .alignright.resizable, .aligncenter.resizable {
+		box-sizing: border-box;
+	}
+
+	.alignleft img, .alignright img, .aligncenter img {
+		margin: 0 auto !important;
+	}
+
+	p, ul {
+		margin-bottom: 2em;
+		line-height: 1.4 !important;
+	}
+
+	blockquote.code {
+		border: none;
+		background: white;
+	}
+
+	blockquote.code pre {
+		font-size: 15px !important;
+		background: #EBEBEB;
+	}
+
+	#foot {
+		background: white;
+		margin: 0;
+		width: 100%;
+		overflow: hidden;
+	}
+
+	#foot p {
+		overflow: hidden;
+	}
+
+	#foot p {
+		width: 90vw;
+	}
+
+	.photoWithCaption {
+		width: auto;
+		height: auto;
+	}
+
+	#content  .resizable p {
+		font-size: 12px !important;
+	}
+
+	img.full-bleed, iframe.full-bleed, picture.full-bleed {
+		/*
+		 * To center the image, we take
+		 *    - 0.5 * (image-width)
+		 *    + 50% of the browser width
+		 *    + 0.5 * (side-nav width)
+		 *    - the content margin width;
+		 */
+		left: -webkit-calc(-432px + 50vw  -1.1em);
+		left: calc(-432px + 50vw  -1.1em);
+		max-width: inherit !important;
+	}
+	
+	.ratio-16x9 {
+		height: calc( 100vw * 0.56 ) !important;
+	}
+
+
+	/*
+	 * For a full bleed image that doesn't get cut off on the sides.
+	 */
+	img.full-bleed.full-width, iframe.full-bleed.full-width, picture.full-bleed.full-width {
+		left: -1.1em;
+		width: 100vw;
+	}
+
+	.image-container .caption {
+		bottom: 0px;
+	}
+
+	/* Post specific stuff -- will be moved into post-specific CSS afterwards */
+
+	/* polyclip.js */
+	.post-3526 .box {
+		transform: translate(-14px, 50px) scale(0.4);
+		transform-origin: 0 0;
+		-webkit-transform: translate(-14px, 50px) scale(0.4);
+		-webkit-transform-origin: 0 0;
+		width: 320px;
+		margin: 0 auto;
+	}
+	.post-3526 .box #explanation1, .post-3526 .box #explanation2 {
+		white-space: nowrap;
+	}
+
+	.post-3526 .box #explanation3 {
+		transform: translateY(112px) scale(1.9);
+		transform-origin: 100% 0;
+		-webkit-transform: translateY(112px) scale(1.9);
+		-webkit-transform-origin: 100% 0;
+		height: auto;
+	}
+
+	.post-3526 .box #explanation3 p {
+		margin-bottom: 0;
+	}
+
+	.post-3526 canvas, .post-3526 img, .post-5227 canvas, .post-5227 img, .post-5621 canvas, .post-5621 img, .post-5810 .example, .post-5810 img {
+		width: auto !important;
+		max-width: initial !important;
+		overflow: visible;
+	}
+
+	/* CSS Circular Animations */
+
+	.post-5810 .example {
+		overflow: hidden;
+	}
+	.post-5810 #sun {
+		left: -webkit-calc(50vw - 2em - 27px);
+		left: calc(50vw - 2em - 27px);
+	}
+
+	.post-5810 .saturn {
+		left: -webkit-calc(50vw - 2em - 48px);
+		left: calc(50vw - 2em - 48px);
+	}
+
+	.post-5810 #step2 .ruler {
+		left: -webkit-calc(50vw - 2em - 4px);
+		left: calc(50vw - 2em - 4px);
+	}
+
+	.post-5810  #step3a .angle {
+		left: -webkit-calc(50vw - 2em - 169px);
+		left: calc(50vw - 2em - 169px);
+	}
+
+	.post-5810  #step3b .angle {
+		left: -webkit-calc(50vw - 2em - 62px);
+		left: calc(50vw - 2em - 62px);
+		transform: scale(0.5);
+		-webkit-transform: scale(0.5);
+	}
+
+	.post-5810 #enterprise {
+		left: -webkit-calc(50vw - 2em - 23px);
+		left: calc(50vw - 2em - 23px);
+	}
+
+	/* CSS3 form pseudo-classes limitations */
+	.post-4898 .formTable input, .post-4898 .formTable select {
+		width: 11em;
+	}
+
+	.post-4898 table.formTable tbody th {
+		width: 3em;
+	}
+
+	/* Styling HTML5 forms */
+	.post-4472 table.formTable tbody th {
+		white-space: nowrap;
+	}
+	/* HTML5 Progress Bars */
+	.post-4016 progress.monkey {
+		width: 202px;
+		height: 40px;
+	}
+
+	.post-4016 progress.monkey::-webkit-progress-value {
+		width: 202px;
+		height: 40px;
+	}
+
+	.post-4016 progress.monkey[aria-valuenow]:before {
+		width: 202px;
+		height: 40px;
+	}
+
+	.post-4016 progress.monkey::-moz-progress-bar {
+		background-size: 202px 100%;
+	}
+
+	.post-4016 progress.monkey::-webkit-progress-value {
+		background-size: 202px 100%;
+	}
+
+	.post-4016 progress.monkey[aria-valuenow]:before {
+		background-size: 202px 100%;
+	}
+
+	.post-4016 .speedometer {
+		height: 200px;
+		width: 283px;
+		overflow: visible;
+	}
+
+	/* Box shadowing */
+	.post-3563 #intro {
+		float: none;
+		width: 100%;
+		height: inherit;
+		margin-bottom: 12px;
+	}
+
+	/* CSS Text Shadows in IE */
+	.post-3296 #pageContainer {
+		width: initial;
+		min-width: initial;
+	}
+
+	.post-3296 #intro {
+		padding: 20px 0 10px 0;
+		margin-bottom: 15px;
+	}
+
+	.post-3296 table.dataTable tr td.example {
+		height: inherit;
+		display: table-cell;
+	}
+
+	/* Text Shadowing without JS */
+	.post-2720 .test {
+		height: inherit;
+		width: 100%;
+	}
+
+	/* Border image */
+	.post-2536 #example1, .post-2536 #percentageExample {
+		margin: 26px 2px;
+		padding: 3px;
+	}
+
+	/* Matrix */
+	.post-2159 #originalExample, .post-2159 #transformedExample {
+		margin: 0;
+		transform: scale(0.8);
+		-webkit-transform: scale(0.8);
+		white-space: nowrap;
+	}
+
+	/* HSL */
+	.post-1443 blockquote.smaller {
+		margin-right: 0 !important;
+	}
+
+	/* HTML5Forms now, visibleIf */
+	.post-4728 .html5ExampleTable, .post-1251 .formTable {
+		font-size: 0.9em;
+	}
+
+	.post-4728 .html5ExampleTable th, .post-1251 .formTable th {
+		white-space: nowrap;
+	}
+
+	.post-4728 .html5ExampleTable td, .post-1251 .formTable td {
+		vertical-align: bottom;
+	}
+
+	.post-4728 .wp-caption-text {
+		width: auto !important;
+	}
+
+	.post-1251 .formTable input, .post-1251 .formTable select {
+		width: 11em;
+	}
+
+	/* Error messages */
+	div.wf2_errorMsg {
+		max-width: 80%;
+	}
+
+	img.full-bleed.full-width, iframe.full-bleed.full-width, picture.full-bleed.full-width {
+
+		width: 100vw !important;
+	}
+}
+
+/* GPU Acceleration */
+@media only screen and (max-width: 400px) {
+	.post-5621 #frameContainer, .post-5227 #frameContainer {
+		transform: scale(0.82);
+		transform-origin: 0 0;
+		-webkit-transform: scale(0.82);
+		-webkit-transform-origin: 0 0;
+		overflow: visible;
+		white-space: nowrap;
+		left: -webkit-calc(50vw - 167px);
+		left: calc(50vw - 167px);
+	}
+	.post-5227 #finalText img {
+		left: 0;
+	}
+	
+	
+
+}
+
+/* Animated Image Masking */
+@media only screen and (max-width: 400px) {
+	.post-5621 #example1 {
+		transform: scale(0.6);
+		transform-origin: 0 0;
+		-webkit-transform: scale(0.6);
+		-webkit-transform-origin: 0 0;
+		overflow: visible;
+		white-space: nowrap;
+	}
+	.post-5621 #example2 {
+		transform: scale(0.8);
+		transform-origin: 0 0;
+		-webkit-transform: scale(0.8);
+		-webkit-transform-origin: 0 0;
+		overflow: visible;
+		white-space: nowrap;
+	}
+
+	.post-5227 #finalText img {
+		left: 0;
+	}
+}
+
+@media only screen and (max-width: 1024px) {
+	img.full-bleed.full-width, iframe.full-bleed.full-width, picture.full-bleed.full-width {
+		left: -1.1em;
+		width: -webkit-calc(100vw - 160px);
+		width: calc(100vw - 160px);
+	}
+	
+	
+	.ratio-16x9 {
+		height: calc( ( 100vw - 160px ) * 0.56);
+	}
+
+}

@@ -1,0 +1,151 @@
+.ui-resizable-helper {
+	border: 1px dotted gray;
+}
+.resizable {
+	display: block;
+	width: 480px;
+	height: 350px;
+	padding: 15px 15px 30px 15px;
+	border: 1px solid rgba(200, 200, 200, 0.4);
+	box-shadow: 5px 5px 10px rgba(128, 128, 128, 0.35);
+	border-radius: 10px;
+	overflow: hidden;
+	position: relative;
+	background: -moz-linear-gradient(65deg, rgba(226, 238, 250, 0.6), rgba(226, 238, 250, 0.9), rgba(226, 238, 250, 0.5));
+	background: -o-linear-gradient(65deg, rgba(226, 238, 250, 0.6), rgba(226, 238, 250, 0.9), rgba(226, 238, 250, 0.5));
+	background: -webkit-linear-gradient(65deg, rgba(226, 238, 250, 0.6), rgba(226, 238, 250, 0.9), rgba(226, 238, 250, 0.5));
+	background: linear-gradient(65deg, rgba(226, 238, 250, 0.6), rgba(226, 238, 250, 0.9), rgba(226, 238, 250, 0.5)) repeat scroll 0 0 rgba(226, 238, 250, 0);
+
+}
+
+body.ie9down .resizable {
+	background-color: rgba(226, 238, 250, 0.6);
+}
+
+.ui-icon-gripsmall-diagonal-se {
+    background-position: -81px -224px;
+}
+
+.resizable p {
+	text-align: right;
+	margin: 5px 10px 0 0;
+}
+
+iframe {
+	width: 100%;
+	height: 100%;
+	background: white;
+	border: none;
+}
+
+
+/*
+ * Demo iframe sizes
+ */
+.resizable.vh-demo {
+	width: 300px;
+	height: 100px;
+}
+
+.resizable.vw-demo {
+	width: 300px;
+	height: 100px;
+}
+
+
+/*
+ * A fix for lists next to an element that is floated to the left.
+ * From http://stackoverflow.com/questions/710158/why-do-my-list-item-bullets-overlap-floating-elements
+ */
+#content ul {
+    list-style: outside disc;
+    margin-left: 30px;
+}
+#content ul li {
+    position: relative;
+    left: 30px;
+    padding-right: 30px;    
+}
+
+/*
+ * iphone screenshots
+ */
+
+.entry .iphone-screenshots {
+	width: 400px;
+	height: 400px;
+	display: table;
+	margin: 0 auto;
+	border: solid 1px #cccccc;
+	position: relative;
+}
+
+
+html.touch .entry .iphone-screenshots {
+	display: none;
+}
+
+.entry .iphone-screenshots .images {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;	
+}
+
+.entry .iphone-screenshots .images img {
+	border: none;
+	display: none;
+	margin: 0 auto;
+	float: none;
+}
+
+.entry .iphone-screenshots .images img.landscape {
+	display: block;
+}
+
+.entry .iphone-screenshots:hover img.portrait {
+	display: block;
+}
+
+.entry .iphone-screenshots:hover img.landscape {
+	display: none;
+}
+
+
+.entry .iphone-screenshots p span {
+	display: block;
+	width: 400px;
+	margin: 0 auto;
+	position: absolute;
+	text-align: center;
+	left: 0;
+}
+
+
+.entry .iphone-screenshots p span.top {
+	top: 50px;
+}
+
+.entry .iphone-screenshots p span.bottom {
+	bottom: 50px;
+}
+
+.entry .iphone-screenshots:hover p span {
+	display: none;
+}
+
+/*
+ * hide and show stuff in mobile
+ */
+html.touch .resize-text,
+html.touch .desktop-only,
+html.no-touch .mobile-only {
+	display: none;
+}
+
+
+/* 
+ * option to make resizable iframe *not* resizable 
+ */
+.resizable.no-resize .ui-resizable-se {
+	display: none !important;
+}

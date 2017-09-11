@@ -1,0 +1,1731 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive post-951" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  cssSandpaper &#8211; a CSS3 JavaScript Library</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><script src="//code.jquery.com/jquery-1.10.2.js"></script>	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<!-- ID is 951 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; cssSandpaper &#8211; a CSS3 JavaScript Library Comments Feed" href="http://www.useragentman.com/blog/csssandpaper-a-css3-javascript-library/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel="canonical" href="http://www.useragentman.com/blog/csssandpaper-a-css3-javascript-library/" />
+<link rel='shortlink' href='http://useragentman.com/blog/tvc9P' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2Fcsssandpaper-a-css3-javascript-library%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2Fcsssandpaper-a-css3-javascript-library%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+	
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+	
+		<div id="content" class="pages bypass-block-target" tabindex="-1" role="main">
+
+						
+			<h1>cssSandpaper &#8211; a CSS3 JavaScript Library</h1>	
+			<div class="entry">		
+				<p><div id="attachmehttpwwwuseragentmancomblogwp-adminpagephpactioneditamppost951ampmessage8nt_977" style="width: 267px" class="wp-caption alignright"><a href="http://www.useragentman.com/blog/wp-content/uploads/2010/04/cssSandpaper.jpg"><img class="size-full wp-image-977 " title="cssSandpaper" src="http://www.useragentman.com/blog/wp-content/uploads/2010/04/cssSandpaper.jpg" alt="" width="257" height="257" srcset="http://www.useragentman.com/blog/wp-content/uploads/2010/04/cssSandpaper.jpg 257w, http://www.useragentman.com/blog/wp-content/uploads/2010/04/cssSandpaper-150x150.jpg 150w" sizes="(max-width: 257px) 100vw, 257px" /></a><p class="wp-caption-text">Remix of images by Parée Erica and Hans Christophersen</p></div></p>
+<p>The cssSandpaper JavaScript library looks at the stylesheets in an HTML document and, where possible, <strong>smooths out the browser differences between CSS3 properties</strong> like <code>transform</code>, <code>opacity</code>, <code>box-shadow</code> and others.  This script is not only useful for developers who want to support CSS3 in IE (which doesn&#8217;t support it in IE natively) but in other browsers which implement their own vendor-specific variants of these properties.</p>
+<p>For a good introduction to cssSandpaper and how it works under the covers, you may want to first read these blog-posts:</p>
+<ul>
+<li><a href="http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/">Cross Browser Transforms — even in IE</a>: this article talks about how why cssSandpaper was created and how it works under the hood.  It also has several interesting examples that can be seen by all modern web browsers.</li>
+<li><a href="http://www.useragentman.com/blog/2010/04/05/cross-browser-animated-css-transforms-even-in-ie">Cross-Browser <em>Animated</em> CSS Transforms — even in IE</a>: introduces scripting CSS3 properties to create some interesting visual effects.</li>
+</ul>
+<h2>How to Use</h2>
+<ol>
+<li>Download the JavaScript archive linked to at the end of this manual</li>
+<li>Put the following code in the <code>head</code> of your document<br />
+<blockquote class="code">
+<pre>&lt;script type="text/javascript" src="/path/to/shared/js/EventHelpers.js"&gt;
+&lt;/script&gt;
+&lt;script type="text/javascript" src="/path/to/shared/js/cssQuery-p.js"&gt;
+&lt;/script&gt;
+&lt;script type="text/javascript" src="/path/to/shared/js/jcoglan.com/sylvester.js"&gt;
+&lt;/script&gt;
+&lt;script type="text/javascript" src="/path/to/shared/js/cssSandpaper.js"&gt;
+&lt;/script&gt;
+</pre>
+</blockquote>
+<p>(Thanks to Zoe Gillenwater for pointing out an error in the script declarations above).
+</li>
+<li>Edit your CSS to use the properties in the <a href="#cssProperties">CSS Properties Section</a>, or use JavaScript to create scripted effects using the information from the <a href="#domProperties">DOM Manipulation Section</a>.  Note that you can speed up the loading of your pages by inserting the <code>class="cssSandpaper-noIndex"</code> attribute into link and style tags that <strong>do not</strong> have any cssSandpaper supported markup.</li>
+</ol>
+<p><a name="cssProperties"></a></p>
+<h2><a name="cssProperties"></a></h2>
+<p>Note that all supported properties except for <code>opacity</code> and <code>text-shadow</code> use the <a href="http://reference.sitepoint.com/css/vendorspecific">vendor-specific prefix</a> <code>-sand-</code>.  This is prevent interference with native implementations of these properties.</p>
+<h3>-sand-transform</h3>
+<p><!-- Begin steps --></p>
+<div class="steps">
+<h4 class="first">Description</h4>
+<p>Transforms allow developers to rotate, scale, and skew blocks of HTML via CSS.</p>
+<h4>Syntax</h4>
+<blockquote class="code">
+<pre>#container {
+   -sand-transform:  <em>&lt;function-list&gt;</em>;
+}</pre>
+</blockquote>
+<p>where <em>&lt;function-list&gt;</em> can be a space separated list of the following functions:</p>
+<table class="screenshot">
+<thead>
+<tr>
+<th>Function</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>rotate(angle)</code></td>
+<td>Rotates HTML elements.  <code>angle</code> can be in degrees (e.g. rotate(30deg)) or radians <code>rotate(1.3rad)</code></td>
+</tr>
+<tr>
+<td><code>scale(sx[, sy])</code></td>
+<td>Scales HTML elements.  <code>sx</code> and <code>sy</code> are numbers, where <code>1</code> represents the original size, <code>2</code> represents twice the size, etc.  Note that if <code>sy</code> isn&#8217;t specified, it is assumed to be equal to <code>sx</code>.  Similar functions are <code>scaleX(sx)</code> and <code>scaleY(sy)</code>.</td>
+</tr>
+<tr>
+<td><code>translate(tx, ty)</code></td>
+<td>Translates (moves horizontally and vertically) HTML elements <strong>from the object’s perspective</strong> (as opposed to the CSS <code>top</code> and <code>left</code> which moves an object from the browser&#8217;s perspective.  <code>tx</code> and <code>ty</code> are the horizontal and vertical translation offsets.   <strong>Internet Explorer support for this function was introduced in version 1.1 beta 1.</strong> For more information, visit <a href="/blog/2010/05/06/csssandpaper-now-supports-transform-translate-and-rgba-gradients/">my blog post on the subject</a>.</td>
+</tr>
+<tr>
+<td><code>skewX(ax)</code>, and <code>skewY(ay)</code></td>
+<td>These functions skew the object around the x and y axes by the specified angles in degrees or radians.<strong>Note: the <code>skew(ax, ay)</code> function, which used to work in browsers that support CSS3 Transforms natively is no longer part of the W3C CSS3 spec and is no longer supported by Firefox.</strong></td>
+</tr>
+<tr>
+<td><code>matrix(a, c, b, d, tx, ty)</code></td>
+<td>Applies a 2D transformation matrix comprised of the specified six values.  If you aren&#8217;t familiar with linear algebra and matrix arithmetic, this function will be hard to understand.  For further information, you may want to read <a href="http://en.wikipedia.org/wiki/Transformation_matrix">Wikipedia&#8217;s Transformation Matrix</a> article, although if you are mathematically challenged, you may run away from your computer screaming.</p>
+<p><strong>If you are familiar with matrix multiplication, note that c and b are reversed.</strong> This follows the way Firefox has implemented this method (i <strong>believe</strong> WebKit based browsers reverse these numbers).</td>
+</tr>
+</tbody>
+</table>
+<h4>Examples</h4>
+<ul>
+<li><a href="/tests/cssSandpaper/rotateTest.html">Rotations</a></li>
+<li><a href="/tests/cssSandpaper/skewTest.html">Skews</a></li>
+</ul>
+</div>
+<h3>text-shadow</h3>
+<p><!-- Begin steps --></p>
+<div class="steps">
+<h4 class="first">Description</h4>
+<p>This property, which is an official CSS3 property, allows developers to add text-shadows to the text that matches the selector(s) used.  Using it in conjunction with cssSandpaper allows IE 7-9 to implement the text-shadow.</p>
+<h4>Syntax</h4>
+<blockquote class="code">
+<pre>#container {
+   text-shadow:  <em>&lt;x-offset&gt; &lt;y-offset&gt; &lt;blur-radius&gt; &lt;color&gt;</em>;
+}</pre>
+</blockquote>
+<p>The <em>x-offset</em> and <em>y-offset</em> values state how many pixels horizontally and vertically the shadow is positioned with respect to the original text, while the <em>blur-radius</em> value is used to express how much the shadow is blurred (the higher the value, the more blurry it is).  All of these values can be expressed using any CSS unit of measure (e.g. <code>px</code>, <code>em</code>, etc).  The <em>color</em> can be any CSS color value, representing the color of the text.</p>
+<p>A full description of how to use text-shadows with cssSandpaper can be seen in my article <a href="/blog/2011/06/29/full-css3-text-shadows-even-in-ie/">Full CSS3 Text-Shadows — Even In IE</a>.</p>
+<h4>Examples</h4>
+<ul>
+<li><a href="/packages/cssSandpaper-1.5/tests/csssandpaper/textshadowcss3info.html">Flaming </a></li>
+<li><a href="/packages/cssSandpaper-1.5/tests/csssandpaper/textshadowline25.html">Various Other Examples</a></li>
+<li>My own example of a <a href="lawAndOrder.html">Parody of a logo from a famous TV show.</a></li>
+</ul>
+</div>
+<h3>-sand-box-shadow</h3>
+<div class="steps">
+<h4 class="first">Description</h4>
+<p><code>box-shadow</code> allows us to take a block level element and put a shadow underneath.  There can optionally set a blur factor to give a warmer effect to the shadow.</p>
+<h4>Syntax</h4>
+<blockquote class="code">
+<pre>#container {
+   -sand-box-shadow: <em>&lt;horizontal-offset&gt;</em> <em>&lt;vertical-offset&gt;</em> <em>&lt;blur-radius&gt;</em>;
+}</pre>
+</blockquote>
+<p>Note that in IE, the <code>blur-radius</code> is not currently not supported, due to a lack of support in IE&#8217;s <a href="http://msdn.microsoft.com/en-us/library/ms533014%28VS.85%29.aspx"><code>DropShadow</code> filter</a>.</p>
+<h4>Examples</h4>
+<ul>
+<li><a href="/tests/cssSandpaper/boxShadowTest.html">Box-Shadow Example</a></li>
+</ul>
+</div>
+<h3>-sand-gradient</h3>
+<div class="steps">
+<h4 class="first">Description</h4>
+<p>Gradients are gradual blends of color, and can be <code>linear</code> or <code>radial</code>:</p>
+<h4>Syntax</h4>
+<blockquote class="code">
+<pre>#container {
+   background-image: -sand-gradient(<em>&lt;type&gt;, &lt;start-point&gt;, &lt;end-point&gt;, &lt;color-stop1&gt;, &lt;color-stop2&gt;, ..., &lt;color-stopN&gt;</em>)
+}</pre>
+</blockquote>
+<p>The type can be <code>linear</code> and <code>gradient</code>, although Internet Explorer doesn&#8217;t support radial gradients at this time, due to limitations in IE&#8217;s <a href="http://msdn.microsoft.com/en-us/library/ms532997%28VS.85%29.aspx"><code>gradient</code> filter</a>.  Internet Explorer also only supports simple linear gradients (i.e. only  horizontal and vertical and only two colours).</p>
+<p>A more detailed explanation can be found in the <a href="http://dev.w3.org/csswg/css3-images/#linear-gradients">section regarding gradients</a> of the <a href="http://dev.w3.org/csswg/css3-images/">W3C&#8217;s working draft of CSS Image Values Module Level 3</a></p>
+<p>RGBA gradients are also supported. For details on what this is and how to implement RGBA gradients, please visit <a href="/blog/2010/05/06/csssandpaper-now-supports-transform-translate-and-rgba-gradients/">my blog post on the subject</a>.</p>
+<h4 style="font-size: 1em;">Caveats</h4>
+<p>Firefox version 3.6+ natively uses a very different syntax for gradients.  If <code>-sand-gradient()</code> is used in this browser, the native implementation will not be used but the a JavaScript implementation using Canvas.   cssSandpaper will be updated to use the Firefox native version in a future release.</p>
+<h4 style="font-size: 1em;">Examples</h4>
+<ul>
+<li><a href="/tests/cssSandpaper/gradientTest.html">Gradients Example Page</a></li>
+</ul>
+</div>
+<h3>opacity</h3>
+<div class="steps">
+<p><!-- Begin steps --></p>
+<h4 class="first">Description</h4>
+<p>Sets the opacity level of a block of HTML</p>
+<h4>Syntax</h4>
+<blockquote class="code">
+<pre>#container {
+   opacity:  <em>&lt;opacity-level;</em>;
+}</pre>
+</blockquote>
+<p>where <em>&lt;opacity-level&gt;</em> is a number between 0 and 1.</p>
+<h4>Examples</h4>
+<p><a href="/tests/cssSandpaper/opacityTest.html">Opacity Test</a></p>
+</div>
+<h3>RGBA, HSL and HSLA colorspaces</h3>
+<div class="steps">
+<p><!-- Begin steps --></p>
+<h4 class="first">Description</h4>
+<p>RGBA allows alpha channel support to the RGB colorspace.  HSL is an alternative, easy to use, human friendly<br />
+color-space. HSLA allows alpha channel support to the HSL colorspace.</p>
+<h4>Syntax</h4>
+<blockquote class="code">
+<pre>#container1 {
+   background: rgba(32, 45, 230, 0.5);
+}
+
+#container2 {
+   background: hsl(120, 50%, 50%);
+}
+
+#container3 {
+   background: hsla(270, 100%, 50%, 0.4);
+}
+</pre>
+</blockquote>
+<p>More information about these colorspaces can be found in the User Agent Man articles <a href="/blog/2010/05/06/csssandpaper-now-supports-transform-translate-and-rgba-gradients/">cssSandpaper Now Supports <code>transform: translate()</code> and <code>rgba()</code> Gradients</a> and <a href="/blog/2010/08/28/coding-colors-easily-using-css3-hsl-notation/" rel="next">Coding Colors Easily Using CSS3 <code>hsl()</code> Notation</a>
+</div>
+<h4>Examples</h4>
+<p><a name="domProperties"></a></p>
+<h2><a name="domProperties"></a></h2>
+<p>Developers can use cssSandpaper to manipulate <code>transform</code>, <code>opacity</code>, <code>box-shadow</code>,  and <code>background</code> gradients, using <code>cssSandpaper.setOpacity()</code>, <code>cssSandpaper.setBoxShadow()</code> and <code>cssSandpaper.setGradient()</code> respectively.  All these functions take two parameters, a DOM node, and the second is the CSS property value that is of the syntax described on my previous blog post.  For example:</p>
+<blockquote class="code">
+<pre>    cssSandpaper.setTransform(node, "rotate(25deg) scale(2, 2) skew(20deg, 20deg)");
+    cssSandpaper.setOpacity(node, 0.3);
+    cssSandpaper.setBoxShadow(node, "10px 10px 5px #ffcccc");
+    cssSandpaper.setGradient(node, "-sand-gradient(linear, center top, center bottom, from(#0000ff), to(#ff0000));")</pre>
+</blockquote>
+<h2>Known Issues</h2>
+<ul>
+<li>Please note that <strong>cssSandpaper cannot load embedded stylesheets when the page is not on a web server in all browsers.</strong>  This is because IE (and Chrome it seems) cannot use <code>XMLHttpRequest</code> object with the <code>file:</code> protocol.  Thanks to Seth Scoville for pointing this out.</li>
+<li>Note also that <strong>all stylesheet <code>link</code> tags must point to URLs on the same hostname that store cssSandpaper</strong> (i.e. both cssSandpaper and all your stylesheets must be served off the same domain).  If there are stylesheets that are on a different domain that don&#8217;t contain any cssSandpaper styles, you can keep them where they are by setting the <code>link</code> tag&#8217;s <code>class</code> attribute to <code>cssSandpaper-noIndex</code>.</li>
+<li>Currently, <strong>when a user changes the font-size in IE, the layout gets a little messed up</strong>.  This will be fixed in a future release.</li>
+<li><strong>In IE, having a transparent background or a background with an alpha channel seems to result in an ugly pixely block.</strong>  This seems like it may be a limitation of IE&#8217;s CSS filters and there may not be a workaround available.  <strike>If one does come up, I&#8217;ll definitely update (and if anyone smarter than me finds one, I would be very grateful if you would give me a few pointers ;-).</strike> It is now possible to override this behavior by using the <code>-sand-chroma-override</code> CSS property.  More details on how to use this can be seen by looking at my article on <a href="http://www.useragentman.com/blog/2011/06/29/full-css3-text-shadows-even-in-ie/">Full CSS3 Text-Shadows &#8211; Even In IE</a>.   Thanks to Robert Momary for pointing this out.</li>
+<li><strong>Some copies of Opera 10.5 have problems running the script. </strong> It is unknown why, but it seems that Opera 11 and greater don&#8217;t have this issue.</li>
+</ul>
+<h2>Future Work</h2>
+<p>cssSandpaper is a living, active project.  I intend to support more CSS3 properties as time goes on, as well as fix bugs that I or others come across.</p>
+<p>Any feedback is welcome, either as a comment on this page or emailing the address in the top left corner.</p>
+<h2>Acknowledgments</h2>
+<p>I would like to thank Weston Ruter for his <a href="http://weston.ruter.net/projects/css-gradients-via-canvas/">CSS Gradients in Canvas</a> script, since I stole many of his ideas with his permission (I will be implementing more of the advanced features of his script in a future release of cssSandpaper).  I would also like to thank  <a href="www.jcoglan.com/">James Coglan</a> for building  <a href="http://sylvester.jcoglan.com/">Sylvester</a> so I didn&#8217;t have to.</p>
+<h2>Downloads</h2>
+<p><a class="exampleLink" href="https://github.com/zoltan-dulac/cssSandpaper">Get the latest version of cssSandpaper from GitHub.</a></p>
+<p>(Thanks for Lemaire Adrien for pointing out a script tag error in some of the examples within the earlier 1.1 beta 1 release).</p>
+<div id="_mcePaste" style="position: absolute; left: -10000px; top: 304px; width: 1px; height: 1px; overflow: hidden;">
+<pre id="line1"> &lt;<span class="start-tag">a</span><span class="attribute-name"> href</span><span>="</span><a href="view-source:http://reference.sitepoint.com/css/vendorspecific">http://reference.sitepoint.com/css/vendorspecific</a><span>"</span>&gt;vendor-specific prefix&lt;/<span class="end-tag">a</span>&gt; &lt;<span class="start-tag">code</span>&gt;-sand-&lt;/<span class="end-tag">code</span>&gt;</pre>
+</div>
+							</div>
+						<p class="tagged"><a href="http://www.useragentman.com/blog/csssandpaper-a-css3-javascript-library/#comments">83 Comments</a></p>
+			<div class="clear"></div>
+						
+						
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">83 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						
+						
+						<li class="comment   " id="comment-1171 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1171" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.kevadamson.com'><img alt='' src='http://2.gravatar.com/avatar/849f6186904a8f746a096379961e0cf1?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/849f6186904a8f746a096379961e0cf1?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.kevadamson.com' rel='external nofollow' class='url'>Kev Adamson</a> </strong>
+				<span class="comment_time">// Apr 28, 2010 at 6:54 pm</span>
+			</p>
+			<div class="entry">
+				<p>But gradient is currently different between FF and Webkit??</p>
+<p>Also, putting -sand- in my css &#8211; would it not be better to somehow target then actual correct syntax, so you would put border-radius and it would auto write the testing prefixes? That way, when everything is fully supported you only have to remove the JS file.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						<li class="comment   " id="comment-1166 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1166" title="Permalink to this comment">6</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.arkstudio.co.uk'><img alt='' src='http://1.gravatar.com/avatar/757d8e285308e5fc18f4539d66c2d884?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/757d8e285308e5fc18f4539d66c2d884?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.arkstudio.co.uk' rel='external nofollow' class='url'>Jon</a> </strong>
+				<span class="comment_time">// May 2, 2010 at 5:00 pm</span>
+			</p>
+			<div class="entry">
+				<p>Awesome &#8211; if it would also handle rounded corners I&#8217;d be SOLD!!!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-1257 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1257" title="Permalink to this comment">7</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 2, 2010 at 9:04 pm</span>
+			</p>
+			<div class="entry">
+				<p>I would definitely like to do that. There are many solutions for border-radius in IE, but one of the things I want for a cssSandpaper solution is that any transforms done on an object would not affect their border-radius. I think it&#8217;s doable, but a lot of work.  I will let you know if I get this done &#8230; or if anyone out there wants to help out and get a huge amount of JavaScript street cred.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-1360 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1360" title="Permalink to this comment">8</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 7, 2010 at 10:47 am</span>
+			</p>
+			<div class="entry">
+				<p>@Kev: yes, unfortunately there is a huge difference between the syntax between Firefox&#8217;s and WebKit&#8217;s syntax for gradients.  Right now, cssSandpaper uses WebKit style syntax, and uses Weston Ruter&#8217;s algorithm to implement this gradient in Firefox.  It would be nice to be able to translate WebKit&#8217;s gradient systems to Firefox&#8217;s so I can use Firefox&#8217;s native gradient, but this looks complicated. </p>
+<p>I am not exactly which syntax is going to win in the end, and is one of the reasons why I have decided to use the -sand prefix on my CSS properties and functions.  I would rather I didn&#8217;t have to, and in some cases I don&#8217;t &#8211; the opacity property is one example. For stuff like transforms and box-shadow, there doesn&#8217;t look like there is a huge difference between the syntax between the non-IE browsers, so I might just decide to allow both transform and -sand-transform.  </p>
+<p>Another question that has been asked before is whether it should respect -webkit and -moz versions of the CSS properties, the argument being it would prevent the FOUC (Flash of Unstyled CSS) that happens on object affected by -sand CSS properties before the page loads.  I am not exactly sure what the answer to that question is, but it is something to look into.</p>
+<p>This is not the first time this has come up &#8230;</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						<li class="comment   " id="comment-1453 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1453" title="Permalink to this comment">11</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.boogdesign.com/b2evo/'><img alt='' src='http://2.gravatar.com/avatar/556f7b6ad8246f13ad6edc76be170bd4?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/556f7b6ad8246f13ad6edc76be170bd4?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.boogdesign.com/b2evo/' rel='external nofollow' class='url'>Rob Crowther</a> </strong>
+				<span class="comment_time">// May 13, 2010 at 6:47 am</span>
+			</p>
+			<div class="entry">
+				<p>@zoltan Firefox gradient syntax is following the current spec, so it&#8217;s likely that this syntax will win in the end.  This is because Firefox didn&#8217;t have a release which implemented gradients until after the syntax was changed in the spec.  WebKit can&#8217;t reasonably update their own syntax now until after the spec as whole moves forward a stage in the standards process, then they can implement it in the standard format without the vendor prefix.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-1485 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1485" title="Permalink to this comment">12</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/13b32d7e70f1e218430a6b4369976b10?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/13b32d7e70f1e218430a6b4369976b10?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Skrigs </strong>
+				<span class="comment_time">// May 14, 2010 at 6:29 am</span>
+			</p>
+			<div class="entry">
+				<p>Great library.</p>
+<p>Received the following error in Chrome (5.0.375.38 beta) and Firefox (3.5.9)<br />
+under Ubuntu, while integrating its use within a GWT app through a native call.<br />
+runLists[name].add not a function for line 317.</p>
+<p>From what I have read in the last couple of minutes in your script it probably<br />
+got confused on something within in one of the stylesheets being used by GWT.<br />
+I removed any app stylesheets I defined and the error still occurred. If I get<br />
+time I will try to find the stylesheet causing the issue.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-1443 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1443" title="Permalink to this comment">13</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://hybridgarden.com'><img alt='' src='http://0.gravatar.com/avatar/fdded0fcd9a7017fc7afd7935a51c5b7?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/fdded0fcd9a7017fc7afd7935a51c5b7?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://hybridgarden.com' rel='external nofollow' class='url'>[rb]</a> </strong>
+				<span class="comment_time">// May 14, 2010 at 6:35 am</span>
+			</p>
+			<div class="entry">
+				<p>Really great idea but this concerns me:</p>
+<p>&#8220;Right now, cssSandpaper uses WebKit style syntax, and uses Weston Ruter?s algorithm to implement this gradient in Firefox.&#8221;</p>
+<p>I take that to mean that in firefox the sandpaper script still runs applying the -sand properties? If so why? I see you mention &#8220;It would be nice to be able to translate WebKit?s gradient systems to Firefox?s so I can use Firefox?s native gradient, but this looks complicated.&#8221;<br />
+Surely you should leave Firefox alone and the developer should handle the property correctly for that browser with css. Or do you mean -sand only enhances if its a version of Firefox or other browser that is less that supporting version?</p>
+<p>When I first read the article I has assumed the methodology was something like this:</p>
+<p>.box {<br />
+-moz-box-shadow: 1px 1px 1px #000; /* FF deals with it */<br />
+-webkit-box-shadow: 1px 1px 1px #000; /* webkit deals with it */<br />
+-sand-box-shadow: 1px 1px 1px #000; /* all browsers ignore but valid */<br />
+box-shadow: 1px 1px 1px #000; /* future / browsers that understand now */<br />
+}</p>
+<p>And have sandpaper only enhance browsers that are in need.</p>
+<p>Id love to use this script if it is an unobtrusive script that only adds support to browsers that dont understand the rules. But if it adds support for browsers that dont need the support I think that is a very bad idea as we would no longer be dealing with a true css3 effect.<br />
+Not to mention the fact that youd be running js for no reason and with js disabled there would be no css3 at all if you only define -sand and not the other browser specific properties.</p>
+<p>Like I said love the idea but -sand should be treated as all the other browser specific rules where the intention is in the future there will be no need for -moz, -webkit, -o, -ms, -sand and developers will simply remove the -whatever properties.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-1486 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1486" title="Permalink to this comment">14</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 14, 2010 at 10:33 am</span>
+			</p>
+			<div class="entry">
+				<p>@Skrigs: you can tell cssSandpaper to ignore link or style tags by setting their class attribute to cssSandpaper-noIndex, which may help your problem. However, if you have time, I&#8217;d be indebted to you if you could find out which rule the parser is having a problem with &#8211; it would help me bullet-proof the parsing routines and make cssSandpaper more useful.  :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-1489 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1489" title="Permalink to this comment">15</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 14, 2010 at 10:45 am</span>
+			</p>
+			<div class="entry">
+				<p>@rb: I think your concerns are valid &#8230; I also think there are some developers who would like to use only one syntax for all browsers and not write multiple vendor specific properties (especially if, like gradient, the syntax is really different).  </p>
+<p>To give both camps what we want (because I want cssSandpaper to be flexible) , would it be a good idea to make cssSandpaper configurable so that if it&#8217;s configured one way, we have the -sand properties executed only if the browser doesn&#8217;t support a vendor specific or the official CSS3 property?  Maybe the developer could do this if a class is set in the html tag perhaps (like, say <code>class="cssSandpaper-strict"</code> or something along those lines)?  </p>
+<p>This could possibly be a great way to minimize the &#8220;Flash of unstyled content&#8221; that happens sometimes with these CSS3 properties.</p>
+<p>What do you think?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-1709 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1709" title="Permalink to this comment">16</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.zomigi.com'><img alt='' src='http://0.gravatar.com/avatar/34f18d7895f390f5eabb442b6e623be5?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/34f18d7895f390f5eabb442b6e623be5?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.zomigi.com' rel='external nofollow' class='url'>Zoe Gillenwater</a> </strong>
+				<span class="comment_time">// May 25, 2010 at 2:52 pm</span>
+			</p>
+			<div class="entry">
+				<p>I can&#8217;t get the script to work, and suspect it is because your &#8220;How to Use&#8221; instructions are incomplete or out of date. I&#8217;d love some help.</p>
+<p>You list three scripts to include: cssQuery-p.js, sylvester.js, and css3helpers.js. But, css3helpers.js is not included in the download. The download also includes two additional scripts that aren&#8217;t in your instructions: cssSandpaper.js and EventHelpers.js. So I decided to just make a wild guess about which scripts to include, and it&#8217;s the four included in the download:<br />
+cssQuery-p.js<br />
+sylvester.js<br />
+cssSandpaper.js<br />
+EventHelpers.js</p>
+<p>I then added the -sand-transform declaration in the CSS as specified.</p>
+<p>But, when I load the page, I get errors about EventHelpers being undefined, and the rotation transform doesn&#8217;t work.</p>
+<p>What do I need to change? Will you please update your instructions accordingly?</p>
+<p>Thanks in advance for your help.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-1724 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1724" title="Permalink to this comment">17</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 26, 2010 at 4:53 pm</span>
+			</p>
+			<div class="entry">
+				<p>My apologies &#8230; I have fixed the script declarations since they are based on the old working version of cssSandpaper called css3helpers.js.  If you follow the instructions now, you should have no problems with the transforms.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-2165 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2165" title="Permalink to this comment">18</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://iterative.ly'><img alt='' src='http://0.gravatar.com/avatar/34a9fc8f846a8645cf4df511e8ec2c49?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/34a9fc8f846a8645cf4df511e8ec2c49?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://iterative.ly' rel='external nofollow' class='url'>Trevor Burnham</a> </strong>
+				<span class="comment_time">// Jul 3, 2010 at 2:22 pm</span>
+			</p>
+			<div class="entry">
+				<p>I&#8217;m curious: If I&#8217;m already using jQuery on my site and I want to avoid the 6k addition of cssQuery, could I just substitute jQuery as the document.querySelectorAll? The two have a very similar selector syntax, but not identical. Do you know where it would break?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment  myComment " id="comment-2181 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2181" title="Permalink to this comment">20</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jul 3, 2010 at 7:52 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Trevor: adding support for jQuery and other libraries with CSS selector engines would be ideal. It is something I will be looking into in the near future.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						
+						
+						
+						<li class="comment   " id="comment-3931 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-3931" title="Permalink to this comment">26</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.mmo-str.com'><img alt='' src='http://2.gravatar.com/avatar/2db8ffd5fb04ac8589dafe974e315583?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/2db8ffd5fb04ac8589dafe974e315583?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.mmo-str.com' rel='external nofollow' class='url'>MMO-STR</a> </strong>
+				<span class="comment_time">// Oct 13, 2010 at 9:14 am</span>
+			</p>
+			<div class="entry">
+				<p>thanks for your great works on this lib i&#8217;ll try and certanely use it on my online game site, big new potential with your crossbrowser lib ;o)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-3947 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-3947" title="Permalink to this comment">27</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Oct 13, 2010 at 1:21 pm</span>
+			</p>
+			<div class="entry">
+				<p>I have received a lot of comments about bug tracking, revision control, and other related matters.  All the libraries on this blog will be put in a proper code repository in the next few weeks. I will blog about it when this is done. In the meantime, do you have a page I could look at? It may help nail down the problem a lot more quickly.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						
+						<li class="comment   " id="comment-8125 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-8125" title="Permalink to this comment">31</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.atomic-bot.com'><img alt='' src='http://0.gravatar.com/avatar/f91d66c7918858e63a782250328e3a30?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f91d66c7918858e63a782250328e3a30?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.atomic-bot.com' rel='external nofollow' class='url'>Adam Butler</a> </strong>
+				<span class="comment_time">// Feb 12, 2011 at 12:42 pm</span>
+			</p>
+			<div class="entry">
+				<p>This is wonderful; absolutely brilliant.  Just when you think IE will yet again hamper creativity, you stumb on something like this.<br />
+Thank you!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-8200 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-8200" title="Permalink to this comment">32</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://shekhardesigner.com'><img alt='' src='http://0.gravatar.com/avatar/633526a4e1839b79f0d57745dc6086dd?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/633526a4e1839b79f0d57745dc6086dd?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://shekhardesigner.com' rel='external nofollow' class='url'>Bharat sharma</a> </strong>
+				<span class="comment_time">// Feb 14, 2011 at 7:48 am</span>
+			</p>
+			<div class="entry">
+				<p>firstly, thank you very much ? well i use css3 now ? but IE is so boring n please don&#8217;t be confuse us[&#8230;] all js file give us as fast as possible ?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-8293 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-8293" title="Permalink to this comment">33</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.ferenc-radius.nl'><img alt='' src='http://0.gravatar.com/avatar/0b2c9a36b78668a972984905972e239b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/0b2c9a36b78668a972984905972e239b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.ferenc-radius.nl' rel='external nofollow' class='url'>ferenc</a> </strong>
+				<span class="comment_time">// Feb 16, 2011 at 6:28 pm</span>
+			</p>
+			<div class="entry">
+				<p>Maybe its an idea to add border-radius support to this <a href="http://fetchak.com/ie-css3/" rel="nofollow">http://fetchak.com/ie-css3/</a> ? </p>
+<p>Or we can always use both solutions :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-8407 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-8407" title="Permalink to this comment">34</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Feb 18, 2011 at 9:54 am</span>
+			</p>
+			<div class="entry">
+				<p>@Bharat: Thank you &#8230; I think?!?!? :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-9050 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-9050" title="Permalink to this comment">35</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/46ddf5d6116b6dfd479d9e1249c09046?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/46ddf5d6116b6dfd479d9e1249c09046?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>WebbedOut </strong>
+				<span class="comment_time">// Feb 27, 2011 at 1:14 am</span>
+			</p>
+			<div class="entry">
+				<p>I wish everyone would quit being so stubborn and let us all use one standard CSS and HTML. When the standards get updated, great for everyone. It would be much easier to use one opacity call or one transform call rather than having all the vendor prefixes. What I&#8217;d really like to see is css properties for sounds. like body {background-sound: url(&#8221;)} or a:hover-sound {url(&#8221;)}, a:visited:hover-sound {url(&#8221;)}, or something along those lines. I totally agree that use of a js file isnt pure css but it does in essence add support for css to browsers that need it.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-10396 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10396" title="Permalink to this comment">37</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/d8c8de6b9d0219bbc57323b8be004a1e?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/d8c8de6b9d0219bbc57323b8be004a1e?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Budkin </strong>
+				<span class="comment_time">// Mar 22, 2011 at 7:12 pm</span>
+			</p>
+			<div class="entry">
+				<p>This is exactly what I was looking for due to IE having a different rotation origin with its filter style. I&#8217;m having a problem getting it to work locally though. First I tried to rotate some spans on my site but it would not work. I decided to run your local example files to see what I was doing wrong and noticed that the transforms weren&#8217;t being applied there either. Obviously the examples on the website work, and I have checked and re-checked the local file paths on the downloaded example and they all seem good. Any ideas? Thanks!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-10422 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10422" title="Permalink to this comment">38</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Mar 23, 2011 at 10:23 am</span>
+			</p>
+			<div class="entry">
+				<p>@Budkin: Thanks for mentioning this &#8212; it is something I forgot to mention in the documentation above and have just added it.  Unfortunately, cssSandpaper cannot load embedded stylesheets when the page is not on a web server in all browsers.  This is because IE (and Chrome it seems) cannot use <code>XMLHttpRequest</code> object with the <code>file:</code> protocol.  If I find out a way to work around this, I will definitely be adding support for it.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-11201 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11201" title="Permalink to this comment">39</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/ac149c63c54691c14413d9e74b5e7b13?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/ac149c63c54691c14413d9e74b5e7b13?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Marko </strong>
+				<span class="comment_time">// Apr 11, 2011 at 12:43 am</span>
+			</p>
+			<div class="entry">
+				<p>Have you noticed that for some reason cssSandpaper kills GPU acceleration? It kinda defeats the purpose of the library when using it for devices like iPad or Android. At least when I checked with Safari (<a href="http://mir.aculo.us/2011/02/08/visualizing-webkits-hardware-acceleration/" rel="nofollow">http://mir.aculo.us/2011/02/08/visualizing-webkits-hardware-acceleration/</a>), none of the test pages triggered GPU acceleration.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-11361 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11361" title="Permalink to this comment">40</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Apr 15, 2011 at 9:53 am</span>
+			</p>
+			<div class="entry">
+				<p>@Marko: if I understand your comment correctly, you are right in that GPU acceleration is not enabled in my animation examples because they do not use CSS3 transitions.  I am currently doing some research into implementing a transition polyfill with cssSandpaper, but it won&#8217;t be implemented for a while if at all.  It is not trivial, as you can imagine, to code this in pure JavaScript for older browsers that don&#8217;t implement transitions, and even then, cssSandpaper would have to detect if there is a native implementation and utilize that to do the acceleration.  Older browser will still be doing it the old, energy inefficient way, and Al Gore will be waving his finger at you.  :-)</p>
+<p>If GPU acceleration is important in older browsers, I would just go the &#8220;graceful degredation&#8221; route.  Polyfills are not a &#8220;solve everything&#8221; solution &#8212; they are tools that should be weighed by pros and cons to see if it is appropriate for the task at hand.  <a href="http://robertnyman.com/" rel="nofollow">Robert Nyman&#8217;s</a> excellent article <a href="http://robertnyman.com/2011/04/07/html5-and-polyfills-one-script-to-rule-them-all/" rel="nofollow">HTML5 and Polyfills &#8211; One Script to Rule Them All</a> really nails what this is all about, IMHO.</p>
+<p>Thanks for the excellent question.  Issues like there are definitely something to consider before using cssSandpaper (or any polyfill for that matter).</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-11671 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11671" title="Permalink to this comment">41</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/ac149c63c54691c14413d9e74b5e7b13?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/ac149c63c54691c14413d9e74b5e7b13?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Marko </strong>
+				<span class="comment_time">// Apr 25, 2011 at 11:07 am</span>
+			</p>
+			<div class="entry">
+				<p>Yeah, I figured you might not be using CSS3 transitions at all. Once I&#8217;ll get to the point I&#8217;ll need cssSandpaper to do transforms, I&#8217;ll probably fork cssSandpaper but I&#8217;m not promising anything :) I think cssSandpaper has all the potential to be standalone CSS3 polyfill solution and feature detection really shouldn&#8217;t be that big of a deal to implement &#8211; just borrow modernizr&#8217;s tests. Older browsers without CSS3 support are pretty much on their own and if their JS engine can&#8217;t produce smooth transition, well, there&#8217;s little anybody can do. However when it comes to mobile, then you really need CSS3 transitions because mobile devices like iPads &amp; iPhones produce horribly choppy animations when you use JS to do it but with GPU acceleration it&#8217;s really smooth :)</p>
+<p>I hate to use multiple libraries but right now the easiest way is to use modernizr with yepnope and do your own feature detection and trigger correct transition function for the element. There was this pure CSS3 library just released which would probably fit really well but right now the name just escapes me :/</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-12097 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-12097" title="Permalink to this comment">42</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/bff7273cca1853b2207ce2646cc319ee?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/bff7273cca1853b2207ce2646cc319ee?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>k.ariciu </strong>
+				<span class="comment_time">// May 8, 2011 at 7:24 am</span>
+			</p>
+			<div class="entry">
+				<p>There are fixes for rounded corners that work, and also for shadows in ie. I will try to put them together with your script , witch in amazing by the way, and hope it works. If i find something that works i&#8217;ll let you know.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-15224 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-15224" title="Permalink to this comment">43</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/3fe51f8e4d038de447543ccacb97fa5e?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/3fe51f8e4d038de447543ccacb97fa5e?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>vorex </strong>
+				<span class="comment_time">// Jul 14, 2011 at 8:21 am</span>
+			</p>
+			<div class="entry">
+				<p>I get this error on Chrome : Uncaught Error: NETWORK_ERR: XMLHttpRequest Exception 101 cssSandpaper.js:1222 and this on Firefox : uncaught exception: [Exception&#8230; &#8220;Component returned failure code: 0x80004005 (NS_ERROR_FAILURE)&#8221; nsresult: &#8220;0x80004005 (NS_ERROR_FAILURE)&#8221; location: &#8220;JS frame :: <a href="http://cloud.bake180.com/justheavenly/wp-content/themes/Superb/sandPaper/js/cssSandpaper.js" rel="nofollow">http://cloud.bake180.com/justheavenly/wp-content/themes/Superb/sandPaper/js/cssSandpaper.js</a> ::  :: line 1222&#8243; data: no]</p>
+<p>im using sandpaper transform method but didn&#8217;t work. What should I do?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-15341 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-15341" title="Permalink to this comment">44</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jul 15, 2011 at 4:30 pm</span>
+			</p>
+			<div class="entry">
+				<p>@vorex: A couple of things to try:</p>
+<p>1. Ensure that the URL for the stylesheet with the transforms that it is located on the same webserver as your copy of cssSandpaper.  If not, cssSandpaper is doing this because it violated the security model of the <code>XMLHttpRequest</code> object (which is what it uses to parse external stylesheets).</p>
+<p>2. Make sure your code is on a webserver, and that you aren&#8217;t running cssSandpaper using a <code>file:///</code> URL.  This gives unpredictable results.</p>
+<p>If these scenerios don&#8217;t fit your issue, please send me a link to an example page and I may be able to shed more light on why Chrome is throwing this exception.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-15443 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-15443" title="Permalink to this comment">45</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/4b633d8e37446afb6853e07c2aadb344?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/4b633d8e37446afb6853e07c2aadb344?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Jason </strong>
+				<span class="comment_time">// Jul 18, 2011 at 5:57 am</span>
+			</p>
+			<div class="entry">
+				<p>Hey man, thanks for this awesome features! I finally can rotate my stuffs properly across the different browser! Thumbs up!! :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-16230 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-16230" title="Permalink to this comment">46</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/c6e8fedf2bb423a3c522d62007c73604?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/c6e8fedf2bb423a3c522d62007c73604?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>ax </strong>
+				<span class="comment_time">// Aug 3, 2011 at 4:45 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi Zoltan, i&#8217;m testing this tool and having same issues as vorex. The library-Js is added to my page at the documents footer. Is there a need that they have to be inlcuded in the header? Looking forward hearing from you! :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-16309 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-16309" title="Permalink to this comment">47</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.carpaholixx.com'><img alt='' src='http://2.gravatar.com/avatar/8265ed728f9082fadaae67772d4a3557?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/8265ed728f9082fadaae67772d4a3557?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.carpaholixx.com' rel='external nofollow' class='url'>David</a> </strong>
+				<span class="comment_time">// Aug 4, 2011 at 7:24 am</span>
+			</p>
+			<div class="entry">
+				<p>Fantastic tool this by the looks of it.</p>
+<p>Is there anyway that I can reverse the way it works, basically I want it to ONLY read css that has the class &#8220;cssSandpaper-index&#8221;- reason being that I am working on an already developed site and do not want to have to test/modify the acres of existing css, and most of the style sheets are added programatically by components and I do not want to hack these to add the class attribute since updating any of these components will likely remove the hack- I just want the new css that will be used by the module I am making to use sandpaper&#8230;</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-16679 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-16679" title="Permalink to this comment">48</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/564a6f45fe61fd0fc7dc14dd2ce536d0?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/564a6f45fe61fd0fc7dc14dd2ce536d0?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Mangesh G </strong>
+				<span class="comment_time">// Aug 12, 2011 at 1:48 am</span>
+			</p>
+			<div class="entry">
+				<p>This is brilliant. And makes like a little easier for those of us in IE hell !</p>
+<p>One small typo in this:</p>
+<p>&#8212;&#8212;&#8212;&#8211;<br />
+#container3 {<br />
+   background: hsl(270, 100%, 50%, 0.4);<br />
+}<br />
+&#8212;&#8212;&#8212;&#8211;</p>
+<p>Shouldn&#8217;t the above be &#8220;hsla&#8221; instead of &#8220;hsl&#8221;</p>
+<p>Mucho thanks again.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-16780 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-16780" title="Permalink to this comment">49</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Aug 14, 2011 at 8:58 am</span>
+			</p>
+			<div class="entry">
+				<p>@ax: yes, at the moment, the script must be added to the header. I may add support to adding scripts to the body in a future release.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-16781 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-16781" title="Permalink to this comment">50</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Aug 14, 2011 at 9:01 am</span>
+			</p>
+			<div class="entry">
+				<p>@David: there is a definite need for the functionality you describe (I know I have run into needing it recently), and I will be having a fix implemented in the next release (unless, of course, anyone else has done this already and wants to share with the rest of the class).</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-16783 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-16783" title="Permalink to this comment">51</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Aug 14, 2011 at 9:32 am</span>
+			</p>
+			<div class="entry">
+				<p>@Mangesh: you are absolutely correct!  Thanks for pointing out my typo.  :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-17013 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-17013" title="Permalink to this comment">52</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/564a6f45fe61fd0fc7dc14dd2ce536d0?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/564a6f45fe61fd0fc7dc14dd2ce536d0?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Mangesh G </strong>
+				<span class="comment_time">// Aug 18, 2011 at 1:37 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi Zoltan,</p>
+<p>Once again thanks for the amazing work on this.</p>
+<p>Unfortunately I am running into a few more issues and am not sure if its me or a limitation of cssSandpaper.</p>
+<p>1) Does the -sand-tranform property work for psuedo-elements?<br />
+   for example:</p>
+<p>   /* div:after or dif::after */<br />
+   div:after {<br />
+      content: &#8221;;<br />
+      width: 100px;<br />
+      height: 100px;<br />
+      position: absolute;<br />
+      left: 10px; top: 10px;<br />
+      background-color: white;<br />
+      border: 1px solid #efefef;<br />
+      border-radius: 3px;</p>
+<p>      -sand-transform: skew(10deg, 10deg);</p>
+<p>   }</p>
+<p>2) I could not get skew() to work unless I add the second parameter.<br />
+   eg:<br />
+   This did not work: transform: skew(10deg);<br />
+   But this works: transform: skew(10deg, 0deg);</p>
+<p>   This is not a big deal once I knew the workaround &#8211; but took a while for me to figure out why i wasn&#8217;t working for me.</p>
+<p>3) Lastly, there is a JS exception if a rule is defined without any styles, like so:</p>
+<p>   div {}</p>
+<p>   I forget the line number, but the function that was parsing and tokenizing the css rules was failing because it did not find any value. The following seemed to work around this issue:</p>
+<p>   div {   } /* add a space */</p>
+<p>   (During development I create CSS selectors with empty rules and use firebug/chrome dev tool to fine-tune my CSS rules)</p>
+<p>Thanks<br />
+Mangesh</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-17586 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-17586" title="Permalink to this comment">53</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.pessimo.ch'><img alt='' src='http://0.gravatar.com/avatar/395867bdedf0199f13f6a4a00ae84f39?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/395867bdedf0199f13f6a4a00ae84f39?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.pessimo.ch' rel='external nofollow' class='url'>Marco</a> </strong>
+				<span class="comment_time">// Aug 27, 2011 at 7:47 am</span>
+			</p>
+			<div class="entry">
+				<p>LOVE YOU!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-17813 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-17813" title="Permalink to this comment">54</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/c5111a59102f9670e73639f8d49668b9?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/c5111a59102f9670e73639f8d49668b9?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Baddy </strong>
+				<span class="comment_time">// Sep 1, 2011 at 4:14 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi Zoltan,<br />
+i&#8217;m trying out the rotate function and somehow I always get the same error as Vorex.</p>
+<p>This is the error I got on Firefox:<br />
+uncaught exception: [Exception&#8230; &#8220;Component returned failure code: 0x80004005 (NS_ERROR_FAILURE)&#8221; nsresult: &#8220;0x80004005 (NS_ERROR_FAILURE)&#8221; location: &#8220;JS frame :: <a href="http://kunde6.1xinternet.de/sites/kunde6.1xinternet.de/themes/thoss/js/cssSandpaper.1.2/shared/js/cssSandpaper.js?k" rel="nofollow">http://kunde6.1xinternet.de/sites/kunde6.1xinternet.de/themes/thoss/js/cssSandpaper.1.2/shared/js/cssSandpaper.js?k</a> ::  :: line 1773&#8243; data: no]</p>
+<p>Everything is located on the same webserver. Do you have any idea why this is happening?</p>
+<p>I would love to use your sandpaper solution, as is seems to be the best solution for IE out there :)</p>
+<p>Best regards from Germany,<br />
+Baddy</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-17828 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-17828" title="Permalink to this comment">55</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.pessimo.ch/PrintROOM'><img alt='' src='http://0.gravatar.com/avatar/395867bdedf0199f13f6a4a00ae84f39?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/395867bdedf0199f13f6a4a00ae84f39?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.pessimo.ch/PrintROOM' rel='external nofollow' class='url'>Marco</a> </strong>
+				<span class="comment_time">// Sep 1, 2011 at 11:16 am</span>
+			</p>
+			<div class="entry">
+				<p>I just added your css sand paper to my site, but, everytime any page loads it loads, it firsts appear not transformed, then after one second or so, your transformations are displayed. I was just wandering is this is a normal issue or if I cand do something to avoid it.<br />
+Anyway, thanks for the fantastic script!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-17882 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-17882" title="Permalink to this comment">56</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Sep 2, 2011 at 8:01 am</span>
+			</p>
+			<div class="entry">
+				<p>This problem is always due cssSandpaper trying to access something on a different server &#8212; whether or not it <em>should</em> be is the question.  Check all your <code>link</code> tags, even the non-stylesheet ones, and see if they are not on the same server (it may be a bug with non-stylesheet links).  </p>
+<p>It would really help if you had an example for me to look at with this issue.  Please reply here, or, if you don&#8217;t want the URL public, send me an email and I will take a look.  :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-18377 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-18377" title="Permalink to this comment">57</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/ccabe13cd3151cebd3753254ac8bd60a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/ccabe13cd3151cebd3753254ac8bd60a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>theUtilitariat </strong>
+				<span class="comment_time">// Sep 9, 2011 at 3:01 pm</span>
+			</p>
+			<div class="entry">
+				<p>This looks great and like a lot of work. Thank you.<br />
+How hard would it be to have the rotation happen around the origin as opposed to the center? It looks like I&#8217;d want to play with setMatrixFilter is that right?<br />
+Thanks again for all your work and help.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-18621 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-18621" title="Permalink to this comment">58</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/b53ca591ed29dffb5e0f672926fe66a5?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b53ca591ed29dffb5e0f672926fe66a5?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>harsh </strong>
+				<span class="comment_time">// Sep 12, 2011 at 5:01 pm</span>
+			</p>
+			<div class="entry">
+				<p>hi zoltan..<br />
+first of all i&#8217;d like to thank you for making our work easy.<br />
+second of all when i embedded this code in my web page there were two catastrophical( not really;D ) errors i got. </p>
+<p>1. i used online google font api on my page to make a better typography. And after i embedded your code there were no effects seen on the elements then after i removes link tag of google font api rotation function worked as it should.(now i don&#8217;t have beautiful typography).</p>
+<p>2.after removing the link tag of google font api which looks like</p>
+<p> everything went fine in chrome and opera but when i run the same page on ie6 my absolute and relative positioning of those divs to which i had applied &#8216;sand box transform&#8217; got messed up.</p>
+<p>have any clue..? what might be wrong?<br />
+and thanks again..<br />
+;D</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-19337 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-19337" title="Permalink to this comment">59</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://ashesandwater.com'><img alt='' src='http://1.gravatar.com/avatar/a842a78d511eedce32df7274b789dcdb?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/a842a78d511eedce32df7274b789dcdb?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://ashesandwater.com' rel='external nofollow' class='url'>d-ashes</a> </strong>
+				<span class="comment_time">// Sep 22, 2011 at 2:01 pm</span>
+			</p>
+			<div class="entry">
+				<p>Great idea and I&#8217;m hoping it fits our need, but I feel like I&#8217;m missing something pretty basic when it comes to DOM manipulation. I&#8217;m attempting to apply rotation with ccsSandPaper.setTransform on a mouse click but any call to cssSandpaper.setTransform says that no such function exists in the object. Writing out the object shows it only has the .init() method applied to it, there are no other public methods listed. All of the resource files load correctly and the init function runs. Am I missing something?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-19343 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-19343" title="Permalink to this comment">60</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://ashesandwater.com'><img alt='' src='http://1.gravatar.com/avatar/a842a78d511eedce32df7274b789dcdb?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/a842a78d511eedce32df7274b789dcdb?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://ashesandwater.com' rel='external nofollow' class='url'>d-ashes</a> </strong>
+				<span class="comment_time">// Sep 22, 2011 at 2:51 pm</span>
+			</p>
+			<div class="entry">
+				<p>Nevermind, I&#8217;d somehow ended up with a download of the v1 beta. All better now!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-19506 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-19506" title="Permalink to this comment">61</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Sep 24, 2011 at 2:24 pm</span>
+			</p>
+			<div class="entry">
+				<p>@harsh: The google font API creates stylesheets that are on Google&#8217;s servers, which cssSandpaper will have an issue with.  I am working on making cssSandpaper work with third party stylesheets and will publish the results soon.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-19507 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-19507" title="Permalink to this comment">62</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Sep 24, 2011 at 2:27 pm</span>
+			</p>
+			<div class="entry">
+				<p>@theUtilitariat: Until I implement the <code>transform-origin</code> CSS3 property, you may have to use translations to simulate this.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-20400 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-20400" title="Permalink to this comment">63</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/1bc2929a3ee1690bf7bd438dd6704df8?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/1bc2929a3ee1690bf7bd438dd6704df8?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Ian </strong>
+				<span class="comment_time">// Oct 5, 2011 at 5:14 pm</span>
+			</p>
+			<div class="entry">
+				<p>I&#8217;m having success with the script, although some of my other head elements are interfering so I have to figure out what&#8217;s going on there.</p>
+<p>But more importantly: I&#8217;m trying to rotate a 24-bit png in IE and the result pretty ugly.  All the transparency is lost and it&#8217;s rendered as a black blob. </p>
+<p>I thought that your -sand-chroma-override fix might work, but it&#8217;s not doing anything. I&#8217;m either misinterpreting what it&#8217;s supposed to be doing, or not doing it right…</p>
+<p>Is there any fix to IE&#8217;s poor handling of 8-bit transparency and filters?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-20650 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-20650" title="Permalink to this comment">64</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/be953e78b03847ffcaac1c30c66d6136?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/be953e78b03847ffcaac1c30c66d6136?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Sridhar </strong>
+				<span class="comment_time">// Oct 9, 2011 at 2:22 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi Zoltan, kudos on the great work. I am pretty new to front-end development. Can you please let me know whether we can develop a cross-browser 3D card flip [http://24ways.org/2010/intro-to-css-3d-transforms] using csssandpaper?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-20995 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-20995" title="Permalink to this comment">65</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Oct 12, 2011 at 7:37 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Ian: There is a way of fixing this using the <a href="http://msdn.microsoft.com/en-us/library/ms532969%28v=vs.85%29.aspx" rel="nofollow">AlphaImageLoader</a> filter.  It does get a bit involved though. Do you have an example you can share that I can look at?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-21412 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-21412" title="Permalink to this comment">66</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/084f1925db9d6309adc213f4a9b23663?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/084f1925db9d6309adc213f4a9b23663?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Vincent </strong>
+				<span class="comment_time">// Oct 17, 2011 at 6:07 am</span>
+			</p>
+			<div class="entry">
+				<p>Hello, </p>
+<p>This is an amazing library.<br />
+But unfortunately I have a problem in IE.<br />
+When I rotate a div, the child elements (that are positioned absolute) do not rotate with the parent div. </p>
+<p>Do you know how I can fix this? </p>
+<p>Thanks</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-21424 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-21424" title="Permalink to this comment">67</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Oct 17, 2011 at 8:13 am</span>
+			</p>
+			<div class="entry">
+				<p>@Vincent: Unfortunately, this is a known issue with the current version of cssSandpaper.  The happens because the Matrix Visual Filter, which is what cssSandpaper uses in IE to simulate CSS3 transforms, doesn&#8217;t rotate child containers that are positioned absolutely when the parent isn&#8217;t.   A workaround for this issue is to make some IE specific CSS rules (using, for example, <a href="http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/" rel="nofollow">Paul Irish’s Conditional CSS Pattern</a>) to translate the child nodes separately in IE.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-38300 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-38300" title="Permalink to this comment">69</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.beetlesales.com'><img alt='' src='http://2.gravatar.com/avatar/5c96e64ea1ba63f69b1da685525760ad?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/5c96e64ea1ba63f69b1da685525760ad?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.beetlesales.com' rel='external nofollow' class='url'>Thomas</a> </strong>
+				<span class="comment_time">// Mar 8, 2012 at 10:12 pm</span>
+			</p>
+			<div class="entry">
+				<p>This would be an alternative to web browser&#8217;s standard syntax&#8217;s if it had the &#8220;key-frame&#8221; option available.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-43280 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-43280" title="Permalink to this comment">70</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://designmybox.com'><img alt='' src='http://1.gravatar.com/avatar/78c20423089a8cf7a76aaee6c25fdb44?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/78c20423089a8cf7a76aaee6c25fdb44?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://designmybox.com' rel='external nofollow' class='url'>Raj Aggarwal</a> </strong>
+				<span class="comment_time">// Apr 17, 2012 at 12:51 am</span>
+			</p>
+			<div class="entry">
+				<p>hey i&#8217;m very impressed to show css3 examples</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-44094 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-44094" title="Permalink to this comment">71</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.sharpei-sachsen.de'><img alt='' src='http://0.gravatar.com/avatar/cc67d9c2569db35f54e8a8f8a0b0b0c1?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/cc67d9c2569db35f54e8a8f8a0b0b0c1?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.sharpei-sachsen.de' rel='external nofollow' class='url'>Joern</a> </strong>
+				<span class="comment_time">// Apr 23, 2012 at 4:04 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi,</p>
+<p>I found out, it is like Mangesh already wrote. Script will not work if you have empty &#8220;div {}&#8221; in your css. I removed them and now cssSandpaper.js works fine for me. Thank you so much for this</p>
+<p>kind regards<br />
+Joern</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-44276 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-44276" title="Permalink to this comment">72</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/07a7d64685197e4f173f2453160fbf50?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/07a7d64685197e4f173f2453160fbf50?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Arion </strong>
+				<span class="comment_time">// Apr 24, 2012 at 3:06 pm</span>
+			</p>
+			<div class="entry">
+				<p>I love the concept. Have you considered putting the project on github? It would be a lot easier for people to contribute nitpicky browser bugs, which seems ideal for a project like this.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-46071 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-46071" title="Permalink to this comment">73</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/864de42fee238a7e4cd874f3a73b2d7c?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/864de42fee238a7e4cd874f3a73b2d7c?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Brenn </strong>
+				<span class="comment_time">// May 8, 2012 at 10:28 am</span>
+			</p>
+			<div class="entry">
+				<p>It would be really helpful if you could put the CSS transform translation script into it&#8217;s own script.  I need to sometimes convert on the fly (not just from static JS) between the two.  E.g. for a user rotated object with jquery, to take the resulting matrix transform and convert it to an IE filter so that they can send it to their friends.   That way I could just convert the matrix to a sandpaper matrix and then use the converter to apply those changes across browsers.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-46141 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-46141" title="Permalink to this comment">74</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 8, 2012 at 10:35 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Brenn: I am not sure, but do you mean something like my <a href="http://www.useragentman.com/IETransformsTranslator/" rel="nofollow">IE Transform Translator</a>?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-46146 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-46146" title="Permalink to this comment">75</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 8, 2012 at 10:50 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Arion: <a href="https://github.com/zoltan-dulac/cssSandpaper" rel="nofollow">cssSandpaper has been on GitHub for a while now</a>.  Please feel free to contribute and be as nitpicky as you want!  The more eyes the better.  :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						<li class="comment   " id="comment-65521 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-65521" title="Permalink to this comment">78</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/8cee482c3d3b11c74f3d1f8993ee9e1b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/8cee482c3d3b11c74f3d1f8993ee9e1b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Dannesart </strong>
+				<span class="comment_time">// Sep 10, 2012 at 4:16 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi, csssandpaper is realy awesome!<br />
+But I&#8217;ve encountered a problem with some kind of &#8220;Access is denied&#8221; problem.<br />
+In cssSandpaper.js &#8220;req.open(httpMethod, url, isAsync);&#8221;<br />
+Any idea?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-65692 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-65692" title="Permalink to this comment">79</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Sep 10, 2012 at 10:16 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Dannesart: the CSS file has to be on the same domain as the HTML file.  This is because cssSandpaper uses AJAX to grab the stylesheet in order to parse it.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-209956 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-209956" title="Permalink to this comment">80</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://wastelandgraphics.com'><img alt='' src='http://2.gravatar.com/avatar/2b043f164c383690397b0fd45593bc1b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/2b043f164c383690397b0fd45593bc1b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://wastelandgraphics.com' rel='external nofollow' class='url'>Rory Heaney</a> </strong>
+				<span class="comment_time">// Dec 20, 2013 at 3:10 pm</span>
+			</p>
+			<div class="entry">
+				<p>does the rotate option include rotateX or rotateY for example?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-219682 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-219682" title="Permalink to this comment">81</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 4, 2014 at 7:58 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Rory: No &#8230; cssSandpaper only supports 2D transforms, since IE&#8217;s Matrix Filter  only supports it.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-885129 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-885129" title="Permalink to this comment">82</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/b9ff53ec619a3803c7ce14dfb23b8ae2?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b9ff53ec619a3803c7ce14dfb23b8ae2?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Damien B </strong>
+				<span class="comment_time">// May 1, 2015 at 9:39 am</span>
+			</p>
+			<div class="entry">
+				<p>Great Job! Thank you</p>
+<p>I can&#8217;t make it work in this case:<br />
+a css style directly applied on a html element with with style=&#8221; &#8230; &#8221; like this:</p>
+<p><code><br />
+&lt;div style="-sand-transform: rotate(45deg) skewX(15deg);"&gt; … &lt;/div&gt;<br />
+</code></p>
+<p>I don&#8217;t use an internal stylesheet in the html, but is it working in this case?</p>
+<p>And last point: rotateX and rotateY are not supported. However &#8220;rotateX(180deg)&#8221; and &#8220;rotateY(180deg)&#8221; are almost 2D functions. I see that it can be made with filter: &#8220;fliph&#8221;;-ms-filter:&#8221;fliph&#8221;; or filter: &#8220;flipv&#8221;;-ms-filter:&#8221;flipv&#8221;; It could be great if cssSandpaper could be included this 2 particular cases.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-893973 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-893973" title="Permalink to this comment">83</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 9, 2015 at 2:41 pm</span>
+			</p>
+			<div class="entry">
+				<p>@DamienL Thanks for your kind words!  Here are the answers to your questions:</p>
+<ol>
+<li>Unfortunately, cssSandpaper does not support inline styles.  It may be considered for a future release, but since I have personally not had to support IE8 and lower for almost a year in my projects, it is not a huge priority for me, since I have other projects on the go and I have to allocate my time accordingly.</li>
+<li><code>rotateX()</code> and <code>rotateY()</code> are not supported since they are technically 3D functions, and there is no way to support them using IE&#8217;s legacy visual filters in the general case.  You could use <code>scaleY(-1)</code> instead of <code>rotateX(180deg)</code> and <code>scaleX(-1)</code> instead of <code>rotateY(180deg)</code>.  These are currently supported by CSS Sandpaper.</li>
+</ol>
+<p>Also, may I also point you to my other tool, the <a href="http://www.useragentman.com/IETransformsTranslator/" rel="nofollow">IE Transform Translator</a>.  It does a great job of doing transforms in IE8 and below without JavaScript (IE9 and above does 2D transforms natively).</p>
+<p>Hope this helps!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="951" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="8dda6a3dcc" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		</div>
+		
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

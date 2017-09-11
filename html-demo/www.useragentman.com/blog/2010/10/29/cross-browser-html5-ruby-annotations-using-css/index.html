@@ -1,0 +1,910 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive post-1658" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Cross Browser HTML5 Ruby Annotations Using CSS</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><script src="//code.jquery.com/jquery-1.10.2.js"></script>	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<link type="text/css" rel="stylesheet" media="screen" href="/shared/css/ruby/ruby.css" />
+
+
+<style type="text/css">
+.rubyExample {
+	font-size: 2em;
+	text-align: center;
+}
+
+/* To ensure Japanese fonts work correctly in IE */
+.rubyExample {
+	font-family: "Arial Unicode MS", sans-serif;
+}
+</style><!-- ID is 1658 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Cross Browser HTML5 Ruby Annotations Using CSS Comments Feed" href="http://www.useragentman.com/blog/2010/10/29/cross-browser-html5-ruby-annotations-using-css/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Using CSS3-Style Transforms in IE Without JavaScript' href='http://www.useragentman.com/blog/2010/09/12/using-css3-style-transforms-in-ie-without-javascript/' />
+<link rel='next' title='The CSS3 matrix() Transform for the Mathematically Challenged' href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2010/10/29/cross-browser-html5-ruby-annotations-using-css/" />
+<link rel='shortlink' href='http://useragentman.com/blog/uaEVW' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2010%2F10%2F29%2Fcross-browser-html5-ruby-annotations-using-css%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2010%2F10%2F29%2Fcross-browser-html5-ruby-annotations-using-css%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2010/09/12/using-css3-style-transforms-in-ie-without-javascript/" rel="prev">Using CSS3-Style Transforms in IE <em>Without</em> JavaScript</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/" rel="next">The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</a> &raquo;</span>
+</div>
+
+
+			<h1>Cross Browser HTML5 Ruby Annotations Using CSS</h1>
+			<h4 class="meta">October 29th, 2010 by zoltan &middot; <a href="http://www.useragentman.com/blog/2010/10/29/cross-browser-html5-ruby-annotations-using-css/#comments">9 Comments</a></h4>
+			<div class="entry">
+				<div id="attachment_1735" class="wp-caption alignright" style="width: 419px"><a href="http://www.flickr.com/photos/eliazar/3193967863/"><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/rubyExample.jpg" alt="An example of ruby text, from a photo by Flickr user eliazar" title="screenshot" width="409" height="261" class="size-full wp-image-1619" /></a></p>
+<p class="wp-caption-text">An example of ruby text, from <a href="http://www.flickr.com/photos/eliazar/3193967863/">a photo</a> by Flickr user <a href="http://www.flickr.com/photos/eliazar/">eliazar</a>.&#8221;</p>
+</div>
+<p>When talking about <strong>Ruby Annotations</strong>, I don&#8217;t mean Ruby on Rails, or anything related to the Ruby programming language.  I am talking about <a href="http://en.wikipedia.org/wiki/Ruby_character"><strong>ruby characters</strong></a> which <strong>are used to annotate text with supplementary information.</strong>  For example if some readers wouldn&#8217;t know what the term &#8220;WWW&#8221; means, we can use ruby annotations to help them out like this:</p>
+<div class="rubyExample">
+  I love the <ruby><rb>WWW</rb><rp> （</rp><rt class="small" style="font-size: 0.37em">World Wide Web</rt><rp>） </rp></ruby>.
+</div>
+<p>The <strong>ruby base</strong> (in this case &#8220;WWW&#8221;) is annotated by <strong>ruby text</strong> (&#8220;World Wide Web&#8221;).  In this case, the ruby text appears in a small font-size above the base.  Traditionally, ruby annotations have been used in Chinese, Korean and Japanese text-books to help students of those languages sound out more complicated characters:</p>
+<div class="rubyExample japanese">
+  <ruby><rb>東京</rb><rp> （</rp><rt>とうきょう</rt><rp>） </rp></ruby>に<ruby><rb>行</rb><rp> （</rp><rt>い</rt><rp>） </rp></ruby>きたい。
+</div>
+<p>In the text above, the <strong>ruby base is written in Kanji</strong>, many of which are only readable by Japanese with a high-school education. The <strong>ruby text is written in Hiragana</strong>, which all Japanese grade-schoolers can understand. </p>
+<p>I can hear you saying to yourself <strong>&#8220;Who cares?  I&#8217;m not Japanese!  I can&#8217;t read any of it!&#8221;</strong>. Ruby annotations can also be used to help those who don&#8217;t speak the language at all.  An author can use ruby to help English speakers  pronounce Japanese &#8230; </p>
+<div class="rubyExample japanese">
+  <ruby><rb>東京</rb><rp> (</rp><rt><span class="romaji">tō kyō</span></rt><rp>) </rp></ruby> <ruby>に<rp> (</rp><rt><span class="romaji">ni</span></rt><rp>) </rp></ruby><ruby>行き<rp> (</rp><rt><span class="romaji">iki</span></rt><rp>) </rp></ruby><ruby>たい<rp> (</rp><rt><span class="romaji">tai</span></rt><rp>) </rp></ruby>。
+</div>
+<p>.. or, for that matter, any other language, like Ukrainian.</p>
+<div class="rubyExample">
+<ruby><rb>Золтан </rb><rp> (</rp><rt>zol-tan</rt><rp>)</rp></ruby> <ruby><rb>Євгенович </rb><rp> (</rp><rt>yew-hen-o-vich</rt><rp>)</rp></ruby> <ruby><rb>Гаврилюк </rb><rp> (</rp><rt>how-real-luke</rt><rp>)</rp></ruby>.
+</div>
+<p>It can also allow an author to give translations on top of foreign words.</p>
+<div class="rubyExample japanese">
+  <ruby><rb>東京 に 行き たい</rb><rp> (</rp><rt><span class="romaji">I want to go to Tokyo.</span></rt><rp>) </rp></ruby>。
+</div>
+<h2>But I Have a Hard Enough Time With English!</h2>
+<p>Ruby text can also be used for help foreign students pronounce English words that may difficult to read:</p>
+<div class="rubyExample">
+His <ruby><rb>communication </rb><rp> (</rp><rt class="phonetic">k&#601;-my<span class="long">oo</span>-n&#301;-<strong>k&#257;&#180;</strong>-sh&#601;n</rt><rp>) </rp></ruby> skills are quite bad.
+</div>
+<p>It can be also be used to help English speakers read intimidating Eastern European surnames transliterated into English:</p>
+<div class="rubyExample">
+My name is Zoltan <ruby><rb>Hawryluk</rb><rp> (pronounced: </rp><rt>how-real-luke</rt><rp>)</rp></ruby>.
+</div>
+<p>(<strong>An aside note to telemarketers:</strong> if you call my home and ask my to speak to &#8220;Mister Have &#8212;- um &#8212; uk&#8221; , &#8220;Mister Hawww &#8212; ahh &#8212; uhhh&#8221; <strong><em>or especially &#8220;Mr. Zoltar&#8221;</em></strong>, I will hang up immediately.  If you actually pronounce my name correctly, I&#8217;ll give you at least five minutes of my time.  I mean it.)</p>
+<h2>Okay, how is this coded?</h2>
+<p>Let&#8217;s take a look at the markup of the above example:</p>
+<blockquote class="code">
+<pre>
+My name is Zoltan
+&lt;ruby&gt;
+   &lt;rb&gt;Hawryluk&lt;/rb&gt;
+   &lt;rp&gt; (&lt;/rp&gt;
+   &lt;rt&gt;how-real-luke&lt;/rt&gt;
+   &lt;rp&gt;) &lt;/rp&gt;
+&lt;/ruby&gt; 
+</pre>
+</blockquote>
+<p>Let&#8217;s break down what each of these tags do:</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th>Tag</th>
+<th>Name</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>&lt;ruby&gt;</code>
+</td>
+<td>Ruby Tag</td>
+<td>Used to specify a Ruby Annotation.</td>
+</tr>
+<tr>
+<td>
+<code>&lt;rb&gt;</code>
+</td>
+<td>Ruby Base Tag</td>
+<td>Used to specify the text that is to be annotated.</td>
+</tr>
+<tr>
+<td><code>&lt;rt&gt;</code></td>
+<td>Ruby Text</td>
+<td>The actual ruby text, which contains the actual annotation.  By default, it appears above the actual text.</td>
+</tr>
+<tr>
+<td><code>&lt;rp&gt;</code></td>
+<td>Ruby Parenthesis</td>
+<td>These are displayed to browsers that cannot display ruby text, and permits graceful degradation.  It also allows the text to be copied and pasted into another document without the formatting.</td>
+</tr>
+</tbody>
+</table>
+<p>To illustrate the last point about the <code>&lt;rp&gt;</code> tag, copy and paste the following ruby text into notepad, vi or any other plain text editor:</p>
+<div class="rubyExample">
+My name is Zoltan <ruby><rb>Hawryluk</rb><rp> (pronounced: </rp><rt>how-real-luke</rt><rp>)</rp></ruby>.
+</div>
+<p>You will see the following in your text editor:</p>
+<blockquote class="code">
+<pre>
+My name is Zoltan Hawryluk (pronounced: how-real-luke).
+</pre>
+</blockquote>
+<p>This is because the of how the <code>&lt;rp&gt;</code> tags are defined:</p>
+<blockquote class="code">
+<pre>
+My name is Zoltan &lt;ruby&gt;&lt;rb&gt;Hawryluk&lt;/rb&gt;<span class="hilite">&lt;rp&gt; (pronounced: &lt;/rp&gt;</span>&lt;rt&gt;how-real-luke&lt;/rt&gt;<span class="hilite">&lt;rp&gt;)&lt;/rp&gt;</span>
+</pre>
+</blockquote>
+<h2>Browser Support</h2>
+<p>So what browsers support these tags?  Originally, the <code>&lt;ruby&gt;</code> tag was a proprietary Microsoft tag that worked in IE 5+.  Since then it has become a part of HTML5 and WebKit based browsers like Safari and Chrome now support it as well.  In order for Firefox and Opera to join the party, I <a href="http://www.useragentman.com/shared/css/ruby/screen.css">remixed a stylesheet</a> developed for <a href="http://www.princexml.com/bb/viewtopic.php?t=81">Prince XML</a> by <a href="http://www.chavchanidze.com/">George Chavchanidze</a> of Opera Software.  Below are some screenshots of how the ruby text looks in the various browsers with or without the stylesheet.</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th></th>
+<th>With stylesheet set</th>
+<th>Without stylesheet set</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>IE 6.0+</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/example-IE-with.png" alt="example screenshot with IE with stylesheet set"  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/example-IE-without.png" alt="example screenshot with IE with stylesheet set"   /></td>
+</tr>
+<tr>
+<th>Firefox 3.6+</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/example-Firefox-with.png" alt="example screenshot with Firefox with stylesheet set" title="example-IE-without"  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/example-Firefox-without.png" alt="example screenshot with Firefox with stylesheet set"   /></td>
+</tr>
+<tr>
+<th>Safari 5.0+</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/example-safari-with.png" alt="example screenshot with Safari with stylesheet set"   /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/example-safari-without.png" alt="example screenshot with Safari with stylesheet set"  /></td>
+</tr>
+<tr>
+<th>Chrome 7.0+</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/example-chrome-with.png" alt="example screenshot with Chrome with stylesheet set" title="example-IE-without"  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/example-chrome-without.png" alt="example screenshot with Chrome with stylesheet set" title="example-IE-without"  /></td>
+</tr>
+<tr>
+<th>Opera 10.63+</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/example-opera-with.png" alt="example screenshot with Opera with stylesheet set"  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/example-opera-without.png" alt="example screenshot with Opera with stylesheet set"  /></td>
+</tr>
+</tbody>
+</table>
+<p><a class="exampleLink" href="http://www.useragentman.com/shared/css/ruby/screen.css">Download the stylesheet used in the examples on this page</a></p>
+<p>I took George&#8217;s <strong>excellent</strong> work and added a few additional features:</p>
+<ul>
+<li>It tells IE to ignore the Firefox and Opera styles (since they don&#8217;t look so good in IE)</li>
+<li>It makes the font size smaller in Chrome and Safari (a personal preference).</li>
+<li>It sets the <code>&lt;ruby&gt;</code> tag&#8217;s <code>ruby-align</code> CSS property to <code>center</code>, so that IE mimics the way the WebKit browser display ruby text by default (IE&#8217;s default seems to be <code>distribute-letter</code>, which looks horrible in a lot of situations).</li>
+</ul>
+<p>Also note that without the stylesheet, the ruby text gracefully degrades in Firefox and Opera, so it is still readable, and illustrates the usefulness of the <code>&lt;rp&gt;</code> tags.  This stylesheet occasionally cause some unusual rendering in some older browsers (such as Safari 4.0 for Mac), but on the whole it does a pretty good job.</p>
+<p>Note that in order to make the stylesheet set to work correctly, you must replace the <code>&lt;body&gt;</code> tag with this variation of <a href="http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/">Paul Irish&#8217;s Conditional CSS design pattern</a>:</p>
+<blockquote class="code">
+<pre>
+&lt;!--[if lt IE 7 ]&gt; &lt;body class="ie6"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 7 ]&gt;    &lt;body class="ie7"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 8 ]&gt;    &lt;body class="ie8"&gt; &lt;![endif]--&gt;
+&lt;!--[if IE 9 ]&gt;    &lt;body class="ie9"&gt; &lt;![endif]--&gt;
+&lt;!--[if (gt IE 9)]&gt;&lt;body class="modern"&gt; &lt;![endif]--&gt;
+&lt;!--[!(IE)]&gt;&lt;!--&gt;  &lt;body class="notIE modern"&gt; &lt;!--&lt;![endif]--&gt;
+</pre>
+</blockquote>
+<p>Using this declaration of the <code>&lt;body&gt;</code> blocks the Firefox and Opera styles in IE.</p>
+<h2>Advanced Ruby Annotations</h2>
+<p>Using the stylesheet, it is possible to also <strong>break ruby text into parts (e.g. syllables) without using a separate <code>&lt;ruby&gt;</code> tag for each part</strong>.  This is done with the <code>&lt;rbc&gt;</code> (ruby base container) and <code>&lt;rtc&gt;</code> (ruby text container).  Here is an example:</p>
+<div class="rubyExample">
+His <ruby class="syllables unicodeRubyText"><rbc><rb>com</rb><rb>mu</rb><rb>ni</rb><rb>ca</rb><rb>tion </rb></rbc><rp> (</rp><rtc><rt >k&#601;m</rt><rt>myoo</rt><rt>n&#301;</rt><rt><strong>k&#257;&#180;</strong></rt><rt  >sh&#601;n</rt></rtc><rp>) </rp></ruby> skills are quite bad.
+</div>
+<p>Although Internet Explorer does not understand these new tags, it does degrade gracefully.  Here is a comparison of how IE renders the above and how Firefox does.</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th>Firefox 3.6</th>
+<th>Internet Explorer 6+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width: 50%"><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/containerFirefox.png" alt="[Screenshot of rbc/rtc tag example in Firefox]"  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/containerExplorer.png" alt="[Screenshot of rbc/rtc tag example in IE]"  /></td>
+</tr>
+</tbody>
+</table>
+<p>Here is the code that generated the example above.  </p>
+<blockquote class="code">
+<pre>
+&lt;ruby class="syllables unicodeRubyText"&gt;
+<span class="hilite">  &lt;rbc&gt;
+    &lt;rb&gt;com&lt;/rb&gt;&lt;rb&gt;mu&lt;/rb&gt;&lt;rb&gt;ni&lt;/rb&gt;&lt;rb&gt;ca&lt;/rb&gt;&lt;rb&gt;tion &lt;/rb&gt;
+  &lt;/rbc&gt;</span>
+  &lt;rp&gt; (&lt;/rp&gt;
+<span class="hilite">  &lt;rtc&gt;
+    &lt;rt&gt;k&#601;m&lt;/rt&gt;&lt;rt&gt;myoo&lt;/rt&gt;&lt;rt&gt;n&#301;&lt;/rt&gt;&lt;rt&gt;&lt;strong&gt;k&#257;&lt;/strong&gt;&lt;/rt&gt;&lt;rt&gt;sh&#601;n&lt;/rt&gt;
+  &lt;/rtc&gt;</span>
+  &lt;rp&gt;) &lt;/rp&gt;
+&lt;/ruby&gt; 
+</pre>
+</blockquote>
+<p>Note that the <code>&lt;ruby&gt;</code> tag is a member of the classes <code>syllables</code> and <code>unicodeRubyText</code>, which are defined in the stylesheet.  The <code>syllables</code> class tells the browser to separate the ruby base text into syllables, separated by the <a href="http://en.wikipedia.org/wiki/Middot">&#8220;Interpunct&#8221;</a> symbol, while the <code>unicodeRubyText</code> tells the browser to render the ruby text with a Unicode font, so that the pronunciation symbols are printed correctly (it seems that this is only a requirement in Explorer, since the other browsers handle this automatically).</p>
+<p>Here is a rundown of these advanced tags:</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th>Tag</th>
+<th>Name</th>
+<th>Function</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<code>&lt;rbc&gt;</code>
+</td>
+<td>Ruby Base Container</td>
+<td>Contains a list of <code>&lt;rb&gt;</code> tags.  This list is usually separated into syllables or some other logical order to make the text easier to read.</td>
+</tr>
+<tr>
+<td>
+<code>&lt;rtc&gt;</code>
+</td>
+<td>Ruby Text Container</td>
+<td>Contains a list of <code>&lt;rt&gt;</code> tags.  Each <code>&lt;rt&gt;</code> tag in this list corresponds to the respective <code>&lt;rb&gt;</code> tag in the <code>&lt;rtc&gt;</code> list.</td>
+</tr>
+</tbody>
+</table>
+</blockquote>
+<p>Unfortunately, there is a bug in older WebKit browsers that gives very strange results. Here are screen shots of the above code as viewed in Chrome 7.0 for Windows, with and without my stylesheet:</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th>Chrome 7.0 Windows (with stylesheet) </th>
+<th>Chrome 7.0 Windows (without stylesheet) </th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="width: 50%"><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/containerChromeWithStylesheet.png" alt="[Screenshot of rbc/rtc tag example in Chrome 7.0 With My Stylesheet]"  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/10/containerChromeWithoutStylesheet.png" alt="[Screenshot of rbc/rtc tag example in Chrome 7.0 Without My Stylesheet]"  /></td>
+</tr>
+</tbody>
+</table>
+<p>This bug appears in Safari 4.x and lower and the current version of Chrome (7.0), for both Windows and Mac.  Since this has been fixed in Safari 5.0, I am assuming that this will be fixed in the next version of Chrome as well.</p>
+<h2>Ruby CSS3 Properties</h2>
+<p>There are three main CSS3 properties that can be used today &#8230; but in Internet Explorer only.  Here are a list of them, along with additional properties that the <a href="http://www.w3.org/TR/2001/WD-css3-ruby-20010216/">W3C put in their recommendation back in 2001</a>.</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th>Property Name</th>
+<th>Description</th>
+<th>Support</th>
+<th>More Info</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ruby-align</code></td>
+<td>Affects the horizontal alignment of the Ruby Text with respect to the ruby base.   Default value is <code>auto</code> (which is the same as <code>center</code>).  Other values are <code>left</code>, <code>right</code>, as well as <code>distribute-letter</code>, <code>distribute-space</code>, <code>line-edge</code>, <code>start</code> and <code>end</code>.</td>
+<td><code>left</code>, <code>right</code>, as well as <code>distribute-letter</code>, <code>distribute-space</code>, <code>line-edge</code> work in IE5+.</td>
+<td style="white-space: nowrap">
+<ul>
+<li><a href="http://www.w3.org/International/articles/ruby/#Slide0210">W3C Reference</a>
+<li><a href="http://msdn.microsoft.com/en-us/library/ms531150%28VS.85%29.aspx">MSDN</a></li>
+<li><a href="http://www.blooberry.com/indexdot/css/properties/intl/ralign.htm">Index  DOT  Css</a></li>
+</ul>
+</td>
+</tr>
+<tr>
+<td><code>ruby-overhang</code></td>
+<td>
+Affects how the ruby text will &#8220;hang&#8221; over the ruby base if the ruby-text is wider than the ruby-base.  Valid values are <code>auto</code>, <code>none</code>, <code>whitespace</code>, <code>start</code> and <code>end</code>.</td>
+<td><code>auto</code>, <code>none</code> and <code>whitespace</code> work in IE 5+</td>
+<td>
+<ul>
+<li><a href="http://www.w3.org/International/articles/ruby/#Slide0260">W3C Reference</a>
+<li><a href="http://msdn.microsoft.com/en-us/library/ms531151%28VS.85%29.aspx">MSDN</a></li>
+<li><a href="http://www.blooberry.com/indexdot/css/properties/intl/roverhang.htm">Index  DOT  Css</a></li>
+</ul>
+</tr>
+<tr>
+<td><code>ruby-position</code></td>
+<td>Indicates where ruby text should appear relative to the base text.  Default is <code>before</code>. Other values are <code>after</code> (which makes it appear underneath the text), <code>inline</code>, <code>left</code> and <code>right</code>.</td
+
+
+<td>Only <code>above</code> and <code>inline</code> work in IE5+</td>
+<td>
+<ul>
+<li><a href="http://www.w3.org/International/articles/ruby/#Slide0180">W3C Reference</a>
+<li><a href="http://msdn.microsoft.com/en-us/library/ms531152(VS.85).aspx">MSDN</a></li>
+<li><a href="http://www.blooberry.com/indexdot/css/properties/intl/rposition.htm">Index  DOT  Css</a></li>
+</ul>
+</tr>
+</tbody>
+</table>
+<p>Hopefully the other browsers will support these eventually.</p>
+<h2>And So, In Conclusion &#8230;</h2>
+<p>Here is a quick recap of the various things you should keep in mind when using Ruby Text:</p>
+<ul>
+<li>Firefox 3.6 and Opera 10.x need the stylesheet in order to show ruby text correctly.</li>
+<li>Recent versions of Safari and Chrome don&#8217;t need it, but using the stylesheet won&#8217;t harm the display of simple ruby text.</li>
+<li>IE doesn&#8217;t need the styleheet, but if you use the stylesheet to ensure cross-browser display of ruby text, you must use the special body tag declaration above.</li>
+<li><code>&lt;rbc&gt;</code> and <code>&lt;rtc&gt;</code> are not recognized in any version of IE, but they will degrade gracefully.</li>
+<li>Ruby text inside of <code>&lt;rtc&gt;</code> tags doesn&#8217;t look right in Chrome 7 or Safari 4.  Since they do show up right in Safari 5, I assume/hope this will be fixed in the next version of Chrome.</li>
+<li>The advanced CSS3 <code>ruby-</code> properties, such as <code>ruby-align</code>, <code>ruby-overhang</code> and <code>ruby-position</code> are only supported by IE5+.</li>
+</ul>
+<h2>Additional Reading</h2>
+<ul>
+<li><a href="http://msdn.microsoft.com/en-us/library/ff460533%28v=VS.85%29.aspx">[MS-RUBY]: Internet Explorer Ruby Annotation Standards Support Document</a> from the <a href="http://msdn.microsoft.com/">MSDN Web Site</a>.
+<li><a href="http://webkit.org/blog/948/ruby-rendering-in-webkit/">Ruby Rendering in WebKit</a> from the <a href="http://webkit.org/blog/">Surfin’ Safari</a> Blog archive
+<li><a href="http://www.w3.org/TR/css3-ruby/">The W3C Recommendation document for Ruby Annotations</a>, dated 31 May 2001 with corrections made on 25 June 2008</a></li>
+<li><a href="http://www.w3.org/TR/2001/WD-css3-ruby-20010216/">The W3C CSS3 Rub Module Working Draft</a> dated 14 May 2003.</a>.  There is also <a href="http://dev.w3.org/csswg/css3-ruby/">an editor&#8217;s copy</a> dated 04 March 2010.</li>
+<li><a href="http://princecss.com/bb/viewtopic.php?f=5&#038;t=81">XHTML Ruby in Prince</a>, the forum thread where the original stylesheet was developerd.  Great to see as a reference.</li>
+</ul>
+<p><a class="exampleLink" href="http://www.useragentman.com/shared/css/ruby/screen.css">Download the stylesheet used in the examples on this page</a></p>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/technologies/css/" rel="category tag">CSS</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/css/css3/" rel="category tag">CSS3</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/" rel="category tag">HTML</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/html5/" rel="category tag">HTML5</a> &middot; <a href="http://www.useragentman.com/blog/category/internationalization/" rel="category tag">Internationalization</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" rel="category tag">Polyfills</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" rel="category tag">Ruby</a>  &middot; <a href="http://www.useragentman.com/blog/tag/bopomofo/" rel="tag">bopomofo</a>, <a href="http://www.useragentman.com/blog/tag/chinese/" rel="tag">chinese</a>, <a href="http://www.useragentman.com/blog/tag/furigana/" rel="tag">furigana</a>, <a href="http://www.useragentman.com/blog/tag/hangul/" rel="tag">hangul</a>, <a href="http://www.useragentman.com/blog/tag/hanja/" rel="tag">hanja</a>, <a href="http://www.useragentman.com/blog/tag/hiragana/" rel="tag">hiragana</a>, <a href="http://www.useragentman.com/blog/tag/i18n/" rel="tag">i18n</a>, <a href="http://www.useragentman.com/blog/tag/internationalization-2/" rel="tag">internationalization</a>, <a href="http://www.useragentman.com/blog/tag/japanese/" rel="tag">japanese</a>, <a href="http://www.useragentman.com/blog/tag/kanji/" rel="tag">kanji</a>, <a href="http://www.useragentman.com/blog/tag/katakana/" rel="tag">katakana</a>, <a href="http://www.useragentman.com/blog/tag/korean/" rel="tag">korean</a>, <a href="http://www.useragentman.com/blog/tag/multilanguage/" rel="tag">multilanguage</a>, <a href="http://www.useragentman.com/blog/tag/multilingual/" rel="tag">multilingual</a>, <a href="http://www.useragentman.com/blog/tag/ruby-2/" rel="tag">ruby</a>, <a href="http://www.useragentman.com/blog/tag/xhtml/" rel="tag">xhtml</a>, <a href="http://www.useragentman.com/blog/tag/xhtml-2-0/" rel="tag">xhtml 2.0</a></p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">9 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						<li class="comment   " id="comment-4497 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-4497" title="Permalink to this comment">1</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/a2cc1a66a21a61468465e3547c1b4cf7?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/a2cc1a66a21a61468465e3547c1b4cf7?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Chibiricky </strong>
+				<span class="comment_time">// Nov 1, 2010 at 10:46 am</span>
+			</p>
+			<div class="entry">
+				<p>Thank you very much for the very useful information!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-5037 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-5037" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://readableweb.com'><img alt='' src='http://2.gravatar.com/avatar/5fd2304e36713311943065e7e2067478?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/5fd2304e36713311943065e7e2067478?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://readableweb.com' rel='external nofollow' class='url'>Richard Fink</a> </strong>
+				<span class="comment_time">// Nov 24, 2010 at 10:28 am</span>
+			</p>
+			<div class="entry">
+				<p>As a guy who worked on IE-only intranets from 1998 to 2003, I was vaguely aware of Ruby text but until your article, I never stopped to ask exactly what the heck it was, what it did, and how it worked.<br />
+Thanks! I love consciousness-raisers like this. And English speakers have got to start climbing out of their Latin-centric sandboxes a bit &#8217;cause the latest specs are putting THE WORLD back into the WORLD WIDE WEB.<br />
+(BTW &#8211; I&#8217;m out of the USA right now with my usual email server giving me trouble on outbound. Have to use an alternate readableweb.com account. Keep an eye on your junk mail folder.)</p>
+<p>Regards,</p>
+<p>Rich</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-8383 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-8383" title="Permalink to this comment">5</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://oli.jp'><img alt='' src='http://1.gravatar.com/avatar/75690a036a5769d87b86e9c36a80357e?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/75690a036a5769d87b86e9c36a80357e?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://oli.jp' rel='external nofollow' class='url'>Oli Studholme</a> </strong>
+				<span class="comment_time">// Feb 18, 2011 at 1:59 am</span>
+			</p>
+			<div class="entry">
+				<p>I think you mean Chrome 7.0+ not Safari 7.0+ in your browser support table ;)<br />
+You might enjoy this article too: <a href="http://html5doctor.com/ruby-rt-rp-element/" rel="nofollow">http://html5doctor.com/ruby-rt-rp-element/</a></p>
+<p>HTH</p>
+<p>peace &#8211; oli</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-8465 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-8465" title="Permalink to this comment">6</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Feb 19, 2011 at 2:02 am</span>
+			</p>
+			<div class="entry">
+				<p>@Oli: Thanks for pointing out my typo.  Much appreciated.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-17370 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-17370" title="Permalink to this comment">7</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://meetdom.com'><img alt='' src='http://0.gravatar.com/avatar/6d3d64756b1a7948bbf33e9b7e7a7274?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/6d3d64756b1a7948bbf33e9b7e7a7274?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://meetdom.com' rel='external nofollow' class='url'>Dom</a> </strong>
+				<span class="comment_time">// Aug 23, 2011 at 9:49 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thanks so much for your article, it was very enlightening and I enjoyed learning from it.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-61315 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-61315" title="Permalink to this comment">8</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/116f09ae7ab46967918ffd0f2bc0170a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/116f09ae7ab46967918ffd0f2bc0170a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Nur Mohammad </strong>
+				<span class="comment_time">// Aug 15, 2012 at 4:04 pm</span>
+			</p>
+			<div class="entry">
+				<p>very much interesting n helpful. will love to follow this writer in future</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="1658" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="020e78fb48" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

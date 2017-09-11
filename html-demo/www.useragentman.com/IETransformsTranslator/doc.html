@@ -1,0 +1,1013 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" />
+
+		<title>CSS3 Transform to <code>Matrix</code> filter converter</title>
+
+
+		<link rel="stylesheet" href="css/transformToMatrix.css"
+			type="text/css" media="all" />
+		<link rel="stylesheet" href="../shared/css/ajaxDialogue.css"
+			type="text/css" media="all" />
+		<style type="text/css">
+			
+		</style>
+
+		<!-- Needed for Validation -->
+		<script type="text/javascript"
+			src="../shared/js/weston.ruter.net/webforms2/webforms2_src.js">
+		</script>
+
+		<!--[if IE ]>
+		<script type="text/javascript" src="../shared/js/ie7-2.1b4/ie7/IE8.js">
+		</script>
+		<![endif]-->
+
+
+		<script type="text/javascript" src="../shared/js/helpers.js">
+		</script>
+
+		
+		<script type="text/javascript" src="../shared/js/cssQuery-p.js">
+		</script>
+
+		<script type="text/javascript"
+			src="../shared/js/jcoglan.com/sylvester.js">
+		</script>
+
+		<script type="text/javascript" src="../shared/js/cssSandpaper.js">
+		</script>
+
+		<script type="text/javascript" src="../shared/js/config-2.0.js">
+		</script>
+
+		<script type="text/javascript" src="../shared/js/browserDetect.js">
+		</script>
+		<script type="text/javascript" src="../shared/js/conditionalCSS.js">
+		</script>
+		<script type="text/javascript" src="../shared/js/Timer.js">
+		</script>
+		<script type="text/javascript" src="../shared/js/pleaseWait.js">
+		</script>
+		<script type="text/javascript" src="../shared/js/ajaxDialogue.js">
+		</script>
+		
+		<!-- 
+		<script type="text/javascript" src="../shared/js/MathJax/MathJax.js">
+			MathJax.Hub.Config({
+			    extensions: ["tex2jax.js"],
+			    jax: ["input/TeX","output/HTML-CSS"],
+			    tex2jax: {inlineMath: [["$","$"],["\\(","\\)"]]}
+			  });	
+		</script>
+		-->
+		
+		<script type="text/javascript" src="js/transformToMatrix.js"></script>
+
+
+
+	</head>
+
+	<!--[if lt IE 7 ]> <body class="ie6"> <![endif]-->
+	<!--[if IE 7 ]>    <body class="ie7"> <![endif]-->
+	<!--[if IE 8 ]>    <body class="ie8"> <![endif]-->
+	<!--[if IE 9 ]>    <body class="ie9"> <![endif]-->
+	<!--[if (gt IE 9)|!(IE)]><!-->
+	<body class="modern">
+		<!--<![endif]-->
+
+
+		<div id="wrapper">
+			
+			<div id="header">
+				<h1 id="sitename">
+					IE's CSS3
+					<strong>Transforms Translator</strong>
+				</h1>
+				<h2 id="blurb">
+					Turn your CSS3 transforms syntax into something IE can
+					understand&#8212;without using JavaScript&#8212;to get effects like
+					rotation, scaling, and skewing.
+				</h2>
+			</div>
+			
+			<div id="content">
+			<p id="intro">
+				Below are some notes on the differences between <a href="http://www.w3.org/TR/css3-2d-transforms/">CSS3 Transforms</a> and IE's 
+				<a href="http://msdn.microsoft.com/en-us/library/ms533014%28VS.85%29.aspx">Matrix Visual Filter</a>.  
+				Information about each of the CSS3 Transform functions are available on the links at the side.
+				<a href="index.html">Go back to the Transforms Translator.</a>
+			</p>
+			
+			<div id="support">
+				<h2>
+					Supported Transform Functions
+				</h2>
+				<ul>
+					<li>
+						<code>
+							<a href="#" class="ajaxDialogue-openLayer" id="rotate-link">rotate</a>
+						</code>
+
+					</li>
+					<li>
+						<a href="#" class="ajaxDialogue-openLayer" id="scale-link"><code>
+								scale
+							</code> </a>
+					</li>
+					<li>
+						<code>
+							scaleX
+						</code>
+					</li>
+					<li>
+						<code>
+							scaleY
+						</code>
+					</li>
+					<li>
+						<a href="#" class="ajaxDialogue-openLayer" id="skew-link"><code>
+								skew
+							</code> </a>
+					</li>
+					<li>
+						<code>
+							skewX
+						</code>
+					</li>
+					<li>
+						<code>
+							skewY
+						</code>
+					</li>
+					<li>
+						<code>
+							<a href="#" class="ajaxDialogue-openLayer" id="translate-link">translate</a>
+						</code>
+
+					</li>
+					<li>
+						<code>
+							translateX
+						</code>
+					</li>
+					<li>
+						<code>
+							translateY
+						</code>
+					</li>
+					<li>
+						<a href="#" class="ajaxDialogue-openLayer" id="matrix-link"><code>
+								matrix
+							</code> </a>
+					</li>
+				</ul>
+				
+				<br /><br />
+				<p>This tool written by <a href="http://www.useragentman.com">Zoltan
+				Hawryluk</a> and 
+				<a href="http://www.zomigi.com">Zoe Mickley Gillenwater</a>.</p>
+				
+				<p>Powered by <a href="http://www.useragentman.com/blog/csssandpaper-a-css3-javascript-library/">CSS Sandpaper</a>,
+				with the help of code written by <a href="http://code.google.com/p/webforms2/">Weston Ruter</a>,
+				<a href="http://dean.edwards.name/IE7/">Dean Edwards</a>  
+				and <a href="http://www.itnewb.com/v/Creating-the-Smooth-Scroll-Effect-with-JavaScript">Andrew Johnson</a>.</p>
+			</div>
+
+			<div id="tool">
+				<div id="input">
+					
+					
+					<p>
+						This tool converts CSS3 Transform properties (which almost all
+						modern browsers use) to the equivalent CSS using Microsoft's
+						proprietary Visual Filters technology.
+					</p>
+
+					
+					<h2>
+						Differences Between the IE <code>Matrix</code> filter and CSS3 Transforms
+					</h2>
+
+					<ol>
+						<li>CSS3 transforms, by default, do transformations with respect to the center of the object, while the 
+						<code>Matrix</code> filter tries to fit the transformed object in the smallest amount of space
+						possible, as seen by the illustration below:<br />
+						
+						<table class="resultsTable">
+							<thead>
+								<tr>
+									<th>Rotate using CSS Transform</th>
+									<th>Rotate using IE <code>Matrix</code> Filter</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/03/rotateFirefox.png" /></td>
+									<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/03/rotateIE.png" /></td>
+								</tr>
+							</tbody>
+						</table>
+						
+						<strong>In order to work around this difference,</strong> the IE Transform Translator uses the width and height values
+						to move the transformed object the same position that a CSS3 Transformation would, using the <code>margin-left</code>
+						and <code>margin-top</code> properties.</li>
+						
+						<li>
+							If you want to ensure consistent positioning of the transformed
+							element, <strong>use IE with this tool</strong>. The other 
+							browsers make a very good mathematical guess on the values of
+							<code>
+								margin-left
+							</code>
+							and
+							<code>
+							margin-top</code>, while IE calculates them more accurately.  
+							However, <strong>even when using
+							IE, you may, from time to time, find you will be off by a few pixels.</strong>
+							This may be due to other CSS rules in your style sheet.
+						</li>
+						
+						<li>
+							If you do use a <code>Matrix</code> filter on an HTML element, and then use
+							another <code>Matrix</code> filter on a child node of that element, you may
+							get unexpected results (usually, the transformed element is cropped
+							unexpectedly).
+						</li>
+						
+						<li>Scaling in IE is not as good as scaling in
+						browsers that do native CSS3 transforms.  It seems that this
+						is because IE's <code>Matrix</code> filter transforms a
+						<em>raster</em> version of the original element, while the other
+						browsers seem to transform a vector version (For those who are
+						not sure what the difference is, the article
+						<a href="http://www.graphicdesignforum.com/forum/showthread.php?t=41">An explanation of Raster vs Vector</a>
+						will explain).</li>
+						
+						<li>In IE, users can select the text with a mouse inside a transformed element more
+						easily if the element is not scaled or flipped upside down. Skewing, or performing
+						multiple transforms on an element gives mixed results.</li>
+					
+
+						<li>
+							The order of the parameters of IE's <code>Matrix</code> filter
+							must be <strong>exactly</strong> as they are in the tool,
+							<strong>especially the <code>SizingMethod</code> 
+							parameter</strong>. Doing otherwise may prevent 
+							other <code>Matrix</code> filters in the same style sheet to work correctly.
+							
+						</li>
+
+
+						<li>
+							If you want to set transforms using JavaScript (i.e. doing
+							animations), it is better to use a library like
+							<a href="http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/">cssSandpaper</a>, 
+							because of the many quirks that happen when scripting Visual Filters 
+							(it is a <strong>real</strong> pain).
+						</li>
+
+						<li>
+							<strike>It is best to <strong>use IE's <code>Matrix</code> filter with solid backgrounds</strong> (i.e. a solid color or a 
+							image that doesn't have a transparency or alpha channel), otherwise the result will be a little pixelated.</strike>
+							<strong>Update: </strong> If you are transforming an object with a background that isn't a solid color, you need to 
+							<a href="http://www.useragentman.com/blog/2010/09/02/how-to-make-cleartype-font-face-fonts-and-css-visual-filters-play-nicely-together/">add a <code>Chroma</code>
+							filter before you apply the <code>Matrix</code> filter</a>.
+						</li>
+						
+						
+				
+						<li>The  <code>-ms-filter</code> property <strong>must</strong> be before the corresponding <code>filter</code>
+						rule.  The value in quotes must also be contained in <strong>one line</strong>.</li>
+
+						
+						
+						
+						<li>
+							If combining IE's <code>Matrix</code> filter with other filters in the same CSS selector (e.g. the
+							<code>
+								gradient
+							</code>
+							filter), it is important to put all the filters into one CSS
+							rule:
+						</li>
+						</ol>
+						<pre class="code" id="multipleFilters">
+#transformedObject {
+    
+   /* IE8 - must be on one line. */			 
+   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#99B4B490',EndColorStr='#99B4B490') progid:DXImageTransform.Microsoft.Matrix(M11=0.9914448613738104, M12=-0.13052619222005157, M21=0.13052619222005157, M22=0.9914448613738104, SizingMethod='auto expand')"; 
+				  
+   /* IE6,IE7 - can span multiple lines */
+    filter:  progid:DXImageTransform.Microsoft.gradient(
+                  startColorStr='#99B4B490',EndColorStr='#99B4B490')
+             progid:DXImageTransform.Microsoft.Matrix(
+                  M11=0.9914448613738104, M12=-0.13052619222005157, 
+                  M21=0.13052619222005157, M22=0.9914448613738104,
+                  sizingMethod='auto expand');
+ 			
+}							
+				</pre>
+					
+
+					<div id="errorFieldset" class="initiallyHidden fieldset">
+						<h2>
+							Error
+						</h2>
+
+						<div class="code" id="errorMsg">
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+
+			<div id="matrixFilterRow" class="initiallyHidden">
+				<div id="output">
+
+
+					<h2>
+						Step 2: Copy and paste the cross-browser CSS!
+					</h2>
+					<div id="tableWrapper">
+					<table class="resultsTable">
+						<thead>
+							<tr>
+								<th>
+									For CSS3 Savvy Browsers
+								</th>
+
+								<th>
+									For IE
+								</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							<tr>
+								<td>
+									<pre id="css3" name="css3" class="code">
+													
+								</pre>
+								</td>
+
+								<td>
+									<pre id="matrixFilter" name="matrixFilter" class="code">
+					
+								</pre>
+								</td>
+							</tr>
+						</tbody>
+
+					</table>
+					</div>
+
+					<p>To ensure you're transforms will look optimal in IE, please take 
+					a look at <a href="doc.html">our user notes</a>.  </p>
+					
+
+					
+					
+					<div id="errorFieldset" class="initiallyHidden fieldset">
+						<h2>
+							Error
+						</h2>
+
+						<div class="code" id="errorMsg">
+
+						</div>
+					</div>
+				</div>
+				<div class="clearBoth"></div>
+			</div>
+
+
+
+			<div id="config">
+				<!--
+			xml=xml/config.xml
+		-->
+			</div>
+			<div class="clearBoth"></div>
+		</div>
+
+		<div class="ajaxDialogue fieldset" id="rotate">
+
+			<h2>
+				rotate(
+				<em>angle</em>)
+			</h2>
+			<form action="">
+			<div class=" ajaxDialogue-content">
+				
+					<input type="hidden" name="doNotSubmit" value="true" />
+					<div class="ajaxDialogue-messages"></div>
+
+
+
+					<p>
+						Rotates HTML elements. The
+						<code>
+							angle
+						</code>
+						can be in degrees (e.g. <code>rotate(30deg)</code>) or <a href="http://en.wikipedia.org/wiki/Radians">radians</a> (e.g. 
+						<code>rotate(1.3rad)</code>)
+					</p>
+
+
+					<table class="dataTable">
+						<thead>
+							<tr>
+								<th>
+									<code>
+										rotate(45deg)
+									</code>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<div class="transformCanvas">
+										<div class="originalObject">
+											<p>
+												This is the object before transformation.
+											</p>
+										</div>
+										<div class="theWrapper">
+											<div id="rotateExample" class="transformedObject">
+												<p>
+													This is the object after transformation.
+												</p>
+											</div>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					
+				
+			</div>
+			<div class="buttons">
+				<input id="ajaxDialogue-close" class="ajaxDialogue-button"
+					type="submit" name="OK" value="OK" />
+			</div>
+			</form>
+		</div>
+
+		<div class="ajaxDialogue fieldset" id="scale">
+
+			<h2>
+				scale(
+				<em>sx</em>,
+				<em>sy</em>)
+			</h2>
+			<form action="">
+				<div class=" ajaxDialogue-content">
+				
+					<input type="hidden" name="doNotSubmit" value="true" />
+					<div class="ajaxDialogue-messages"></div>
+
+					<p>
+						Scales HTML elements. The parameters
+						<code>
+							sx
+						</code>
+						and
+						<code>
+							sy
+						</code>
+						are numbers, where
+						<code>
+							1
+						</code>
+						represents the original size,
+						<code>
+							2
+						</code>
+						represents twice the size,
+						<code>
+							0.5
+						</code>
+						represents half the size, etc. Note that if
+						<code>
+							sy
+						</code>
+						isn’t specified, it is assumed to be equal to
+						<code>
+							sx
+						</code>
+						. Related functions are
+						<code>
+							scaleX(sx)
+						</code>
+						(scales horizontally only) and
+						<code>
+							scaleY(sy)
+						</code>
+						(scales vertically only).
+					</p>
+
+					
+
+
+					<table class="dataTable" id="scaleTable">
+						<thead>
+							<tr>
+								<th>
+									<code>Original</code>
+								</th>
+								<th>
+									<code>
+										scaleX(1.3)
+									</code>
+								</th>
+								<th>
+									<code>
+										scaleY(1.3)
+									</code>
+								</th>
+								<th>
+									<code>
+										scale(0.5, 0.5)
+									</code>
+								</th>
+								<th>
+									<code>
+										scale(-1, 1)
+									</code>
+								</th>
+								<th>
+									<code>
+										scale(1, -1)
+									</code>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									
+										<img src="images/john.png" />
+									
+								</td>
+								<td class="wide">
+									
+										<img id="scaleXExample" src="images/john.png" />
+										
+									
+								</td>
+								<td>
+									
+										
+										
+											<img id="scaleYExample" src="images/john.png" />
+										
+									
+								</td>
+								<td class="narrow">
+									
+										
+											
+												<img id="scaleExample" src="images/john.png" />
+									
+								</td>
+								
+								<td>
+									
+										
+											
+												<img id="invertScaleXExample" src="images/john.png" />
+									
+								</td>
+								
+								<td>
+									
+										
+											
+												<img id="invertScaleYExample" src="images/john.png" />
+									
+								</td>
+								
+							</tr>
+						</tbody>
+					</table>
+
+					
+					<p>Image Source: <a href="http://commons.wikimedia.org/wiki/File:The_Beatles_in_America.JPG">Wikimedia Commons</a>.</p>
+					
+				
+				</div>
+				<div class="buttons">
+					<input id="ajaxDialogue-close" class="ajaxDialogue-button"
+						type="submit" name="OK" value="OK" />
+				</div>
+			</form>
+		</div>
+
+		<div class="ajaxDialogue fieldset" id="skew">
+
+			<h2>
+				skew(
+				<em>x-angle</em>,
+				<em>y-angle</em>)
+			</h2>
+			<form action="">
+				<div class=" ajaxDialogue-content">
+				
+					<input type="hidden" name="doNotSubmit" value="true" />
+					<div class="ajaxDialogue-messages"></div>
+
+
+
+
+					<p>
+						Skews the object around the x and y axes by the specified angles
+						in degrees or radians. If
+						<code>
+							ay
+						</code>
+						isn’t provided, it is assumed to be
+						<code>
+							0deg
+						</code>
+					</p>
+
+					<table class="dataTable">
+						<thead>
+							<tr>
+								<th>
+									<code>
+										skewX(25deg)
+									</code>
+								</th>
+								<th>
+									<code>
+										skewY(35deg)
+									</code>
+								</th>
+								<th>
+									<code>
+										skew(25deg, 35deg)
+									</code>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<div class="transformCanvas">
+										<div class="originalObject">
+											<p>
+												This is the object before transformation.
+											</p>
+										</div>
+										<div id="skewXExample" class="transformedObject">
+											<p>
+												This is the object after transformation.
+											</p>
+										</div>
+									</div>
+								</td>
+
+								<td>
+									<div class="transformCanvas">
+										<div class="originalObject">
+											<p>
+												This is the object before transformation.
+											</p>
+										</div>
+										<div id="skewYExample" class="transformedObject">
+											<p>
+												This is the object after transformation.
+											</p>
+										</div>
+									</div>
+								</td>
+
+								<td>
+									<div class="transformCanvas">
+										<div class="originalObject">
+											<p>
+												This is the object before transformation.
+											</p>
+										</div>
+										<div id="skewExample" class="transformedObject">
+											<p>
+												This is the object after transformation.
+											</p>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+
+					
+				
+				</div>
+	
+				<div class="buttons">
+					<input id="ajaxDialogue-close" class="ajaxDialogue-button"
+						type="submit" name="OK" value="OK" />
+				</div>
+			</form>
+		</div>
+
+		<div class="ajaxDialogue fieldset" id="translate">
+
+			<h2>
+				translate(
+				<em>tx</em>,
+				<em>ty</em>)
+			</h2>
+			<form action="">
+				<div class=" ajaxDialogue-content">
+				
+					<input type="hidden" name="doNotSubmit" value="true" />
+					<div class="ajaxDialogue-messages"></div>
+
+
+
+
+					<p>
+						Moves the object <code>tx</code> horizontally and <code>ty</code> vertically.
+					</p>
+
+
+					<table class="dataTable">
+						<thead>
+							<tr>
+								<th>
+									<code>
+										translateX(40px)
+									</code>
+								</th>
+								<th>
+									<code>
+										translateY(30px)
+									</code>
+								</th>
+								<th>
+									<code>
+										translate(40px, 30px)
+									</code>
+								</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>
+									<div class="transformCanvas">
+										<div class="originalObject">
+											<p>
+												This is the object before transformation.
+											</p>
+										</div>
+										<div id="translateXExample" class="transformedObject">
+											<p>
+												This is the object after transformation.
+											</p>
+										</div>
+									</div>
+								</td>
+
+								<td>
+									<div class="transformCanvas">
+										<div class="originalObject">
+											<p>
+												This is the object before transformation.
+											</p>
+										</div>
+										<div id="translateYExample" class="transformedObject">
+											<p>
+												This is the object after transformation.
+											</p>
+										</div>
+									</div>
+								</td>
+
+								<td>
+									<div class="transformCanvas">
+										<div class="originalObject">
+											<p>
+												This is the object before transformation.
+											</p>
+										</div>
+										<div id="translateExample" class="transformedObject">
+											<p>
+												This is the object after transformation.
+											</p>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+					
+				
+				</div>
+				<div class="buttons">
+					<input id="ajaxDialogue-close" class="ajaxDialogue-button"
+						type="submit" name="OK" value="OK" />
+				</div>
+			</form>
+		</div>
+
+		<div class="ajaxDialogue fieldset" id="matrix">
+
+			<h2>
+				matrix(
+				<em>a</em>,
+				<em>c</em>,
+				<em>b</em>,
+				<em>d</em>,
+				<em>tx</em>,
+				<em>ty</em>)
+			</h2>
+			<form action="">
+				<div class="ajaxDialogue-content">
+				
+					<input type="hidden" name="doNotSubmit" value="true" />
+					<div class="ajaxDialogue-messages"></div>
+
+					<p>
+						<strong>This is the hardest of all the transform
+							functions to understand</strong> unless you are mathematically gifted.
+						However, for those who are stubborn, geeky, or both, a brief
+						explanation follows. If you don't undertand everything below,
+						don't fret &mdash;
+						<strong>you'll probably never use this function.</strong>
+					</p>
+
+					<p>
+						This function is almost the direct equivalent to Microsoft's <code>Matrix</code> filter.
+						These first four values,
+						<code>
+							a
+						</code>
+						,
+						<code>
+							c
+						</code>
+						,
+						<code>
+							b
+						</code>
+						and
+						<code>
+							d
+						</code>
+						, correspond to the first four values of Microsoft <code>Matrix</code> filter,
+						<code>
+							M11
+						</code>
+						,
+						<code>
+							M12
+						</code>
+						,
+						<code>
+							M21
+						</code>
+						and
+						<code>
+							M22
+						</code>
+						. In other words, this statement
+					<pre>
+transform: matrix(<span class="hilite">1, 2, 3, 4,</span> 0, 0);
+</pre>
+
+
+					is the same as this statement:
+
+
+					<pre>
+filter: progid:DXImageTransform.Microsoft.Matrix(
+         <span class="hilite">M11=1,</span>
+         <span class="hilite">M12=3,</span>
+         <span class="hilite">M21=2,</span>
+         <span class="hilite">M22=4,</span>
+         SizingMethod='auto expand');
+</pre>
+
+					Note that
+					<code>
+						c
+					</code>
+					and
+					<code>
+						b
+					</code>
+					are out of order. This is due to a difference in Microsoft's
+					convention compared to the W3C's.
+					</p>
+					
+					<!-- <p>The resultant matrix look like this:
+\[ \left( \begin{array}{ccc}
+1 & 3 & 0 \\
+2 & 4 & 0 \\
+0 & 0 & 1 \end{array} \right)\]		
+					</p> -->
+					
+
+					<p>
+						The last two numbers,
+						<code>
+							tx
+						</code>
+						and
+						<code>
+							ty
+						</code>
+						, are the translation factors for the object. In other words, this
+						statement:
+					<pre>transform: matrix(1, 0, 0, 1, <span class="hilite">22px, 33px</span>);
+</pre>
+
+					<p>
+						is the same as this statement
+					</p>
+
+					<pre>
+transform: translate(<span class="hilite">22px, 33px</span>);
+</pre>
+
+<p>and this mathematical notation:</p>
+
+<!--
+<p>The resultant matrix look like this:
+\[ \left( \begin{array}{ccc}
+1 & 0 & 22 \\
+0 & 1 & 33 \\
+0 & 0 & 1 \end{array} \right)\]		
+					</p>
+-->
+
+					<p>
+						<strong>Note:</strong> at the time of this writing, Firefox
+						(version 3.6) requires units for
+						<code>
+							tx
+						</code>
+						and
+						<code>
+							ty
+						</code>
+						(such as
+						<code>
+							px
+						</code>
+						or
+						<code>
+							em
+						</code>
+						) which Safari 4, Opera 10.10 and Chrome 5.0 require units
+						<strong>not</strong> be supplied. At this time, this tool 
+						does <strong>not</strong> take this into account.
+					</p>
+
+
+					<p>
+						As mentioned earlier, if you aren’t familiar with 
+						linear algebra and matrix arithmetic,
+						this function will be hard to understand.
+						<strong>That's okay, because most designers will never
+							need this function</strong>. For further information, you may want to read
+						<a href="http://en.wikipedia.org/wiki/Transformation_matrix">Wikipedia’s
+							Transformation Matrix</a> article, although if you are mathematically
+						challenged, you may run away from your computer screaming.
+					</p>
+
+
+
+
+
+					
+				
+				</div>
+				<div class="buttons">
+					<input id="ajaxDialogue-close" class="ajaxDialogue-button"
+						type="submit" name="OK" value="OK" />
+				</div>
+			</form>
+			
+			</div>
+		</div>
+
+		<div id="pleaseWait-darkBackground"></div>
+		<div id="pleaseWait-message">
+			Please Wait.
+		</div>
+
+	</body>
+</html>

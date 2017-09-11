@@ -1,0 +1,1158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive has-jquery post-6843" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Using WEBP/JPEG 2000/JPEG-XR/APNG Now With Picturefill and Modernizr</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css" />
+
+<link rel="stylesheet" type="text/css" href="/css/6688.css" />
+<link rel="stylesheet" type="text/css" href="/css/6843.css" /> 
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.0/jquery-ui.js"></script>
+<script src="/js/6688.js"></script>
+
+<script src="/tests/html5ImageConverter/js/modernizr.custom.29822.js"></script>
+ <!-- ID is 6843 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Using WEBP/JPEG 2000/JPEG-XR/APNG Now With Picturefill and Modernizr Comments Feed" href="http://www.useragentman.com/blog/2015/01/14/using-webp-jpeg2000-jpegxr-apng-now-with-picturefill-and-modernizr/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Fixing Cross-Browser Issues With CSS3 Viewport Units in IE9+ and Safari for iOS' href='http://www.useragentman.com/blog/2014/09/24/fixing-cross-browser-issues-with-css3-viewport-units-in-ie9-and-safari-for-ios/' />
+<link rel='next' title='Augment Photos With CSS3 matrix3d() Transforms' href='http://www.useragentman.com/blog/2015/07/16/augment-photos-with-css3-matrix3d-transforms/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2015/01/14/using-webp-jpeg2000-jpegxr-apng-now-with-picturefill-and-modernizr/" />
+<link rel='shortlink' href='http://useragentman.com/blog/eVQjc' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2015%2F01%2F14%2Fusing-webp-jpeg2000-jpegxr-apng-now-with-picturefill-and-modernizr%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2015%2F01%2F14%2Fusing-webp-jpeg2000-jpegxr-apng-now-with-picturefill-and-modernizr%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2014/09/24/fixing-cross-browser-issues-with-css3-viewport-units-in-ie9-and-safari-for-ios/" rel="prev">Fixing Cross-Browser Issues With CSS3 Viewport Units in IE9+ and Safari for iOS</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2015/07/16/augment-photos-with-css3-matrix3d-transforms/" rel="next">Augment Photos With CSS3 matrix3d() Transforms</a> &raquo;</span>
+</div>
+
+
+			<h1>Using WEBP/JPEG 2000/JPEG-XR/APNG Now With Picturefill and Modernizr</h1>
+			<h4 class="meta">January 14th, 2015 by zoltan &middot; <a href="http://www.useragentman.com/blog/2015/01/14/using-webp-jpeg2000-jpegxr-apng-now-with-picturefill-and-modernizr/#comments">11 Comments</a></h4>
+			<div class="entry">
+				<div class="importantNotes">
+Some of this demos require a browser that supports WEBP, JPEG 2000 or JPEG-XR in order to show the differences between these file formats and JPEG and PNG.  At the time this blog post was written (Jan 2015) none of these formats are supported by Firefox.  However, in the spirit of progressive enhancement, all the code samples have fallbacks to JPEG and PNG.  This post also describes how to use mozjpeg to improve the appearance of JPEG images.
+</div>
+<div id="dice-example" class="resizable alignleft">
+<iframe src="/tests/html5ImageConverter/examples/dice-compare/dice.html"><br />
+</iframe></p>
+<p><span class="resize-text">Drag the ball around or </span><a href="/tests/html5ImageConverter/examples/dice-compare/dice.html">open demo in a new window</a></p>
+</div>
+<p>The demo on the left (which uses <a href="http://codyhouse.co/gem/css-jquery-image-comparison-slider/">Claudia Romano&#8217;s amazing Image Comparison Slider</a>) contains <strong>two alpha channeled images</strong> of dice placed on top of a multicolor background image.  If you are looking at it in a browser that supports alternate image formats (i.e. <strong>IE9+, Chrome 9+</strong> and modern versions of <strong>Safari</strong> and <strong>Opera 11+</strong>) you&#8217;ll see that the image on the <strong>left hand side is smaller byte-wise</strong> than the image on the right.  This is because the left-hand image is using an image format that supports <strong>alpha channeling and lossy compression at the same time</strong>.  Use the slider to compare the two images and you&#8217;ll see the visual differences between them are negligible.  This demo is just one example of how you can use the <strong>HTML5 <code>&lt;picture&gt;</code> element to detect what kind of alternate image format</strong> (if any) your browser supports and serve the one that uses up the least amount of bandwidth.  You&#8217;ll also notice that if you resize the iframe that, as the demo&#8217;s viewport grows, the browser will load larger versions of the image, which is another great feature of the <code>&lt;picture&gt;</code> element.</p>
+<p>Although Blink based browsers like Chrome and Opera support <code>&lt;picture&gt;</code> natively, other browsers currently don&#8217;t.  The excellent <a href="https://github.com/scottjehl/picturefill">picturefill polyfill</a> had up until recently only supported <strong>GIF, PNG, JPEG, WEBP and SVG</strong>, so I added <strong>JPEG-2000, JPEG-XR and APNG</strong> to the mix so that developers could take advantage of these alternate image formats today (thanks to the picturefill team for accepting my pull request!)  This blog post will explain how to use picturefill or modernizr to use these formats, why you would want to use these image formats in your web projects, and what tools you can use to generate them.</p>
+<h2>More Image Formats? Why Should I Bother?</h2>
+<p>If you have been doing web development for a while, you have come across a few problems with the traditional image formats.  Let&#8217;s go over them here and see how the new image formats address them:</p>
+<h3>Reducing Blocky Artifacts in Highly Compressed Images</h3>
+<p>JPEGs images have a lot of unacceptable blocky artifacting the more you compress the file, due to the limitations of the way the JPEG format compresses the images.  <strong>WEBP, JPEG-2000 and JPEG-XR</strong> use different compression algorithms that (in general) <strong>look better the more the images are compressed.</strong>  To illustrate this, move the slider on CN Tower demo below:</p>
+<div id="cn-tower-example" class="resizable aligncenter">
+<iframe src="/tests/html5ImageConverter/examples/cn-tower-retina/cn-tower.html"><br />
+</iframe></p>
+<p><span class="resize-text">Drag the ball around or </span><a href="/tests/html5ImageConverter/examples/cn-tower-retina/cn-tower.html">open demo in a new window</a></p>
+</div>
+<p>Here are some browser screenshots that to show the difference between the JPEG, JPEG 2000, JPEG-XR and WEBP:</p>
+<table class="dataTable screenshots">
+<thead>
+<tr>
+<th>ImageMagick<br />encoded<br />JPEG (Firefox)</th>
+<th>JPEG 2000<br />(Safari)</th>
+<th>JPEG-XR<br />(IE9)</th>
+<th>WEBP<br />(Chrome)</th>
+</tr>
+</thead>
+<tbody>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2015/01/cn-tower-jpg.png" alt="cn-tower-jpg" width="140" height="140" class="alignnone size-full wp-image-6929" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2015/01/cn-tower-jp2.png" alt="cn-tower-jp2" width="140" height="140" class="alignnone size-full wp-image-6928" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2015/01/cn-tower-jxr.png" alt="cn-tower-jxr" width="140" height="140" class="alignnone size-full wp-image-6930" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2015/01/cn-tower-webp.png" alt="cn-tower-webp" width="140" height="140" class="alignnone size-full wp-image-6931" />
+</td>
+</tbody>
+</table>
+<p><em>(Note that since the HTML <code>&lt;picture&gt;</code> element supports different renditions of the image at different breakpoints, I created three different renditions for each of the file formats.  You can <a href="/tests/html5ImageConverter/examples/cn-tower-retina/cn-tower.html">open the demo in a new window</a> in a desktop browser and resize the browser window to see them clearly, or just simply resize the above iframe)</em></p>
+<p>If you are using Chrome, Safari, Opera or Internet Explorer 9+, you will see <strong>JPEG artifacts on the right-hand side</strong> of the demo (especially in the clouds), while the <strong>left hand side doesn&#8217;t have them.</strong>  For this demo, I compressed the CN Tower JPEG using <a href="http://www.imagemagick.org/">ImageMagick</a> with a quality value of 20% and then compressed WEBP, JPEG-2000 and JPEG-XR images to the same file size as the JPEG image (or lower).  If you resize the iframe (or open the demo in a new window and resize the browser window) you will note that there are different image renditions at different breakpoints, and that this artifacting appears in all of the JPEG renditions.</p>
+<p>Unfortunately, Firefox doesn&#8217;t support any of the alternate image formats at the moment as have opted, in the short term, to create a more optimized JPEG compression library, <a href="https://github.com/mozilla/mozjpeg">mozjpeg</a> (in the long term, they are apparently looking into supporting <a href="http://people.xiph.org/~xiphmont/demo/daala/update1.shtml">Daala</a> but this has not been implemented at the time of I am writing this).  To see how well mozjpeg works, I downloaded a <a href="https://github.com/pornel/mozjpeg/releases/tag/v2.0.1">precompiled binary</a> of mozjpeg for my Mac (since I had a huge amount of trouble compiling it from the source) and although the results are better, there is still a little bit of artifacting that remains in the JPEG renditions:</p>
+<div id="cn-tower-example-mozjpeg" class="resizable aligncenter">
+<iframe src="/tests/html5ImageConverter/examples/cn-tower-retina-mozjpeg/cn-tower.html"><br />
+</iframe></p>
+<p><a href="/tests/html5ImageConverter/examples/cn-tower-retina-mozjpeg/cn-tower.html">open demo in a new window</a></p>
+</div>
+<table class="dataTable screenshots">
+<thead>
+<tr>
+<th>mozjpeg<br />encoded<br />JPEG (Firefox)</th>
+<th>JPEG 2000<br />(Safari)</th>
+<th>JPEG-XR<br />(IE9)</th>
+<th>WEBP<br />(Chrome)</th>
+</tr>
+</thead>
+<tbody>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2015/01/cn-tower-moz-jpg.png" alt="cn-tower-jpg" width="140" height="140" class="alignnone size-full wp-image-6929" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2015/01/cn-tower-jp2.png" alt="cn-tower-jp2" width="140" height="140" class="alignnone size-full wp-image-6928" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2015/01/cn-tower-jxr.png" alt="cn-tower-jxr" width="140" height="140" class="alignnone size-full wp-image-6930" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2015/01/cn-tower-webp.png" alt="cn-tower-webp" width="140" height="140" class="alignnone size-full wp-image-6931" />
+</td>
+</tbody>
+</table>
+<p>Even though some artifacting remains, mozjpeg is pretty good, and the Mozilla team is still updating mozjpeg to see how they can further improve the look of JPEGs images.  JPEG files created with mozjpeg can make a great fallback for WEBP/JPEG-2000/JPEG-XR.</p>
+<p>So, is WEBP, JPEG 2000 or JPEG-XR the better lossy image compression format?  The short answer is &#8220;it depends&#8221;.  I find that each one compresses certain images better than others.  Also, while these image formats tend to reduce the artifacting at lower compression ratios, JPEGs tend to keep more of the detail (although I believe that this would not be noticed by the casual user). In any event, the image compression wars have just started, and it will be interesting to see which on of these formats (if any) will come out on top.</p>
+<p>To get an idea how some of these formats compress compared to each other, here are a few more examples to take a look at:</p>
+<ul>
+<li>Lana Del Ray: compared with <a href="http://www.useragentman.com/tests/html5ImageConverter/examples/lana-del-rey-mozjpeg/lana-del-rey.html">ImageMagick (quality=20)</a> and <a href="http://www.useragentman.com/tests/html5ImageConverter/examples/lana-del-rey-mozjpeg/lana-del-rey.html">mozjpeg (quality=24)</a> JPEG files.</li>
+<li>Saturn: compared with <a href="http://www.useragentman.com/tests/html5ImageConverter/examples/saturn/saturn.html">ImageMagick (quality=30)</a> and <a href="http://www.useragentman.com/tests/html5ImageConverter/examples/saturn-mozjpeg/saturn.html">mozjpeg (quality=38)</a> JPEG files.</li>
+</ul>
+<h3>Reducing the File Size of Alpha Channeled Images</h3>
+<p>If your web page needs a lot large alpha-channeled images  (i.e. image with a semi-transparent section), using PNGs will bloat the page due to the PNGs use of lossless compression.  However, if you are using <strong>Chrome, Opera, IE9+ or Safari</strong> to look at the demo below, you will see that alternate formats can reduce this bloat:</p>
+<div id="dice-drag-example" class="resizable aligncenter">
+<iframe src="/tests/html5ImageConverter/examples/dice-compare/drag-test.html"><br />
+</iframe></p>
+<p><a href="/tests/html5ImageConverter/examples/dice-compare/drag-test.html">open demo in a new window</a></p>
+</div>
+<p>Let&#8217;s compare the file sizes of the alternate image compared to the PNG original:</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th></th>
+<th>JPEG 2000</th>
+<th>JPEG-XR</th>
+<th>PNG</th>
+<th>WEBP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>320&#215;240</th>
+<td>2060</td>
+<td>22618</td>
+<td>55162</td>
+<td>11210</td>
+</tr>
+<tr>
+<th>600&#215;450</th>
+<td>13464</td>
+<td>48476</td>
+<td>143355</td>
+<td>26562</td>
+</tr>
+<tr>
+<th>1024&#215;768</th>
+<td>19613</td>
+<td>97979</td>
+<td>333557</td>
+<td>57388</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, the numbers for JPEG-2000 are especially impressive.  However, the file sizes of the alternate images will vary depending on the characteristics of the original image.  Up until now, quantizing a PNG (using programs like <a href="http://pngquant.org/">pngquant</a>) was the only way to get a smaller alpha channeled image from an original PNG (<a href="https://pornel.net/">Pornel</a> mentions it in his comment below).  While alternative image formats may give better results, sometimes they don&#8217;t.  Let&#8217;s take a look at this example of an alpha channeled image on top of an animated background:</p>
+<div id="saturn-example" class="resizable aligncenter">
+<iframe src="/tests/html5ImageConverter/examples/saturn-alpha/saturn.html"><br />
+</iframe></p>
+<p><a href="/tests/html5ImageConverter/examples/saturn-alpha/saturn.html">open demo in a new window</a></p>
+</div>
+<p>If you look at this Saturn demo in Safari, you will see the JPEG 2000 is 20% the size of the quantized PNG, with little noticeable loss of detail.  The WEBP and JPEG-XR versions are okay, but you can see they are &#8220;blurrier&#8221; than the PNG (and the WEBP and JPEG-XR versions are only around 70-80% of the original).  This is not always the case &mdash; sometimes WEBP is better, sometimes JPEG-XR is better, sometimes a quantized PNG is better.  </p>
+<h3 id="producing-truecolor-animations">Producing Truecolor Animations</h3>
+<p>GIF animations only support 256 colors per frame, and can look blocky if they have a transparent background.  However, WEBP and APNG (supported by Firefox and Safari) support full truecolor animations <em>with</em> alpha channels.  For browsers that don&#8217;t support WEBP or APNG, you can use JPEG 2000 and JPEG XR files with <a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Using_CSS_animations">CSS Animations</a> (using the <code>step</code> property) to implement it for those browsers (thanks to <a href="http://blog.teamtreehouse.com/css-sprite-sheet-animations-steps">Treehouse&#8217;s Guil Hernandez&#8217;s excellent tutorial on how to do this</a>). Compare the animated GIF with the truecolor animation below and you&#8217;ll see the difference:</p>
+<div class="resizable aligncenter">
+<iframe  src="/tests/html5ImageConverter/examples/ball-pres/b-gif.html"><br />
+</iframe></p>
+<p><span class="resize-text">Drag the balls around or </span><a href="/tests/html5ImageConverter/examples/ball-pres/b.html">open demo in a new window</a></p>
+</div>
+<p>(Note: if you are using IE9, you&#8217;ll only see the animated GIF, since IE9 doesn&#8217;t support CSS3 Animations).</p>
+<p>Let&#8217;s do another file size comparison:</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th>Original APNG</th>
+<th>WEBP</th>
+<th>JPEG-2000</th>
+<th>JPEG-XR</th>
+<th>Quantized APNG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>65993</td>
+<td class="hilite">18396</td>
+<td class="hilite">25036</td>
+<td class="hilite">29534</td>
+<td>39874</td>
+</tr>
+</tbody>
+</table>
+<p>As you can see, WEBP, JPEG 2000 and JPEG-XR compress extremely well compared to the original animated PNG (a 27% to 44% savings in bandwidth!).  Note, though, the quantized APNG: it is roughly 60% smaller than the original.  Quantizing APNG&#8217;s can produce animations that are smaller in some cases, and I will discuss how to do this later.</p>
+<h2>Cool! How Can I Use Alternate Image Formats Today In All Browsers?</h2>
+<h3>The Wrong Way</h2>
+<p>You can use a regular image tag to place any of these images into your pages just like any other page:</p>
+<blockquote class="code">
+<pre>
+&lt;img src="myimage.webp" /&gt;
+</pre>
+</blockquote>
+<p>The problem is this method is that support for each of these image formats is not universal in all browsers, so although embedding a WEBP using the <code>&lt;img&gt;</code> tag will work in Chrome and Opera, it won&#8217;t work in the other browsers.  Here&#8217;s a table that illustrates browser support:</p>
+<p><!-- noautoformat on --></p>
+<table class="dataTable withCheckmarks">
+<thead>
+<tr>
+<th></th>
+<th>WEBP</th>
+<th>JPEG-2000</th>
+<th>JPEG-XR</th>
+<th>APNG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Chrome</th>
+<td class="check">✔</p>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<th>Safari</th>
+<td></td>
+<td class="check">✔</td>
+<td></td>
+<td class="check">✔</td>
+</tr>
+<tr>
+<th>Internet Explorer 8+</th>
+<td></td>
+<td></td>
+<td class="check">✔</td>
+<td></td>
+</tr>
+<tr>
+<th>Firefox</th>
+<td></td>
+<td></td>
+<td></td>
+<td class="check">✔</td>
+</tr>
+</tbody>
+</table>
+<p><!-- noautoformat off --></p>
+<p>So &#8230; how do we do this in a progressive-enhancement-like way?</p>
+<h3 id="using-picturefill" name="using-picturefill">Use <code>&lt;picture&gt;</code> For Still Images</h3>
+<p>In order to serve the right still (i.e. non-animated) image to the right browsers, developers should use the <code>&lt;picture&gt;</code> element.  If you are familiar with <code>&lt;video&gt;</code> tag, the syntax is quite similar: it is contains a list of <code>&lt;source&gt;</code> elements that say which urls contain content of a specific MIME type:</p>
+<blockquote class="code">
+<pre>
+&lt;picture&gt;
+  &lt;source srcset='dice.jxr' type='image/vnd.ms-photo'&gt;
+  &lt;source srcset='dice.jp2' type='image/jp2'&gt;
+  &lt;source srcset='dice.webp' type='image/webp'&gt;
+  &lt;img srcset='dice-quant.png' alt='dice'&gt;
+&lt;/picture&gt;
+</pre>
+</blockquote>
+<p>(Side note: notice JPEG-XR&#8217;s unusual MIME type (<code>image/vnd.ms-photo</code>).  This is because JPEG-XR was originally a proprietary Microsoft image format called Windows Media Photo or HD Photo).</p>
+<p>As I mentioned earlier, Chrome and Opera are the only browsers that currently support the <code>&lt;picture&gt;</code> element natively.  Fortunately, the <a href="https://github.com/scottjehl/picturefill">picturefill polyfill</a> adds support to the browsers that need it: just download the script from the official GitHub site and put this one script tag into the &lt;head&gt;</code>:</p>
+<blockquote class="code">
+<pre>
+&lt;script async=true src=/path/to/js/picturefill.js&gt;&lt;/script&gt;
+</pre>
+</blockquote>
+<p>Picturefill out of the box supports WEBP and SVG.  If you want to add support for any of the other file formats, you must do one of the following:</p>
+<ol>
+<li>Add support for the other formats by adding the supplementary scripts inside the <code>src/includes</code> directory of the git repo.  They are conveniently called jxr.js, jp2.js and apng.js.  If you wanted to add support for all three, you would put this inside the <code>&lt;head&gt;</code>, right after picturefill&#8217;s <code>&lt;script&gt;</code> tag:<br />
+<blockquote class="code">
+<pre>
+&lt;script async=true src=/path/to/picturefill.js&gt;&lt;/script&gt;
+&lt;script async=true src=/path/to/jxr.js&gt;&lt;/script&gt;
+&lt;script async=true src=/path/to/jp2.js&gt;&lt;/script&gt;
+&lt;script async=true src=/path/to/apng.js&gt;&lt;/script&gt;
+</pre>
+</blockquote>
+</li>
+<li>Alternatively, if you are familar with grunt, you could add support by running the grunt inside the picturefill git repo.  For example, to support all these formats, build picturefill with this grunt task:<br />
+<blockquote class="code">
+<pre>
+grunt support-types:jxr:jp2:apng
+</pre>
+</blockquote>
+<p>This will create a copy of picturefill.js in the git repo&#8217;s <code>dist</code> directory (as well as a minified version, picturefill.min.js).
+</li>
+</ol>
+<p>Two important things to to keep in mind: </p>
+<ol>
+<li><strong>If you want to ensure picturefill works correctly in IE9,</strong> you must put in some conditional comments inside your <code>&lt;picture&gt;</code> for it to work correctly:<br />
+<blockquote class="code">
+<pre>
+&lt;picture&gt;
+  <span class="hilite">&lt;!--[if IE 9]&gt;&lt;video style='display: none;'&gt;&lt;![endif]--&gt;</span>
+  &lt;source srcset='dice.jxr' type='image/vnd.ms-photo'&gt;
+  &lt;source srcset='dice.jp2' type='image/jp2'&gt;
+  &lt;source srcset='dice.webp' type='image/webp'&gt;
+  &lt;!--[if IE 9]&gt;&lt;/video&gt;&lt;![endif]--&gt;
+  <span class="hilite">&lt;img srcset='dice-quant.png' alt='dice'&gt;</span>
+&lt;/picture&gt;
+</pre>
+</blockquote>
+<p>This is due to an odd quirk in IE9 where it won&#8217;t recognize <code>&lt;source&gt;</code> unless wrapped in a <code>&lt;video&gt;</code> tag.
+</li>
+<li><strong>If the images don&#8217;t show up correctly, </strong>make sure that all the mime types in the <code>&lt;source&gt;</code> elements above are set on your web server.  I have only had this issue on one of the servers I have encountered, but it&#8217;s something to keep in mind (thanks to <a href="https://twitter.com/Cory_Dowd">Cory Dowd</a> for reminding me about this).</li>
+</ol>
+<p><a class="exampleLink" href="https://github.com/scottjehl/picturefill">Download the latest version of Picturefill from GitHub</a> </p>
+<h3>Use Modernizr For Animated Images</h3>
+<p>As I mentioned before, the WEBP and APNG file formats support animations out of the box.  In order to give IE10+ animated goodness, I used CSS step animations to do the animation using a sprite sheet.  Since Modernizr currently doesn&#8217;t detect JPEG 2000, I also included a small Javascript snippet to add JPEG 2000 support for it based on some code from <a href="https://github.com/leechy/imgsupport">Andreyka Lechev&#8217;s imgsupport.js script</a> (I will send a merge request to the modernizr team in order to add JPEG-2000 support to it soon).  For reference here is a link to <a href="http://www.useragentman.com/tests/html5ImageConverter/js/modernizr.custom.29822.js">the custom Modernizr script and the JPEG 2000 detection script</a>.  Here is the spritesheet I used to generate the CSS animation in the above demo: </p>
+<div class="spritesheet">
+<img src="http://www.useragentman.com/tests/html5ImageConverter/examples/ball-pres/b-stitched.png" />
+</div>
+<p>I then converted this file to JPEG 2000 and JPEG-XR format.  I then created a div with a class (in this case, &#8216;b&#8217;) &#8230;</p>
+<blockquote class="code">
+<pre>
+&lt;div class='b'&gt;
+&lt;/div&gt;
+</pre>
+</blockquote>
+<p>&#8230; and then used the following CSS recipe to use CSS animations on only the JPEG-2000/JPEG-XR browsers: </p>
+<blockquote class="code">
+<pre>
+
+/* 
+ * The animated image in this case is 100x100, so make 
+ * the container that size
+ */
+.b {
+  width: 100px;
+  height: 100px;
+}
+
+/* WEBP supports animations .. no need for CSS */
+html.webp .b {
+  background: url('./b.webp');
+}
+
+/* APNG also supports animations ... no need for CSS */
+html.apng .b {
+  background: url('./b.png');
+}
+
+/* 
+ * If the browser doesn't support APNG 
+ * *but* supports CSS Animations, 
+ * use the PNG version of the sprite and animate it using 
+ * the "bplay" animation (coded at the bottom of the 
+ * stylesheet).  The fallback for browsers that support
+ * animations is the PNG spritesheet ... the JPEG-2000 and
+ * JPEG-XR spritesheets will be defined in the CSS rules
+ * that follow.
+ */ 
+html.no-apng.no-webp.cssanimations .b {
+    background: url('./b-stitched.png') left center;
+
+    /* 
+     * the animation takes 1 second to play, there are 
+     * 20 frames in the animation, and we loop the 
+     * animation forever
+     */
+    animation: bplay 1000ms steps(20) infinite;
+    -webkit-animation: bplay 1000ms steps(20) infinite;
+}
+
+/*
+ * If the browser supports JPEGXR (IE10), then use the JXR 
+ * version instead.  Note that this will *not* be used by
+ * IE9 since it doesn't support CSS animations.
+ */
+html.no-apng.no-webp.jpegxr.cssanimations .b {
+    background: url('./b-stitched.jxr') left center;
+}
+
+/*
+ * Likewise, if the browser supports JPEG 2000, use
+ * the .jp2 version of the sprite.
+ */ 
+html.no-apng.no-webp.jpeg2000.cssanimations .b {
+    background: url('./b-stitched.jp2') left center;
+}
+
+/*
+ * For other browsers that don't support CSS animations
+ * at all, we fallback to the animated GIF.
+ */
+html.no-apng.no-webp.no-cssanimations .b {
+    background: url('./b.gif') left center;
+}
+
+/* 
+ * Here we describe the CSS animation itself. Note that
+ * the background position is set to the negative value 
+ * of the width of the sprite sheet
+ */
+@keyframes bplay {
+  100% { background-position: -2000px; }
+}
+
+/* Webkit variant for older WebKit browsers */
+@-webkit-keyframes bplay {
+  100% { background-position: -2000px; }
+}
+</pre>
+</blockquote>
+<h2>How to create WEBP/JPEG-XR and JPEG 2000 images</h2>
+<p>There are a few Photoshop and GIMP plugins you can use today to create these images, as well as a few command line tools.  Here is a great list to get you started:</p>
+<p><!-- noautoformat on --></p>
+<table class="dataTable">
+<thead>
+<tr>
+<th></th>
+<th>WEBP</th>
+<th>JPEG-XR</th>
+<th>JPEG 2000</th>
+<th>APNG</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Command Line</th>
+<td><a href="https://developers.google.com/speed/webp/">cwebp</a> by the Google WebP Team</td>
+<td>JxrEncApp (part of <a href="https://jxrlib.codeplex.com/">jxrlib</a> by Microsoft Research.  You have to compile yourself &mdash; I have done so successfully on a Mac and Windows (using <a href="https://www.cygwin.com">Cygwin</a>) with no problems.  You can also use <a href="http://www.xnview.com/en/nconvert/">nconvert</a>, but it doesn&#8217;t compress as well as JxrEncApp in my opinion.</td>
+<td><a href="http://kakadusoftware.com/downloads/">kdu_compress</a> by <a href="http://kakadusoftware.com/software/">Kakadu Software</a> (payware, free for non-commercial use) and <a href="http://www.openjpeg.org/">OpenJPEG</a> (open source, but I was unsuccessful using it for alpha channeled images)</td>
+<td><a href="http://sourceforge.net/projects/apngasm/">apngasm</a> by Max Stepin.  I also used <a href="apngdis.sourceforge.net/">apngdis</a> to disassemble the frames of existing APNG files and <a href="http://pngquant.org/">pngquant</a> to quantize these frames to make them smaller before assembling them back into a smaller APNG file.  I finally used <a href="http://apng2gif.sourceforge.net/">apng2gif</a> to create a GIF fallback for older web browsers.</td>
+</tr>
+<tr>
+<th>Photoshop Plug-ins</th>
+<td><a href="http://telegraphics.com.au/sw/product/WebPFormat">WebP Format</a> by Toby Thain</td>
+<td><a href="http://research.microsoft.com/en-us/um/redmond/groups/ivm/JPEGXR/">JPEG XR File Format Plug-in for Photoshop</a> by Microsoft Research</td>
+<td><a href="http://www.fnordware.com/j2k/">j2k</a> by fnord software.  (Note that under OSX, you can also export JPEG-2000 images using the built in Preview tool).</td>
+<td>None yet, but a fellow named Rei Kagetsuki has promised that <a href="https://www.kickstarter.com/projects/374397522/apngasm-foss-animated-png-tools-and-apng-standardi">one will be available soon</a> </td>
+</tr>
+<tr>
+<th>GIMP Plug-ins</th>
+<td><a href="https://code.google.com/p/gimp-extensions/">GIMP Extensions</a>  (Windows only)</td>
+<td><a href="http://registry.gimp.org/node/25508">JPEG XR plugin</a> by Chrysler</td>
+<td><a href="http://registry.gimp.org/node/9899">jp2/denoise/ihalf</a> by Akkana Peck</td>
+<td><a href="http://registry.gimp.org/node/24394">APNG Plug-In</a> by daisuke</td>
+</tr>
+</tbody>
+</table>
+<p><!-- noautoformat off --></p>
+<p>Note that for all the demos, I used the command line tools listed above as well as <a href="http://www.imagemagick.org/">ImageMagick</a> and <a href="https://github.com/mozilla/mozjpeg">mozjpeg</a> for the JPEG images &mdash; I have not investigated the GIMP or Photoshop plugins yet so your milage may vary on those.  To simplify things, I created a set of BASH shell script (which I call the <a href="https://github.com/zoltan-dulac/html5ImageConverter">HTML5 Image Converter</a>), that uses the command line tools listed above to create all of the files quickly from a PNG source.  One you install the above command line tools and the shell script on your system, you can do the conversion magic on still (non-animated) image using a command like this:</p>
+<blockquote class="code">
+<pre>
+html5ImageConverter.sh --webp-quals=19.5 --jxr-quals=30 --jpg-quals=40 \
+  --jp2-rates=0.2/0.4/0.2 --jpg-quals=40 --has-alpha image.png
+</pre>
+</blockquote>
+<p>where:</p>
+<ul>
+<li><code>--webp-quals</code> is the compression quality of the WEBP image (1 &#8211; most compressed, 100 &#8211; most compressed).  Default is 85.</li>
+<li><code>--jxr-quals</code> is the compression quality of the JXR image (again, 1 &#8211; most compressed, 100 &#8211; most compressed). Default is 85.</li>
+<li><code>--jpg-quals</code> is the compression quality of the JPG image (again, 1 &#8211; most compressed, 100 &#8211; most compressed). Default is 85.</li>
+<li><code>--jp2-rates</code> is the compression rate of the JP2 image.  Default is 1.0.  More information about this can be found on <a href="http://www.dlxs.org/docs/12/class/image/jpeg2000.html">this page by the University of Michigan</a>.</li>
+<li><code>--has-alpha</code> is optional and only be used if the image has an alpha channel.</li>
+<li><code>--use-mozjpeg</code> is optional if you want to create JPEG fallbacks compressed with mozjpeg instead of ImageMagick (it will give warnings if mozjpeg is not installed).</li>
+<li><code>--jxr-ie9-fix</code> fixes a sometimes unnoticable bug in IE9 where JPEG-XR image will have a small semi-opaque gray border around it.</code>
+<li><code>--jxr-nconvert</code> will convert JPEG-XR images with <a href="http://www.xnview.com/en/nconvert/">nconvert</a> instead of JxrEncApp.</ul>
+<p>This command creates images in all the formats listed above, as well as giving you a handy HTML page that shows how the image looks compared to the JPEG (just like the examples in this blog post).</p>
+<p>You can also create different renditions of the image you want using the <code>&lt;picture&gt;</code> element&#8217;s support of <code><a href="http://ericportis.com/posts/2014/srcset-sizes/">srcset</a></code> using the <code>--sizes</code> parameter.  Here is an example where we will create three renditions, one for the image scaled down to a width of 320 pixels, another with a width of 600 pixels, and a final one of 1024 pixels:</p>
+<blockquote class="code">
+<pre>
+html5ImageConverter.sh --sizes=320/600/1024  --webp-quals=50 --jpg-quals=70 \
+  --jp2-rates=0.1/0.1/0.4 --jxr-quals=15 image.png
+</pre>
+</blockquote>
+<p>The WEBP, JPG and JXR compression quality of the above example are 50%, 70% and 15% respectively &mdash; you have a different quality for each rendition if you like by separating this with slashes (like the <code>--jp2-rates</code> does).</p>
+<p><strong>Note that the HTML5 Image Converter will also embed what command-line switches that were used to generate the images inside a comment in the generated HTML file. </strong> This is useful if you want to try different values later or if you want to replicate my results.  Hopefully this will assist others if they want to do more research on these image formats.</p>
+<h3>How About Creating Animated Images</h3>
+<p>Inside the HTML5 Image Converter&#8217;s git repository, there is another script (creatively called &#8220;The HTML5 Animated Image Converter&#8221;) that converts an APNG file to animated WEBP.  It also makes image sprites using JPEG 2000, JPEG-XR and non-animated PNG as well as a CSS stylesheet that uses the CSS3 Animation trick above for browsers that support those formats and CSS3 animations.  It finally creates an animated GIF using <a href="http://apng2gif.sourceforge.net/">apng2gif</a> as a fallback for browsers that don&#8217;t do CSS animations (e.g. IE9).  In order to create the animated ball demo above, I used the following command:</p>
+<blockquote class="code">
+<pre>
+html5AnimatedImageConverter --input-apng --output=b --ms=50 --jxr-quality=80 --jp2-rate=1.0 --webp-quality=50 --apng-quant ballanim.png
+</pre>
+</blockquote>
+<p>where:</p>
+<ul>
+<li><code>--input-apng</code> denotes that the input is an animated PNG (note: using still images will be supported in a later release).</li>
+<li><code>--output=b</code> will create outfile files with the filenames beginning with &#8220;b.&#8221; (i.e. b.png, b.webp,  b-stitched.jxr, b-stitched.jp2, b-stitched.png, b.gif, b.css and b.html)</li>
+<li><code>--ms=50</code> tells the generator to create animations with each frame appearing for 50 milliseconds.</li>
+<li><code>--jxr-quality</code>, <code>--webp-quality</code> and <code>--jp2-rate</code> attributes set to the quality/rate values in the same way that the HTML5 Image Animator does.</li>
+</ul>
+<p><a class="exampleLink" href="https://github.com/zoltan-dulac/html5ImageConverter">Download the HTML5 Image Converter for GitHub</a></p>
+<p>When I created this shell script, I found a few gotchas about using these command line tools:</p>
+<h3>JPEG-XR</h3>
+<p>JxrEncApp is quite difficult to understand to use at first, since it lacks documentation and it will fail silently sometimes without saying why (Microsoft: if you are reading this, please take positive steps to fix JxrEncApp so web developers can support this promising format!) <strong>(Update: Gary Sullivan from Microsoft was kind enough to <a href="#comment-766612 ">speak to the issues I have discussed</a>)</strong>.  However, I was fortunate that <a href="http://www.codeplex.com/site/users/view/christoph_hausner">Christoph Hausner</a>, who has been playing around with JPEG-XR files for a while now, was kind enough to give me quite a few pointers.  Here is a summary of them:</p>
+<ol>
+<li>When you are converting an image using JxrEncApp, it is best doing so using an uncompressed TIFF.  If you have a PNG, JPEG or other file that you need converted, you can do so using the following ImageMagick command:<br />
+<blockquote class="pre"><p>
+<code><br />
+convert img.png -compress none img.tif<br />
+</code>
+</p></blockquote>
+</li>
+<li>IE9 has a known issue where it will render a light gray border around some JPEG-XR images (<a href="http://twitter.com/njdoyle">Nicholas Doyle</a> has <a href="http://calendar.perfplanet.com/2013/browser-specific-image-formats/">written this in his article about WEBP and JPEG-XR</a>.  I asked Christoph about this bug, and he suggested the following:<br />
+<blockquote class="person-quote"><p>
+You have a few options to work around this bug. You can either disable overlap filtering (jxrencapp option <code>-l 0</code> &#8230;  or encode all your images in 32bppPRGBA.</p>
+<p>Disabling the overlap filter is generally recommended only for losslessly compressed images but discouraged for lossy compression as it leads to visible block artifacts for higher compression ratios.</p>
+<p>The other option is to encode your alpha channel as pre-multiplied alpha. In your case you would pass <code>-define tiff:alpha=associated</code> to ImageMagick to create a PRGBA TIFF file, the options for jxrencapp stay the same.</p>
+<p>If your input image has no alpha channel, you can add a dummy (fully opaque) one, save again as PRGBA TIFF and then encode to JXR with alpha quantization -Q 2. This still encodes the dummy alpha channel losslessly and has very little overhead compared to a non-alpha image. The lossless default -Q 1 seems to unnecessarily bloat the file.
+</p></blockquote>
+<p>Note that I have added support for the <code>-l 0</code> fix to the HTML5 Image Converter via the <code>--jxr-ie9-fix</code> paramater.  I was not successful doing implementing the <code>-define tiff:alpha=associated</code> fix (did I mention that JxrEncApp is hard to use?)</li>
+<li>You can use <a href="http://www.xnview.com/en/nconvert/">nconvert</a> to convert to the JPEG-XR format (the HTML5 Image Converter will use it via the <code>--jxr-nconvert</code> paramater.  In practice, however, I find that JxrEncApp does a better job at compressing JPEG-XR format than nconvert does (although it <em>does</em> get rid of the IE9 gray-border-bug).
+</li>
+</ol>
+<h3>JPEG-2000</h3>
+<p>When using <a href="http://kakadusoftware.com/downloads/">kdu_compress</a>, you&#8217;ll notice it does not have a flag for quality like the other image processing tools for the other image formats do.  In order to work around this, I played around with the <code>rate</code> option in order to control the amount of compression.  </p>
+<p>I would have liked to compare kdu_compress with <a href="http://www.openjpeg.org/">OpenJPEG</a>, but unfortunately I could figure out how to make alpha channeled JPEG 2000 files with it.  If anyone has any information on this, please let me know in the comments below.</p>
+<h3>APNG</h3>
+<p>APNG files can be quite large compared to the other file formats, due to its use of PNG&#8217;s lossless compression algorithm.  In order to shrink them down a bit, I used apngdis to produce static PNGs of all the frames, used pngquant to quanitize each of the frames, and then assembled these frames into a new APNG using apngasm.  This works for a lot use-cases, but keep in mind that a lot of times you won&#8217;t always get the same compression savings that you can with JPEG-XR, JPEG 2000 and WEBP.</p>
+<h3>WEBP</h3>
+<p>By far, the WEBP tools that Google provides are the easiest of all the tools I used for the altenative image formats.  I had no issues getting started, and I expect you will have no issues as well. Kudos to the WEBP team!</p>
+<h2>Conclusions</h2>
+<p>This is just the beginning.  There will be a lot more blog posts comparing these image formats, and I believe it is only a matter of time before one wins out.  Feel free to voice your opinion on these formats below (I&#8217;m sure that this debate will get heated at times).</p>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/uncategorized/" rel="category tag">Uncategorized</a> </p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">11 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						<li class="comment   " id="comment-766612 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-766612" title="Permalink to this comment">1</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/281f7804e21d4d75b1205bd56f7902e3?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/281f7804e21d4d75b1205bd56f7902e3?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Gary Sullivan (@ Microsoft) </strong>
+				<span class="comment_time">// Jan 14, 2015 at 6:45 pm</span>
+			</p>
+			<div class="entry">
+				<p>(from a reader at Microsoft)</p>
+<p>I really like the Space Needle picture demo a lot (although it seems necessary to use the separate pop-up window to see the effect).</p>
+<p>You may be interested to hear that there is a movement toward establishing a new MIME media type code for JPEG XR. A provisional registration has been published at <a href="http://www.iana.org/assignments/provisional-standard-media-types/provisional-standard-media-types.xhtml" rel="nofollow">http://www.iana.org/assignments/provisional-standard-media-types/provisional-standard-media-types.xhtml</a>, and the JPEG committee plans to standardize that as part of the JPEG XR official specs in ISO/IEC and ITU-T.</p>
+<p>I’ll try to further read your post more carefully regarding other aspects. I noticed the “Microsoft: if you are reading this” remark, and I’m sorry to hear that you had some issues with the JxrEncApp package. I suppose that app’s really more of an SDK sample that is necessarily simple, rather than a ready-to-use application tool. I’ll pass that note on to someone more suitable than myself – I’m personally focused on design concepts and standardization rather than the software.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-766867 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-766867" title="Permalink to this comment">2</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 15, 2015 at 12:08 am</span>
+			</p>
+			<div class="entry">
+				<p>@Gary: Wow .. that was fast!  :-) </p>
+<p>Thanks for taking the time reading this and replying with this new information.  The <code>image/jxr</code> MIME type described in the link you gave makes a lot of sense, and I will provide this information to the picturefill team so we can make an appropriate change.  Any idea when this MIME type proposal becomes official?</p>
+<p>I also really appreciate you addressing the JxrEncApp comments I wrote.  It&#8217;s really cool that Microsoft released JxrEncApp (and the rest of jxrlib) under an open source (New BSD) license to the web development community &#8230; hopefully someone can fix these small issues an be worked out so that it will be easier for web developers like me to batch encode a whole slew of JXR files from RAW or PNG sources.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-767303 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-767303" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/f0a29af415477aa8c498a4f41ffe6640?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f0a29af415477aa8c498a4f41ffe6640?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Kornel </strong>
+				<span class="comment_time">// Jan 15, 2015 at 10:14 am</span>
+			</p>
+			<div class="entry">
+				<p>Comparing lossless PNG to lossy WebP/J2K is very unfair (see <a href="https://pornel.net/faircomparison" rel="nofollow">https://pornel.net/faircomparison</a>). </p>
+<p>You should compare to lossy PNG from pngquant or mediancut-posterizer:</p>
+<p><a href="https://speakerdeck.com/pornel/lossy-png-for-true-color-images-velocity-conf-eu-2014" rel="nofollow">https://speakerdeck.com/pornel/lossy-png-for-true-color-images-velocity-conf-eu-2014</a></p>
+<p>or at least compare lossless PNG to lossless variants of WebP/J2K/JXR.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-767694 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-767694" title="Permalink to this comment">4</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 15, 2015 at 8:36 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Kornel: Good point.  As I mentioned in the post, it is hard to compare which image format is better than which &mdash; it depends on the image.  I was mostly interested in the lossy compression, and I had investigated the quantized PNG using pngquant on the dice example above. It gives some striping artifacts and dithering on the dice.  Here it is FWIW: <a href="http://useragentman.com/tests/html5ImageConverter/examples/dice-compare-quant/dice.html" rel="nofollow">http://useragentman.com/tests/html5ImageConverter/examples/dice-compare-quant/dice.html</a></p>
+<p>To show an extreme example of how one image format can beat another, here is an example with the planet that has JPEG2000 beating all the other formats:</p>
+<p><a href="http://useragentman.com/tests/html5ImageConverter/examples/saturn-alpha/saturn.html" rel="nofollow">http://useragentman.com/tests/html5ImageConverter/examples/saturn-alpha/saturn.html</a></p>
+<p>If you compare it with a quantized PNG so you can see that the artifacting of the shadowed part in the quantized PNG.  If you look at the demo in Safari, the quantized .png is 583.8K, while the .jp2 file is 142.8K.  The JPEG 2000 file also shows little loss of detail.  The JPEG-XR and the WEBP, which smaller than the PNG, look a little blurrier.</p>
+<p>The problem is that in my research that which image format compressed better depended on the image, so I can&#8217;t say one file format is better than the other.  It is definitely worth looking into further where each file format&#8217;s strengths and weaknesses lie.  For alpha-channeled images, it seems that sometimes quantizing a PNG is better, and sometimes it is not.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-768158 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-768158" title="Permalink to this comment">5</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/a6d94411e7c1703f7b653fa8d1e98d3e?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/a6d94411e7c1703f7b653fa8d1e98d3e?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Max Stepin </strong>
+				<span class="comment_time">// Jan 16, 2015 at 9:32 am</span>
+			</p>
+			<div class="entry">
+				<p>The idea of lossy PNG optimizations for Paeth filter is very promising. I remember experimenting with it too, but pushing it too far makes those &#8220;diagonal artifacts&#8221; too noticeable. I wonder if it&#8217;s possible to improve the algorithm so the artifacts would look more like general noise removal over smooth areas of the image, not favoring any particular direction.</p>
+<p>The article is very thorough and not browser-biased, I like that. :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-768242 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-768242" title="Permalink to this comment">6</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 16, 2015 at 11:43 am</span>
+			</p>
+			<div class="entry">
+				<p>@Max: Thanks! It is so hard to ensure everything is presented because there is so much information about these file formats and it does take a bit of time to investigate everything.  I will be following up this post with others I am sure &mdash; there is so much here to cover.</p>
+<p>I hope more comments below cover optimizing the image formats as well as the older (GIF/PNG/JPG) ones as well.  These tips can only help developers looking into this.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-768244 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-768244" title="Permalink to this comment">7</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 16, 2015 at 11:48 am</span>
+			</p>
+			<div class="entry">
+				<p>@Max: (P.S.  Thanks for all the great APNG command line tools.  I wouldn&#8217;t have been able to do this blog post without them &mdash; they were quite easy to work with and I was able to use them on every OS I tried easily :-) )</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-877991 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-877991" title="Permalink to this comment">8</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://qualvisual.net'><img alt='' src='http://2.gravatar.com/avatar/25492c5b38353c3758609adde41df4f1?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/25492c5b38353c3758609adde41df4f1?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://qualvisual.net' rel='external nofollow' class='url'>Xiteng Liu</a> </strong>
+				<span class="comment_time">// Apr 24, 2015 at 10:42 am</span>
+			</p>
+			<div class="entry">
+				<p>First, Nice work. But, it would be better if there is original image signal displayed so that distortion can be better indicated. In general, the 24 Kodak test images can be used as standard original data.</p>
+<p>I have some comparison between JPEG, JPEG2000, JPEG XR and WebP both in lossy and lossless compressions, see <a href="http://qualvisual.net" rel="nofollow">http://qualvisual.net</a>. Maybe those results can supplement the comparisons reported here.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-893983 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-893983" title="Permalink to this comment">9</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 9, 2015 at 2:48 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Xiteng: Your site compares JPEG, JPEG2000, JPEGXR and WEBP with your other format, Lucid.  Is this something that can be used in web browsers today?  Just want to see if and how this can be used by web developers today.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-1040499 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1040499" title="Permalink to this comment">10</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/807efcab54baaac21fba7d1d2a0e242d?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/807efcab54baaac21fba7d1d2a0e242d?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Jonathan Graham </strong>
+				<span class="comment_time">// Oct 29, 2015 at 5:25 pm</span>
+			</p>
+			<div class="entry">
+				<p>I&#8217;d add that while still some distance off FLIF is a kind of interesting technology.  <a href="http://petapixel.com/2015/10/02/flif-is-a-new-free-lossless-image-format-that-raises-the-compression-bar/" rel="nofollow">http://petapixel.com/2015/10/02/flif-is-a-new-free-lossless-image-format-that-raises-the-compression-bar/</a></p>
+<p>It is lossless, superior to PNG &#8211; royalty and patent free and can decodes in a progressive way which gives you lossy compression &#8220;for free&#8221;.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-1042586 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1042586" title="Permalink to this comment">11</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 1, 2015 at 3:00 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Jonathan: Looks interesting.   Would be great to see it when the format has been finalized and if any of the browser manufacturers pick this up.  Would like to see how it performs in the real world on the web compared to the other formats.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="6843" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="93e521be61" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

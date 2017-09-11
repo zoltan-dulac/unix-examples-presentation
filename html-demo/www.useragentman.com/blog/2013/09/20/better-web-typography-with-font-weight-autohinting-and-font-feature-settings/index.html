@@ -1,0 +1,1114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive post-6211" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Better Web Typography With font-weight, Autohinting and font-feature-settings</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><script src="//code.jquery.com/jquery-1.10.2.js"></script>	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<link type="text/css" rel="stylesheet" href="/css/6211.css" /><!-- ID is 6211 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Better Web Typography With font-weight, Autohinting and font-feature-settings Comments Feed" href="http://www.useragentman.com/blog/2013/09/20/better-web-typography-with-font-weight-autohinting-and-font-feature-settings/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Cross-Browser SVG Text-Paths Without JavaScript — Even In Older IE.' href='http://www.useragentman.com/blog/2013/05/20/cross-browser-svg-text-paths-without-javascript-even-in-older-ie/' />
+<link rel='next' title='Fixing Typography Inside of 2-D CSS Transforms' href='http://www.useragentman.com/blog/2014/05/04/fixing-typography-inside-of-2-d-css-transforms/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2013/09/20/better-web-typography-with-font-weight-autohinting-and-font-feature-settings/" />
+<link rel='shortlink' href='http://useragentman.com/blog/K7V7p' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2013%2F09%2F20%2Fbetter-web-typography-with-font-weight-autohinting-and-font-feature-settings%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2013%2F09%2F20%2Fbetter-web-typography-with-font-weight-autohinting-and-font-feature-settings%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2013/05/20/cross-browser-svg-text-paths-without-javascript-even-in-older-ie/" rel="prev">Cross-Browser SVG Text-Paths Without JavaScript — Even In Older IE.</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2014/05/04/fixing-typography-inside-of-2-d-css-transforms/" rel="next">Fixing Typography Inside of 2-D CSS Transforms</a> &raquo;</span>
+</div>
+
+
+			<h1>Better Web Typography With <code>font-weight</code>, Autohinting and <code>font-feature-settings</code></h1>
+			<h4 class="meta">September 20th, 2013 by zoltan &middot; <a href="http://www.useragentman.com/blog/2013/09/20/better-web-typography-with-font-weight-autohinting-and-font-feature-settings/#comments">2 Comments</a></h4>
+			<div class="entry">
+				<p><a href="http://instagram.com/p/efgXDghWqz/#"><img id="top-image" src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/63947b2c222211e39a8f22000a9f195b_7-300x300.jpg" alt="63947b2c222211e39a8f22000a9f195b_7" width="300" height="300" class="alignleft size-medium wp-image-6407" srcset="http://www.useragentman.com/blog/wp-content/uploads/2013/09/63947b2c222211e39a8f22000a9f195b_7-300x300.jpg 300w, http://www.useragentman.com/blog/wp-content/uploads/2013/09/63947b2c222211e39a8f22000a9f195b_7-150x150.jpg 150w, http://www.useragentman.com/blog/wp-content/uploads/2013/09/63947b2c222211e39a8f22000a9f195b_7.jpg 612w" sizes="(max-width: 300px) 100vw, 300px" /></a> This has been a great decade for web typography so far.  2010 saw embedded font support reach critical mass among the major major browsers and developers can finally embed whatever font they want into any web page they want (<em>as long as the font&#8217;s licenses allows it</em>).  After playing around with the technology for the past two years, I have done research on how to <strong>improve the look and legibility of @font-face type</strong>.  <strong>Faux-bolding</strong> and <strong>faux-italicizing</strong> (i.e. <strong>&#8220;obliquing&#8221;</strong>) can be <strong>easily avoided a lot more easily with new browsers</strong> (and in some cases, even older IE!).  Fonts that look horrible in Windows can be <strong>improved with autohinting</strong>.  And best of all, advanced features of OpenType fonts, like <strong>ligatures, alternative glyphs, and other character variations</strong> are almost in all the major browsers (Safari, the only holdout, will have it later this year).  Let&#8217;s see how we can put this all into practice today.</p>
+<h2>Avoiding Faux-Bold and Italics</h2>
+<p>A pet-peeve of mine is how browsers sometimes faux-bold or faux-italic @font-face text if things are not set up correctly.  For example, let&#8217;s take a look at <a href="http://www.fonts.info/info/press/free-fonts-for-font-face-embedding.htm">Graublau Web</a>, the font that is used for the headings on my blog.  I have two <code>@font-face</code> declarations that I use to embed the font into my webpage &mdash; one to embed the regular variant, and one for the bolded one:</p>
+<blockquote class="code">
+<pre>
+@font-face {
+  font-family: 'GraublauWeb-Regular';
+  src: url('GraublauWeb.eot?') format('eot'), 
+       url('GraublauWeb.otf')  format('opentype'),
+       url('GraublauWeb.woff') format('woff'), 
+       url('GraublauWeb.ttf')  format('truetype'),
+       url('GraublauWeb.svg#GraublauWeb') format('svg');
+}
+
+@font-face {
+  font-family: 'GraublauWeb-Bold';
+  src: url('GraublauWebBold.eot?') format('eot'), 
+       url('GraublauWebBold.otf')  format('opentype'),
+       url('GraublauWebBold.woff') format('woff'), 
+       url('GraublauWebBold.ttf')  format('truetype'),
+       url('GraublauWebBold.svg#GraublauWebBold') format('svg');
+}
+</pre>
+</blockquote>
+<p>This is how the fonts <em>should</em> look:</p>
+<div class="wp-caption aligncenter">
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/grau-bold-reg.png" alt="grau-bold-reg" width="619" height="140" class="alignnone size-full wp-image-6395" srcset="http://www.useragentman.com/blog/wp-content/uploads/2013/09/grau-bold-reg.png 619w, http://www.useragentman.com/blog/wp-content/uploads/2013/09/grau-bold-reg-300x67.png 300w" sizes="(max-width: 619px) 100vw, 619px" />
+</div>
+<p>However, when I first started using them in my blog years ago, I sometimes saw this happening:</p>
+<div class="wp-caption aligncenter">
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/grau-fauxbold-reg.png" alt="grau-fauxbold-reg" width="619" height="140" class="alignnone size-full wp-image-6396" srcset="http://www.useragentman.com/blog/wp-content/uploads/2013/09/grau-fauxbold-reg.png 619w, http://www.useragentman.com/blog/wp-content/uploads/2013/09/grau-fauxbold-reg-300x67.png 300w" sizes="(max-width: 619px) 100vw, 619px" />
+</div>
+<p><a class="exampleLink" href="/tests/fontConverter/examples/faux-bold-test.html">See an &#8220;clean-room&#8221; HTML example page of the above faux-bolding in action.</a></p>
+<p>In my opinion, <strong>this faux-bolding is uglier than me the day after last year&#8217;s company Christmas party!</strong>  It looks as if someone took the regular font and outlined it with a magic marker. When saw this effect for the first time, I decided to dig into my CSS and see what was causing this.  The CSS looks fine, but take a close look and you&#8217;ll see the problem:</p>
+<blockquote class="code">
+<pre>
+.faux-bold {
+  font-family: <span class="hilite">"GraublauWeb-Regular"</span>, "Arial Narrow", "Helvetica", sans-serif;
+  font-weight: <span class="hilite">bold</span>;
+}
+</pre>
+</blockquote>
+<p>We are telling the web browser to bold the regular variant of the font.  The browser has no idea that &#8220;GraublauWeb-Bold&#8221; is actually the bolded variant of &#8220;GraublauWeb-Regular&#8221; &mdash; from its perspective, &#8220;GraublauWeb-Regular&#8221; and &#8220;GraublauWeb-Bold&#8221; are two different fonts.   This is why the faux-bolding happens.  It get&#8217;s worse &mdash; some browsers will double bold a font if you try to bold a font that is already bolded:</p>
+<div class="wp-caption aligncenter">
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/grau-superfauxbold-reg.png" alt="grau-superfauxbold-reg" width="619" height="140" class="alignnone size-full wp-image-6397" srcset="http://www.useragentman.com/blog/wp-content/uploads/2013/09/grau-superfauxbold-reg.png 619w, http://www.useragentman.com/blog/wp-content/uploads/2013/09/grau-superfauxbold-reg-300x67.png 300w" sizes="(max-width: 619px) 100vw, 619px" />
+</div>
+<p>As I have mention in a previous article, <a href="http://www.useragentman.com/blog/2010/09/07/giving-challenged-font-face-fonts-the-italics-makeover/">Giving Challenged @font-face Fonts The Italics Makeover</a>, browsers will also apply faux-italics (a.k.a. obliquing) to a font if it can&#8217;t find the real italic variant itself.  What&#8217;s a developer to do?</p>
+<p>There are two ways to avoid this:</p>
+<ol>
+<li>Whenever you use an embedded font, <strong>ensure that the <code>font-weight</code> and <code>font-style</code> are set to <code>normal</code></strong>:<br />
+<blockquote class="code">
+<pre>
+@font-face {
+    font-family: 'graublau_webregular';
+    src: url('graublauweb-webfont.eot');
+    src: url('graublauweb-webfont.eot?#iefix') format('embedded-opentype'),
+         url('graublauweb-webfont.woff') format('woff'),
+         url('graublauweb-webfont.ttf') format('truetype');
+<span class="hilite">    font-weight: normal;
+    font-style: normal;</span>
+
+}
+
+@font-face {
+    font-family: 'graublau_webbold';
+    src: url('graublauwebbold-webfont.eot');
+    src: url('graublauwebbold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('graublauwebbold-webfont.woff') format('woff'),
+         url('graublauwebbold-webfont.ttf') format('truetype');
+<span class="hilite">    font-weight: normal;
+    font-style: normal;</span>
+
+}
+</pre>
+</blockquote>
+<p>When you want to style text that is bolded, make sure to set the element&#8217;s <code>font-weight</code> to <code>normal</code> and set the <code>font-family</code> to the name of the bolded variant (in this case, <code>"graublau_webbold"</code></p>
+<blockquote class="code">
+<pre>
+strong {
+  font-weight: normal;
+  font-family: "graublau_webbold", "Arial", sans-serif;
+}
+</pre>
+</blockquote>
+<p>This is a default hack that is used by services like Font Squirrel and my own <a href="http://www.useragentman.com/blog/the-css3-font-converter/">CSS3 Font Converter</a> shell script.  The problem is, if the embedded font doesn&#8217;t load for some reason, <strong>the fallback font will not be bolded</strong> (which would be a bad thing in most circumstances).</li>
+<li><strong>My preferred method</strong> is to use the more proper <code>@font-face</code> syntax that will prevent you from making this mistake when styling text:<br />
+<blockquote class="code">
+<pre>
+@font-face {
+  font-family: '<span class="hilite">GraublauWeb</span>';
+  src: url('GraublauWeb.eot?') format('eot'), 
+       url('GraublauWeb.otf')  format('opentype'),
+       url('GraublauWeb.woff') format('woff'), 
+       url('GraublauWeb.ttf')  format('truetype'),
+       url('GraublauWeb.svg#GraublauWeb-Regular') format('svg');
+<span class="hilite2">  font-weight: normal;
+  font-style: normal;</span>
+}
+
+@font-face {
+  font-family: '<span class="hilite">GraublauWeb</span>';
+  src: url('GraublauWebBold.eot?') format('eot'), 
+       url('GraublauWebBold.otf')  format('opentype'),
+       url('GraublauWebBold.woff') format('woff'), 
+       url('GraublauWebBold.ttf')  format('truetype'),
+       url('GraublauWebBold.svg#GraublauWeb-Bold') format('svg');
+<span class="hilite2">  font-weight: bold;
+  font-style: normal;</span>
+}
+</pre>
+</blockquote>
+</li>
+</ol>
+<p>As you can see, I declare variations of the font <span class="hilite">GraublauWeb</span>, instead of declaring one font called &#8220;GraublauWeb-Regular&#8221;, and another called &#8220;GraublauWeb-Bold&#8221;.  If there was an italic variant of Graublau, I would embed it with the <code>font-style</code> set to <code>italic</code>.  <strong>This is more developer-proof</strong>, since we can&#8217;t accidentally bold a font that should be bolded, or double bold an already bolded font.  There is a catch (actually two): </p>
+<ol>
+<li><strong><a href="http://blog.typekit.com/2010/11/23/ios-4-2-improves-support-for-web-fonts/">Older iPhones and iPads that are running iOS less than version 4.2 will crash</a> when it comes across multiple declarations of the same font name.</strong> This can be avoided by removing the SVG version of the font in the declaration, since only iOS < 4.2 can only embed SVG fonts, which newer iOS devices can embed TrueType.  This is a good trade-off, in my opinion, since <a href="http://david-smith.org/iosversionstats/">David Smith</a> and <a href="https://developer.apple.com/devcenter/ios/checklist/">Apple themselves</a> state that there are not too many people left who haven&#8217;t updated to a more recent version of the OS (less than 1%).</li>
+<li><strong><a href="http://blog.typekit.com/2011/06/27/new-from-typekit-variation-specific-font-family-names-in-ie-6-8/">IE8 and lower can only handle four declarations with the same name</a>.</strong>  If there are more than that, IE will ignore them.</li>
+</ol>
+<p>I assume that these two reasons are why some @font-face conversion services do not use this method by default.  However, since there is a way to avoid the iOS bug, and four variants should be enough for more use cases, I have decided to add support for this method in my <a href="http://www.useragentman.com/blog/the-css3-font-converter/">CSS3 Font Converter</a> script.   <a href="http://www.useragentman.com/blog/2011/02/20/converting-font-face-fonts-quickly-in-any-os/">More information about the converter can be seen on this blog post</a>, but if you are already familiar with it, <a href="https://github.com/zoltan-dulac/css3FontConverter">download the latest version from github</a> and type in the following command inside the directory which contains the fonts you want to convert:</p>
+<blockquote class="code">
+<pre>
+convertFonts.sh <span class="hilite">--use-font-weight</span> *.otf
+</pre>
+</blockquote>
+<p>This will result in a stylesheet with font declarations like this:</p>
+<blockquote class="code">
+<pre>
+/*
+ * This stylesheet generated by the CSS3 @font-face generator v2.0
+ * by Zoltan Hawryluk (http://www.useragentman.com). 
+ * Latest version of this program is available at
+ * https://github.com/zoltan-dulac/css3FontConverter
+ *
+ * Generated with the following options:
+ * 
+ * --use-font-weight 
+ */
+
+
+@font-face {
+  font-family: 'GraublauWeb';
+  src: url('GraublauWeb.eot?') format('eot'), 
+       url('GraublauWeb.woff') format('woff'),
+       url('GraublauWeb.otf')  format('opentype'),
+       url('GraublauWeb.ttf')  format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'GraublauWeb';
+  src: url('GraublauWebBold.eot?') format('eot'), 
+       url('GraublauWebBold.woff') format('woff'),
+       url('GraublauWebBold.otf')  format('opentype'),
+       url('GraublauWebBold.ttf')  format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+</pre>
+</blockquote>
+<p><strong>The <code>400</code> and <code>700</code> weights correspond to <code>normal</code> and <code>bold</code> respectively.</strong>  I use numeric weights instead of named ones because it allows my script to use up to nine different weights.  For example, <a href="http://www.1001fonts.com/exo-font.html">Exo</a> is a font family that has nine weights, and the script is smart enough to take the individual font files and assign them the following CSS3 numeric weights for <code>font-family: Exo</code>.</p>
+<table id="numeric-weights" class="dataTable">
+<thead>
+<tr>
+<th>Font Name</th>
+<th>Numeric Weight</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Thin</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Extra Light</td>
+<td>200</td>
+</tr>
+<tr>
+<td>Light</td>
+<td>300</td>
+</tr>
+<tr>
+<td>Regular, Normal, Roman</td>
+<td>400</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>500</td>
+</tr>
+<tr>
+<td>Demi Bold</td>
+<td>600</td>
+</tr>
+<tr>
+<td>Bold</td>
+<td>700</td>
+</tr>
+<tr>
+<td>Extra Bold</td>
+<td>800</td>
+</tr>
+<tr>
+<td>Black</td>
+<td>900</td>
+</tr>
+</tbody>
+</table>
+<p>It does this by searching for the following keywords in the font name inside the font file and querying some properties inside the font tables.  The CSS3 Font converter will also insert the italic font variants inside the stylesheet if there are italic fonts available.  Here is an example <code>@font-face</code> declaration it produces:</p>
+<blockquote class="code">
+<pre>
+@font-face {
+  font-family: 'Exo';
+  src: url('Exo-Black-Italic.eot?') format('eot'), 
+       url('Exo-Black-Italic.otf')  format('opentype'),
+       url('Exo-Black-Italic.woff') format('woff'), 
+       url('Exo-Black-Italic.ttf')  format('truetype'),
+       url('Exo-Black-Italic.svg#Exo-Black-Italic') format('svg');
+  font-weight: 900;
+  font-style: italic;
+}
+</pre>
+</blockquote>
+<p>You can also do this with the Font Squirrel WebFont Generator, but you will have to check the &#8220;Style Link&#8221; checkbox.  You may want to also ensure the SVG option is also unchecked (it is by default) so that your fonts don&#8217;t crash older iPhones.  Note that this can only handle bold and italic variants of the fonts you upload &mdash; I tried uploading all the Exo fonts I listed above, and it didn&#8217;t handle all the the subtler weights (e.g. Light, Black, etc.) that my script does.</p>
+<p>Note that Google Web Fonts do this by default.  However, I have noticed that at the time of this writing, it doesn&#8217;t seem to work 100% correctly in older IE, which will faux bold and faux italic web fonts:</p>
+<table class="dataTable" id="googleIEFaux">
+<thead>
+<tr>
+<th>Libre Baskerville, via CSS3 Font Converter</th>
+<th>Libre Baskerville, via Google Web Fonts</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/baskerville-unfaux-ie8.png" alt="baskerville-unfaux-ie8" width="200" height="130" class="alignnone size-full wp-image-6274" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/baskerville-googlewebfonts-ie8.png" alt="baskerville-googlewebfonts-ie8" width="200" height="130" class="alignnone size-full wp-image-6273" /></td>
+</tr>
+</tbody>
+</table>
+<p>Note that the Bold in the Google Web Font version is faux bolded and that the italics are actually oblique (faux-italicized).  I was curious to see why, so I took a look at the stylesheet that IE was grabbing from the <a href="http://fonts.googleapis.com/css?family=Libre+Baskerville:400,400italic,700&#038;subset=latin,latin-ext">Google Web Font CSS URL for Libre Baskerville with all weights</a>.  Turns out that the CSS was only including one weight:</p>
+<blockquote class="code">
+<pre>
+@font-face {
+  font-family: 'Libre Baskerville';
+  font-style: normal;
+  font-weight: 400;
+  src: url(http://themes.googleusercontent.com/static/fonts/librebaskerville/v1/pR0sBQVcY0JZc_ciXjFsK6xjZJvo8Gk2Hy-wJqL2P8g.eot);
+  src: local('Libre Baskerville'), local('LibreBaskerville-Regular'), url(http://themes.googleusercontent.com/static/fonts/librebaskerville/v1/pR0sBQVcY0JZc_ciXjFsK6xjZJvo8Gk2Hy-wJqL2P8g.eot) format('embedded-opentype'), url(http://themes.googleusercontent.com/static/fonts/librebaskerville/v1/pR0sBQVcY0JZc_ciXjFsK2vhaIAz1NJzluD_h2UBN7c.woff) format('woff');
+}
+</pre>
+</blockquote>
+<h2>Autohinting Fonts to Make them Look Better in Windows</h2>
+<p><strong><br />
+A lot of fonts</strong> (especially a lot of <em>free</em> fonts) look just fine on a Mac, Linux box, or mobile phone, but <strong>look <em>horrible</em> on Windows</strong>.  This is because Windows relies on the hinting information embedded inside a font, and these fonts may not be hinted correctly, if at all.  For those who are new to typography, a font&#8217;s <strong>hinting</strong> information is a set of instructions that tells a device how to make a vector font look good on a pixel grid display.  Since hinting is a very time-consuming process and takes a long time to learn how to do well, the result is a lot of ugly typography in Windows. <strong>This doesn&#8217;t happen on OSX, iOS or Android</strong> because these devices <em>autohint</em> the font &mdash; <strong>they ignore the hinting information inside a font</strong> and instead produce their own hints.  While autohinting does not produce as good results as human-hinting, it still produces results which are way better bad hinting.  </p>
+<p><strong>Can we force Windows to do this?</strong>  Well, we can&#8217;t change Windows behavior, but we <em>can</em> take out a font&#8217;s hinting information and replace it with our own.  There are two ways you can do this:</p>
+<ol>
+<li>The <a href="http://www.useragentman.com/blog/the-css3-font-converter/">CSS3 Font Converter</a> I mentioned earlier now has support for <a href="http://www.freetype.org/ttfautohint/">ttfautohint</a>.  It uses the autohinter used in Linux, FreeType, but you don&#8217;t need Linux to run it &mdash; ttfautohint runs on OSX, Windows and Linux equally well.</li>
+<li>Fontsquirrel&#8217;s Font Generator by default will also autohint your fonts (again, you can toggle this feature by going into the &#8220;Expert&#8221; tab again).</li>
+</ol>
+<p>For a well-hinted font, it doesn&#8217;t matter as much.  Sometimes, though, a font&#8217;s native hints may need some help due to the <strong>different anti-aliasing technologies available in the various versions of Windows</strong> in use today (XP uses GDI ClearType while Windows 7+ uses DirectWrite ClearType).  Lets take a look at at what we get when we autohint a well-hinted font, <a href="http://www.impallari.com/projects/overview/libre-baskerville">Libre Baskerville</a> and display at 15 pixels:</p>
+<table class="dataTable" id="baskervilleHinting">
+<thead>
+<tr>
+<th></th>
+<th>Original Font</th>
+<th>Hinted with<br />ttfautohint</th>
+<th>Hinted with<br />Font Squirrel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>IE8</th>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/baskerville-unhinted-ie8.png" alt="baskerville-unhinted-ie8" width="150" height="100" class="alignnone size-full wp-image-6243" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/baskerville-hinted-ttfautohint-ie8.png" alt="baskerville-hinted-ttfautohint-ie8" width="150" height="100" class="alignnone size-full wp-image-6241" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/baskerville-hinted-fontsquirrel-ie8.png" alt="" width="150" height="100" class="alignnone size-full wp-image-6239" />
+</td>
+</tr>
+<tr>
+<th>IE9</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/baskerville-unhinted-ie9.png" alt="baskerville-unhinted-ie9" width="150" height="100" class="alignnone size-full wp-image-6244" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/baskerville-hinted-ttfautohint-ie9.png" alt="baskerville-hinted-ttfautohint-ie9" width="150" height="100" class="alignnone size-full wp-image-6242" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/baskerville-hinted-fontsquirrel-ie9.png" alt="baskerville-hinted-fontsquirrel-ie9" width="150" height="100" class="alignnone size-full wp-image-6240" />
+</td>
+</tr>
+<tr>
+<th>Chrome</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/baskerville-unhinted-chrome29.png" alt="baskerville-unhinted-chrome29" width="150" height="100" class="alignnone size-full wp-image-6268" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/baskerville-hinted-ttfautohint-chrome29.png" alt="baskerville-hinted-ttfautohint-chrome29" width="150" height="100" class="alignnone size-full wp-image-6267" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/baskerville-hinted-fontsquirrel-chrome29.png" alt="baskerville-hinted-fontsquirrel-chrome29" width="150" height="100" class="alignnone size-full wp-image-6266" />
+</td>
+</tr>
+</tbody>
+</table>
+<p>You can see whole groups of horizontal pixels missing in the original font in Windows XP, which is especially noticable in the the lower-case t&#8217;s cross-bar in the word &#8220;autohinting&#8221;.  This is because <strong>GDI Cleartype does horizontal antialiasing but not vertical.</strong>  Even in IE9, the cross-bar in the letter &#8216;e&#8217; is a little off. </p>
+<p>Sometimes the results are a lot more pronounced, especially in fonts that have a lot of thin lines and/or lots of small details.  A good example of this is <a href="http://www.fontsite.com/2077/bergamo-std/">Bergamo Std</a>.  As you can see, hinting <em>really</em> improves it, both from an aesthetic and usability perspective:</p>
+<table class="dataTable" id="bergamoHinting">
+<thead>
+<tr>
+<th>Bergamo Std in IE8<br />No Hinting</th>
+<th>Bergamo Std in IE8<br />Hinted with<br />ttfautohint</th>
+<th>Bergamo Std in IE8<br />Hinted with<br />Font Squirrel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/bergamo-unhinted.png" alt="bergamo-unhinted" width="200" height="200" class="aligncenter size-full wp-image-6352" srcset="http://www.useragentman.com/blog/wp-content/uploads/2013/09/bergamo-unhinted.png 200w, http://www.useragentman.com/blog/wp-content/uploads/2013/09/bergamo-unhinted-150x150.png 150w" sizes="(max-width: 200px) 100vw, 200px" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/bergamo-hinted.png" alt="bergamo-hinted" width="200" height="200" class="aligncenter size-full wp-image-6351" srcset="http://www.useragentman.com/blog/wp-content/uploads/2013/09/bergamo-hinted.png 200w, http://www.useragentman.com/blog/wp-content/uploads/2013/09/bergamo-hinted-150x150.png 150w" sizes="(max-width: 200px) 100vw, 200px" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/fontsquirrel-bergamo.png" alt="fontsquirrel-bergamo" width="200" height="200" class="aligncenter size-full wp-image-6358" srcset="http://www.useragentman.com/blog/wp-content/uploads/2013/09/fontsquirrel-bergamo.png 200w, http://www.useragentman.com/blog/wp-content/uploads/2013/09/fontsquirrel-bergamo-150x150.png 150w" sizes="(max-width: 200px) 100vw, 200px" /></td>
+</tr>
+</tbody>
+</table>
+<p>Note that <strong>nothing compares to a professional hinting</strong> a font by hand but in a pinch, <strong>autohinting can produce some descent results.</strong>  Font Squirrel and ttfautohint have their pros and cons, and it really is a matter of trying both out to see which you prefer &mdash; you may even want to mix and match these two depending on the font, size and weight of the text you need to render on a web page.  Keep in mind, however, that some font licenses don&#8217;t allow you to modify the fonts themselves, so please read the license that come with the fonts you download and purchase.</p>
+<p><a class="exampleLink" href="/tests/fontConverter/examples/font-feature-settings.html">See a live comparison of the three versions of Libre Baskerville (differences are most drastic on a Windows desktop)</a></p>
+<h2>Ligatures, Swashes and Other <code>font-feature-settings</code></h2>
+<p><a href="http://instagram.com/p/aeV_i5hWpZ/#"><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/stressed-thumb.jpg" alt="Instragram photo of this thumbnail." width="200" height="200" class="alignleft size-full wp-image-6312" srcset="http://www.useragentman.com/blog/wp-content/uploads/2013/09/stressed-thumb.jpg 207w, http://www.useragentman.com/blog/wp-content/uploads/2013/09/stressed-thumb-150x150.jpg 150w" sizes="(max-width: 200px) 100vw, 200px" /></a> The CSS3 <code>font-feature-settings</code> property gives me the flexibility with web typography that I have when I do calligraphy work.  Take the example for the right.  The two &#8220;S&#8217;s&#8221; in the word &#8220;Stressed&#8221; are different sizes, and the letter &#8220;d&#8221; has an ascender that stretches over all the lower case letters on the left of it (I would not normally write it this way, but it &#8220;looks good&#8221; in this context).  These details make the lettering more interesting than if I decided to write letters the same way all the time. It is now possible to use <code>font-feature-settings</code> to create effects like these on the web, as long as the font <em>and</em> the browser supports it (currently, <a href="http://caniuse.com/#search=font-feature-settings">all the latest versions of the major browsers supports it</a>, including IE10+).</p>
+<p>What are the possible values of <code>font-feature-settings</code>?  There can be a combination of any of the four letter font features supported by the OpenType specification.  With them, you can add more variations than just bolding, italicizing and underlining can offer.  These features are numerous (<a href="http://www.microsoft.com/typography/otspec/featurelist.htm">there are 135 of them</a>), and typically a font will only support a few of them (if any).  Let&#8217;s go through the more common ones.</p>
+<div class="importantNotes">
+<h3>Note:</h3>
+<p>At the time this article was written (September 22, 2013) it appears that <strong>the <a href="http://www.fontsquirrel.com/tools/webfont-generator">Font Squirrel Webfont Generator</a> strips out the OpenType Feature Tables from fonts when they are converted to TTF and WOFF.</strong>  It does, however, allow you to work around this issue somewhat by giving you the ability to fold some (but not all) of these features in the default rendering of a font.  While this works with less complex typographic needs, I hope an update is produced to implement feature tags using this excellent service.</p>
+<p>You can, however, use <code>font-feature-settings</code> with <a href="http://www.google.com/fonts">Google Fonts</a> and fonts converted with my <a href="http://www.useragentman.com/blog/the-css3-font-converter/">CSS3 Font Converter</a>.</p>
+</div>
+<p><a class="exampleLink" href="/tests/fontConverter/examples/font-feature-settings.html">See live examples of all the <code>font-feature-settings</code> listed below and more</a></p>
+<h3>Ligatures</h3>
+<p>A <strong>Ligature</strong> is <strong>a glyph that takes the place of two or more glyphs.</strong>  They are often used to simulate the joining and overlapping of letters that occur in handwriting and calligraphy, like <a href="http://instagram.com/p/eX8fuUhWrA/">the Z&#8217;s in the word &#8220;Lizzie&#8221; in this example</a>.  There are a few types of ligature feature tags available: </p>
+<table class="feature-table">
+<thead>
+<tr>
+<th rowspan="2">Feature Tag</th>
+<th rowspan="2">Long Name</th>
+<th rowspan="2">Description</th>
+<th colspan="2">Screenshots</th>
+</tr>
+<tr>
+<th>With feature</th>
+<th>Without feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>liga</td>
+<td>Standard Ligatures</td>
+<td>Usually produced for groups of characters that overlap each other. Common standard ligatures are the f-ligatures: fi, fl, and sometimes ff, ffi, and ffl.  The example to the right is the &#8220;fi&#8221; ligature from <a href="http://www.impallari.com/projects/overview/libre-baskerville">Libre Baskerville</a>.</td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/fi.png" alt="fi" width="100" height="100" class="aligncenter size-full wp-image-6326" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/fi-liga.png" alt="fi-liga" width="100" height="100" class="aligncenter size-full wp-image-6327" /></td>
+</tr>
+<tr>
+<td>liga</td>
+<td>Discretionary Ligatures</td>
+<td>Ligatures that are decorative and to be used at the author&#8217;s discretion.  For example, the &#8216;c&#8217; and the &#8216;h&#8217; together don&#8217;t overlap each other normally, but the <a href="http://www.1001fonts.com/exo-font.html">Exo</a> font has a discretionary ligature for them because it &#8220;looks cool&#8221;.</td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/ch.png" alt="ch" width="100" height="100" class="aligncenter size-full wp-image-6330" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/ch-dlig.png" alt="ch-dlig" width="100" height="100" class="aligncenter size-full wp-image-6331" /></td>
+</tr>
+<tr>
+<td>hlig</td>
+<td>Historical Ligatures</td>
+<td>Ligatures that were in common use in the past, but are uncommon today.  <a href="http://openfontlibrary.org/en/font/eb-garamond">EB Garamond</a> has a few of these that join letters like &#8216;s&#8217; and &#8216;t&#8217; with a curve coming out of the top of the &#8216;t&#8217;.</td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/st.png" alt="st" width="100" height="100" class="aligncenter size-full wp-image-6334" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/st-hlig.png" alt="st-hlig" width="100" height="100" class="aligncenter size-full wp-image-6333" /></td>
+</tr>
+</tbody>
+</table>
+<h3>Numeric</h3>
+<p>There are many variations of numbers and figures in fonts.  You may want a different style depending on when you use them in calculations, in headings or in body copy.  Here are a few examples:</p>
+<table class="feature-table">
+<thead>
+<tr>
+<th rowspan="2">Feature Tag</th>
+<th rowspan="2">Long Name</th>
+<th rowspan="2">Description</th>
+<th colspan="2">Screenshots</th>
+</tr>
+<tr>
+<th>With feature</th>
+<th>Without feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>frac</td>
+<td>Fractional Glyphs</td>
+<td>These are used for common fractional combinations so they don&#8217;t take up too much space on the page.  The eample shown is &#8216;1/2&#8217; in <a href="http://www.impallari.com/projects/overview/libre-baskerville">Libre Baskerville</a>.  Note that not all fonts that implement this feature implement all the same fractional combinations.  For example, <a href="http://www.1001fonts.com/exo-font.html">Exo</a> implements a Fractional Glyph for 1/7, but Libre Baskerville doesn&#8217;t.</td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/half.png" alt="fi" width="100" height="100" class="aligncenter size-full wp-image-6326" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/half-frac.png" alt="fi-liga" width="100" height="100" class="aligncenter size-full wp-image-6327" /></td>
+</tr>
+<tr>
+<td>onum</td>
+<td>Old-Style Numbers</td>
+<td>These numbers are designed to blend-in with lower case text by giving them <a href="http://en.wikipedia.org/wiki/Ascender_%28typography%29">ascenders</a> and <a href="http://en.wikipedia.org/wiki/Descender_%28typography%29">descenders</a> (like in the calligraphy example at the top of this page as well as <a href="http://instagram.com/p/eYm0bEBWqr/">in this example</a>).  Note that some fonts, especially revival fonts like Libre Garamond and EB Baskerville, have this as the default style for numerals, even though Adobe and Microsoft&#8217;s documentation state that <a href="http://www.microsoft.com/typography/otspec/features_ko.htm#onum">this feature should be inactive by default</a>.  The example presented here is from <a href="http://www.1001fonts.com/exo-font.html">Exo</a>.</td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/789.png" alt="789" width="100" height="100" class="aligncenter size-full wp-image-6345" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/789-onum.png" alt="789-onum" width="100" height="100" class="aligncenter size-full wp-image-6344" /></td>
+</tr>
+<tr>
+<td>tnum</td>
+<td>Tabular Figures</td>
+<td>These numbers are set to be fixed-width so that, if digits are lined up on top of each other, they line up.  The example on the right shows this features as it appears in Exo.</td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/fractions.png" alt="fractions" width="100" height="100" class="aligncenter size-full wp-image-6347" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/fractions.tnum_.png" alt="fractions.tnum" width="100" height="100" class="aligncenter size-full wp-image-6348" /></td>
+</tr>
+</tbody>
+</table>
+<h3>Alternates</h3>
+<p>There are a few tags that lets the author choose an alternate form of a single glyph.</p>
+<table class="feature-table">
+<thead>
+<tr>
+<th rowspan="2">Feature Tag</th>
+<th rowspan="2">Long Name</th>
+<th rowspan="2">Description</th>
+<th colspan="2">Screenshots</th>
+</tr>
+<tr>
+<th>With feature</th>
+<th>Without feature</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>swsh</td>
+<td>Swashes</td>
+<td>A swash is a typographical flourish on a glyph.  These can include exaggerated serif, tails, mid-strokes, and so-on.  The example to the right shows the difference between the regular and swash version of the capital letter &#8220;W&#8221; in <a href="http://openfontlibrary.org/en/font/eb-garamond">EB Garamond</a>.</td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/gara-w.png" alt="gara-w" width="100" height="100" class="alignnone size-full wp-image-6387" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/gara-w-swsh.png" alt="gara-w-swsh" width="100" height="100" class="alignnone size-full wp-image-6386" />
+</td>
+</tr>
+<tr>
+<td>ss00 &#8211; ss20</td>
+<td>Stylistic Set 1 &#8211; Stylistic Set 20</td>
+<td>These tags are used for certain features of a font that may not be described accurately by an existing feature tag.  What these features are will vary from font to font.  The example to the right shows <code>ss01</code> (rounded &#8216;E&#8217;), <code>ss02</code> (slated &#8216;S&#8217;) and <code>ss03</code> (script like &#8216;y&#8217; and &#8216;g&#8217;) in the font <a href="http://www.smeltery.net/fonts/megalopolis-extra">Megalopolis.</a></td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/mega.png" alt="mega" width="100" height="100" class="alignnone size-full wp-image-6384" />
+</td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/mega-ss.png" alt="mega-ss" width="100" height="100" class="alignnone size-full wp-image-6383" />
+</td>
+</tr>
+</tbody>
+</table>
+<h3>Small Caps</h3>
+<p>One feature tag, <code>smcp</code>, deserves a little more attention.  Using it is similar to the CSS property <code>font-variant:small-caps</code> except it <strong>uses a real small-cap variant built into the font</strong> instead of having the browser synthesizing the font itself.  This usually lends to better results depending on how the font is rendered.  In my experience, <code>font-variant:small-caps</code> does not appear consistently in all browsers.  In these screenshots, the ghetto <code>font-variant:small-caps</code> version is on the top, while the nicer <code>smcp</code> version is on the bottom:</p>
+<table class="small-caps">
+<thead>
+<tr>
+<th></th>
+<th>Exo</th>
+<th>EB Garamond</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Firefox 24 OSX</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/small-caps-exo-firefox.png" alt="small-caps-exo-firefox" width="200" height="220" class="alignnone size-full wp-image-6379" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/small-caps-eb-garamond-firefox.png" alt="small-caps-eb-garamond-firefox" width="200" height="220" class="alignnone size-full wp-image-6377" /></td>
+</tr>
+<tr>
+<th>Chrome 29 OSX</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/small-caps-exo-chrome.png" alt="small-caps-exo-chrome" width="200" height="220" class="alignnone size-full wp-image-6378" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/small-caps-eb-garamond-chrome.png" alt="small-caps-eb-garamond-chrome" width="200" height="220" class="alignnone size-full wp-image-6380" /></td>
+</tbody>
+</table>
+<p>Note the OpenType small-caps are consistent on all browsers, while the <code>font-variant: small-caps</code> text looks quite different (and really bad in Chrome 29 &mdash; it looks like each small-cap-glyph is taking the width the &#8220;normal-sized&#8221; capital letters).  Unfortunately, not all fonts implement the <code>smcp</code> feature tag (more on feature detection later), but when it is available, it usually yields better results.  If you want more information on why true small caps are better than algorihmically generated ones, read Alec Julien&#8217;s <a href="http://ilovetypography.com/2008/02/20/small-caps/">Small Caps</a> on <a href="http://ilovetypography.com/">i love typography</a>.</p>
+<h3>Other Features</h3>
+<p>The features listed above are <em>not</em> a complete list.  There are a complete lists available elsewhere however:</p>
+<ul>
+<li><a href="http://www.microsoft.com/typography/otspec/featurelist.htm">OpenType Layout tag registry</a> on Microsoft.com.</li>
+<li><a href="http://partners.adobe.com/public/developer/opentype/index_tag3.html">OpenType Feature Tags</a> on Adobe.com</li>
+</ul>
+<p><a class="exampleLink" href="/tests/fontConverter/examples/font-feature-settings.html">See live examples of all the <code>font-feature-settings</code> listed above and more</a></p>
+<h3>How To Use Them</h3>
+<p>The CSS is rather simple, but you have to use a lot of vendor-prefix cruft (for now).  For example, if you want to turn on Small Caps (<code>smcp</code>) and Standard Ligatures (<code>liga</code>), you should use the following CSS: </p>
+<blockquote class="code">
+<pre>
+#mySelector {
+      -ms-font-feature-settings:     'smcp' 1, 'liga' 1;  /* IE10 */
+      -moz-font-feature-settings:    'smcp' 1, 'liga' 1;  /* Firefox */
+      -webkit-font-feature-settings: 'smcp' 1, 'liga' 1;  /* Chrome, Safari, Opera */
+      font-feature-settings:         'smcp' 1, 'liga' 1;  /* Future-proof! */ 
+}
+</pre>
+</blockquote>
+<p>Note that <code>1</code> means on, <code>0</code> means off.  Also note that some features may be active by default.  For example, the OpenType documentation mentions that <code>liga</code> is recommended to be on by default.  This doesn&#8217;t mean it always is &mdash; most have ligatures on by default, but some don&#8217;t.  It is up to the creator of the font to decide what is on or off by default.  </p>
+<p>In other articles on <code>font-feature-settings</code>, you may see an alternate syntax for Firefox:</p>
+<blockquote class="code">
+<pre>
+#mySelector {
+      -moz-font-feature-settings:    'smcp=1,liga=1';  /* Firefox &lt; 15*/
+}
+</pre>
+</blockquote>
+<p>This syntax is only valid for Firefox 14 and below.  Since most copies of Firefox have auto-updated since then, I never use it.  I mention it here for completeness. </p>
+<h3>How To Tell What Feature a Font Supports</h3>
+<p>As I mentioned earlier, not all fonts support all of these features.  Since it is hard to know what fonts support what feature, I put in a special routine inside the <a href="http://www.useragentman.com/blog/the-css3-font-converter/">CSS3 Font Converter</a> to give a developer a complete, human readable list.  If the developer is familiar with the command line, all s/he would have to do is type in the following command in the directory the fonts are in:</p>
+<blockquote class="code">
+<pre>
+convertFonts.sh --show-features *.otf
+</pre>
+</blockquote>
+<p>(This is assuming that the fonts are OpenType files with the .otf extension.  This will also work with TrueType fonts also).   Running this on the <a href="http://www.impallari.com/projects/overview/libre-baskerville">Libre Baskerville</a> OTF fonts, we get the following:</p>
+<blockquote class="code">
+<pre>
+Font: LibreBaskerville-Bold.otf
+'kern' Horizontal Kerning in Latin lookup 0
+'liga' Standard Ligatures in Latin lookup 0
+'dlig' Discretionary Ligatures in Latin lookup 1
+'frac' Diagonal Fractions in Latin lookup 2
+'sinf' Scientific Inferiors in Latin lookup 3
+'sups' Superscript in Latin lookup 4
+'ordn' Ordinals in Latin lookup 5
+Single Substitution lookup 6
+
+Font: LibreBaskerville-Italic.otf
+'kern' Horizontal Kerning in Latin lookup 0
+'liga' Standard Ligatures in Latin lookup 0
+'dlig' Discretionary Ligatures in Latin lookup 1
+'frac' Diagonal Fractions in Latin lookup 2
+'sinf' Scientific Inferiors in Latin lookup 3
+'sups' Superscript in Latin lookup 4
+'ordn' Ordinals in Latin lookup 5
+'ss01' Style Set 1 in Latin lookup 6
+Single Substitution lookup 7
+
+Font: LibreBaskerville-Regular.otf
+'kern' Horizontal Kerning in Latin lookup 0
+'liga' Standard Ligatures in Latin lookup 0
+'dlig' Discretionary Ligatures in Latin lookup 1
+'frac' Diagonal Fractions in Latin lookup 2
+'sinf' Scientific Inferiors in Latin lookup 3
+'sups' Superscript in Latin lookup 4
+'ordn' Ordinals in Latin lookup 5
+Single Substitution lookup 6
+
+Information on these features can be found at these URLS: 
+  - http://www.microsoft.com/typography/otspec/featurelist.htm
+  - http://partners.adobe.com/public/developer/opentype/index_tag3.html
+</pre>
+</blockquote>
+<p>As mentioned before, what features are turned on or off varies from font to font (One feature tag, <code>kern</code>, is almost always on turned on by default, since it <a href="http://en.wikipedia.org/wiki/Kerning">regulates the amount of space between pairs of characters</a>).</p>
+<h3 id="glyphs-in-a-feature">How to View The Glyphs In A Feature</h3>
+<p>If you want to know how glyphs for the different features look, it&#8217;s simple with FontForge (if you don&#8217;t have it, there are instructions on how to install it on <a href="http://fontforge.sourceforge.net/mac-install.html">OSX</a> and <a href="http://fontforge.sourceforge.net/nix-install.html">Linux</a> on the FontForge site.  I have also written a step-by-step how-to on <a href="http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/">installing it on Windows</a> as well).  Let&#8217;s walk you through showing the <code>aalt</code> glyphs inside <a href="http://www.smeltery.net/fonts/megalopolis-extra">Megopolis Extra</a>:</p>
+<ul>
+<li>Open up the font:</li>
+<li>Go to <strong>View</strong> &rarr; <strong>Display Substitutions</strong>:<br />
+<a href="http://www.useragentman.com/blog/wp-content/uploads/2013/09/fontforge-view-menu.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/fontforge-view-menu.png" alt="fontforge-view-menu"  class="aligncenter size-full wp-image-6363" /></a></p>
+<p><em>(Isn&#8217;t it ironic that the UI for FontForge on Mac OSX has fonts that aren&#8217;t anti-aliased?)</em></p>
+</li>
+<li>In the resulting dialogue, choose which tag/substitution you wish to see and click <strong>OK</strong>:<br />
+<a href="http://www.useragentman.com/blog/wp-content/uploads/2013/09/fontforge-view-substitutions.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/fontforge-view-substitutions.png" alt="fontforge-view-substitutions" width="364" height="226" class="aligncenter size-full wp-image-6366" srcset="http://www.useragentman.com/blog/wp-content/uploads/2013/09/fontforge-view-substitutions.png 364w, http://www.useragentman.com/blog/wp-content/uploads/2013/09/fontforge-view-substitutions-300x186.png 300w" sizes="(max-width: 364px) 100vw, 364px" /></a></li>
+<li>You will now only see the glphys in the tag/substitution you chose:<br />
+<a href="http://www.useragentman.com/blog/wp-content/uploads/2013/09/fontforge-view-substitutions-aalt.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/09/fontforge-view-substitutions-aalt.png" alt="fontforge-view-substitutions-aalt"  class="aligncenter size-full wp-image-6364" /></a></li>
+<li>If you want to go back, just click <strong>View</strong> &rarr; <strong>Display Substitutions</strong> again.</li>
+</ul>
+<p>This makes it easier to play around with different font features without having to guess which ones are supported by the font you are using.  I have spent <em>way</em> too many hours hacking around with them &mdash; <strong>now you can too</strong>.  A couple of things to keep in mind, though:</p>
+<ol>
+<li>If you want to use some of these features using Google Web Fonts, you may need to ensure you choose an extended character set besides just Latin.  For example, for <a href="http://openfontlibrary.org/en/font/eb-garamond">EB Garamond</a>, I chose both Latin (latin) <em>and</em> Latin Extended (latin-ext) character sets.</li>
+<li><code>font-feature-settings</code> doesn&#8217;t work currently with fonts converted with the Font Squirrel generator.  It does, however, allow you to fold some (but not all) of these features in the default rendering of a font.</li>
+</ol>
+<h2>Further Reading</h2>
+<ul>
+<li><a href="http://www.creativepro.com/content/typetalk-standard-and-discretionary-ligatures">TypeTalk: Standard and Discretionary Ligatures</a> from <a href="http://www.creativepro.com">Creative Pro</a>
+<li><a href="http://typophile.com/node/9473">Ligatures in OpenType: Discretionary vs. Standard</a> on the <a href="http://typophile.com/">Typophile</a> Disussion Board</a></li>
+<li><a href="http://opentype.info/blog/2010/08/14/better-web-typography-with-opentype-features/">Better web typography with OpenType features</a> by <a href="http://opentype.info/blog/author/ralfherrmann/" title="Posts by Ralf Herrmann" rel="author">Ralf Herrmann</a> via <a href="http://opentype.info/blog/">his blog</a> (uses old Firefox syntax, but it is still a great article).</li>
+</ul>
+<p><!-- 
+
+<h2>@font-face Gotchas</h2>
+
+
+
+
+
+<ul>
+
+
+<li>When you are converting a file to EOT format, you must ensure that the name of the font contained in the font binary is the same as the name.  SOmething abotu dashes.  Test with Calandas
+</li>
+
+
+</ul>
+
+ --></p>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/uncategorized/" rel="category tag">Uncategorized</a> </p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">2 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						<li class="comment   " id="comment-911845 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-911845" title="Permalink to this comment">1</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://imanov.me'><img alt='' src='http://1.gravatar.com/avatar/7046c1c1441b170549dfdeb1f4ce0dcd?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/7046c1c1441b170549dfdeb1f4ce0dcd?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://imanov.me' rel='external nofollow' class='url'>Shehi</a> </strong>
+				<span class="comment_time">// May 26, 2015 at 6:58 am</span>
+			</p>
+			<div class="entry">
+				<p>WOW, WOW and pure WOW! :) What I see here is: we technically can bring all embedded font features we see in Adobe Photoshop (or other professional image processor) to the web. I am shocked. Thanks for such an AWESOME info Zoltan!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-912754 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-912754" title="Permalink to this comment">2</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 27, 2015 at 7:59 am</span>
+			</p>
+			<div class="entry">
+				<p>@Shehi: Exactly. I&#8217;m surprised more people aren&#8217;t as excited as we are. It is pretty awesome that we now have so much control of type on the web.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="6211" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="39bfa54087" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

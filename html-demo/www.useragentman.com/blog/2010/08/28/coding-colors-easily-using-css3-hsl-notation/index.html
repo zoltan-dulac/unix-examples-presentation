@@ -1,0 +1,863 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive post-1443" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Coding Colors Easily Using CSS3 hsl() Notation</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><script src="//code.jquery.com/jquery-1.10.2.js"></script>	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+		<link rel="stylesheet" type="text/css" href="/css/1434.css" />
+
+<!-- 
+		cssSandpaper javascripts and css.  Please get these scripts from the link at the bottom
+		of this page - the ones pointed to here may or may not be the latest versions
+-->
+
+		<script type="text/javascript" src="/shared/js/EventHelpers.js">
+		</script>
+		<script type="text/javascript" src="/shared/js/cssQuery-p.js">
+		</script>
+		<script type="text/javascript" src="/shared/js/jcoglan.com/sylvester.js">
+		</script>
+		
+		<script type="text/javascript" src="/shared/js/cssSandpaper.js">
+		</script>
+<!-- ID is 1443 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Coding Colors Easily Using CSS3 hsl() Notation Comments Feed" href="http://www.useragentman.com/blog/2010/08/28/coding-colors-easily-using-css3-hsl-notation/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Creating Cross Browser HTML5 Forms Now, Using modernizr, webforms2 and html5Forms' href='http://www.useragentman.com/blog/2010/07/27/creating-cross-browser-html5-forms-now-using-modernizr-webforms2-and-html5widgets-2/' />
+<link rel='next' title='How to Make ClearType, @font-face Fonts and CSS Visual Filters Play Nicely Together' href='http://www.useragentman.com/blog/2010/09/02/how-to-make-cleartype-font-face-fonts-and-css-visual-filters-play-nicely-together/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2010/08/28/coding-colors-easily-using-css3-hsl-notation/" />
+<link rel='shortlink' href='http://useragentman.com/blog/Z0OdV' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2010%2F08%2F28%2Fcoding-colors-easily-using-css3-hsl-notation%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2010%2F08%2F28%2Fcoding-colors-easily-using-css3-hsl-notation%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2010/07/27/creating-cross-browser-html5-forms-now-using-modernizr-webforms2-and-html5widgets-2/" rel="prev">Creating Cross Browser HTML5 Forms Now, Using modernizr, webforms2 and html5Forms</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2010/09/02/how-to-make-cleartype-font-face-fonts-and-css-visual-filters-play-nicely-together/" rel="next">How to Make ClearType, @font-face Fonts and CSS Visual Filters Play Nicely Together</a> &raquo;</span>
+</div>
+
+
+			<h1>Coding Colors Easily Using CSS3 <code>hsl()</code> Notation</h1>
+			<h4 class="meta">August 28th, 2010 by zoltan &middot; <a href="http://www.useragentman.com/blog/2010/08/28/coding-colors-easily-using-css3-hsl-notation/#comments">16 Comments</a></h4>
+			<div class="entry">
+				<div class="importantNotes">
+<h3>Update: Jan 6, 2011</h3>
+<p>Check out Paul Irish&#8217;s <a href="http://mothereffinghsl.com/">Mother Effing HSL</a> for a nice color-picker you can play with to get the hang of HSL.</p>
+</div>
+<div >
+<dl id="attachment_822" class="wp-caption alignleft" style="width: 267px;">
+<dt class="wp-caption-dt"><img class="size-full wp-image-822 " title="CSS3 Cube Layout Example" src="http://www.useragentman.com/blog/wp-content/uploads/2010/08/colorWheel.jpg" alt="" width="257" /></dt>
+<dd class="wp-caption-dd">
+<div>A remix of <a href="http://commons.wikimedia.org/wiki/File:Bezold_Farbentafel_1874.jpg">Wilhelm von Bezold&#8217;s Farbentafel Color Wheel</a>.</div>
+</dd>
+</dl>
+</div>
+<p>I have heard stories about <strong>&#8220;<em>those</em> people&#8221;</strong> that see a color and can immediately calculate the RGB hex code in their head, without any tool whatsoever. Since I have never actually met one of <strong>&#8220;<em>those</em> people&#8221;</strong>, I don&#8217;t think they really exist.  However, it <strong>would</strong> be a nice skill to have, especially when presenting a new design to a client and they say &#8220;Perfect!  But can make that box a brighter orange, and that do-hickey a less pronounced purple?  And can you show us how it would look <strong>right now?</strong>&#8221;   </p>
+<p>This seemingly impossible task of coming up with color codes off the top of your head can be done using CSS3&#8217;s <code>hsl</code> color notation.  <strong>HSL is a much more &#8220;human-friendly&#8221; notation than RGB</strong>, and with it you can code colors in your head easily <strong>without using The GIMP&#8217;s or Photoshop&#8217;s color-wheel</strong>.</p>
+<p>Don&#8217;t believe me?  Read on and I&#8217;ll show you.  You&#8217;ll never want to go back to RGB again.  And even though IE 6-8 doesn&#8217;t support HSL natively, we will cover how support can be added.</p>
+<h2>Notation</h2>
+<p>An HSL color code uses the following CSS3 notation:</p>
+<blockquote class="code">
+<pre>#myObject {
+    background: <span class="hilite">hsl(120, 50%, 50%);</span>
+}
+</pre>
+</blockquote>
+<p>The first number is the <strong>hue</strong>, the second number is the <strong>saturation</strong>, and the third is the <strong>lightness</strong>.  These three terms are what HSL stand for.  But how does one manipulate these numbers?  Easily.</p>
+<h2>Step 1: &#8220;Young Guys Can Be Messy Rascals&#8221;</h2>
+<div id="colorwheel">
+<div class="testBlock"  id="o1">
+				<span><strong>R</strong>ed: 360&deg;</span>
+			</div>
+<div class="testBlock"  id="o2">
+				<span><strong>Y</strong>ellow: 60&deg;</span>
+			</div>
+<div class="testBlock"  id="o3">
+				<span><strong>G</strong>reen: 120&deg;</span>
+			</div>
+<div class="testBlock"  id="o4">
+				<span><strong>C</strong>yan: 180&deg;</span>
+			</div>
+<div class="testBlock"  id="o5">
+				<span><strong>B</strong>lue: 240&deg;</span>
+			</div>
+<div class="testBlock"  id="o6">
+				<span><strong>M</strong>agenta: 300&deg;</span>
+			</div>
+<p>This diagram is not an image.  It was generated with HTML using <a href="/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/">CSS3 <code>transform</code> functions</a> and <code>hsl()</code> color notation, and cssSandpaper for browsers that don&#8217;t support it.</p>
+</p></div>
+<p><strong>Memorize this sentence.</strong>  If you do, you will be to remember the six major colors in the HSV color wheel: Yellow, Green, Cyan, Blue, Magenta and Red.  <strong>These colors are spaced out by angles of 60 degrees.</strong>  If you follow the mnemonic, you should be able to remember the diagram on the left very easily.</p>
+<p>So, if you want to pick green, you would code:</p>
+<blockquote class="code smaller">
+<pre>hsl(<span class="hilite">120</span>, 100%, 50%)</pre>
+</blockquote>
+<p>(Don&#8217;t worry about the second and third parameters for now &#8230; we will get to that in a second).</p>
+<p>Blue would be:</p>
+<blockquote class="code smaller">
+<pre>hsl(<span class="hilite">240</span>, 100%, 50%)</pre>
+</blockquote>
+<p>Let&#8217;s say you wanted a color that is not on the wheel, like purple.  Purple is halfway between blue (240&deg;) and magenta (300&deg;) so we should pick something in between:</p>
+<div class="example purple">background-color: hsl(270, 100%, 50%)</div>
+<p>Think it should be more blue?  Choose an angle closer to blue!</p>
+<div class="example bluePurple">background-color: hsl(255, 100%, 50%);</div>
+<p>Want more magenta instead?  Then choose angle closer to magenta:</p>
+<div class="example magentaPurple">background-color: hsl(285, 100%, 50%);</div>
+<p>Note that you do not put use the <code>deg</code> keyword link in CSS3 Transforms.  It seems a little inconsistent, but at least it&#8217;s less typing. </p>
+<h2>Step 2: Choose Your Intensity</h2>
+<p>The second parameter is the colorfulness, or <a href="http://en.wikipedia.org/wiki/Colorfulness">saturation</a>.  The larger the percentage, the more &#8220;colorful&#8221; this color is.  Let&#8217;s take a look at what happens when we change green&#8217;s (120&deg;) colorfulness:</p>
+<table id="colorfulnessTable" class="dataTable">
+<thead>
+<tr>
+<th>hsl(120, 0%, 50%)</th>
+<th>hsl(120, 25%, 50%)</th>
+<th>hsl(120, 50%, 50%)</th>
+<th>hsl(120, 75%, 50%)</th>
+<th>hsl(120, 100%, 50%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="c1"></td>
+<td class="c2"></td>
+<td class="c3"></td>
+<td class="c4"></td>
+<td class="c5"></td>
+</tr>
+</table>
+<p>The more the saturation percentage, the less &#8220;gray&#8221; it is.</p>
+<h2>Step 3: Lighten it up</h2>
+<p>The final step is to lighten up the color to the right level.  That can be done with the final parameter: </p>
+<table id="brightnessTable" class="dataTable">
+<thead>
+<tr>
+<th>hsl(120, 50%, 0%)</th>
+<th>hsl(120, 50%, 25%)</th>
+<th>hsl(120, 50%, 50%)</th>
+<th>hsl(120, 50%, 75%)</th>
+<th>hsl(120, 50%, 100%)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="c1"></td>
+<td class="c2"></td>
+<td class="c3"></td>
+<td class="c4"></td>
+<td class="c5"></td>
+</tr>
+</table>
+<h2>That&#8217;s It!</h2>
+<p>Try it when you are using color on your next project.  <strong>You&#8217;ll find using the HSL color-space is <em>much</em> easier than using RGB</strong></p>
+<h2>Browser Support</h2>
+<p>HSL is supported in almost all the major browsers: Firefox 3.0+, Safari 3.0+, Chrome 5.0+, Opera 10+ and Explorer 9.0+.  <strong>For the browsers that don&#8217;t support it, I have updated <a href="/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/">cssSandpaper</a> to implement HSL with the CSS <code>color</code> property</strong>, as well as the <code>border</code>, <code>background</code> family of properties (i.e. <code>border-right</code>, <code>background-color</code>, etc).</p>
+<p>Also supported by cssSandpaper is HSLA, which is to HSL, as RGBA is to RGB.  It contains a fourth element, the alpha channel, that is a number from 0 to 1.  To illustrate how this works, let&#8217;s say an HTML element has a grid as a background image.  How can you shade that background image so that it looks, say, more green?</p>
+<table id="alphaTable" class="dataTable">
+<thead>
+<tr>
+<th>hsla(120, 50%, 50%, 0.25)</th>
+<th>hsla(120, 50%, 50%, 0.5)</th>
+<th>hsla(120, 50%, 50%, 0.75)</th>
+<th>hsla(120, 50%, 50%, 1)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="c2"></td>
+<td class="c3"></td>
+<td class="c4"></td>
+<td class="c5"></td>
+</tr>
+</table>
+<p>The table above is not an image &mdash; it is a real example of <code>hsla()</code> in action. Pretty neat, huh?  You can also use HSL and HSLA color in gradients.  The <a href="/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/">cssSandpaper</a> library has supported WebKit style gradients with it&#8217;s own <code>-sand-gradient</code> property.  Now it supports HSLA gradients, like this 80% opaque yellow to 20% opaque blue linear gradient:</p>
+<table id="gradientTable" class="dataTable">
+<thead>
+<tr>
+<th>	-sand-gradient(linear, center top, center bottom, from(hsla(60, 100%, 50%, 0.8)), to(hsla(255, 100%, 50%, 0.2)));
+</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="c1"></td>
+</tr>
+</tbody>
+</table>
+<p>Unfortunately, cssSandpaper only supports HSLA for background coloring only, not border or text coloring, but one would just use progressive enhancement to take care of that edge case, since what it does support, in my humble opinion, is rather cool.  Download the latest version from the link below and use HSL and HSLA color notation now!  You&#8217;ll impress your developer friends with your off-the-top-of-your-head color-coding skillz.  :-)</p>
+<p><a class="exampleLink" href="/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/">Get the latest version of cssSandpaper from the official documentation page</a></p>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/color/" rel="category tag">Color</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/css/" rel="category tag">CSS</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/css/css3/" rel="category tag">CSS3</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" rel="category tag">hsl/hsla</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" rel="category tag">Polyfills</a> </p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">16 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						<li class="comment   " id="comment-3447 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-3447" title="Permalink to this comment">1</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.loriswebs.com'><img alt='' src='http://0.gravatar.com/avatar/9593ed205014d6e7433c4b4c9b9a02fb?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9593ed205014d6e7433c4b4c9b9a02fb?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.loriswebs.com' rel='external nofollow' class='url'>Lorel</a> </strong>
+				<span class="comment_time">// Sep 14, 2010 at 7:59 am</span>
+			</p>
+			<div class="entry">
+				<p>WOW!! Great idea!  I&#8217;ve been looking for something like this instead of trial and error to get the right color shade.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-6628 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-6628" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.twoheartsranch.com'><img alt='' src='http://0.gravatar.com/avatar/0dae2635f71c377b26de6d4fcaf7bd16?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/0dae2635f71c377b26de6d4fcaf7bd16?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.twoheartsranch.com' rel='external nofollow' class='url'>Dave</a> </strong>
+				<span class="comment_time">// Jan 5, 2011 at 7:38 pm</span>
+			</p>
+			<div class="entry">
+				<p>This is a really great tool &#8211; you da man!</p>
+<p>Thanks for making this available. Hope it stays around for a while!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-6609 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-6609" title="Permalink to this comment">4</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.jeremycarlson.com'><img alt='' src='http://2.gravatar.com/avatar/5acece5ac3d9847ca8fa128060251d33?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/5acece5ac3d9847ca8fa128060251d33?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.jeremycarlson.com' rel='external nofollow' class='url'>Jeremy Carlson</a> </strong>
+				<span class="comment_time">// Jan 5, 2011 at 7:40 pm</span>
+			</p>
+			<div class="entry">
+				<p>I like! I didn&#8217;t know about HSLA &#8211; SO much more intuitive! But not likely to use yet, unless I have other CSS3 needs on the same project. It seems like a lot of scripting to download to avoid having Photoshop or My little Digital Color Meter open. I&#8217;m bookmarking you though :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-6586 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-6586" title="Permalink to this comment">5</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/1eda45d5272f4df72978c0c17b985681?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/1eda45d5272f4df72978c0c17b985681?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Jeffrey </strong>
+				<span class="comment_time">// Jan 5, 2011 at 7:43 pm</span>
+			</p>
+			<div class="entry">
+				<p>I agree: &#8220;You’ll never want to go back to RGB again.&#8221; I use the color picker at  <a href="http://www.workwithcolor.com/hsl-color-picker-01.htm" rel="nofollow">http://www.workwithcolor.com/hsl-color-picker-01.htm</a>  for my work.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-6631 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-6631" title="Permalink to this comment">6</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 6, 2011 at 12:40 am</span>
+			</p>
+			<div class="entry">
+				<p>@Dave: As long as people show interest, I&#8217;ll keep working on cssSandpaper. Thanks for the the kind words!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-6632 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-6632" title="Permalink to this comment">7</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 6, 2011 at 12:42 am</span>
+			</p>
+			<div class="entry">
+				<p>@Jeremy: One of the things I am working on is a more modular cssSandpaper, where a base script will only load the components the developer needs. For example, if s/he wants to use HSL colours, but not CSS3 transforms, then only the HSL code will load. Keep an eye on this blog in the next little while. ;-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-6667 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-6667" title="Permalink to this comment">8</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://SomeGuyNamedDylan.com'><img alt='' src='http://1.gravatar.com/avatar/1ab853c1c58bd3582ab2903f28403af8?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/1ab853c1c58bd3582ab2903f28403af8?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://SomeGuyNamedDylan.com' rel='external nofollow' class='url'>SomeGuyNamedDylan</a> </strong>
+				<span class="comment_time">// Jan 6, 2011 at 5:38 pm</span>
+			</p>
+			<div class="entry">
+				<p>Great write up!  Thanks for sharing.</p>
+<p>As for your statement: &#8220;I have heard stories about “those people” that see a color and can immediately calculate the RGB hex code in their head&#8221;</p>
+<p>Watch this&#8230;Or read this rather:</p>
+<p>Red : #F00<br />
+Black: #000<br />
+Green: #0F0 </p>
+<p>Wooo Hooo 3 for 3!!!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-6672 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-6672" title="Permalink to this comment">9</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://freshcutsd.com'><img alt='' src='http://0.gravatar.com/avatar/9d2ced053620d840630c21129312ce2e?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9d2ced053620d840630c21129312ce2e?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://freshcutsd.com' rel='external nofollow' class='url'>Josh L</a> </strong>
+				<span class="comment_time">// Jan 6, 2011 at 7:04 pm</span>
+			</p>
+			<div class="entry">
+				<p>Yay for HSL love. I have also never met someone who could actually think in RGB values. I have, however, met folks who have been working in the print industry for far too long who can actually think in CMYK. Scary stuff.</p>
+<p>But any idiot can think in HSL. I love that I can use HSL values for CSS3 properties that non-HSL browsers won&#8217;t see anyway. Also, HSLA (and RGBA, but fuck that!) actually &#8220;blends&#8221; with colors below it when you mess with the alpha, making CSS shadows behave the way they do in Photoshop.</p>
+<p>Cheers!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-6730 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-6730" title="Permalink to this comment">10</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 8, 2011 at 2:31 pm</span>
+			</p>
+			<div class="entry">
+				<p>@SomeGuyNamedDylan: Your RGB-foo is quite impressive!  I hope you use your powers for good rather than evil. ;-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-9301 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-9301" title="Permalink to this comment">11</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://brandonmathis.com'><img alt='' src='http://0.gravatar.com/avatar/c86443373fbfe92996aa882d0d7a59f8?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/c86443373fbfe92996aa882d0d7a59f8?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://brandonmathis.com' rel='external nofollow' class='url'>Brandon Mathis</a> </strong>
+				<span class="comment_time">// Mar 2, 2011 at 6:15 pm</span>
+			</p>
+			<div class="entry">
+				<p>I just created <a href="http://hslpicker.com" rel="nofollow">http://hslpicker.com</a> which uses live gradients and sliders to make HSL picking easy and precise. The url updates with the hex code for easy sharing too.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-10321 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10321" title="Permalink to this comment">13</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.NickYeoman.com'><img alt='' src='http://1.gravatar.com/avatar/7b8ca124a87d556d7088d138b4e28065?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/7b8ca124a87d556d7088d138b4e28065?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.NickYeoman.com' rel='external nofollow' class='url'>Nick Yeoman</a> </strong>
+				<span class="comment_time">// Mar 20, 2011 at 3:56 pm</span>
+			</p>
+			<div class="entry">
+				<p>I know 3 people who can think in RGB hex codes, so they are out there.  I&#8217;m not one them, thanks for this article, makes my life easy.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-10462 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10462" title="Permalink to this comment">14</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.outsourcesol.com'><img alt='' src='http://0.gravatar.com/avatar/0694e0499030c17c80619319a268a29b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/0694e0499030c17c80619319a268a29b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.outsourcesol.com' rel='external nofollow' class='url'>dacree</a> </strong>
+				<span class="comment_time">// Mar 24, 2011 at 10:34 am</span>
+			</p>
+			<div class="entry">
+				<p>Thanks for this. Best explanation of CSS3 HSL I&#8217;ve read.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-25680 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-25680" title="Permalink to this comment">15</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/308bd5c2c59dcd852586b96830ca59ef?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/308bd5c2c59dcd852586b96830ca59ef?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Marie </strong>
+				<span class="comment_time">// Nov 30, 2011 at 2:41 am</span>
+			</p>
+			<div class="entry">
+				<p>Thank You!!!  With your examples I finally understood how to convert colors&#8217; range, that I see, to HSL.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-97829 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-97829" title="Permalink to this comment">16</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/461d07091b38ea6af7a01e22045b452a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/461d07091b38ea6af7a01e22045b452a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>John </strong>
+				<span class="comment_time">// Dec 29, 2012 at 12:34 am</span>
+			</p>
+			<div class="entry">
+				<p>Fantastic it saved my life!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="1443" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="2a673291d3" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

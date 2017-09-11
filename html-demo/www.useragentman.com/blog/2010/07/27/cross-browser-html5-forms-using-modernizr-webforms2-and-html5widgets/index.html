@@ -1,0 +1,1523 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive post-4728" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Creating Cross Browser HTML5 Forms Now, Using modernizr, webforms2 and html5Forms</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><script src="//code.jquery.com/jquery-1.10.2.js"></script>	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<!-- article specific CSS -->
+
+<style type="text/css">
+<!--
+
+table.fullWidth {
+	width: 100% !important;
+}
+
+table.fullWidth td {
+	width: 50% !important;
+	vertical-align: top;
+	text-align: center;
+}
+
+table.fullWidth td img {
+	margin: 0 !important;
+	border: none !important;
+}
+
+
+.alignright {
+margin-left: 1em;
+margin-bottom: 0.5em;
+}
+
+.calendar table {
+margin: 0px;
+}
+
+.html5ExampleTable,
+.html5ExampleTable th,
+.html5ExampleTable td {
+border: none;
+}
+
+.html5ExampleTable th {
+background-color: white;
+text-align: right;
+font-weight: bold;
+height: auto;
+width: auto;
+
+}
+
+.html5ExampleTable td {
+	text-align: left;
+}
+
+.html5ExampleTable td output {
+	margin-left: 10px;
+}
+
+.html5ExampleTable input {
+width: 14.2em;
+}
+
+.html5ExampleTable input[type="range"] {
+	width: 11em;
+}
+
+table.screenshots.noresize td img {
+width: auto !important;
+}
+
+-->
+</style>
+
+<link type="text/css" rel="stylesheet" href="/css/4472.css" />
+<!-- ID is 4728 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Creating Cross Browser HTML5 Forms Now, Using modernizr, webforms2 and html5Forms Comments Feed" href="http://www.useragentman.com/blog/2010/07/27/creating-cross-browser-html5-forms-now-using-modernizr-webforms2-and-html5widgets-2/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='visibleIf – Dynamic and Complex Interactive Forms Using HTML5 Custom Data Attributes' href='http://www.useragentman.com/blog/2010/06/20/visibleif-html5-custom-data-attributes-with-javascript-make-dynamic-interactive-forms/' />
+<link rel='next' title='Coding Colors Easily Using CSS3 hsl() Notation' href='http://www.useragentman.com/blog/2010/08/28/coding-colors-easily-using-css3-hsl-notation/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2010/07/27/creating-cross-browser-html5-forms-now-using-modernizr-webforms2-and-html5widgets-2/" />
+<link rel='shortlink' href='http://useragentman.com/blog/liJ3T' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2010%2F07%2F27%2Fcreating-cross-browser-html5-forms-now-using-modernizr-webforms2-and-html5widgets-2%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2010%2F07%2F27%2Fcreating-cross-browser-html5-forms-now-using-modernizr-webforms2-and-html5widgets-2%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2010/06/20/visibleif-html5-custom-data-attributes-with-javascript-make-dynamic-interactive-forms/" rel="prev">visibleIf – Dynamic and Complex Interactive Forms Using HTML5 Custom Data Attributes</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2010/08/28/coding-colors-easily-using-css3-hsl-notation/" rel="next">Coding Colors Easily Using CSS3 <code>hsl()</code> Notation</a> &raquo;</span>
+</div>
+
+
+			<h1>Creating Cross Browser HTML5 Forms Now, Using modernizr, webforms2 and html5Forms</h1>
+			<h4 class="meta">July 27th, 2010 by zoltan &middot; <a href="http://www.useragentman.com/blog/2010/07/27/creating-cross-browser-html5-forms-now-using-modernizr-webforms2-and-html5widgets-2/#comments">38 Comments</a></h4>
+			<div class="entry">
+				<div class="importantNotes">
+<h3>Updates:</h3>
+<ul>
+<li><strong>Nov 6, 2012: I have written about a proposed extension to the CSS pseudo-classes used by HTML5 Forms</strong> in my later blog post <a href="http://www.useragentman.com/blog/2012/11/05/css3-pseudo-classes-and-html5-forms-their-limitations-and-a-possible-solution/">CSS3 Pseudo-Classes and HTML5 Forms: Their Limitations and a Possible Solution</a>.  The webforms2 library supports these extensions, which may be of interest if you need advanced styling of HTML5 Forms that the specification doesn&#8217;t handle.</li>
+<li><strong>May 13, 2012: <em>The scripts mentioned in this article are now part of the <a href="https://github.com/zoltan-dulac/html5Forms.js">html5Forms.js JavaScript library</a>.</em></strong>  It includes a newly refactored version of webforms2, which has an improved validation routine that has been refactored to mimic the behavior of the native implementations of latest versions of Firefox, Chrome and Opera.  It also uses <a href="http://modernizr.com">Modernizr</a> and <a href="http://yepnopejs.com">yepnope</a> to only load the HTML5 Forms features that are not natively supported by the web browser using it.  This article has been updated to reflect those changes &mdash; additional features have also been documented in my follow up blog post, <a href="/blog/2012/05/17/cross-browser-styling-of-html5-forms-even-in-older-browsers/">Cross Browser Styling of HTML5 Forms &mdash; Even In Older Browsers</a></li>
+<li><strong>May 12, 2011:</strong> html5Widgets has been <a href="http://www.useragentman.com/blog/2011/05/12/fixing-oninput-in-ie9-using-html5widgets/">updated to support the <code>oninput</code> event</a>. </li>
+<li><strong>Aug. 6, 2010:</strong> An older version of this article was <a href="http://nz.pe.kr/wordpress/?p=547">translated into Korean</a>.</li>
+<li><strong>Sept. 10, 2010:</strong> The webforms2 included with html5Widgets has been modified to fix validation issues with the newer versions of Safari and Chrome.</li>
+</ul>
+</div>
+<div class="wp-caption alignright" style="width: 298px; border: solid 3px black;">
+<div class="size-full wp-image-1387" style="width: 288px">
+<form  action="http://www.useragentman.com/testForm.php"  oninput="document.getElementById('rangeOutput').innerHTML = document.getElementById('age').value">
+<table class="html5ExampleTable">
+<tr>
+<th>Name:</th>
+<td><input type="text" name="fullname" placeholder="Required" required="required" data-errormessage="You must enter in your name." /></td>
+</tr>
+<tr>
+<tr>
+<th>Age:</th>
+<td><input type="range" id="age" name="age" min="18" max="150"/><output id="rangeOutput">&#8211;</output>	</td>
+</tr>
+<tr>
+<th>Zip Code:</th>
+<td><input type="text" name="zipc" pattern="[0-9]{5}([-][0-9]{4})?" required="required" placeholder="Required (e.g. 90210)" data-errormessage="You must enter a proper zip code (e.g. 90210)" />	</td>
+</tr>
+<tr>
+<th>Fave Color:</th>
+<td><input type="color" /></td>
+</tr>
+<tr>
+<th></th>
+<td><input type="submit" value="Submit" /></td>
+</tr>
+</table>
+</form>
+</div>
+<p class="wp-caption-text" style="width: 288px;">Working example HTML5 Form using <a href="http://www.modernizr.com">Modernizr</a>, <a href="https://github.com/westonruter/webforms2">webforms2</a> and my new script, html5Forms.  Go ahead &#8230; try them out.  You know you wanna!</p>
+</div>
+<p>Calendars, colour swatches, sliding widgets, client side validation: this is the nirvana that the HTML5 forms module promises. Some would say &#8220;So what? I&#8217;ve seen this on the web for years!&#8221;, and they&#8217;d be right. There have been some really brilliant people coding some really interesting widget and validation frameworks, so why should we change?</p>
+<ul>
+<li><strong>Ease the markup learning curve:</strong> HTML5 form widgets and validation have been built to be as dead simple to markup as a select box with no JavaScript knowledge required</li>
+<li><strong>It&#8217;s a W3C standard:</strong> so you know that it&#8217;ll work for years to come and if you have problems, you could always ask almost anyone in the web development community for help.</li>
+<li><strong>Cellular phone support:</strong> HTML5 form fields will have optimized user interfaces appropriate for the type of device.  <a href="http://devblog.blackberry.com/2010/03/use-html5-in-your-blackberry-web-content/">Blackberry already has optimized versions of the date/time and color widgets</a> and, according to <a href="http://diveintohtml5.org/">Mark Pilgrim&#8217;s</a> article <a href="http://diveintohtml5.org/forms.html">A Form of Madness</a>, the virtual keyboards that appear when using HTML5 form fields are optimized for the data being input.</li>
+<li><strong>Web development tools will have to support it:</strong> It&#8217;s a safe bet that Aptana, Dreamweaver, and all the other IDEs out there will have HTML5 support.</li>
+<li><strong>It&#8217;s HTML5:</strong> when you tell your non-techie co-workers that you use it, you will be the envy of all &mdash; after all, it <strong>must</strong> be five times better than regular HTML, right?  Your boss will be so impressed that you are now a guru in this futuristic technology with a cool numbered acronym that he or she will give you a big fat raise!!!
+<p>(Okay, okay.  Don&#8217;t try to laugh too hard &#8230; your co-workers will start to worry).</li>
+</ul>
+<h2>The Support Dilemma</h2>
+<p>Unfortunately, today&#8217;s support for the HTML5 Form Module is spotty with each browser supporting different parts of the specification.  Take a look at Wikipedia&#8217;s<a href="http://en.wikipedia.org/wiki/Comparison_of_layout_engines_%28HTML5%29#Form_elements_and_attributes"> HTML5 Forms comparison chart</a>.  You&#8217;ll see each browser supporting a different set of features, but not one supports them all.</p>
+<h2>But I Want To Use It <strong>Now!!!</strong></h2>
+<p><strong>Since I am impatient and want to use HTMl5 Forms right now, I put together the html5Forms.js library.</strong>  html5Forms uses <code><a href="http://www.modernizr.com">Modernizr</a></code> to detect if there is native support for the parts of the HTML5 Forms specification a page wishes to use &mdash; if a browser doesn&#8217;t support the desired feature, html5Forms uses Modernizr&#8217;s <a href="http://yepnopejs.com">yepnope lazy loader</a> to grab some battle-tested third party JavaScript libraries to add support &mdash; html5Forms would not be possible without them.  We shall discuss these scripts while we discuss the different parts of the HTMl5 Forms specification below. </p>
+<h2>Form Validation Using the <code>required</code> and <code>pattern</code> Attributes</h2>
+<p>The <code>required</code> attribute makes an input field mandatory and forces the user to enter in a value in order to submit the form data.  The markup is simple</p>
+<blockquote class="code">
+<pre>&lt;input type="text" name="firstName" value="" required="required" /&gt;
+</pre>
+</blockquote>
+<p>(<strong>Note:</strong>, you can also just use <code>required</code> on its own if you aren&#8217;t trying to be XHTML compliant.)</p>
+<p>The <code>pattern</code> attribute forces the user to enter in a value using a specified format.  It uses <a href="http://en.wikipedia.org/wiki/Regular_expressions">regular expressions</a> to define this format. For example, if you want to force the user to input a U.S. Zip Code inside a form field, you would use the following markup.</p>
+<blockquote class="code">
+<pre>
+&lt;input type="text" name="zipCode" value=""
+   pattern="[0-9]{5}([-][0-9]{4})?" required="required"  /&gt;
+</pre>
+</blockquote>
+<p>Note that <code>required</code> and <code>pattern</code> are independent from each other.  You can have a <code>pattern</code> set on a form field without it being <code>required</code>  (i.e. the pattern would only be checked if the user enters in data into the field).</p>
+<p>Opera 10+ (mobile and desktop editions) is the only browser that supports the validation routines natively.  To use this in all other browsers, all you need is to include the following script tags in the <code>head</code> of your document.</p>
+<blockquote class="code">
+<pre> &lt;script type="text/javascript"
+      src="/path/to/shared/js/modernizr.com/Modernizr-2.5.3.forms.js"&gt;
+ &lt;/script&gt;
+
+ &lt;script type="text/javascript"
+          <span class="hilite">data-webforms2-support="validation"</span>
+          src="/path/to/html5Forms/shared/js/html5Forms.js" &gt; 
+
+ &lt;/script&gt;</pre>
+</blockquote>
+<p>Note the <code>data-webforms2-support="validation"</code> in the <code>script</code> tag for html5Forms.js.  This tells html5Forms to load Weston Ruter&#8217;s <code>webforms2.js</code> (which polyfill html5Forms validation.  However, <strong>it only loads this script if the browser doesn&#8217;t support validation natively</strong> (The <code>data-webforms2-support</code> attribute can contain other HTML5 Form features in a comma delimited list, but more on that later).</p>
+<p>Let&#8217;s take a look at how validation looks in the various browsers:</p>
+<table class="screenshots">
+<thead>
+<tr>
+<th></th>
+<th>Windows</th>
+<th>Mac</th>
+<th>Linux</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Firefox 4.0+<br />
+(native support)</th>
+<td><img title="Screenshot of range field for Windows Firefox" src="/blog/wp-content/uploads/2012/04/validation-firefox4-windows.png" alt="Screenshot of range field for Windows Firefox" /></td>
+<td><img title="Screenshot of range field for Mac Firefox" src="/blog/wp-content/uploads/2012/03/validation-firefox4-mac.png" alt="Screenshot of range field for Mac Firefox" /></td>
+<td><img title="Screenshot of range field for Linux Firefox" src="/blog/wp-content/uploads/2012/05/validation-firefox4-linux.png" alt="Screenshot of range field for Windows Firefox" /></td>
+</tr>
+<tr>
+<th>Safari 5.x-<br />
+(polyfill)</th>
+<td><img title="Screenshot of range field for Windows Safari" src="/blog/wp-content/uploads/2012/05/validation-safari-windows.png" alt="Screenshot of range field for Windows Safari " /></td>
+<td><img title="Screenshot of range field for Windows Safari" src="/blog/wp-content/uploads/2012/04/validation-safari-mac.png" alt="Screenshot of range field for Mac Safari " /></td>
+<td>Not Applicable</td>
+</tr>
+<tr>
+<th>Chrome 17+<br />
+(native support)</th>
+<td><img title="Screenshot of range field for Chrome Windows" src="/blog/wp-content/uploads/2012/05/validation-chrome-windows.png" alt="Screenshot of range field for Chrome Windows" /></td>
+<td><img title="Screenshot of range field for Chrome Mac" src="/blog/wp-content/uploads/2012/03/validation-chrome-mac.png" alt="Screenshot of range field for Chrome Mac" /></td>
+<td><img title="Screenshot of range field for Linux Chrome" src="/blog/wp-content/uploads/2012/04/validation-chrome-linux.png" alt="Screenshot of range field for Linux Chrome" /></td>
+</tr>
+<tr>
+<th>Opera 11+<br />
+(native support)</th>
+<td><img title="Screenshot of range field for Windows Opera" src="/blog/wp-content/uploads/2012/05/validation-opera-windows.png" alt="Screenshot of range field for Windows Opera" /></td>
+<td><img title="Screenshot of range field for Mac Opera" src="/blog/wp-content/uploads/2012/04/validation-opera-mac.png" alt="Screenshot of range field for Mac Opera" /></td>
+<td><img title="Screenshot of range field for Linux Opera" src="/blog/wp-content/uploads/2012/04/validation-opera-linux.png" alt="Screenshot of range field for Linux Opera" /></td>
+</tr>
+<tr>
+<th>Opera 10.10 (native support)</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/07/validityOpera.png" alt="[Screenshot of HTML5 Validation using Opera]" title="Screenshot of HTML5 Validation using Opera"  class="alignnone size-full wp-image-1282" /></td>
+<td>Similar to Windows version</td>
+<td>Similar to Windows version</td>
+</tr>
+<tr>
+<th>IE8<br />
+(polyfill)</th>
+<td><img title="Screenshot of range field for Internet Explorer 6" src="/blog/wp-content/uploads/2012/03/validation-ie8-windows.png" alt="Screenshot of range field for Internet Explorer 6" /></td>
+<td rowspan="2" colspan="2">Not Applicable</td>
+</tr>
+<tr>
+<th>IE10<br />
+(native support)</th>
+<td><img title="Screenshot of range field for Internet Explorer 6" src="/blog/wp-content/uploads/2012/03/validation-ie10-windows.png" alt="Screenshot of range field for Internet Explorer 6" /></td>
+</tr>
+</tbody>
+</table>
+<p>(Note: Although the validation message bubbles look different in every browser, there is a way to apply a common style.  Read my follow-up post, <a href="/blog/2012/05/17/cross-browser-styling-of-html5-forms-even-in-older-browsers/">Cross Browser Styling of HTML5 Forms &mdash; Even In Older Browsers</a> for more information.)</p>
+<p><a class="exampleLink" href="/tests/html5Forms/tests/html5Forms/patternRequired.html">See an example of <code>pattern</code> and <code>required</code> in action.</a></p>
+<p>Note that the same validation framework checks the values of inputs of type <code>email</code>, <code>url</code> and <code>number</code> to ensure that the values are in their respective valid formats.  As an added bonus, if you are using the iPhone or iPad version of Safari, the virtual keyboard that appears will be optimized for these type of form fields (e.g. when editing a <code>number</code> field, the keyboard that appears contains only digits and the &#8220;+&#8221;, &#8220;-&#8220;, and &#8220;.&#8221; keys.  This is native behaviour for iOS, and I hope other mobile browsers, such the Android&#8217;s, follow suit.</p>
+<h2>The <code>autofocus</code> Attribute</h2>
+<p>The <code>autofocus</code> attribute allows developers to choose which element has focus when the page is loaded.  The Google front page has done this via JavaScript, and now, 12 years later, there is finally an HTML attribute to easily handle this.</p>
+<blockquote class="code">
+<pre>&lt;input type="text" name="fullName" value=""
+  required="required" autofocus="autofocus" /&gt;
+</pre>
+</blockquote>
+<p>Safari, Chrome and Opera support it natively.  Other browsers will support it if you ensure the <code>autofocus</code> is set in the <code>data-webforms2-support</code> attribute for the <code>script</code> tag that loads html5Forms.js</p>
+<blockquote class="code">
+<pre> &lt;script type="text/javascript"
+      src="/path/to/shared/js/modernizr.com/Modernizr-2.5.3.forms.js"&gt;
+ &lt;/script&gt;
+
+ &lt;script type="text/javascript"
+          <span class="hilite">data-webforms2-support="validation,autofocus"</span>
+          src="/path/to/html5Forms/shared/js/html5Forms.js" &gt; 
+
+ &lt;/script&gt;</pre>
+</blockquote>
+<p><a class="exampleLink" href="/tests/html5Forms/tests/html5Forms/autofocus.html">See an example of <code>autofocus</code> in action</a></p>
+<h2>The <code>placeholder</code> Attribute</h2>
+<p>A placeholder is a great visual cue to communicate any special information about a field (e.g. a description<br />
+of the data to be input, if the field is required, etc). </p>
+<p><div id="attachment_1317" style="width: 397px" class="wp-caption aligncenter"><a href="/tests/html5Forms/tests/html5Forms/placeholder.html"><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/07/placeholder.png" alt="An example of placeholder text.  The text disappears when the field has focus or if the user types information into the field." title="placeholder" width="387" height="94" class="size-full wp-image-1317" srcset="http://www.useragentman.com/blog/wp-content/uploads/2010/07/placeholder.png 387w, http://www.useragentman.com/blog/wp-content/uploads/2010/07/placeholder-300x72.png 300w" sizes="(max-width: 387px) 100vw, 387px" /></a><p class="wp-caption-text">An example of placeholder text.  The text disappears when the field has focus or if the user types information into the field.</p></div></p>
+<p>Syntax is simple:</p>
+<blockquote class="code">
+<pre>&lt;input type="text" name="fullName" value="" required="required"
+   placeholder="Required information" /&gt;
+</pre>
+</blockquote>
+<p>Safari, Chrome and Firefox support this attribute natively.  Other browsers will support it if you add <code>placeholder</code> to html5Forms&#8217; <code>data-webforms2-support</code> attribute:</p>
+<blockquote class="code">
+<pre> &lt;script type="text/javascript"
+      src="/path/to/shared/js/modernizr.com/Modernizr-2.5.3.forms.js"&gt;
+ &lt;/script&gt;
+
+ &lt;script type="text/javascript"
+          <span class="hilite">data-webforms2-support="validation,placeholder"</span>
+          src="/path/to/html5Forms/shared/js/html5Forms.js" &gt; 
+
+ &lt;/script&gt;</pre>
+</blockquote>
+<p><a class="exampleLink" href="/tests/html5Forms/tests/html5Forms/placeholder.html">See an example of the HTML5 <code>placeholder</code><br />
+tag in action.</a></p>
+<h2>The <code>range</code> Input Type and <code>output</code> Tag</h2>
+<p>Easily my favourite of the HTML5 widgets, <code>range</code> gives developers a sliding control to put inside their forms.  </p>
+<p>The syntax is simple:</p>
+<blockquote class="code">
+<pre>&lt;input type="range"  name="rangeEl" value="" min="0" max="150" step="1" /&gt;
+</pre>
+</blockquote>
+<p>The <code>min</code> and <code>max</code> attributes contain the minimum and maximum values, and <code>step</code> denotes by what increments the range slider increments by when moved.  Note that you can use these attributes with the <code>number</code> input type as well, but instead of having the fancy interface, it will use the validation engine to ensure the value follows what these attributes dictate.</p>
+<p>At the time of this writing, Opera and WebKit based browsers (like Safari and Chrome), support it natively, and html5Forms uses <a href="http://www.frequency-decoder.com/demo/slider-revisited/">the Frequency Decoder Slider Widget</a> to implement it in unsupported browsers.  To ensure cross-browser HTML5 range element goodness, add <code>range</code> to html5Forms&#8217; <code>data-webforms2-support</code> attribute:</p>
+<blockquote class="code">
+<pre> &lt;script type="text/javascript"
+      src="/path/to/shared/js/modernizr.com/Modernizr-2.5.3.forms.js"&gt;
+ &lt;/script&gt;
+
+ &lt;script type="text/javascript"
+          <span class="hilite">data-webforms2-support="validation,range"</span>
+          src="/path/to/html5Forms/shared/js/html5Forms.js" &gt; 
+
+ &lt;/script&gt;</pre>
+</blockquote>
+<p>Take a look at the screenshots below.  You will see that the way a <code>range</code> field varies among the browsers that natively support it, and even in some of the browsers that use html5Forms:</p>
+<table class="screenshots noresize">
+<thead>
+<tr>
+<th></th>
+<th>Explorer 6.x+<br />
+(html5Forms support)</th>
+<th>Firefox 3.5+<br />
+(html5Forms support)</th>
+<th>Safari 4.0+<br />
+(native support)</th>
+<th>Chrome 3.0+<br />
+(native support)</th>
+<th>Opera 10.0+<br />
+(native support)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Windows</th>
+<td><a href="http://www.useragentman.com/blog/wp-content/uploads/2010/05/rangeExplorerWindows.png"><img title="Screenshot of range field for Internet Explorer 6" src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/rangeExplorerWindows.png" alt="Screenshot of range field for Internet Explorer 6" width="120" height="68" /></a></td>
+<td><img title="Screenshot of range field for Windows Firefox" src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/rangeFirefoxWindows.png" alt="Screenshot of range field for Windows Firefox" width="120" height="68" /></td>
+<td><img title="Screenshot of range field for Windows Safari" src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/rangeSafariWindows.png" alt="Screenshot of range field for Windows Safari " width="120" height="68" /></td>
+<td><img title="Screenshot of range field for Chrome Windows" src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/rangeChromeWindows.png" alt="Screenshot of range field for Chrome Windows" width="120" height="68" /></td>
+<td><img title="Screenshot of range field for Windows Opera" src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/rangeOperaWindows.png" alt="Screenshot of range field for Windows Opera" width="120" height="68" /></td>
+</tr>
+<tr>
+<th>Mac</th>
+<td>Not Applicable</td>
+<td><img title="Screenshot of range field for Mac Firefox" src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/rangeFirefoxMac.png" alt="Screenshot of range field for Mac Firefox" width="120" height="68" /></td>
+<td><img title="Screenshot of range field for Mac Safari" src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/rangeSafariMac.png" alt="Screenshot of range field for Mac Safari " width="120" height="68" /></td>
+<td><img title="Screenshot of range field for Chrome Mac" src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/rangeChromeMac.png" alt="Screenshot of range field for Chrome Mac" width="120" height="68" /></td>
+<td><img title="Screenshot of range field for Mac Opera" src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/rangeOperaMac.png" alt="Screenshot of range field for Mac Opera" width="120" height="68" /></td>
+</tr>
+<tr>
+<th>Linux</th>
+<td>Not Applicable</td>
+<td><img title="Screenshot of range field for Linux Firefox" src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/rangeFirefoxUbuntu.png" alt="Screenshot of range field for Linux Firefox" width="120" height="68" /></td>
+<td>Not Applicable</td>
+<td><img title="Screenshot of range field for Linux Chrome" src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/rangeChromeUbuntu.png" alt="Screenshot of range field for Linux Chrome" width="120" height="68" /></td>
+<td><img title="Screenshot of range field for Linux Opera" src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/rangeOperaUbuntu.png" alt="Screenshot of range field for Linux Opera" width="120" height="68" /></td>
+</tr>
+</tbody>
+</table>
+<p>The <code>output</code> tag can be used to show the value of a field, or the result of an operation performed on a number of fields, using JavaScript expressions.  Although the <code>output</code> tag may calculate fomulas referencing <em>any</em> form fields, it is useful especially for the <code>range</code> input type so users can see what value the range element is pointing to:</p>
+<blockquote class="code">
+<pre><span class="hilite">&lt;output onforminput="this.value = rangeEl.value"&gt;-&lt;/output&gt;</span>
+&lt;input type="range"  name="rangeEl" value="" min="0" max="150" step="1" /&gt;
+
+</pre>
+</blockquote>
+<p>The contents of the <code>output</code> tag is the default value.  Note the <code>this.value</code> syntax &#8211; I am not sure why the W3C HTML5 working group decided it was needed (why not just have the formula?), but it is.  If there are other types of expressions supported in the final specification, they are not supported by <code>html5Forms</code> at this time.  Note that in order to apply CSS to the <code>output</code> tag in IE, it is necessary to use <a href="http://remysharp.com/2009/01/07/html5-enabling-script/">Remy Sharp&#8217;s HTML5 Enabling Script</a>.</p>
+<p><a class="exampleLink" href="/tests/html5Forms/tests/html5Forms/range.html">See an example of the <code>range</code> input being used with the <code>output</code> tag.</a></p>
+<p><a class="exampleLink" href="/tests/html5Forms/tests/html5Forms/output.html">See an example of the <code>output</code> tag being used <em>without</em> a <code>range</code> field.</a></p>
+<div class="importantNotes">
+<h3>Update (May 12. 2011):</h3>
+<p>Since this article was written, the <code>onforminput</code> event has been deprecated in favor of the <code>oninput</code>.  I have updated html5Forms to support <code>oninput</code>, and <a href="http://www.useragentman.com/blog/2011/05/12/fixing-oninput-in-ie9-using-html5widgets/">have written article about its <code>oninput</code> support</a>.  I encourage you to see the different between the above to examples and the <code>oninput</code> method of <a href="http://www.useragentman.com/examples/html5Forms/tests/html5Forms/tests/html5Forms/range.html">using the <code>output</code> tag with <code>range</code></a> and <a href="http://www.useragentman.com/examples/html5Forms/tests/html5Forms/tests/html5Forms/output.html">without <code>range</code></a>
+</div>
+<h2>The <code>datetime</code>, <code>datetime-local</code>, <code>date</code> and <code>week</code> Input Types</h2>
+<p>At the time of this writing, Opera is the only desktop browser that supports HTML5 date fields.  To support the other browsers, html5Forms uses a slightly modified version of <a href="http://www.dynarch.com/">DynArch.com</a>&#8216;s <a href="http://www.dynarch.com/projects/calendar/old/">Ex-&#8220;Coolest&#8221; DHTML Calendar</a> (I decided not to use <a href="http://www.dynarch.com/projects/calendar/">the coolest one</a> because the Ex-Coolest has a more permissive license and it works really well). Now all browsers can support the <code>datetime</code>, <code>datetime-local</code>, <code>date</code>, <code>month</code> and <code>week</code> input fields, and submit these values in a consistent format.</p>
+<p>For browsers that don&#8217;t support the date tag, all you need to do is add <code>date</code> to html5Forms&#8217; <code>data-webforms2-support</code> attribute:</p>
+<blockquote class="code">
+<pre> &lt;script type="text/javascript"
+      src="/path/to/shared/js/modernizr.com/Modernizr-2.5.3.forms.js"&gt;
+ &lt;/script&gt;
+
+ &lt;script type="text/javascript"
+          <span class="hilite">data-webforms2-support="date"
+          data-lang="en"</span>
+          src="/path/to/html5Forms/shared/js/html5Forms.js" &gt; 
+
+ &lt;/script&gt;</pre>
+</blockquote>
+<p>Note the <code>data-lang</code> attribute.  This is optional and dictates what language pack is used for the calendar.  <strong>If <code>data-lang</code> is not included, it will use the browser&#8217;s default language as given by the <code>navigator.language</code> JavaScript property</strong>.  For a list of all the languages supported, take a look at the js files inside the <code>html5Forms/shared/js/jscalendar-1.0/lang</code> directory.</p>
+<p>Below is a comparison between Opera&#8217;s native date widget vs. the one provided by the DynArch/HTML5Widget combo:</p>
+<table class="screenshots">
+<thead>
+<tr>
+<th></th>
+<th>DateTime Widget</th>
+<th>Month Widget</th>
+</tr>
+<tr>
+<th>Opera Windows</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/dateTimeOperaWindows.png" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/monthOperaWindows.png" /></td>
+</tr>
+<tr>
+<th>Opera Mac</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/dateTimeOperaMac.png" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/monthOperaMac.png" /></td>
+</tr>
+<tr>
+<th>Firefox 3.5+ Windows<br />
+(html5Forms support)</th>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/datetimeFirefoxWithHTML5Widgets.png" /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/05/monthFirefoxWithHTML5Widgets.png" /></td>
+</tr>
+</table>
+<p>It looks like the native calendar for Opera for Mac is a smaller than the Windows version &#8211; hopefully this is just on my copy of the browser.</p>
+<p>The display formats, and they values that they submit to the server, are pretty much the same</p>
+<table class="screenshots">
+<thead>
+<tr>
+<th>Input type</th>
+<th>Format displayed on page</th>
+<th>Format sent to server</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>datetime</td>
+<td><em>yyyy-mm-dd HH:MM</em></td>
+<td><em>yyyy-mm-dd</em>T<em>HH:MM</em>Z</td>
+</tr>
+<tr>
+<td>datetime-local</td>
+<td><em>yyyy-mm-dd HH:MM</em></td>
+<td><em>yyyy-mm-dd</em>T<em>HH:MM</em></td>
+</tr>
+<tr>
+<td>date</td>
+<td><em>yyyy-mm-dd</em></td>
+<td><em>yyyy-mm-dd</em></td>
+</tr>
+<tr>
+<td>month</td>
+<td><em>yyyy-mm</em></td>
+<td><em>yyyy-mm</em></td>
+</tr>
+<tr>
+<td>week</td>
+<td><em>yyyy-mm</em>W</td>
+<td><em>yyyy-mm</em>W</td>
+</tr>
+</tbody>
+</table>
+<p><a class="exampleLink" href="/tests/html5Forms/tests/html5Forms/dateTime.html">See the HTML5 <code>date</code> widgets in action.</a></p>
+<p><strong>Note:</strong> In this example, The Opera Mobile Windows Emulator incorrectly displays the <code>datetime</code> and <code>datetime-local</code> calendars in the upper left-hand corner of the screen, but <strong>not</strong> the other ones.  Since this is Opera&#8217;s own calendar widget, and not html5Forms&#8217;, this bug will have to fixed by Opera.  </p>
+<p><div id="attachment_1269" style="width: 501px" class="wp-caption aligncenter"><a href="http://www.useragentman.com/blog/wp-content/uploads/2010/07/operaMobileDateTimeBug.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/07/operaMobileDateTimeBug.png" alt="Screenshot of Opera Mobile bug" title="operaMobileDateTimeBug" width="491" height="768" class="size-full wp-image-1269" srcset="http://www.useragentman.com/blog/wp-content/uploads/2010/07/operaMobileDateTimeBug.png 491w, http://www.useragentman.com/blog/wp-content/uploads/2010/07/operaMobileDateTimeBug-191x300.png 191w" sizes="(max-width: 491px) 100vw, 491px" /></a><p class="wp-caption-text">Screenshot of Opera Mobile bug</p></div></p>
+<h2>The <code>color</code> Input Type</h2>
+<p>Opera and the WebKit based <a href="http://devblog.blackberry.com/2010/03/use-html5-in-your-blackberry-web-content">Blackberry browser</a> are the only ones that I know of that support the <code>color</code> input type.  While we wait to see how the major browser manufacturers decide to implement <code>color</code>, you can use html5Forms&#8217; implementation which uses <a href="http://www.softwareishard.com">Jan Odvarko</a>&#8216;s <a href="http://jscolor.com">jscolor</a>.  The script has been configured to allow only allow lower case hexadecimal rgb values to be entered, and that a blank value not be allowed, as per the W3C spec.</p>
+<p>Here are the script tags needed to implement this in all browsers:</p>
+<blockquote class="code">
+<pre> &lt;script type="text/javascript"
+      src="/path/to/shared/js/modernizr.com/Modernizr-2.5.3.forms.js"&gt;
+ &lt;/script&gt;
+
+ &lt;script type="text/javascript"
+          <span class="hilite">data-webforms2-support="color"</span>
+          src="/path/to/html5Forms/shared/js/html5Forms.js" &gt; 
+
+ &lt;/script&gt;</pre>
+</blockquote>
+<p>Below is a comparison between the Blackberry&#8217;s implementation (grabbed from <a href="http://devblog.blackberry.com/">the Blackberry Development Blog</a>), Opera&#8217;s and HTML5Widget/jscolor&#8217;s. </p>
+<table class="screenshot fullWidth">
+<thead>
+<tr>
+<th>Blackberry Web Browser</th>
+<th>Firefox 3.5 with html5Forms.js</th>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="http://www.useragentman.com/blog/wp-content/uploads/2010/07/html5-color-input.jpg"><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/07/html5-color-input.jpg" alt="HTML5 Color form field, Blackberry" title="html5-color-input"  class="alignnone size-full wp-image-1292" /></a>
+</td>
+<td><a href="http://www.useragentman.com/blog/wp-content/uploads/2010/07/jscolor.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/07/jscolor.png" alt="HTML5 color input field with html5Forms and jscolor." title="jscolor"  class="alignnone size-full wp-image-1291" /></a>
+</td>
+</tr>
+</tbody>
+</table>
+<table class="screenshot fullWidth">
+<thead>
+<tr>
+<th>Opera (initial click)</th>
+<th>Opera (after clicking the &#8220;Other&#8221; button)</th>
+</thead>
+<tbody>
+<tr>
+<td>
+<a href="http://www.useragentman.com/blog/wp-content/uploads/2010/07/html5-color-input.jpg"><img src="/blog/wp-content/uploads/2010/07/html5-color-opera-small.png" alt="HTML5 Color form field, Opera (small)" title="html5-color-input"  class="alignnone size-full wp-image-1292" /></a>
+</td>
+<td><a href="http://www.useragentman.com/blog/wp-content/uploads/2010/07/jscolor.png"><img src="/blog/wp-content/uploads/2010/07/html5-color-opera-full.png" alt="HTML5 Color form field, Opera (large)" title="jscolor"  class="alignnone size-full wp-image-1291" /></a>
+</td>
+</tr>
+</tbody>
+</table>
+<p><a class="exampleLink" href="/tests/html5Forms/tests/html5Forms/color.html">See HTML5Widget&#8217;s implementation of the<br />
+<code>color</code> input type.</a></p>
+<p><strong>Note:</strong> Like other HTML syntax, <code>color</code> uses the unfortunate American spelling instead of the Queen&#8217;s Proper English (i.e. colour). Ensure you spell it incorrectly in order to make this work.  ;-)</p>
+<h2>How Well Do These Libraries Handle the Official Specification?</h2>
+<p>I have done some testing on some existing examples that use HTML5 forms to ensure that it works the way developers expect.  Here are a few examples that I have taken, with the necessary JavaScript added:</p>
+<ul>
+<li><a href="/tests/html5Forms/tests/html5Forms/24ways.org/index.html"><strong>A cool looking payment form</strong></a> by <a href="http://yaili.com/">Inayaili de León</a> (originally from<a href="http://24ways.org/2009/have-a-field-day-with-html5-forms"> her HTML5 forms tutorial</a>)</li>
+<li><a href="/tests/html5Forms/tests/html5Forms/bradshawenterprises.com/index.html"><strong>An HTML5 Form Demo</strong></a> by <a href="http://www.bradshawenterprises.com/">Richard Bradshaw</a> (originally from his <a href="http://www.bradshawenterprises.com/blog/2010/fancy-forms-html5-css3-js/"><em>Fancy Forms: HTML5 + CSS3 – JS</em></a> article)</li>
+</ul>
+<p>However, the HTML5 Forms specification is large, and unfortunately, the libraries included in the html5Forms package don&#8217;t implement everything &#8230; <strong>yet!!!!</strong>  Since I am really motivated with what HTML5 forms can do, I am committed to completing support to most, if not all, of the HTML5 Forms specification, and I have updated this package many times in the last two years. </p>
+<p>Things that I will be working on in the near future are:</p>
+<ul>
+<li><strong>Support for other HTML5 form elements</strong>, among other things, <code>datalist</code>, <code>number</code>, <code>keygen</code>, <code>time</code>, <code>meter</code> and <strike><code>progress</code></strike> (If you want to polyfill the <code>progress</code> element, read my blog post <a href="/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/">Cross Browser HTML5 Progress Bars In Depth</a>. </li>
+<li><strike><strong>Support for CSS styling of HTML5 form widgets</strong> as well as the ability to style form fields according to their validation state (e.g. <code>:valid</code> and <code>:invalid</code> psudo-classes).</strike> While html5Forms does not support the <code>:valid</code> and <code>:invalid</code> psudo-classes directly, form elements that use the polyfill can be styled to mimic that behavior.  Please read my blog post <a href="/blog/2012/05/17/cross-browser-styling-of-html5-forms-even-in-older-browsers/">Cross Browser Styling of HTML5 Forms &mdash; Even In Older Browsers</a> for more information.</li>
+<li><strong>Default styling for some of the new input types</strong>, like <code>tel</code>, <code>email</code>, <code>url</code>.  Opera for Mac and Opera Mobile are the only browsers I know of that support this for <code>email</code> and <code>url</code>.
+<p><div id="attachment_1298" style="width: 340px" class="wp-caption aligncenter"><a href="http://www.useragentman.com/blog/wp-content/uploads/2010/07/operaMacURLandEmail.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2010/07/operaMacURLandEmail.png" alt="email and url form fields in Opera Mac" title="" width="330" height="156" class="size-full wp-image-1298" srcset="http://www.useragentman.com/blog/wp-content/uploads/2010/07/operaMacURLandEmail.png 330w, http://www.useragentman.com/blog/wp-content/uploads/2010/07/operaMacURLandEmail-300x141.png 300w" sizes="(max-width: 330px) 100vw, 330px" /></a><p class="wp-caption-text"><code>email</code> and <code>url</code> form fields in Opera Mac</p></div></li>
+<li><strike><strong>Support for customizing the validation look and feel.</strong>  This is one I would love to do, since I&#8217;m sure a lot of developers would want to change how validation errors appear on the screen.  Unfortunately, the HTML5 specification doesn&#8217;t describe a standard way of doing this.</strike>  Although there is not a common way of styling native implementations of the validation messages, it is possible to create a good cross-browser skin using the polyfill.  Read <a href="/blog/2012/05/17/cross-browser-styling-of-html5-forms-even-in-older-browsers/">Cross Browser Styling of HTML5 Forms &mdash; Even In Older Browsers</a> for more on this.</li>
+<li><strong>In Internet Explorer 7 and lower, the ability to style input types it doesn&#8217;t support natively</strong> with CSS code like <code>input[type="range"]</code></li>
+<li><strong>Enabling HTML5 forms validation on the server side</strong> to ensure data integrity for browser that don&#8217;t support HTML5 forms that have JavaScript disabled.</li>
+<li><strike><strong>Support for internationalization of the error messages used in <code>webforms2</code>.</strong></strike> This is not so important now that html5Forms supports setting custom error messages using the input tag&#8217;s <code>data-errormessage</code> attribute.  Again, read <a href="/blog/2012/05/17/cross-browser-styling-of-html5-forms-even-in-older-browsers/">Cross Browser Styling of HTML5 Forms &mdash; Even In Older Browsers</a> to find out more.</li>
+</ul>
+<h2>Integrating With <code>visibleIf</code> To Make Even <strong>Cooler</strong> Looking Forms</h2>
+<p>The <code>webforms2</code> and <code>html5Widgets</code> libraries are designed to co-exist well with <code><a href="http://www.useragentman.com/blog/2010/06/20/visibleif-html5-custom-data-attributes-with-javascript-make-dynamic-interactive-forms/">visibleIf</a></code> to create interactive forms with fields that only validate the ones that visibleIf is displaying.</p>
+<p><a class="exampleLink" href="/tests/html5Forms/tests/html5Forms/patternRequiredWithVisibleIf.html">See an example of HTML5 validation working with the <code>visibleIf</code> JavaScript library</a></p>
+<h2>Acknowledgments, Shout-outs and Kudos</h2>
+<ul>
+<li><strong><a href="http://farukat.es/">Faruk Ates</a> and <a href="http://paulirish.com/">Paul Irish</a></strong> for <em>the</em> definitive HTML5 and CSS3 feature detector, <a href="http://www.modernizr.com/">modernizr</a>.</li>
+<li><strong><a href="http://weston.ruter.net/">Weston Ruter</a></strong> for doing the insane amount of work on <a href="https://github.com/westonruter/webforms2">webforms2</a> <em>years ago</em>.</li>
+<li><strong><a href="http://www.frequency-decoder.com/">Brian McAllister:</a></strong> for making the excellent <a href="http://www.frequency-decoder.com/2008/08/01/unobtrusive-slider-control-v2">Unobtrusive slider control</a> which I used for the range element.</li>
+<li><strong><a href="http://www.dynarch.com/">Mihai Bazon</a></strong> for keeping the <a href="http://www.dynarch.com/projects/calendar/old/">The Ex-“Coolest” DHTML Calendar</a> around even though he has a paid product.</li>
+<li><strong><a href="http://www.softwareishard.com">Jan Odvárko</a></strong> for his rocking <a href="http://jscolor.com/">jscolor</a> widget.</li>
+<li><strong><a href="http://remysharp.com/">Remy Sharp</a></strong> for his fine <a href="<a href="http://remysharp.com/2009/01/07/html5-enabling-script/">HTML5 Enabling Script</a> so we can force IE to style things like the <code>output</code> tag.</li>
+<li><strong><a href="http://yaili.com/">Inayaili de Leon</a>, <a href="http://annevankesteren.nl/">Anne van Kesteren</a> and <a href="http://www.bradshawenterprises.com/">Richard Bradshaw</a></strong> for allowing me to show how easy it is to make their original HTML5 Form demos work with html5Widgets.</li>
+</ul>
+<h2>Further Reading</h2>
+<ul>
+<li><strong><a href="http://www.w3.org/TR/html5/forms.htm">The W3C HTML5 Forms Specification Working Draft:</a></strong> The Working Draft is in &#8220;Last call for comments&#8221; status, so there may be some last minute changes.</li>
+<li><strong><a href="http://diveintohtml5.org/forms.html">A Form of Madness:</a></strong> Chapter 10 of Mark Pilgrim&#8217;s great reference on HTML5.</li>
+<li><strong><a href="http://www.whatwg.org/specs/web-forms/current-work/">Web Forms 2.0 Working Draft:</a></strong> The WHATWG spec that the W3C spec is based on.  It includes the repetition model which didn&#8217;t make it into the W3C spec</li>
+</ul>
+<h2>Download</h2>
+<p><strike>Both <a href="https://github.com/zoltan-dulac/html5Forms.js">html5Widgets</a> and <a href="https://github.com/westonruter/webforms2">webforms2</a> both have permanent homes at github (however, the html5Widgets github page contains a copy of webforms2 in it for your convenience).</strike> html5Forms, along with all the helper libraries, are available at the <a href="https://github.com/zoltan-dulac/html5Forms.js">html5Forms</a> github repository.  The old html5Widgets repo is deprecated and will be going away in the future.  I decided to rename the project to html5Forms since html5Widgets.js was really just the widget library for the whole package.  Also, <a href="http://paulirish.com">Paul Irish</a> once told me he thought it was may more obvious of a name &#8230; it just took me two years to be convinced :-)</p>
+<p><a class="exampleLink" href="https://github.com/zoltan-dulac/html5Forms.js">Download the latest version of html5Forms.js and all the cool 3rd Party scripts from github.</a></p>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/technologies/html/forms/" rel="category tag">Forms</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/html5/" rel="category tag">HTML5</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/javascript/" rel="category tag">JavaScript</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" rel="category tag">Polyfills</a> </p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">38 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						
+						<li class="comment   " id="comment-2598 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2598" title="Permalink to this comment">2</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://nz.pe.kr'><img alt='' src='http://0.gravatar.com/avatar/641e961248199f789935245df2000a64?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/641e961248199f789935245df2000a64?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://nz.pe.kr' rel='external nofollow' class='url'>nzin4x</a> </strong>
+				<span class="comment_time">// Jul 30, 2010 at 5:59 pm</span>
+			</p>
+			<div class="entry">
+				<p>I hope to translate this content for Korean Web Developers.<br />
+If you allow, I&#8217;ll be happy</p>
+<p>please reply to my email.<br />
+thanks very much.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-2600 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2600" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jul 30, 2010 at 10:01 pm</span>
+			</p>
+			<div class="entry">
+				<p>Please feel free to! Please send me a link to the translated article and I&#8217;ll link to it here. Thanks in advance.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-2614 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2614" title="Permalink to this comment">4</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.ldexterldesign.co.uk/'><img alt='' src='http://1.gravatar.com/avatar/a0760401b84fb37554c3e2698bc2f328?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/a0760401b84fb37554c3e2698bc2f328?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.ldexterldesign.co.uk/' rel='external nofollow' class='url'>ldexterldesign</a> </strong>
+				<span class="comment_time">// Jul 31, 2010 at 2:02 pm</span>
+			</p>
+			<div class="entry">
+				<p>&#8216;Form input labels with (HTML5) placeholder attributes&#8217; &#8211; slimline version for y&#8217;all: <a href="http://www.ldexterldesign.co.uk/2010/07/form-input-labels-with-html5-placeholder-attributes/" rel="nofollow">http://www.ldexterldesign.co.uk/2010/07/form-input-labels-with-html5-placeholder-attributes/</a></p>
+<p>webforms2 and html5Widgets seem interesting &#8211; will check &#8217;em out.</p>
+<p>Thanks,</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-2656 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2656" title="Permalink to this comment">5</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/09bee70981d483e2d2250247532da922?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/09bee70981d483e2d2250247532da922?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Colin </strong>
+				<span class="comment_time">// Aug 2, 2010 at 4:53 am</span>
+			</p>
+			<div class="entry">
+				<p>What you need to add at the end is a &#8220;kitchen-sink&#8221; version of the JavaScript needed to implement everything. Or maybe that&#8217;s in the download..</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-2657 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2657" title="Permalink to this comment">6</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/09bee70981d483e2d2250247532da922?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/09bee70981d483e2d2250247532da922?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Colin </strong>
+				<span class="comment_time">// Aug 2, 2010 at 4:55 am</span>
+			</p>
+			<div class="entry">
+				<p>Also, could use better keyboard support (left+right, up+down on the sliders) in the near or distant future :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-2660 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2660" title="Permalink to this comment">7</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/d0b04f666e5ec422539fa656da3141b9?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/d0b04f666e5ec422539fa656da3141b9?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Pavel Linhart </strong>
+				<span class="comment_time">// Aug 2, 2010 at 6:19 am</span>
+			</p>
+			<div class="entry">
+				<p>Great work!</p>
+<p>However the range input throws an error (FF/IE6-8):</p>
+<p>EventHelpers.fireEvent is not a function<br />
+[Break on this error] EventHelpers.fireEvent(el, ev);<br />
+html5Widgets.js (line 209)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-2666 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2666" title="Permalink to this comment">8</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>admin </strong>
+				<span class="comment_time">// Aug 2, 2010 at 10:16 am</span>
+			</p>
+			<div class="entry">
+				<p>@Pavel: Thanks for the bug report.  The problem you describe usually happens when you haven&#8217;t included EventHelpers.js into the page.  I did notice that in the archive, the example.html file had the script tags using absolute instead of relative URLs, which may have caused this problem.  You can either change the URLs manually, or redownload the archive below to fix that issue.  Please let me know if this is/isn&#8217;t the cause of your problem.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-2668 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2668" title="Permalink to this comment">9</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>admin </strong>
+				<span class="comment_time">// Aug 2, 2010 at 10:27 am</span>
+			</p>
+			<div class="entry">
+				<p>@Colin: Thanks for the feature request (and yes, I love to do requests!). I have tried very hard to ensure the majority of the widgets are accessible (I am currently looking into adding keyboard support to the jscolor colour widget, which I believe to be the only one that doesn&#8217;t have keyboard support).  I was lucky in that the frequency-decoder slider widget that is used for the <code>range</code> element already had keyboard support before I started working with it, but perhaps it is not working as expected in your work.  If this is the case, please send me a URL with your example in it &mdash; I would love the opportunity to see what the issue is and, if it is a bug in the code, the chance to fix it for the benefit of everyone who uses the HTML5Widgets suite.</p>
+<p>As for the kitchen sink version of the script &#8211; it is something to consider, and although it may be overkill for the majority of uses (how likely wouild it be that someone would use all the widgets?).  Maybe it would be cool if a base script was created that would analyse what page and then load only the scripts that are needed.  </p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-2673 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2673" title="Permalink to this comment">10</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/d0b04f666e5ec422539fa656da3141b9?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/d0b04f666e5ec422539fa656da3141b9?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Pavel Linhart </strong>
+				<span class="comment_time">// Aug 2, 2010 at 1:07 pm</span>
+			</p>
+			<div class="entry">
+				<p>@admin: I&#8217;ve been refering to the example on the top of this page &#8211; sorry, I forgot to mention that. The range demo in the download works just fine.</p>
+<p>I have several new observations for you:</p>
+<p>FF 3.6:</p>
+<p>Date/Calendar emulated inputs &#8211; when the input does not have focus, upon gaining focus it correctly shows the calendar. If you want the calendar to show again, the focus event has to take place again &#8211; so you have to click outside of the input to invoke blur and the again click into the input. Minor &#8220;bug&#8221;.</p>
+<p>Chrome 5.0.375.99<br />
+I had problems with the date/calendar inputs &#8211; chrome was reporting illegall access in calendar.js on line 1109 which just contains &#8220;date.setDate(-day1);&#8221;</p>
+<p>After letting chrome update to 5.0.375.125 (I am using the beta channel) the problem went away&#8230;oh well, chrome beta after all :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						
+						<li class="comment  myComment " id="comment-2790 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2790" title="Permalink to this comment">14</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Aug 6, 2010 at 2:13 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Pavel: the date focus bug will fixed in an upcoming release.  Thanks for sending me the information.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-7969 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-7969" title="Permalink to this comment">15</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://simpl.romack.net'><img alt='' src='http://1.gravatar.com/avatar/d01c2078b741788270a24cfc44dfd13b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/d01c2078b741788270a24cfc44dfd13b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://simpl.romack.net' rel='external nofollow' class='url'>shaggy</a> </strong>
+				<span class="comment_time">// Feb 7, 2011 at 7:23 pm</span>
+			</p>
+			<div class="entry">
+				<p>This is great but, why not just use jquery for some of this?<br />
+Thanks!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-8129 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-8129" title="Permalink to this comment">16</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Feb 12, 2011 at 2:06 pm</span>
+			</p>
+			<div class="entry">
+				<p>@shaggy: I made a decision early on not to use jquery on all my JavaScript work to ensure I didn&#8217;t alienate those who used other frameworks (e.g. dojo, prototype, etc) or for those who don&#8217;t use any frameworks. I admit I lean towards being one of the latter &#8230; I believe, rightly ot wrongly, that it gives me more control over what I am doing. I am, of course, willing to entertain a change of this policy, given good reasons.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						<li class="comment   " id="comment-10258 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10258" title="Permalink to this comment">19</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://custom.simplemachines.org/mods/index.php?mod=1279'><img alt='' src='http://1.gravatar.com/avatar/a76042ac95b9d3a30a25acd9bd20a310?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/a76042ac95b9d3a30a25acd9bd20a310?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://custom.simplemachines.org/mods/index.php?mod=1279' rel='external nofollow' class='url'>Garou</a> </strong>
+				<span class="comment_time">// Mar 19, 2011 at 12:44 am</span>
+			</p>
+			<div class="entry">
+				<p>Zoltan,<br />
+I&#8217;m really loving these tools. </p>
+<p>Soon as there is more support for IE I plan on implementing this in a modification for one of the online community software packages. The mod allows site administrators to easily create multiple forms to control how users format their input.</p>
+<p>I get a lot of requests to implement the functions that will be standard in HTML5, the package you have put together makes doing that a lot easier.</p>
+<p>I do have a question about the Date/Time (UTC) function. I&#8217;m not sure if there&#8217;s a bug where local time is being used or possibly the servers time is being used instead of true UTC.</p>
+<p>For instance I live in UTC-5 my hosts server is also in UTC-5, UTC-5 is displayed on the page rather then UTC. </p>
+<p>Assuming that server time is being used rather then true UTC. If my host was in say UTC-7, that would be displayed or should true UTC be displayed? Just wondering which way its supposed to work.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment  myComment " id="comment-10424 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10424" title="Permalink to this comment">21</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Mar 23, 2011 at 10:35 am</span>
+			</p>
+			<div class="entry">
+				<p>@Garou: I will have to look into this issue more.  You pose some interesting questions and I have to say for now that the answer is &#8220;I don&#8217;t know &#8230; but I will get back to you on it&#8221;.  :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-24389 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-24389" title="Permalink to this comment">22</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/0cbedcca7659af2bee7e0d4b66815e5c?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/0cbedcca7659af2bee7e0d4b66815e5c?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Julia </strong>
+				<span class="comment_time">// Nov 17, 2011 at 1:43 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi, Zoltan!<br />
+It seems that an attribute PLACEHOLDER is not working for textarea, it only works for input fields (for browsers, that have no native support of this attribute).<br />
+Is it possible to fix that problem?<br />
+Thanks for your work</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-24483 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-24483" title="Permalink to this comment">23</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 17, 2011 at 11:20 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Julia: Yes it is possible &#8212; I have just fixed it in the version on github!  Please redownload and let me know whether it works for you or not.  Thank you for letting me know about this oversight.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-42917 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-42917" title="Permalink to this comment">24</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/725a90bbc20cfa19cad134331666d102?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/725a90bbc20cfa19cad134331666d102?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>DaFou </strong>
+				<span class="comment_time">// Apr 14, 2012 at 1:36 pm</span>
+			</p>
+			<div class="entry">
+				<p>Hi Zoltan,</p>
+<p>Please let me start my thanking you for this excellent effort to bring html5 forms to the masses.</p>
+<p>I am using your script(s) to implement html5 forms. However I am still able to submit a form in IE9 eventhough one of the elements has no value and has gotten both the required attirbute and the pattern attribute.</p>
+<p>I have included the website in the trusted list so javascript is running fine. Also when I step through your code (starting with: EventHelpers.addPageLoadEvent(&#8216;EventHelpers.init&#8217;)) using the debugger everything seems to be exectured without any problems.</p>
+<p>However when your code is done executing I find no onsubmit event handler attached to the form and I was wondering if this is supposed to be like this or not.</p>
+<p>Anyway would you please help me understand more of the way it is supposed to work so that I can figure out what is going wrong and that I can help you with an update for this.</p>
+<p>IE9 version 9.0.8112.12421 on Windows Server 2008 R2.</p>
+<p>Kind regards,</p>
+<p>DaFou</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-42928 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-42928" title="Permalink to this comment">25</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/725a90bbc20cfa19cad134331666d102?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/725a90bbc20cfa19cad134331666d102?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>DaFou </strong>
+				<span class="comment_time">// Apr 14, 2012 at 3:38 pm</span>
+			</p>
+			<div class="entry">
+				<p>Hi Zoltan,</p>
+<p>I figured out the problem and implemented a quick hack around the issue.</p>
+<p>After line 1423 in webforms2.src.js I added the following:</p>
+<p>//IE9 on Win2K8 R2 does not have the dom ready so there are no forms yet<br />
+if (frms.length == 0) {<br />
+	if (typeof ($wf2.domUpdateRetryDone) == &#8220;undefined&#8221;) {<br />
+		$wf2.domUpdateRetryDone = true;</p>
+<p>		//give the DOM a chance to get ready<br />
+		setTimeout($wf2.initNonRepetitionFunctionality, 500); //I am not sure what a sensible time is to wait.<br />
+		//setting the time to 1 ms and not breaking the loop until forms are found might be a better idea<br />
+		//but then how to deal with pages that do not have forms but do have this script running?<br />
+	}<br />
+	return;<br />
+}</p>
+<p>I hope someone can point out a better way of handling this situation or that someone might have use of this.</p>
+<p>Kind regards,</p>
+<p>DaFou</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-42933 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-42933" title="Permalink to this comment">26</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/725a90bbc20cfa19cad134331666d102?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/725a90bbc20cfa19cad134331666d102?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>DaFou </strong>
+				<span class="comment_time">// Apr 14, 2012 at 4:25 pm</span>
+			</p>
+			<div class="entry">
+				<p>Also on line 1574 of webforms2.src.js a return statement is needed to make a valid form marked as valid instead of invalid</p>
+<p>used to be<br />
+$wf2.controlCheckValidityOfElement(this);</p>
+<p>should be<br />
+return $wf2.controlCheckValidityOfElement(this);</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-46149 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-46149" title="Permalink to this comment">27</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 8, 2012 at 11:03 pm</span>
+			</p>
+			<div class="entry">
+				<p>@DaFou: Thanks for mentioning this!  It will be updated in the main version of webforms2 soon (along with a whole bunch of really cool updates I have done in the last few months &#8230; please stay tuned!)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-46828 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-46828" title="Permalink to this comment">28</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.webdesigncafe.com.au/'><img alt='' src='http://2.gravatar.com/avatar/836310c4074755ebb18fe94ba9f4b67e?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/836310c4074755ebb18fe94ba9f4b67e?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.webdesigncafe.com.au/' rel='external nofollow' class='url'>reuel</a> </strong>
+				<span class="comment_time">// May 14, 2012 at 9:15 pm</span>
+			</p>
+			<div class="entry">
+				<p>this was extremely helpful just want to say thanks</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-48044 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-48044" title="Permalink to this comment">29</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 23, 2012 at 9:39 am</span>
+			</p>
+			<div class="entry">
+				<p>@reuel: Thanks for the kudos. The new updates to the script are worth it just for the new validation bubbles, IMHO. :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-77579 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-77579" title="Permalink to this comment">30</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/bda8fea9e803d53828bba2751784e055?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/bda8fea9e803d53828bba2751784e055?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Raw </strong>
+				<span class="comment_time">// Oct 31, 2012 at 3:58 pm</span>
+			</p>
+			<div class="entry">
+				<p>Hi Zoltan,</p>
+<p>How would you recommend incorporating a comparison validation so that it behaves as the others do? Say for instance.. comparing password or email fields to make sure they are the same. One would obviously incorporate validation through regular expression on the main field. What about the secondary?</p>
+<p>Thanks!</p>
+<p>R</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-78970 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-78970" title="Permalink to this comment">31</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 4, 2012 at 2:31 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Raw: This can be done using JavaScript, the <code>oninput</code> event and the <code>setCustomValidity()</code> form method.  An example of this can be seen on <a href="http://www.html5rocks.com" rel="nofollow">HTML5Rock&#8217;s</a> article, <a href="http://www.html5rocks.com/en/tutorials/forms/html5forms/" rel="nofollow">Making Forms Fabulous with HTML5</a> in the <a href="http://www.html5rocks.com/en/tutorials/forms/html5forms/#toc-constraint-validation" rel="nofollow">constraint validation API</a> section.  Note that this article talks about the native HTML5 Forms implementations and not html5Forms or webforms2 libraries, but since these libraries implement the HTML5 Forms API the same way, it will work with the same code.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-95986 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-95986" title="Permalink to this comment">32</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/00d77a46768acb82e076e3791525c3da?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/00d77a46768acb82e076e3791525c3da?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Aneez Backer </strong>
+				<span class="comment_time">// Dec 21, 2012 at 2:32 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi,</p>
+<p>You have developed an amazing tool Zoltan. Thanks. I have 2 queries. </p>
+<p>1) I wish to load JavaScripts using require.js. My code would look something like this<br />
+Modernizr.load({<br />
+ test: Modernizr.inputtypes.date,<br />
+ nope: &#8216;html5Forms.js&#8217;<br />
+});</p>
+<p>How do we pass the value for &#8216;data-webforms2-support&#8217; attribute ??</p>
+<p>2) In the same HTML page I wish to use date and placeholder and color. Can I pass multiple values to the &#8216;data-webforms2-support&#8217; ?? </p>
+<p>Thanks,<br />
+aneez</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-99537 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-99537" title="Permalink to this comment">33</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 5, 2013 at 1:09 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Aneez: that is a use case I didn&#8217;t think about, but it should be easy to bake into the library. I&#8217;ll put a fix for this in the next release</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-118080 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-118080" title="Permalink to this comment">34</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/a8dab4129ee48797d40cd4fed6a3bbeb?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/a8dab4129ee48797d40cd4fed6a3bbeb?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>PaulDG </strong>
+				<span class="comment_time">// Mar 18, 2013 at 4:28 pm</span>
+			</p>
+			<div class="entry">
+				<p>Great software.</p>
+<p>Chrome does not seem to support the datetime type, only the datetime-local and it looks nothing like your implementation.</p>
+<p>Is there a way to force chrome to use your datetime picker ?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-118188 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-118188" title="Permalink to this comment">35</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Mar 18, 2013 at 11:59 pm</span>
+			</p>
+			<div class="entry">
+				<p>@PaulDG: Yes, but the fix wasn&#8217;t released into GitHub until today since it was experimental up until now.  All you have to do is add <code>data-webforms2-force-js-date-picker="true"</code> to the html5Forms.js script tag:</p>
+<blockquote class="code">
+<pre>
+&lt;script src="../../shared/js/html5Forms.js" 
+   data-webforms2-support="date" 
+   data-webforms2-force-js-validation="true"
+   <span class="hilite">data-webforms2-force-js-date-picker="true"</span>
+   data-lang="en"&gt;
+&lt;/script&gt;
+</pre>
+</blockquote>
+<p>You can compare the <a href="/tests/html5Forms/tests/html5Forms/dateTime.html" rel="nofollow">Date/Time Demo Page</a> with the <a href="/tests/html5Forms/tests/html5Forms/dateTime-forceJSCalendar.html" rel="nofollow">Date/Time Demo Page that forces the JavaScript Polyfill datepicker in all browsers</a> using Chrome to see the difference.</p>
+<p>The only issue with using this option is that it also shuts off the iPhone&#8217;s native date-picker, which is more appropriate for mobile browsers.  I will be looking into how to best deal with this use case in a future release.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-118193 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-118193" title="Permalink to this comment">36</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/a8dab4129ee48797d40cd4fed6a3bbeb?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/a8dab4129ee48797d40cd4fed6a3bbeb?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>PaulDG </strong>
+				<span class="comment_time">// Mar 19, 2013 at 12:13 am</span>
+			</p>
+			<div class="entry">
+				<p>Thanks Zoltan</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-187452 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-187452" title="Permalink to this comment">37</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/f0cb272dfc9c703192605432b319c559?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f0cb272dfc9c703192605432b319c559?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Joe Pruett </strong>
+				<span class="comment_time">// Nov 13, 2013 at 3:22 pm</span>
+			</p>
+			<div class="entry">
+				<p>have you come up with a way to activate features without using the data-webforms-support attribute? i am using cake, and would like to use the builtin methods to include js, and they don&#8217;t provide a way to pass arbitrary attributes either.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-187545 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-187545" title="Permalink to this comment">38</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/f0cb272dfc9c703192605432b319c559?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f0cb272dfc9c703192605432b319c559?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Joe Pruett </strong>
+				<span class="comment_time">// Nov 13, 2013 at 9:00 pm</span>
+			</p>
+			<div class="entry">
+				<p>i have a workaround for cake, but i have found a real issue. your code doesn&#8217;t seem to deal with select&#8217;s with the required attribute under safari (maybe more, but that is where i ran into it). the submission is blocked (might be safari), but no popup to highlight what is needed.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="4728" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="e4136d8d68" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" /> 
+		
+		<title>Example 2 visibleIf-doNotReset</title>
+		
+		<link rel="stylesheet" href="../../shared/css/useragentmanExample.css" type="text/css" media="all" />
+		
+		<link rel="stylesheet" href="../../shared/css/visibleIf.css" type="text/css" media="all" />
+		
+	
+		<script type="text/javascript" src="../../shared/js/EventHelpers.js"></script>
+		
+		<script type="text/javascript" src="../../shared/js/visibleIf.js"></script>
+		
+	</head>
+	<body id="myExample">
+		<div id="exampleIntro">
+			The first form has fields that are members of the class 
+			<code>visibleIf-doNotReset</code> and the second doesn't. To see how
+			this changes the behaviour, go to the first form, choose "IE6" as
+			the answer to first question, "No" to the second question that pops up,
+			and "No" to the third question that pops up.  Then change the the answer
+			to the first question from "IE6" to anything else.  When all the other
+			answers disappear, change it back to "IE6".  You'll notice that the 
+			answers to the other questions stay the same.  If you do all the same
+			steps in the second form, the answers to the second and third questions
+			disappear.
+			
+			
+			<a href="http://www.useragentman.com/blog/2010/06/20/visibleif-html5-custom-data-attributes-with-javascript-make-dynamic-interactive-forms/">Back to User Agent Man <code>visibleIf</code> article </a>
+		</div>
+		
+		
+		<form>
+			<fieldset>
+				<legend>Form #1 - form fields with class <code>visibleIf-doNotReset</code> set</legend>
+				
+				<table class="formTable">
+					<tr>
+						<th>What Browser Do You Use?</th>
+						<td>
+							<select name="browser" class="visibleIf-doNotReset">
+								<option value="">Select One ...</option>
+								<option value="IE6">IE6</option>
+								<option value="anything else">Any thing but IE6</option>
+								
+							</select>
+						</td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule=" browser == 'IE6' " >
+						
+							<th>Do you like your web browser?</th>
+							<td>
+								<label for="doWantToUpgrade-yes"><input type="radio" class="visibleIf-doNotReset" 
+									id="doWantToUpgrade-yes"  
+									name="doWantToUpgrade" value="yes" />Yes</label>
+								<label for="doWantToUpgrade-no"><input type="radio" class="visibleIf-doNotReset"
+									id="doWantToUpgrade-no"  
+									name="doWantToUpgrade" value="no" />No</label>
+							</td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule=" browser == 'IE6' && doWantToUpgrade == 'no' ">
+						
+							<th>Do you actually <em>use</em> your web browser?</th>
+							<td>
+								<label for="doUsePhone-yes"><input type="radio"  class="visibleIf-doNotReset"
+									id="doUsePhone-yes"  
+									name="doUsePhone" value="yes" />Yes</label>
+								<label for="doUsePhone-no"><input type="radio" class="visibleIf-doNotReset"
+									id="doUsePhone-no"  
+									name="doUsePhone" value="no" />No</label>
+							</td>
+					</tr>
+				</table>
+			</fieldset>
+			<div class="buttonRow">
+				<input type="submit" name="Next &gt;" />
+			</div>
+		</form>
+		
+		<form>
+			<fieldset>
+				<legend>Form #2 - form fields <em>without any class set</em></legend>
+				
+				<table class="formTable">
+					<tr>
+						<th>What Browser Do You Use?</th>
+						<td>
+							<select name="browser">
+								<option value="">Select One ...</option>
+								<option value="IE6">IE6</option>
+								<option value="anything else">Any thing but IE6</option>
+								
+							</select>
+						</td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule=" browser == 'IE6' " >
+						
+							<th>Do you like your web browser?</th>
+							<td>
+								<label for="doWantToUpgrade-yes"><input type="radio" 
+									id="doWantToUpgrade-yes"  
+									name="doWantToUpgrade" value="yes" />Yes</label>
+								<label for="doWantToUpgrade-no"><input type="radio" 
+									id="doWantToUpgrade-no"  
+									name="doWantToUpgrade" value="no" />No</label>
+							</td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule=" browser == 'IE6' && doWantToUpgrade == 'no' ">
+						
+							<th>Do you actually <em>use</em> your web browser?</th>
+							<td>
+								<label for="doUsePhone-yes"><input type="radio" 
+									id="doUsePhone-yes"  
+									name="doUsePhone" value="yes" />Yes</label>
+								<label for="doUsePhone-no"><input type="radio" 
+									id="doUsePhone-no"  
+									name="doUsePhone" value="no" />No</label>
+							</td>
+					</tr>
+				</table>
+			</fieldset>
+			<div class="buttonRow">
+				<input type="submit" name="Next &gt;" />
+			</div>
+		</form>
+		
+	</body>
+</html>

@@ -1,0 +1,1208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive post-13" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  @font-face in Depth</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><script src="//code.jquery.com/jquery-1.10.2.js"></script>	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<style>
+  .entry table img {
+    border: none ;
+  }
+</style><!-- ID is 13 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; @font-face in Depth Comments Feed" href="http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Optimizing PNG Files, for both Web and Print.' href='http://www.useragentman.com/blog/2009/09/16/optimizing-png-files-for-both-web-and-print/' />
+<link rel='next' title='More @font-face fun' href='http://www.useragentman.com/blog/2009/10/09/more-font-face-fun/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/" />
+<link rel='shortlink' href='http://useragentman.com/blog/X9twb' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2009%2F09%2F20%2Ffont-face-in-depth%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2009%2F09%2F20%2Ffont-face-in-depth%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2009/09/16/optimizing-png-files-for-both-web-and-print/" rel="prev">Optimizing PNG Files, for both Web and Print.</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2009/10/09/more-font-face-fun/" rel="next">More @font-face fun</a> &raquo;</span>
+</div>
+
+
+			<h1>@font-face in Depth</h1>
+			<h4 class="meta">September 20th, 2009 by admin &middot; <a href="http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/#comments">68 Comments</a></h4>
+			<div class="entry">
+				<div class="importantNotes">
+<h3>Updates</h3>
+<ul>
+<li><strong>(Aug 11, 2012):</strong> This article has been given a long overdue update to reflect the current state of browser support of @font-face.</li>
+<li><strong>(Oct 13, 2009):</strong> I have written a <a href="/blog/2009/10/09/more-font-face-fun/">follow up article</a> which explores SVG fonts,<br />
+	Opera 10 issues, and more</li>
+<li><strong>(Oct 28, 2010):</strong> This article has been translated into <a href="http://www.movavi.com/opensource/font-face-in-depth-be">Belorussian</a> by <a href="http://www.movavi.com/">movavi</a>.</li>
+</ul>
+</div>
+<p><div id="attachment_28" style="width: 250px" class="wp-caption alignleft"><a title="image Flickr page" href="http://www.flickr.com/photos/martab/1757415036/" target="_blank"><img class="size-full wp-image-28      " title="image Flickr page" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/fontintro2.jpg" alt="" width="240" height="180" /></a><p class="wp-caption-text">Photo by marta.b (Source: Flickr)</p></div></p>
+<p>When I told one of my co-workers how excited I was that almost all the major browser vendors now supported font-embedding in their products, I got the same reaction from her that Bert from Sesame Street got when he told Ernie how <a title="Link to classic Sesame Street clip &quot;Bert's Bottlecaps&quot; via YouTube" href="http://www.youtube.com/watch?v=2Ls2vNfQxyc">exciting he thought bottle cap collecting was</a> (yes, gratuitous ridicule was involved).  Now, while I can somewhat understand her disinterest (she is not a front-end web developer, but a Java programmer), I defend my enthusiasm by stating here that fonts are a really important part of web design, and the fact that we can now theoretically choose <strong>any</strong> font to embed inside our web pages and applications is something to celebrate.</p>
+<p>Sure, workarounds such as <a title="Mike Davidson article &quot;sIFR 2.0: Rich Accessible Typography for the Masses&quot;" href="http://www.mikeindustries.com/blog/sifr/">sIFR</a> and <a title="Cufón homepage" href="http://cufon.shoqolate.com/generate/">Cufón</a> have existed for quite a while now, but they have drawbacks (they both are best used only for headings, and Cufón  doesn&#8217;t do well at allowing copying and pasting its content).  If you really want to embed fonts in your webpages, I believe that @font-face is the safest, future-proof option.</p>
+<h2>Why care about fonts?</h2>
+<p>My Java developer colleague may not understand why fonts are important, but she is a regular reader of  <a href="http://www.newyorker.com/">The New Yorker</a>.  Even though its website doesn&#8217;t use @font-face embedding (the standard New Yorker font is embedded in site using images), the developers of the site obviously know why fonts are important:</p>
+<ul>
+<li><strong>Fonts identify who the content belongs to.</strong> Just take a look at the content and without looking at the URL bar, you know exactly where you are &#8211; that font is highly integrated into that organization&#8217;s identity and branding.  Replace the New Yorker font with Arial and it&#8217;ll look like any old website.</li>
+<li><strong>Fonts given an emotional association to the content. </strong>The content has an air of authority because of the font it uses (after all, it looks like it was written by The New Yorker).  It is the reason why phishing sites use the fonts, colours and logos of the banks they are posing as.</li>
+<li><strong>Fonts can help (or hinder) the legability of content.</strong> Scanning the content, you can tell where the article titles are, where the navigation is, and what section each of the articles belong to.  This is all because of the way fonts are used on the site.</li>
+</ul>
+<p><div id="attachment_60" style="width: 460px" class="wp-caption aligncenter"><img class="size-full wp-image-60  " title="newYorkerScreenshot" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/newYorkerScreenshot1.jpg" alt="newYorkerScreenshot" width="450" height="206" /><p class="wp-caption-text">The New Yorker&#39;s website is a great example of how to use fonts effectively on the web.</p></div></p>
+<p style="text-align: left;">The New Yorker uses images in order to display fonts.  Using font embedding effectively would save on bandwidth, since one font download could be used for all the headings on the page.</p>
+<h2>Font formats supported</h2>
+<p>Firefox 3.5+ , Safari 3.1+, Opera 10+, Chrome 4.0+ and Internet Explorer 4.0+ all support @font-face embedding (Google&#8217;s Chrome 3.0 beta does as well, but <a href="http://opentype.info/blog/2009/04/16/google-chrome-with-webfonts-support/">users will have to start it up in a special mode to make it work</a>).  They all support the use of <a title="Wikipedia TrueType entry" href="http://en.wikipedia.org/wiki/TrueType">TrueType</a> (.ttf) and <a title="Wikipedia OpenType entry" href="http://en.wikipedia.org/wiki/OpenType">OpenType</a> (.otf) fonts &#8230; <strong>except</strong> for Internet Explorer which only supports the proprietary <a title="Wikipedia Embedded OpenType entry" href="http://en.wikipedia.org/wiki/Embedded_Open_Type">Embedded Open Type</a> (.eot) format.  There aren&#8217;t as many fonts available in this format and the tool Microsoft gives out that converts .ttf fonts to .eot, called <a href="http://www.microsoft.com/typography/WEFT.mspx">WEFT</a>, is quite frustrating to use, and even crashes on Vista.  There is, however, an excellent command-line tool, <a href="http://code.google.com/p/ttf2eot/">ttf2eot</a>, that does a much better job. Both WEFT and ttf2eot only convert TrueType to Embedded Open Type &#8211; if you want to convert an <em>OpenType</em> font to Embedded Open Type, it is necessary to use <a href="http://fontforge.sourceforge.net/">FontForge</a>, a free font-editing tool, to convert the font to TrueType first, and then use ttf2eot to convert the resultant font to .eot format.  Although this method is roundabout and results in loss of detail due to the way the font formats store information, it is the only way I know to do this conversion.</p>
+<p>For more detail on how to perform .eot font conversions using ttf2eot and FontForge, check out Edward O&#8217;Connor&#8217;s great article <cite><a href="http://edward.oconnor.cx/2009/07/how-to-create-eot-files-without-microsoft-weft">How to create EOT files without Microsoft WEFT</a></cite></p>
+<div class="importantNotes">
+<p><strong>Update:</strong> Since I have originally written this article, I have created <a href="http://www.useragentman.com/blog/2011/02/20/converting-font-face-fonts-quickly-in-any-os/">a command-line tool that will convert TTF or OTF font into all font formats supported by all the browsers</a>, along with an embedded stylesheet.  Font Squirrel also has an excellent on-line tool that you can use to do this as well.  In addition, all modern browsers now support <a href="http://en.wikipedia.org/wiki/Web_Open_Font_Format">WOFF fonts</a>, and quite a few also support <a href="http://nimbupani.com/about-fonts-in-svg.html">SVG fonts</a> as well.  To keep up with what works with what, take a look at <a href="http://www.caniuse.com/#search=@font-face">CanIUse.com&#8217;s excellent compatibility chart</a>.</p>
+</div>
+<h2>Where to get fonts you can legally use in web pages.</h2>
+<p>Although it is now technically possible to embed almost any font inside a web page, it is important to remember that if you use a commercial font for this purpose, you must have a license to do this.  Since putting a font on a website will allow anyone on the Web to download it, a lot of font foundries currently do not allow their fonts to be used for web page embedding. It is for this reason that the browser vendors have been reluctant to implement this technology into their products until recently (font embedding is part of the CSS2 specification, which has been around since 1998).</p>
+<p>Luckily, there are a few sites that are sprouting up that have done the initial work for you by listing fonts that allow font embedding on web pages legally.  The ones that I have visited include:</p>
+<ul>
+<li><a href="http://www.fontsquirrel.com">Font Squirrel&#8217;s</a> <a href="http://www.fontsquirrel.com/fontface">@font-face page</a>, which include @font-face kits that include an .eot as well as an .otf or .ttf font.  Each kit also includes <strong></strong>a stylesheet which can be linked directly into your document so you can use the font with minimal coding.</li>
+<li><a href="http://www.smashingmagazine.com/">Smashing Magazine&#8217;s</a> has an excellent article, <cite><a href="http://www.smashingmagazine.com/2007/11/08/40-excellent-freefonts-for-professional-design/">40+ Excellent Freefonts For Professional Design</a></cite></li>
+<li><a href="http://kernest.com/">Kernest.com</a> hosts a whole slew of fonts that can be used for font-embedding.</li>
+<li><a href="http://webfonts.info">Webfonts.info</a> has a page dedicated to <a href="http://webfonts.info/wiki/index.php?title=Fonts_available_for_%40font-face_embedding">fonts available for @font-face embedding</a>.</li>
+</ul>
+<p>Note that whenever you use <strong>any</strong> font, make sure you check the license that comes with it.  Some fonts, even if their license allows for font embedding, may not allow you to use it for commercial purposes.  Others may, but only for a fee.  To be safe, check the documentation that comes with the font.</p>
+<h2>How to insert a font into your webpage</h2>
+<p>Once you have a font that you&#8217;d like to insert into your webpage, you first have to declare it inside your CSS stylesheet:</p>
+<blockquote class="code">
+<pre>@font-face {
+    font-family: 'Droid Sans';
+    src: url('DroidSans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('DroidSans-webfont.woff') format('woff'),
+         url('DroidSans-webfont.ttf') format('truetype'),
+         url('DroidSans-webfont.svg#DroidSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+</pre>
+</blockquote>
+<p>It is very important to note here that <strong>order counts</strong>.  There are variations of this CSS syntax, but what I present above is from Ethan Dunham&#8217;s excellent article <a href="http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax">The New Bulletproof @Font-Face Syntax</a>.  It is the one that seems to be simplest and most bulletproof, even beating Paul Irish&#8217;s <a href="http://paulirish.com/2009/bulletproof-font-face-implementation-syntax/">Bulletproof @font-face syntax</a>, which is what I recommended in a previous iteration of this article.</p>
+<p>The <code>?#iefix</code> after the EOT font is there to avoid a bug in older versions of IE.  See  <a href="http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax">The New Bulletproof @Font-Face Syntax</a> for more details.  <strong>Also note the <code>#DroidSansRegular</code> in the svg url.</strong>  If you open up an SVG font in a test editor, you&#8217;ll see something like this:</p>
+<blockquote class="code">
+<pre>
+&lt;?xml version="1.0" standalone="no"?&gt;
+&lt;!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" &gt;
+&lt;svg xmlns="http://www.w3.org/2000/svg"&gt;
+&lt;metadata&gt;
+This is a custom SVG webfont generated by Font Squirrel.
+Copyright   : Digitized data copyright  2007 Google Corporation
+Foundry     : Ascender Corporation
+Foundry URL : http://www.ascendercorp.com
+&lt;/metadata&gt;
+&lt;defs&gt;
+&lt;font <span class="hilite">id="DroidSansRegular"</span> horiz-adv-x="1128" &gt;
+.
+.
+.
+</pre>
+</blockquote>
+<p>The string after the # in the svg @font-face declaration (in this case <code>#DroidSansRegular</code> corresponds to the <code>id</code> in the svg file&#8217;s <code>font</code> tag.</p>
+<p>After you declare the font, you can use it inside any of your selectors as you would use any other font:</p>
+<blockquote class="code">
+<pre>body {
+     font-family: "Droid Sans", "Arial", "Helvetica", sans-serif;
+}</pre>
+</blockquote>
+<p>Note that it is still necessary to use alternative fonts &#8211; this is so that user agents that don&#8217;t support @font-face will still show an appropriate, similar looking font.</p>
+<p>Some font families are contained in not just one file.  For example, Droid Sand  has a bold variant that is stored in a separate TrueType file (the .eot file used by Internet Explorer in the above example contains both the regular and bold variants).  The bold variant of Droid Sans can be declared correctly in your stylesheet like this:</p>
+<blockquote class="code">
+<pre>@font-face {
+    font-family: 'Droid Sans';
+    src: url('DroidSans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('DroidSans-webfont.woff') format('woff'),
+         url('DroidSans-webfont.ttf') format('truetype'),
+         url('DroidSans-webfont.svg#DroidSansRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'Droid Sans Bold';
+    src: url('DroidSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('DroidSans-Bold-webfont.woff') format('woff'),
+         url('DroidSans-Bold-webfont.ttf') format('truetype'),
+         url('DroidSans-Bold-webfont.svg#DroidSansBold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+</pre>
+</blockquote>
+<p>It will be necessary to use a different font name for the bold variant, but it is the easiest and safest cross-browser way to do this.</p>
+<h2 id="browser-differences" name="browser-differences">Browser Differences</h2>
+<p>To effectively illustrate how differently browsers render embedded fonts, let&#8217;s compare them side by side:</p>
+<table border="0">
+<thead>
+<tr>
+<th></th>
+<th>Safari 3</p>
+<p>Windows</th>
+<th>Firefox 3.5</p>
+<p>Windows</th>
+<th>Explorer 6</p>
+<p>Windows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>Title of this blog post</th>
+<td><img title="Screenshot Detail 1 (Safari)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/safari-font-11.png" alt="Screenshot Detail 1 (Safari)" /></td>
+<td><img title="Screenshot Detail 1 (Firefox)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/firefox-font-12.png" alt="Screenshot Detail 1 (Firefox)" /></td>
+<td><img title="Screenshot Detail 1 (IE)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/ie-font-11.png" alt="Screenshot Detail 1 (IE)" /></td>
+</tr>
+<tr>
+<th>Close-up of the title of this blog post</th>
+<td><img title="Screenshot Closeup 1a (Safari)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/safari-font-1-detail2.png" alt="Screenshot Closeup 1a (Safari)" /></td>
+<td><img title="Screenshot Closeup 1a (Firefox)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/firefox-font-1-detail.png" alt="Screenshot Closeup 1a (Firefox)" /></td>
+<td><img title="Screenshot Closeup 1a (IE)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/ie-font-1-detail.png" alt="Screenshot Closeup 1a (IE)" /></td>
+</tr>
+<tr>
+<th>Subheading from this blog post</th>
+<td><img title="Screenshot Detail 2 (Safari)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/safari-font-1-detail1.png" alt="Screenshot Detail 2 (Safari)" /></td>
+<td><img title="Screenshot Detail 2 (Firefox)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/firefox-font-2.png" alt="Screenshot Detail 2 (Firefox)" /></td>
+<td><img title="Screenshot Detail 2 (IE)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/ie-font-2.png" alt="Screenshot Detail 2 (IE)" /></td>
+</tr>
+<tr>
+<th>Close-up of subheading of this blog post</th>
+<td><img title="Screenshot Closeup 2 (Safari)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/safari-font-2-detail.png" alt="Screenshot Closeup 2 (Safari)" /></td>
+<td><img title="Screenshot Closeup 2 (Firefox)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/firefox-font-2-detail.png" alt="Screenshot Closeup 2 (Firefox)" /></td>
+<td><img title="Screenshot Closeup 2 (IE)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/ie-font-2-detail.png" alt="Screenshot Closeup 2 (IE)" /></td>
+</tr>
+<tr>
+<th>Close-up of main text of this blog post</th>
+<td><img title="Screenshot Closeup 3 (Safari)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/safari-3-detail.png" alt="Screenshot Closeup 3 (Safari)" /></td>
+<td><img title="Screenshot Closeup 3 (Firefox)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/firefox-3-detail.png" alt="Screenshot Closeup 3 (Firefox)" /></td>
+<td><img title="Screenshot Closeup 3 (IE)" src="http://www.useragentman.com/blog/wp-content/uploads/2009/09/ie-3-detail.png" alt="Screenshot Closeup 3 (IE)" /></td>
+</tr>
+</tbody>
+</table>
+<p>As you may see, there are some slight differences in the way that fonts are rendered in the various browsers:</p>
+<ul>
+<li><strong>Fonts displayed on Safari for Windows (and all browsers on the Mac) in my opinion look the nicest</strong>: they are nicely smoothed out and the text is quite easily read at smaller sizes.  This is due to the way Apple products render fonts.  <a title="Joel Spolsky article &quot;Font smoothing, anti-aliasing, and sub-pixel rendering&quot;" href="http://www.joelonsoftware.com/items/2007/06/12.html">Apple has always differed in philosophy with Microsoft on how to render fonts</a>, and this difference is quite obvious when testing pages under the Windows operating system.</li>
+<li><strong>I have found that Internet Explorer does a poor job when displaying fonts converted from OpenType</strong> — the glyphs tend to be more jagged and some elements tend to be rendered thinner than they should be. GrauBlau Web, the font used in the headings of  this page, is a converted OpenType font, and you can see this effect in the close-ups above. It does not occur in the main body of the text because Droid Sans is a TrueType font.  There seems to be two reasons for this:
+<ol>
+<li>There was information loss when converting GrauBlau Web from OpenType to TrueType.</li>
+<li>In Explorer, <a href="http://en.wikipedia.org/wiki/ClearType">ClearType</a> renders this font using subpixel anti-aliasing quite more severely than Safari, while other Windows browsers use vanilla anti-aliasing to get the job done.  A <a href="http://www.luxography.com/">friend of mine</a> pointed this out, and he said that it&#8217;s because ClearType renders TrueType (and, it seems, Embedded Open Type) fonts with subpixel anti-aliasing, but OpenType for some reason isn&#8217;t.  I don&#8217;t know the reasons why, but in this example it looks like it is true &#8211; if you look at all of the Explorer closeups,you&#8217;ll see the coloured pixels on the edge of all the glyphs, while in Firefox only Droid Sans (which is a TrueType font) has them.</li>
+</ol>
+</li>
+<li><strong>Firefox only allows you to embed fonts that come from the same server</strong>, unless some special headers appear in the HTTP server response.  Also, unlike the other browsers, <strong>Firefox users first see the page without the embedded font <em>until</em> the font is loaded completely</strong>, at which time the fonts suddenly appear on the page. While it can be argued that this is a good thing (the user can read the content immediately without having to rely on the special font), this may not what a web designer would consider desirable.</li>
+</ul>
+<p>There are a few more differences, which are better outlined at the <a href="http://webfonts.info/wiki/index.php?title=Main_Page">Web Fonts</a> Wiki, which seems to keep its information up-to-date.</p>
+<h2>How to choose which fonts to use</h2>
+<p>Not having gone to design school, I cannot claim to be an authority on this subject, but I think it is safe to say that when choosing the fonts that you are going to use, it should be in sync with the mood and message you want readers to experience.  Chuck Green&#8217;s article, <a href="http://www.ideabook.com/tutorials/typography/type_palettes.html">Type palettes</a>, goes into more depth on this subject, and Michael Martin of Smashing Magazine has a great article about <a href="http://www.smashingmagazine.com/2009/08/20/typographic-design-survey-best-practices-from-the-best-blogs/">Typographic Design Patterns and Best Practices</a>.  Although both of these articles don&#8217;t go into font-embedding specifically, they are still relevant reading.</p>
+<p>It took me a long time to decide on the fonts I have used here on my blog. When designing the layout, I was going for two things:</p>
+<ol>
+<li>I wanted the body text to be easy to read</li>
+<li>I wanted the feeling of the whole blog to be friendly and not look like an academic paper</li>
+</ol>
+<p>In the end I decided to use:</p>
+<ol>
+<li><a href="http://www.fonts.info/info/press/free-fonts-for-font-face-embedding.htm">GrauBlau Web</a> for the headers because it is narrow (which allows more text on a line), easy on the eyes, and since it is used on headers, the user notices it right away and thinks &#8220;Hey, this looks different!&#8221;.</li>
+<li><a href="http://www.droidfonts.com/info/droid-sans-fonts/">Droid Sans</a> for the main text because it was designed to be easy to read even on low resolutions and, in combination with GrauBlau Web, gave the site a nice, pleasant and friendly look.</li>
+<li><a href="http://www.droidfonts.com/info/droid-sans-mono-fonts/">Droid Sans Mono</a> for the code listings since it was designed to compliment Droid Sans, and, I believe, looks a jillion times better than Courier (which everyone up to now has been forced to use due to a lack of nice looking monospace fonts installed on most computers today).</li>
+</ol>
+<p>Again, I didn&#8217;t go to design school, but I think for the type of site this is (a blog about web technology), it suits its purpose rather well.   I <strong>was</strong> tempted to choose more ornate fonts, but I didn&#8217;t think they suited the content.</p>
+<h2>Optimizing Font Files</h2>
+<p>Sometimes you may find that the font files are a little larger than you&#8217;d like.  If you open up the font file in <a href="http://fontforge.sourceforge.net/">FontForge</a>, you may find that a lot of the glyphs inside are not necessary for what you are doing (for example, if your pages are all in English, you might not want all the accented characters that the font contains).  Use FontForge to delete the glyphs you don&#8217;t need and regenerate the font &#8211; you&#8217;ll see that you save quite a few kilobytes, especially in a Unicode font with lots of Japanese and Russian characters included.</p>
+<p>Again, because of licensing issues, please ensure that the font license allows you to edit the font in this manner.</p>
+<h2>Conclusion</h2>
+<p>What is written here is just the tip of the iceberg.  In the next few years, I expect to be reading several articles on the best way to use embedded fonts, from technical, usability, internationalization and design perspectives. Unfortunately, I also expect to see a lot of MySpace pages looking uglier than ever.  Imagine! Now, teenagers around the world can have animated backgrounds, Black Eyed Peas songs playing on load, <strong>and</strong> have that <a href="http://www.fontsquirrel.com/fonts/junkos-typewriter">crazy typewriter font</a> on the main copy.</p>
+<p>My God, what have we done &#8230;.</p>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 1368px; width: 1px; height: 1px;">http://webfonts.info/wiki/index.php?title=Fonts_available_for_%40font-face_embedding</div>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" rel="category tag">@font-face</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" rel="category tag">ClearType</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" rel="category tag">converting</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/css/" rel="category tag">CSS</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" rel="category tag">FontForge</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/fonts/" rel="category tag">Fonts</a>  &middot; <a href="http://www.useragentman.com/blog/tag/font-face/" rel="tag">@font-face</a>, <a href="http://www.useragentman.com/blog/tag/embedded-font/" rel="tag">embedded font</a>, <a href="http://www.useragentman.com/blog/tag/eot/" rel="tag">eot</a>, <a href="http://www.useragentman.com/blog/tag/font/" rel="tag">font</a>, <a href="http://www.useragentman.com/blog/tag/font-embedding/" rel="tag">font-embedding</a>, <a href="http://www.useragentman.com/blog/tag/fontforge/" rel="tag">fontforge</a>, <a href="http://www.useragentman.com/blog/tag/otf/" rel="tag">otf</a>, <a href="http://www.useragentman.com/blog/tag/ttf/" rel="tag">ttf</a>, <a href="http://www.useragentman.com/blog/tag/ttf2eot/" rel="tag">ttf2eot</a></p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">68 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						<li class="comment   " id="comment-5 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-5" title="Permalink to this comment">1</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.linkedin.com/in/sjmccoy'><img alt='' src='http://0.gravatar.com/avatar/c3d52b5840bdde4fbfafd48635e0d2b9?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/c3d52b5840bdde4fbfafd48635e0d2b9?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.linkedin.com/in/sjmccoy' rel='external nofollow' class='url'>Stewart McCoy</a> </strong>
+				<span class="comment_time">// Sep 28, 2009 at 2:00 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thanks for the article!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-8 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-8" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://sbeynon.net'><img alt='' src='http://2.gravatar.com/avatar/b15032ee97828c39d8b58b3920a9ac7b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b15032ee97828c39d8b58b3920a9ac7b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://sbeynon.net' rel='external nofollow' class='url'>syber</a> </strong>
+				<span class="comment_time">// Sep 29, 2009 at 10:17 pm</span>
+			</p>
+			<div class="entry">
+				<p>I have long wanted to know how to embed custom web fonts &#8211; this is a fantastic article!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-9 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-9" title="Permalink to this comment">4</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>admin </strong>
+				<span class="comment_time">// Sep 29, 2009 at 10:20 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thanks for the feedback! It seems it got a lot of attention on Twitter, so thanks to everyone there too!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-11 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11" title="Permalink to this comment">5</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://luxography.ca/'><img alt='' src='http://0.gravatar.com/avatar/3aba399c2a504bf5b2835a858b01346e?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/3aba399c2a504bf5b2835a858b01346e?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://luxography.ca/' rel='external nofollow' class='url'>Brian Tao</a> </strong>
+				<span class="comment_time">// Oct 2, 2009 at 10:21 am</span>
+			</p>
+			<div class="entry">
+				<p>Any idea how well this works in HTML e-mail with the various MUA&#8217;s and webmail services?  It would be great to have proper typeface support, without resorting to PDF links or embedding images.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-12 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-12" title="Permalink to this comment">6</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Oct 3, 2009 at 12:12 pm</span>
+			</p>
+			<div class="entry">
+				<p>I believe it may be a bit of a crapshoot, but I have no solid evidence to back me up.  Sounds like a good topic for a future blog post.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-13 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-13" title="Permalink to this comment">7</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://azzcatdesign.com'><img alt='' src='http://2.gravatar.com/avatar/5e4c99e54dc92debb0f5dae4d7ef06b3?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/5e4c99e54dc92debb0f5dae4d7ef06b3?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://azzcatdesign.com' rel='external nofollow' class='url'>Catherine Azzarello</a> </strong>
+				<span class="comment_time">// Oct 4, 2009 at 1:15 am</span>
+			</p>
+			<div class="entry">
+				<p>Good article! I just wrestled with @font-face this week. For some reason, YanoneKaffeesatz would not work in IE&#8211;no matter what. I think something was wrong with the .eot files. I eventually tried Miso. IE liked that. But I still wanted to keep YK and Cuomotype (no .eot version) as my original fonts. So I included Miso.eot and Underwood-Champion-Regular.eot in my font stacks. Now FF, Safari and Opera get fed YK and Cuomotype, IE gets the similar Miso and UCR. </p>
+<p>All good!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-14 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-14" title="Permalink to this comment">8</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://azzcatdesign.com'><img alt='' src='http://2.gravatar.com/avatar/5e4c99e54dc92debb0f5dae4d7ef06b3?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/5e4c99e54dc92debb0f5dae4d7ef06b3?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://azzcatdesign.com' rel='external nofollow' class='url'>Catherine Azzarello</a> </strong>
+				<span class="comment_time">// Oct 4, 2009 at 1:16 am</span>
+			</p>
+			<div class="entry">
+				<p>OOps&#8230;visit the site&#8230;blog.franklyrealty.com to see @font-face in action!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-15 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-15" title="Permalink to this comment">9</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/24bb4f43094b3259565afb1eab8314f2?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/24bb4f43094b3259565afb1eab8314f2?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>login </strong>
+				<span class="comment_time">// Oct 4, 2009 at 2:18 am</span>
+			</p>
+			<div class="entry">
+				<p>I admire you on the willingness to share this info with others &#8211; good luck!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						<li class="comment   " id="comment-22 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-22" title="Permalink to this comment">12</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.demianvillanueva.com'><img alt='' src='http://1.gravatar.com/avatar/a18b418a55414b02585e31d1eb7964e2?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/a18b418a55414b02585e31d1eb7964e2?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.demianvillanueva.com' rel='external nofollow' class='url'>dlv</a> </strong>
+				<span class="comment_time">// Oct 4, 2009 at 1:06 pm</span>
+			</p>
+			<div class="entry">
+				<p>excellent article !!! a really nice read, thanks for share this !!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						
+						
+						<li class="comment   " id="comment-34 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-34" title="Permalink to this comment">17</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/dfcb86effda197b0b7e4b8c81929a785?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/dfcb86effda197b0b7e4b8c81929a785?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Mare </strong>
+				<span class="comment_time">// Oct 6, 2009 at 9:21 am</span>
+			</p>
+			<div class="entry">
+				<p>I&#8217;m very interested in the way browsers render these fonts. In your table of browser differences Safari fonts look really the best, but my experience is totally different. On my machine (Vista Business x86), Safari 4.03 renders fonts dreadfully (see here: <a href="http://img11.imageshack.us/img11/6480/fontssafari.png" rel="nofollow">http://img11.imageshack.us/img11/6480/fontssafari.png</a> ), while Firefox (3.7 alpha, but it&#8217;s the same on 3.5) renders them very good (see here: <a href="http://img7.imageshack.us/img7/5002/fontsff3.png" rel="nofollow">http://img7.imageshack.us/img7/5002/fontsff3.png</a> ).</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-35 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-35" title="Permalink to this comment">18</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.weatheredwatcher.com'><img alt='' src='http://0.gravatar.com/avatar/ccb5d4d24f11aa4bf8388dab7051ef38?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/ccb5d4d24f11aa4bf8388dab7051ef38?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.weatheredwatcher.com' rel='external nofollow' class='url'>David Duggins</a> </strong>
+				<span class="comment_time">// Oct 6, 2009 at 10:02 am</span>
+			</p>
+			<div class="entry">
+				<p>Wow.  Totally awesome article.  I have long been a font-fanatic.  I feel kinda ashamed that I have not been using this.  It is something I plan on correcting immediately!!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-36 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-36" title="Permalink to this comment">19</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Oct 6, 2009 at 10:36 am</span>
+			</p>
+			<div class="entry">
+				<p>Hey Mare.</p>
+<p>Thanks for the screenshots. That is quite interesting.  It looks as though your screenshot of Firefox is pixel-perfect-identical to what I see, but your screenshot of Safari is quite different.  In Safari, there is an option in the Preferences on how to render fonts (under the Appearance tab).  What is yours set to?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-37 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-37" title="Permalink to this comment">20</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://stevesouders.com/'><img alt='' src='http://0.gravatar.com/avatar/64931fda8848013e181fed7896622e8c?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/64931fda8848013e181fed7896622e8c?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://stevesouders.com/' rel='external nofollow' class='url'>Steve Souders</a> </strong>
+				<span class="comment_time">// Oct 6, 2009 at 12:04 pm</span>
+			</p>
+			<div class="entry">
+				<p>How does this impact performance? Do font file downloads happen in parallel with other resources? Are they downloaded at declaration (&#8220;@font-face {}&#8221;), when used in a style (&#8220;body { font-family: }&#8221;), or when a DOM element uses a style that uses the font? Do they follow the normal HTTP caching behavior? Can they be gzipped?</p>
+<p>A ton of questions to answer before you should adopt custom fonts.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-38 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-38" title="Permalink to this comment">21</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Oct 6, 2009 at 1:14 pm</span>
+			</p>
+			<div class="entry">
+				<p>Steve: these are very good questions.  A couple of things I have noted:</p>
+<p>&#8211; As mentioned before Firefox (and, from what I have seen, Opera as well) load the fonts <strong>after</strong> the document is loaded.  You will see the document first without the fonts, and then as the fonts are loaded in, the font is inserted according to the style-sheet </p>
+<p>&#8211; It <strong>looks</strong> as if Safari and IE render the pages after the fonts are loaded.  However, I haven&#8217;t done any real testing on that yet</p>
+<p>If anyone else can comment on these issues, I&#8217;d love to see replies to this.  If not, I think they would all be excellent points to address in a follow-up article. :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-39 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-39" title="Permalink to this comment">22</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://paulirish.com'><img alt='' src='http://0.gravatar.com/avatar/6cfbd373bb1dd5f26c066c1fc7e68288?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/6cfbd373bb1dd5f26c066c1fc7e68288?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://paulirish.com' rel='external nofollow' class='url'>Paul Irish</a> </strong>
+				<span class="comment_time">// Oct 6, 2009 at 1:57 pm</span>
+			</p>
+			<div class="entry">
+				<p>Garrick at Kernest tipped me off that IE is very aggressive on download the font data. I&#8217;ve done some of my own testing, too:</p>
+<p>IE will download the .eot file immediately when it encounters the @font-face declaration.<br />
+No browsers download the font file when they find a css rule that references the @font-face font.<br />
+Gecko, Webkit, and Opera all wait until they encounter HTML that matches a CSS rule with a fontstack including the @font-face font.</p>
+<p>You can test this out on my load testing page here:<br />
+<a href="http://dl.getdropbox.com/u/39519/webfontsdemo/loadtest.html" rel="nofollow">http://dl.getdropbox.com/u/39519/webfontsdemo/loadtest.html</a></p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-42 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-42" title="Permalink to this comment">23</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Oct 6, 2009 at 6:04 pm</span>
+			</p>
+			<div class="entry">
+				<p>This is great info.  Thank you Paul.  My after assumption was slightly incorrect &#8211; I was just going by the visual evidence of the font replacement happening after the page was rendered.  </p>
+<p>I bet you any money someone is going to find a method/series of hacks that will allow developers to control when this download occurs.  I look forward to it.</p>
+<p>Anyone reading this want to take that on?  :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-43 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-43" title="Permalink to this comment">24</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://matt.mn/'><img alt='' src='http://2.gravatar.com/avatar/bb03abe3bc87c6db69ef0f51cbc9e7f1?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/bb03abe3bc87c6db69ef0f51cbc9e7f1?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://matt.mn/' rel='external nofollow' class='url'>Matt Sandy</a> </strong>
+				<span class="comment_time">// Oct 6, 2009 at 8:38 pm</span>
+			</p>
+			<div class="entry">
+				<p>I will definitely give this a try for the new layout I am working on; right now I am using flir.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-51 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-51" title="Permalink to this comment">25</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/7e0c369731b68944eaa881a0c6157edd?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/7e0c369731b68944eaa881a0c6157edd?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>dougwig </strong>
+				<span class="comment_time">// Oct 7, 2009 at 12:43 pm</span>
+			</p>
+			<div class="entry">
+				<p>Very nice, this is the first web-font article I&#8217;ve seen where the information was presented so clearly that I had to give web-fonts a go myself.</p>
+<p>Note: I think you&#8217;ll want the .ttf and .eot files on a CDN so that downloads are optimized.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-54 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-54" title="Permalink to this comment">27</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://paulirish.com'><img alt='' src='http://0.gravatar.com/avatar/6cfbd373bb1dd5f26c066c1fc7e68288?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/6cfbd373bb1dd5f26c066c1fc7e68288?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://paulirish.com' rel='external nofollow' class='url'>Paul Irish</a> </strong>
+				<span class="comment_time">// Oct 7, 2009 at 6:32 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Zoltan, here&#8217;s some code to accelerate the font download in other browsers.<br />
+(html tags intentionally borked)</p>
+<blockquote class="code">
+<pre>
+
+
+
+    /* chunk will load immediately in IE at this declaration*/
+    @font-face {
+    	font-family: 'ChunkFive Regular';
+    	src: url('fonts/Chunkfive.eot');
+    	src: local('ChunkFive Regular'), local('ChunkFive-Regular'), url('fonts/Chunkfive.otf') format('opentype');
+    }
+    .chunk { font-family:'ChunkFive Regular'}
+ </pre>
+</blockquote>
+<blockquote class="code">
+<pre>
+    // we're still in the head but we're going to get that font to download now.
+    var dl = document.createElement('fontdl');
+    dl.innerHTML = 'download the font asap';
+    dl.className = 'chunk';
+    dl.style.cssText = 'position:absolute; visibility:hidden'
+    // it's still off-DOM so it doesn't download yet
+    
+    // document.body doesnt exist yet so we'll add it onto the HTML tag
+    document.documentElement.appendChild(dl);
+    // font download initiated now.
+    // let's clean up after ourselves (opera needs a timeout &gt; 0)
+    setTimeout(function(){dl.parentNode &amp;&amp; dl.parentNode.removeChild(dl)},100)  
+</pre>
+</blockquote>
+<p>I have a test page with this rolling here:<br />
+<a href="http://dl.getdropbox.com/u/39519/webfontsdemo/loadtest.html" rel="nofollow">http://dl.getdropbox.com/u/39519/webfontsdemo/loadtest.html</a></p>
+<p>I&#8217;ll write this up proper very very soon. :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-56 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-56" title="Permalink to this comment">29</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.ignacioricci.com'><img alt='' src='http://2.gravatar.com/avatar/8aeb35f603525d4133f9eb152dc52900?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/8aeb35f603525d4133f9eb152dc52900?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.ignacioricci.com' rel='external nofollow' class='url'>Nacho</a> </strong>
+				<span class="comment_time">// Oct 7, 2009 at 7:28 pm</span>
+			</p>
+			<div class="entry">
+				<p>Nice article. Thank you :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-58 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-58" title="Permalink to this comment">31</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/dfcb86effda197b0b7e4b8c81929a785?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/dfcb86effda197b0b7e4b8c81929a785?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Mare </strong>
+				<span class="comment_time">// Oct 8, 2009 at 7:50 am</span>
+			</p>
+			<div class="entry">
+				<p>@Zoltan<br />
+Ahhhh! Muuuch better! The setting in Safari was set to &#8220;Windows default&#8221;, and now I set it to &#8220;Light&#8221;. But why such a bad default? If I were Apple, and created a good rendering engine, I&#8217;d set that as a default. I don&#8217;t use Safari much (just to check some designs &#8211; I&#8217;m a QA person), and would have hard time finding out that this browser CAN display fonts better, and afterwards finding the correct setting&#8230;</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-60 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-60" title="Permalink to this comment">33</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://stevesouders.com/'><img alt='' src='http://0.gravatar.com/avatar/64931fda8848013e181fed7896622e8c?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/64931fda8848013e181fed7896622e8c?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://stevesouders.com/' rel='external nofollow' class='url'>Steve Souders</a> </strong>
+				<span class="comment_time">// Oct 8, 2009 at 2:50 pm</span>
+			</p>
+			<div class="entry">
+				<p>Paul did a great write-up on @font-face performance: <a href="http://paulirish.com/2009/fighting-the-font-face-fout/" rel="nofollow">http://paulirish.com/2009/fighting-the-font-face-fout/</a></p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-61 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-61" title="Permalink to this comment">34</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://ww3.co.il'><img alt='' src='http://2.gravatar.com/avatar/e2d1802d4f72e27766192024cfb25dd0?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/e2d1802d4f72e27766192024cfb25dd0?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://ww3.co.il' rel='external nofollow' class='url'>Neil Osman</a> </strong>
+				<span class="comment_time">// Oct 8, 2009 at 8:01 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thanks, well written</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						
+						<li class="comment   " id="comment-68 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-68" title="Permalink to this comment">38</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.innovateni.com'><img alt='' src='http://1.gravatar.com/avatar/d2a57e92483a9aab2dd771dc9a6a1d8a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/d2a57e92483a9aab2dd771dc9a6a1d8a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.innovateni.com' rel='external nofollow' class='url'>Emma Smyth</a> </strong>
+				<span class="comment_time">// Oct 12, 2009 at 11:57 am</span>
+			</p>
+			<div class="entry">
+				<p>Thanks for the post and the screenshots, they always help, I really liked this article, cheers</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						
+						<li class="comment   " id="comment-85 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-85" title="Permalink to this comment">42</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://studio83.ch'><img alt='' src='http://0.gravatar.com/avatar/68102fcbd9166aeb75b0fd8ab7e535d5?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/68102fcbd9166aeb75b0fd8ab7e535d5?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://studio83.ch' rel='external nofollow' class='url'>Marcel</a> </strong>
+				<span class="comment_time">// Oct 16, 2009 at 1:33 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Mare</p>
+<p>You&#8217;re on Windows aren&#8217;t you? Safari on Windows gives you the choice on how to render Fonts, maybe you&#8217;ve choosen the Windows like way&#8230; see Prefs!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-88 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-88" title="Permalink to this comment">43</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.ekram.info'><img alt='' src='http://1.gravatar.com/avatar/7a2ba132c17d63e7d1fc2324601851ce?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/7a2ba132c17d63e7d1fc2324601851ce?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.ekram.info' rel='external nofollow' class='url'>kazi mohammad ekram</a> </strong>
+				<span class="comment_time">// Oct 18, 2009 at 4:02 am</span>
+			</p>
+			<div class="entry">
+				<p>thanks for the article. it helps lot. before i was using SIFR to embed any font in my website. which is using Flash. But it takes some time to load. Hope your article will help me lot.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						
+						
+						
+						
+						
+						<li class="comment   " id="comment-107 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-107" title="Permalink to this comment">51</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.blog.vanrick.com'><img alt='' src='http://0.gravatar.com/avatar/31f4e1d1cca92cfba7c2953fbb60145b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/31f4e1d1cca92cfba7c2953fbb60145b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.blog.vanrick.com' rel='external nofollow' class='url'>Vanrick</a> </strong>
+				<span class="comment_time">// Nov 5, 2009 at 3:15 am</span>
+			</p>
+			<div class="entry">
+				<p>Wow ! So interesting  &#8211; Great Article thanks for taking the time to post this.</p>
+<p>Im a new Web Designer &amp; want to try make this.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-108 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-108" title="Permalink to this comment">52</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://project-art.co.uk'><img alt='' src='http://0.gravatar.com/avatar/f09bc45412b13727fbf59cc87d72553d?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f09bc45412b13727fbf59cc87d72553d?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://project-art.co.uk' rel='external nofollow' class='url'>Lavelle</a> </strong>
+				<span class="comment_time">// Nov 5, 2009 at 6:02 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thanks for putting together this post, in particularly going through the various options available and how to actually implement each one. Cheers!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						
+						
+						
+						
+						
+						<li class="comment   " id="comment-814 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-814" title="Permalink to this comment">60</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.seo-creative.co.uk'><img alt='' src='http://1.gravatar.com/avatar/45d63c9e8b2ed249c39d3b3b0ea3e809?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/45d63c9e8b2ed249c39d3b3b0ea3e809?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.seo-creative.co.uk' rel='external nofollow' class='url'>Web Designer</a> </strong>
+				<span class="comment_time">// Apr 6, 2010 at 3:59 pm</span>
+			</p>
+			<div class="entry">
+				<p>Good post I always struggle with web fonts as I want to use nice typography but with the limited fonts available find it a nightmare!<br />
+With the issues in different browsers I can envisage some difficulties with email HTML and spam settings. I have been playing around with flash replacement fonts but the usability and issues with load time has meant I have had to limit this.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						
+						
+						
+						<li class="comment   " id="comment-6829 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-6829" title="Permalink to this comment">66</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.scott-baxter.co.uk'><img alt='' src='http://0.gravatar.com/avatar/f41000037d71659710e6f3083533623e?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f41000037d71659710e6f3083533623e?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.scott-baxter.co.uk' rel='external nofollow' class='url'>freelance seo manchester</a> </strong>
+				<span class="comment_time">// Jan 11, 2011 at 8:07 am</span>
+			</p>
+			<div class="entry">
+				<p>I have really started to use @font-face now &#8211; keep up the good work!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-7928 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-7928" title="Permalink to this comment">67</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.agiletechnosys.com'><img alt='' src='http://0.gravatar.com/avatar/c0ec08f0ce78aa72313e23d177fbdc8a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/c0ec08f0ce78aa72313e23d177fbdc8a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.agiletechnosys.com' rel='external nofollow' class='url'>Suraj Naik</a> </strong>
+				<span class="comment_time">// Feb 6, 2011 at 4:12 am</span>
+			</p>
+			<div class="entry">
+				<p>Thanks for such a great article. Its really gives an insight in this particular aspect of web design.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="13" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="c9779140bc" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

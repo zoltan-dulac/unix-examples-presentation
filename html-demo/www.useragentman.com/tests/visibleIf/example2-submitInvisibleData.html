@@ -1,0 +1,120 @@
+
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" /> 
+		
+		<title>visibleIf example</title>
+		
+		<link rel="stylesheet" href="../../shared/css/useragentmanExample.css" type="text/css" media="all" />
+		
+		<link rel="stylesheet" href="../../shared/css/visibleIf.css" type="text/css" media="all" />
+		
+		
+		<script type="text/javascript" src="../../shared/js/EventHelpers.js"></script>
+		
+		<script type="text/javascript" src="../../shared/js/visibleIf.js"></script>
+	</head>
+	<body id="myExample">
+		<div id="exampleIntro">
+			This two forms in this example are identical, except the first is a
+			member of the <code>visibleIf-submitInvisibleData</code> class, and
+			the second isn't.  Try submitting both forms without filling out
+			any of the fields.  You will notice the first one submits 
+			all the field values, even the hidden ones, while the second doesn't
+			submit the hidden fields.  
+			
+			<a href="http://www.useragentman.com/blog/2010/06/20/visibleif-html5-custom-data-attributes-with-javascript-make-dynamic-interactive-forms/">Back to User Agent Man <code>visibleIf</code> article </a>
+		</div>
+		
+		<form class="visibleIf-submitInvisibleData" action="/bin/showResults.cgi">
+			<fieldset>
+				<legend>Personal Information</legend>
+			
+				<p>Please enter in the following information about your phone</p>
+				<table class="formTable">
+					<tr>
+						<th>Name :</th>
+						<td><input type="text" name="fullName" /></td>
+					</tr>
+					
+						<th>Age Verification : </th>
+						<td><input type="checkbox" name="olderThan18" value="true" /> I am over the age of 18</td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule="olderThan18 == 'true'">
+						<th>Address :</th>
+						<td><input type="text" name="address" /></td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule="olderThan18 == 'true'">
+						<th>City :</th>
+						<td><input type="text" name="city" /></td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule="olderThan18 == 'true'">
+						<th>Province/State :</th>
+						<td><input type="text" name="state" /></td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule="olderThan18 == 'true'">
+						<th>Postal/Zip Code :</th>
+						<td><input type="text" name="code" /></td>
+					</tr>
+						
+				</table>
+				
+			</fieldset>
+			
+			
+			<div class="buttonRow">
+				<input type="submit" name="Next &gt;" />
+			</div>
+		</form>
+		
+		<form action="/bin/showResults.cgi">
+			<fieldset>
+				<legend>Personal Information</legend>
+			
+				<p>Please enter in the following information about your phone</p>
+				<table class="formTable">
+					<tr>
+						<th>Name :</th>
+						<td><input type="text" name="fullName" /></td>
+					</tr>
+					
+						<th>Age Verification : </th>
+						<td><input type="checkbox" name="olderThan18" value="true" /> I am over the age of 18</td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule="olderThan18 == 'true'">
+						<th>Address :</th>
+						<td><input type="text" name="address" class="visibleIf-submitIfInvisible"/></td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule="olderThan18 == 'true'">
+						<th>City :</th>
+						<td><input type="text" name="city" /></td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule="olderThan18 == 'true'">
+						<th>Province/State :</th>
+						<td><input type="text" name="state" /></td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule="olderThan18 == 'true'">
+						<th>Postal/Zip Code :</th>
+						<td><input type="text" name="code" /></td>
+					</tr>
+						
+				</table>
+				
+			</fieldset>
+			
+			
+			<div class="buttonRow">
+				<input type="submit" name="Next &gt;" />
+			</div>
+		</form>
+	</body>
+</html>

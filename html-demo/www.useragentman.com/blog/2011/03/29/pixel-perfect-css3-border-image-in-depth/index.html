@@ -1,0 +1,898 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive post-2536" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Pixel Perfect CSS3 border-image In Depth.</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><script src="//code.jquery.com/jquery-1.10.2.js"></script>	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+		<link rel="stylesheet" type="text/css" href="/css/2536.css" />
+	<!-- ID is 2536 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Pixel Perfect CSS3 border-image In Depth. Comments Feed" href="http://www.useragentman.com/blog/2011/03/29/pixel-perfect-css3-border-image-in-depth/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Installing Cygwin and FontForge for Windows' href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' />
+<link rel='next' title='CSS3 Text-Shadow &#8211; Can It Be Done in IE Without JavaScript?' href='http://www.useragentman.com/blog/2011/04/14/css3-text-shadow-can-it-be-done-in-ie-without-javascript/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2011/03/29/pixel-perfect-css3-border-image-in-depth/" />
+<link rel='shortlink' href='http://useragentman.com/blog/GajeX' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2011%2F03%2F29%2Fpixel-perfect-css3-border-image-in-depth%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2011%2F03%2F29%2Fpixel-perfect-css3-border-image-in-depth%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/" rel="prev">Installing Cygwin and FontForge for Windows</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2011/04/14/css3-text-shadow-can-it-be-done-in-ie-without-javascript/" rel="next">CSS3 Text-Shadow &#8211; Can It Be Done in IE Without JavaScript?</a> &raquo;</span>
+</div>
+
+
+			<h1>Pixel Perfect CSS3 <code>border-image</code> In Depth.</h1>
+			<h4 class="meta">March 29th, 2011 by zoltan &middot; <a href="http://www.useragentman.com/blog/2011/03/29/pixel-perfect-css3-border-image-in-depth/#comments">15 Comments</a></h4>
+			<div class="entry">
+				<div id="introExample" class="alignLeft">
+<p>This is an example of CSS3 <code>border-image</code> in action. Browsers that don&#8217;t support it will see a normal solid coloured <code>border</code>, while modern browsers will see a nice framed <code>border-image</code>. Note that the clouds are produced with an additional <code>background-image</code>, showing the possibility of having separate images for borders and backgrounds.</p>
+</div>
+<p>The <code>border-image</code> property is something I&#8217;ve been wanting for a long time. For years, I have been cutting up images into several pieces in order to emulate this effect (the most recent example of this was used in <a href="/tests/fontConverter/ArgBiwSc.html">this demo</a> of the <a href="/blog/2011/02/20/converting-font-face-fonts-quickly-in-any-os/">CSS3 Font Converter</a>).  The difference is that <strong>CSS3&#8217;s border-image property uses only one image and two lines of CSS</strong> (well &#8230; 6 if you include the vendor-specific properties and the fallback for browsers that don&#8217;t support it).</p>
+<p>Since it is newly implemented in most web browsers, there are a few gotchas that developers should be aware of before implementing <code>border-image</code>.  This article will cover these caveats, a tool that you can use to help generate border-images effectively, and a few things you should keep in mind so that pages don&#8217;t look funny in browsers that don&#8217;t support <code>border-radius</code>.  </p>
+<h2>Let&#8217;s Look At An Example</h2>
+<div id="example1">
+<p>This is an example of a block level element that uses the  <code>border-image</code> property.  The <code>border-image</code> is viewable in all major browsers except for IE (more on that later).  It <strong>uses only one image</strong> to produce the border &mdash; no images were cut-up into pieces or harmed in any other way.  The code to generate this border is fairly straight-forward once you know how it works:</p>
+<blockquote class="code">
+<pre>
+#object {
+ 
+   /*
+    * These border widths must match the border-image numbers.
+    */
+    border-width: 23px 22px 22px 26px;
+ 
+   /*
+    * Note that all browsers use their respective vendor prefix.  Also 
+    * note that, unlike the border-width values, the widths in the 
+    * border-image property don't have the 'px' unit at the end.
+    */
+   -moz-border-image:    url('image.png') 23 22 22 26 round round;
+   -webkit-border-image: url('image.png') 23 22 22 26 round round;
+   -o-border-image:      url('image.png') 23 22 22 26 round round;
+   border-image:         url('image.png') 23 22 22 26 round round;
+
+   /*
+    * You should include a border-color and border-style as a fallback
+    * for browsers that don't support border-image (and to prevent 
+    * this known issue that happens in certain versions of Firefox:
+    * https://bugzilla.mozilla.org/show_bug.cgi?id=748253 (thanks to 
+    * Lith for pointing this out).
+    */
+    border-color: #cccccc;
+    border-style: solid;
+ }
+</pre>
+</blockquote>
+<div class="centered">
+The original image looks like this:<br />
+<img src="/border-image/images/borders/chain.png" alt="image of a chain" /><br />
+It is an edited version of an image produced by <a href="http://www.free-printable-borders.com/">Free Printable Borders</a>.
+</div>
+</div>
+<p>Note that the image repeats to the size of the block it borders.  When you design a <code>border-image</code>, the border should tile in a similar way that a <code>background-image</code> does.  There are some major differences though, so let&#8217;s show in depth how <code>border-image</code> is used, and introduce you to the tool that will help even the laziest developer in the world (i.e. me) create them quickly.</p>
+<h2>Basic Syntax</h2>
+<p>Note that the basic CSS is quite easy if you know how <code>border-width</code> works:</p>
+<blockquote class="code">
+<pre>
+#selector {
+
+  border-width: <em>&lt;top-width&gt;</em>px <em>&lt;right-width&gt;</em>px <em>&lt;bottom-width&gt;</em>px <em>&lt;left-width&gt;</em>px;
+
+  border-image: url(<em>&lt;image-url&gt;</em>) <em>&lt;top-width&gt;</em> <em>&lt;right-width&gt;</em> <em>&lt;bottom-width&gt;</em> <em>&lt;left-width&gt;</em> <br />
+                <em>&lt;horizontal-effect&gt;</em> <em>&lt;vertical-effect&gt;</em>;
+
+}
+</pre>
+</blockquote>
+<p>Note that if you are measuring your widths in pixels, then you must put the <code>px</code> unit inside the <code>border-width</code> declaration, but you must leave it out in the <code>border-image</code> one.  I know it doesn&#8217;t seem logical, but it&#8217;s just the way it is.</p>
+<p>To illustrate the all of the <code>border-image</code> parameters, let&#8217;s take this image:</p>
+<div class="centered">
+<img src="/border-image/images/borders/border.png" alt="image of a border" />
+</div>
+<p>First we must grab the border widths in the right order:</p>
+<p><div id="attachment_2568" style="width: 396px" class="wp-caption aligncenter"><a href="http://www.useragentman.com/blog/wp-content/uploads/2011/03/diagram.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/03/diagram.png" alt="A diagram showing how the borders widths are ordered." title="diagram" width="386" height="198" class="size-full wp-image-2568" srcset="http://www.useragentman.com/blog/wp-content/uploads/2011/03/diagram.png 386w, http://www.useragentman.com/blog/wp-content/uploads/2011/03/diagram-300x153.png 300w" sizes="(max-width: 386px) 100vw, 386px" /></a><p class="wp-caption-text">A diagram showing how the borders widths are ordered.</p></div></p>
+<p>(Note that the order of the <code>border-image</code> widths is consistent with the order that <code>margin</code> and <code>padding</code> uses).  </p>
+<p>Now, let us apply effects on our image.</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th>Pure CSS Example (will be visible if your browser supports <code>border-image</code></th>
+<th>Firefox Screenshot (Opera and Webkit are similar, except for the <code>round</code> effect, which Chrome and Safari currently don&#8217;t support.)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<div id="stretchExample" class="example2">
+This is an example of a stretched border.  Note that the square in the corner remains intact, while the other squares are the ones that stretch.
+</div>
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/03/stretch.png" alt="Screenshot of border-image with stretch effect." title="stretch" class="alignnone size-full wp-image-2600" srcset="http://www.useragentman.com/blog/wp-content/uploads/2011/03/stretch.png 388w, http://www.useragentman.com/blog/wp-content/uploads/2011/03/stretch-300x143.png 300w" sizes="(max-width: 388px) 100vw, 388px" />
+</td>
+</tr>
+<tr>
+<td>
+<div id="repeatExample" class="example2">
+This is an example of a repeated border.   You&#8217;ll note that the browser will apply symmetry  on the border, so that it looks &#8220;balanced&#8221;.
+</div>
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/03/repeat.png" alt="Screenshot of border-image with repeat effect." title="repeat" class="alignnone size-full wp-image-2600" /></p>
+</td>
+</tr>
+<tr>
+<td>
+<div id="roundExample" class="example2">
+This is an  example of a rounded border.  In this example, the browser tries to &#8220;round&#8221; the widths and lengths of the squares so they are not abruptly cut off.  <strong>Currently, this property is only supported by Firefox and Opera.</strong>
+</div>
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2011/03/round.png" alt="Screenshot of border-image with round effect." title="round" class="alignnone size-full wp-image-2600" />
+</td>
+</tr>
+</tbody>
+</table>
+<h2>But I <em>Hate</em> Counting Pixels!</h2>
+<p>If you are the laziest developer in the world (i.e. me), you don&#8217;t want to crack open your graphics editor, open up a image file and count the pixels by hand &#8211; you want a tool that will generate the CSS for you.  After all, don&#8217;t we use computers so that they will do things for us?  At least, <a href="http://www.youtube.com/watch?v=bBBw9E2Q_aY">until they take over the world?</a></p>
+<p>I was in the middle of creating my own tool, but I noticed that  <a href="http://www.incaseofstairs.com/">Kevin Decker</a> beat me to it with his excellent <a href="http://www.border-image.com/">Border Image Generator</a>.  You can take any image, from the web or your desktop, drag a few sliders around, and <em>voil&aacute;!</em>, you have your code, vendor-prefixes and all. You should definitely check it out if you are as lazy as I am.</p>
+<h2>Percentage Widths</h2>
+<p>The <code>border-image</code> property can also take percentage values, which correspond to the image&#8217;s width in height.  For example, let&#8217;s take this 81&#215;81 image:</p>
+<div class="centered">
+<img src="/border-image/images/borders/chain.png" alt="image of a border" />
+</div>
+<p>As you recall, we used the following pixel dimensions:</p>
+<blockquote class="code">
+<pre>
+border-image: url('/border-image/images/borders/chain.png') 23 22 22 26 round;
+</pre>
+</blockquote>
+<p>If you wanted to convert the pixel widths to percentages, you must take each value and divide it by either the entire width of the <code>border-image</code> (for the left and right widths) or by the height of the <code>border-image</code> (for the top and bottom widths).  In the above case:</p>
+<ul>
+<li>The top border width percentage = (top border width in pixels) / (<code>border-image</code> height) = 23 / 81 = 0.283&#8230; = 28%</li>
+<li>The right border width percentage = (right border width in pixels) / (<code>border-image</code> width) = 22 / 81 = 0.271&#8230; = 27%</li>
+<li>The bottom border width percentage = (bottom border width in pixels) / (<code>border-image</code> height) = 22 / 81 = 0.271 = 27%</li>
+<li>The left border width percentage = (left border width in pixels) / (<code>border-image</code> width) = 26 / 81 = 0.320 = 32%</li>
+</ul>
+<p>Note that these percentages can only be used in the <code>border-image</code> property.  The <code>border-width</code> property must continue to use the pixel values:</p>
+<div id="percentageExample">
+This is the CSS used to generate this:</p>
+<blockquote class="code">
+<pre>
+   /*
+    * These border widths must match the border-image numbers
+    */
+    border-width: 23px 22px 22px 26px;
+ 	border-color: black;
+   /*
+    * Note that all browsers use their respective vendor prefix.
+    */
+   -moz-border-image:    url('chain.png') 28% 27% 27% 32% round;
+   -webkit-border-image: url('chain.png') 28% 27% 27% 32% round;
+   -o-border-image:      url('chain.png') 28% 27% 27% 32% round; 
+   border-image:         url('chain.png') 28% 27% 27% 32% round;
+</pre>
+</blockquote>
+</div>
+<p>Now, why on earth would you want to use percentages, since pixels are probably more accurate?  I don&#8217;t see there being any need for bitmap images, but <strong>Webkit browsers (i.e. Safari and Chrome) can use SVG vector images as a <code>border-image</code> as well</strong>.  Since SVG images are resolution independent, I would assume it is more accurate to use percentages.  It would be worth looking into percentage widths more when SVG border-image support reaches critical mass, since the other browser manufacturers may handle SVG support differently than Webkit.</p>
+<h2>Degrading Gracefully and Progressive Enhancement</h2>
+<p>It is important that developers ensure their designs degrade gracefully so that pages not only <strong>look decent in browsers that don&#8217;t support <code>border-image</code></strong>, but also look nice when a compliant browser is loading the images, especially <strong>when loading a high-bandwidth page or a page on a slow connection</strong>.  Not only should you ensure the <code>border-color</code> and <code>border-style</code> are set, but it is a good idea to ensure that the look of the fallback border is as close as possible to border-image as possible.  Let&#8217;s take a look at the &#8220;framed border&#8221; we used at the top of this page:</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th>Firefox</th>
+<th>IE9</th>
+</thead>
+<tbody>
+<td><div id="attachment_2634" style="width: 365px" class="wp-caption alignnone"><a href="http://www.useragentman.com/blog/wp-content/uploads/2011/03/firefoxFallback.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/03/firefoxFallback.png" alt="Screenshot of how the border-image example at the top of the page looks in Firefox." title="Screenshot of how the border-image example at the top of the page looks in Firefox." width="355" height="284" class="size-full wp-image-2634" srcset="http://www.useragentman.com/blog/wp-content/uploads/2011/03/firefoxFallback.png 355w, http://www.useragentman.com/blog/wp-content/uploads/2011/03/firefoxFallback-300x240.png 300w" sizes="(max-width: 355px) 100vw, 355px" /></a><p class="wp-caption-text">Screenshot of how the border-image example at the top of the page looks in Firefox.</p></div></td>
+<td><div id="attachment_2633" style="width: 372px" class="wp-caption alignnone"><a href="http://www.useragentman.com/blog/wp-content/uploads/2011/03/IEfallback.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/03/IEfallback.png" alt="Screenshot of how the border-image example &#039;falls back&#039; in IE9." title="Screenshot of how the border-image example &#039;falls back&#039; in IE9." width="362" height="291" class="size-full wp-image-2633" srcset="http://www.useragentman.com/blog/wp-content/uploads/2011/03/IEfallback.png 362w, http://www.useragentman.com/blog/wp-content/uploads/2011/03/IEfallback-300x241.png 300w" sizes="(max-width: 362px) 100vw, 362px" /></a><p class="wp-caption-text">Screenshot of how the border-image example 'falls back' in IE9 using the ridge border-style.</p></div></td>
+</tbody>
+</table>
+<p>You can also be fancy and use <a href="http://www.modernizr.com">modernizr</a> to do some extra progressive enhancement styling by using the <br /><code>html.no-borderimage</code> selector.  I have done this using the comments section of my blog posts.</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th>Firefox</th>
+<th>IE9</th>
+</thead>
+<tbody>
+<td><div id="attachment_2639" style="width: 310px" class="wp-caption alignnone"><a href="http://www.useragentman.com/blog/wp-content/uploads/2011/03/firefoxBalloon.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/03/firefoxBalloon-300x106.png" alt="Screen shot of comment on my blog using the balloon border-image in firefox." title="Screen shot of comment on my blog using the balloon border-image in firefox (Click to see full screenshot)." width="300" height="106" class="size-medium wp-image-2639" srcset="http://www.useragentman.com/blog/wp-content/uploads/2011/03/firefoxBalloon-300x106.png 300w, http://www.useragentman.com/blog/wp-content/uploads/2011/03/firefoxBalloon.png 579w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">Screen shot of comment on my blog using the balloon border-image in firefox (Click to see full screenshot).</p></div></td>
+<td><div id="attachment_2638" style="width: 310px" class="wp-caption alignnone"><a href="http://www.useragentman.com/blog/wp-content/uploads/2011/03/ieBalloonFallback.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/03/ieBalloonFallback-300x66.png" alt="Screen shot of the same comment using modernizr to style the comment differently on browsers that don&#039;t support border-image (Click to see full screenshot)." title="Screen shot of the same comment using modernizr to style the comment differently on browsers that don&#039;t support border-image (Click to see full screenshot)." width="300" height="66" class="size-medium wp-image-2638" srcset="http://www.useragentman.com/blog/wp-content/uploads/2011/03/ieBalloonFallback-300x66.png 300w, http://www.useragentman.com/blog/wp-content/uploads/2011/03/ieBalloonFallback.png 591w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">Screen shot of the same comment using modernizr to style the comment differently on browsers that don't support border-image (Click to see full screenshot).</p></div></td>
+</tbody>
+</table>
+<h2>Using With Background Images</h2>
+<p>If you are using a <code>border-image</code> without a transparent colour or alpha channel, the center of your <code>border-image</code> will hide any <code>background-image</code> the object may have.  If you want to have a separate <code>background-image</code>, you must &#8220;cut-out&#8221; the middle of the <code>border-image</code> using your graphics editor with a transparent colour.  For instance, the example at the top of the page with the picture frame <code>border-image</code> has a photo of clouds as a <code>background-image</code>.   This allows developers to create more graphically rich block-level elements.</p>
+<h2>Hey! What about IE?</h2>
+<p>Unfortunately, IE doesn&#8217;t support <code>border-image</code> natively.  <strong>I <em>may</em> have a workaround for this using cssSandpaper</strong>, but it needs a lot more testing to see if it is a truly viable polyfill for this effect.  If I am successful,  I will post whether that solution as an addendum to this blog post.</p>
+<h2>Conclusion</h2>
+<p><code>border-image</code> can be used today to make some very interesting effects that can be degraded gracefully in browsers that don&#8217;t support it.  It can speed up design time considerably since you don&#8217;t have to use your graphics editor to cut up images.  And I&#8217;m sure it will waste a lot of your time while you play and see how it can be used effectively.</p>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" rel="category tag">border-image</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/css/css3/" rel="category tag">CSS3</a> &middot; <a href="http://www.useragentman.com/blog/category/uncategorized/" rel="category tag">Uncategorized</a> </p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">15 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						<li class="comment   " id="comment-10642 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10642" title="Permalink to this comment">1</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://brightagency.net'><img alt='' src='http://1.gravatar.com/avatar/a3b6222854e90883765f5f30375718bf?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/a3b6222854e90883765f5f30375718bf?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://brightagency.net' rel='external nofollow' class='url'>Travis Northcutt</a> </strong>
+				<span class="comment_time">// Mar 29, 2011 at 8:25 am</span>
+			</p>
+			<div class="entry">
+				<p>You mentioned that &#8220;(Opera and Webkit are similar, except for the stretch, which Chrome and Safari currently don’t support.)&#8221; &#8211; but Chrome does support stretch, as far as I can tell (I&#8217;m viewing this page in Chrome 12.0.712.0 and the stretch example looks identical to your Firefox screenshot. However, as you mention later, Chrome doesn&#8217;t support the rounded method.</p>
+<p>Regardless, thanks for explaining all of this and taking the time to show the various implementations.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-10645 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10645" title="Permalink to this comment">2</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Mar 29, 2011 at 9:03 am</span>
+			</p>
+			<div class="entry">
+				<p>@Travis: Oops .. thanks for pointing out the typo. I <em>meant</em> to say that Safari and Chrome don&#8217;t support the round effect. Stretch is fully supported on Webkit browsers. I have made the correction.</p>
+<p>I have yet to release a post where I don&#8217;t have any editing mistakes. I should make a &#8220;Where&#8217;s Waldo&#8221; game out of it.  But I don&#8217;t know what the prize would be. :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-10651 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10651" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://nimbupani.com'><img alt='' src='http://0.gravatar.com/avatar/c64a99fbbc7785e6cf9588a8777ba083?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/c64a99fbbc7785e6cf9588a8777ba083?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://nimbupani.com' rel='external nofollow' class='url'>Divya</a> </strong>
+				<span class="comment_time">// Mar 29, 2011 at 11:17 am</span>
+			</p>
+			<div class="entry">
+				<p>I was just looking at it yesterday with Lea Verou and border-image also is supposed to work with gradients. The biggest blocker for me is that there is no way to punch out the middle so borders actually remain borders and not become pseudo background images too (consider a case where you want a border image on a transparent element but the image used for border-image is in itself not transparent inside the border pattern like in the case of gradients).</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-10652 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10652" title="Permalink to this comment">4</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://nimbupani.com'><img alt='' src='http://0.gravatar.com/avatar/c64a99fbbc7785e6cf9588a8777ba083?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/c64a99fbbc7785e6cf9588a8777ba083?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://nimbupani.com' rel='external nofollow' class='url'>Divya</a> </strong>
+				<span class="comment_time">// Mar 29, 2011 at 11:54 am</span>
+			</p>
+			<div class="entry">
+				<p>Ooops, I spoke too soon, apparently it is possible (webkit only for now): <a href="http://jsfiddle.net/nimbu/fbw2q/" rel="nofollow">http://jsfiddle.net/nimbu/fbw2q/</a> (technique via <a href="http://nicolasgallagher.com/" rel="nofollow">Nicolas Gallagher</a></p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-10656 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10656" title="Permalink to this comment">5</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Mar 29, 2011 at 1:02 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Divya: Thanks for mentioning this! Cool stuff. Hopefully the other browsers will also be able to do this soon.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-11815 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11815" title="Permalink to this comment">6</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://ensightful.com'><img alt='' src='http://2.gravatar.com/avatar/b813799196db184f1e37d13276061136?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b813799196db184f1e37d13276061136?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://ensightful.com' rel='external nofollow' class='url'>Dan Owen</a> </strong>
+				<span class="comment_time">// Apr 29, 2011 at 1:57 pm</span>
+			</p>
+			<div class="entry">
+				<p>I love this property. Appeals to the front-end designers big-time.</p>
+<p>Currently though Safari and Chrome use an improper beginning position for the side images when &#8217;rounding&#8217;.</p>
+<p>Example at:</p>
+<p><a href="http://ensightful.com/walrus-ivory-tusk-with-animals" rel="nofollow">http://ensightful.com/walrus-ivory-tusk-with-animals</a></p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-11818 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11818" title="Permalink to this comment">7</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://ensightful.com'><img alt='' src='http://2.gravatar.com/avatar/b813799196db184f1e37d13276061136?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b813799196db184f1e37d13276061136?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://ensightful.com' rel='external nofollow' class='url'>Dan Owen</a> </strong>
+				<span class="comment_time">// Apr 29, 2011 at 2:20 pm</span>
+			</p>
+			<div class="entry">
+				<p>Oh and FF and Opera are pixel perfect.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-11819 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11819" title="Permalink to this comment">8</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Apr 29, 2011 at 2:29 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Dan: It is a known issue that <code>round</code> doesn&#8217;t work in webkit browsers.  Hopefully this will be fixed soon &#8212; <code>round</code> is quite useful, especially if you don&#8217;t want to crack open a graphics editor to get your <code>border-image</code> pixel perfect.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-11820 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11820" title="Permalink to this comment">9</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://ensightful.com'><img alt='' src='http://2.gravatar.com/avatar/b813799196db184f1e37d13276061136?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b813799196db184f1e37d13276061136?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://ensightful.com' rel='external nofollow' class='url'>Dan Owen</a> </strong>
+				<span class="comment_time">// Apr 29, 2011 at 2:35 pm</span>
+			</p>
+			<div class="entry">
+				<p>Another issue came to mind when I looked at (<a href="http://jsfiddle.net/nimbu/fbw2q/" rel="nofollow">http://jsfiddle.net/nimbu/fbw2q/</a>). I added border-radius and box-shadow. It looks correct at the bottom where it is totally transparent. Unfortunately at the top the border covers both the border-radius and box-shadow.</p>
+<p>When using border-image it is easy to make the image have the same combination of radii as the border-radius, so I&#8217;m sticking with image over gradient for the time being.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-11821 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11821" title="Permalink to this comment">10</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://ensightful.com'><img alt='' src='http://2.gravatar.com/avatar/b813799196db184f1e37d13276061136?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b813799196db184f1e37d13276061136?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://ensightful.com' rel='external nofollow' class='url'>Dan Owen</a> </strong>
+				<span class="comment_time">// Apr 29, 2011 at 2:38 pm</span>
+			</p>
+			<div class="entry">
+				<p>You mean round works, but not correctly?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-19048 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-19048" title="Permalink to this comment">11</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://thomashamrick.com'><img alt='' src='http://0.gravatar.com/avatar/cbdc4c32c2060911088fb6bd3ce3a3ba?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/cbdc4c32c2060911088fb6bd3ce3a3ba?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://thomashamrick.com' rel='external nofollow' class='url'>Thomas Hamrick</a> </strong>
+				<span class="comment_time">// Sep 18, 2011 at 10:08 am</span>
+			</p>
+			<div class="entry">
+				<p>@Divya Or the image you use for you border can have a transparent center. That is what I did on my site.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-63660 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-63660" title="Permalink to this comment">12</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/e1e23b8ae9184154fb87a1fdec1fea7f?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/e1e23b8ae9184154fb87a1fdec1fea7f?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Lith </strong>
+				<span class="comment_time">// Aug 30, 2012 at 4:13 pm</span>
+			</p>
+			<div class="entry">
+				<p>The borders here in this site work perfectly for me (firefox 15.0), as well as some other random ones, but they simply won&#8217;t work other times, even in the editor, or the w3schools site (here <a href="http://www.w3schools.com/cssref/tryit.asp?filename=trycss3_border-image" rel="nofollow">http://www.w3schools.com/cssref/tryit.asp?filename=trycss3_border-image</a>).</p>
+<p>I simply don&#8217;t get what is wrong. The fill works and shows, but no border at all. Any help with this?</p>
+<p>Other browsers show just fine, just firefox that refuses to do so&#8230; (and on a different computer too).</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-63661 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-63661" title="Permalink to this comment">13</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/e1e23b8ae9184154fb87a1fdec1fea7f?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/e1e23b8ae9184154fb87a1fdec1fea7f?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Lith </strong>
+				<span class="comment_time">// Aug 30, 2012 at 4:19 pm</span>
+			</p>
+			<div class="entry">
+				<p>Nevermind, the solution was adding a &#8220;border-style&#8221; with anything in it&#8230; Makes no sense, but fixes it.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-63788 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-63788" title="Permalink to this comment">14</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Aug 31, 2012 at 2:55 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Lith: I think you came across <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=748253" rel="nofollow">this bug that occurs in Firefox</a>.  It is important to always set <code>border-style</code> to something anyways, since it is a fallback for browsers that haven&#8217;t implemented <code>border-image</code>.  Thanks for mentioning it &mdash; I am sure this is something other readers would come across, and I have updated the article to mention this behavior.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-70298 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-70298" title="Permalink to this comment">15</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/e1e23b8ae9184154fb87a1fdec1fea7f?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/e1e23b8ae9184154fb87a1fdec1fea7f?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Lith </strong>
+				<span class="comment_time">// Oct 2, 2012 at 1:45 am</span>
+			</p>
+			<div class="entry">
+				<p>Hope it helps someone else too, or at least, they will know of the issue :)</p>
+<p>Another Firefox bug (sigh&#8230; firefox is getting so disappointing lately, most of the issues I find are always there) is that if the page is too long and you are using the round value, after some time it will stop repeating and leave a blank space. I haven&#8217;t found a solution for this yet, however. If I do I&#8217;ll post it here.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="2536" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="81709bb7ab" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

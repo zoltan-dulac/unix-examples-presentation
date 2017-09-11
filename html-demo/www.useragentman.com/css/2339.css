@@ -1,0 +1,9 @@
+.mediaobject img {
+	float: none !important;
+}
+
+.guibutton {
+	border: 2px #D4D0C8 outset;
+	background: #D4D0C8;
+	padding: 0 6px;
+}

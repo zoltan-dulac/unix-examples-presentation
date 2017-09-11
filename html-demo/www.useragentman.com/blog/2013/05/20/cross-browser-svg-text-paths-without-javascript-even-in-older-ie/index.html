@@ -1,0 +1,1223 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive has-jquery post-6053" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Cross-Browser SVG Text-Paths Without JavaScript — Even In Older IE.</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<link rel="stylesheet" type="text/css" href="/tests/textpath/css/example1.css" />
+<link rel="stylesheet" type="text/css" href="/css/6053.css" />
+<script src="/tests/textpath/js/jquery-1.9.1.min.js"></script>
+
+	
+<!--[if lte IE 9 ]>
+   <link type="text/css" href="/tests/textpath/css/vml.css" rel="stylesheet" />
+   <script src="/tests/textpath/js/example1-ie-animation.js"></script>
+<![endif]--><!-- ID is 6053 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Cross-Browser SVG Text-Paths Without JavaScript — Even In Older IE. Comments Feed" href="http://www.useragentman.com/blog/2013/05/20/cross-browser-svg-text-paths-without-javascript-even-in-older-ie/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='How To Create SVG Paths Easily Using The GIMP' href='http://www.useragentman.com/blog/2013/04/26/how-to-create-svg-paths-easily-using-the-gimp/' />
+<link rel='next' title='Better Web Typography With font-weight, Autohinting and font-feature-settings' href='http://www.useragentman.com/blog/2013/09/20/better-web-typography-with-font-weight-autohinting-and-font-feature-settings/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2013/05/20/cross-browser-svg-text-paths-without-javascript-even-in-older-ie/" />
+<link rel='shortlink' href='http://useragentman.com/blog/pFm8n' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2013%2F05%2F20%2Fcross-browser-svg-text-paths-without-javascript-even-in-older-ie%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2013%2F05%2F20%2Fcross-browser-svg-text-paths-without-javascript-even-in-older-ie%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2013/04/26/how-to-create-svg-paths-easily-using-the-gimp/" rel="prev">How To Create SVG Paths Easily Using The GIMP</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2013/09/20/better-web-typography-with-font-weight-autohinting-and-font-feature-settings/" rel="next">Better Web Typography With <code>font-weight</code>, Autohinting and <code>font-feature-settings</code></a> &raquo;</span>
+</div>
+
+
+			<h1>Cross-Browser SVG Text-Paths Without JavaScript — Even In Older IE.</h1>
+			<h4 class="meta">May 20th, 2013 by zoltan &middot; <a href="http://www.useragentman.com/blog/2013/05/20/cross-browser-svg-text-paths-without-javascript-even-in-older-ie/#comments">No Comments</a></h4>
+			<div class="entry">
+				
+<div class="example">
+<div id="cookie-canvas">
+<img id="cookie" src="/tests/textpath/images/cookie.jpg" /> 
+<!--[if IE 9 | !IE]><!-->
+<svg id="myShape" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"
+    viewBox="0 0 407 407" 
+     >
+  <defs>
+    
+    <!-- 
+        Note: the d attribute is the same as the VML shape's path attribute except:
+        
+        1) SVG can take float co-ordinates.  VML cannot.
+        2) all the numbers are separated by commas, not just the coordinate pairs.
+        3) the 'z' at the end in svg is an 'xe' in VML
+    -->
+    
+    <path id="path1"
+          fill="none" stroke="black" stroke-width="1"
+          d="M 212,65
+             C 276,81 292,91 305,103 361,155 
+         363,245 311,302 300,314 286,324 
+         271,332 248,343 227,347 202,347 
+         190,346 174,343 163,339 143,333" >
+    </path>
+  </defs>
+  <text id="myText">
+  <textPath  xlink:href="#path1"><tspan dy="0.3em">C is for Cookie, That's Good Enough For Me!</tspan></textPath>
+  </text>
+  
+  </svg>
+<!--<![endif]-->
+
+<!--[if lt IE 9 ]>
+  <?import namespace="v" urn="urn:schemas-microsoft-com:vml" 
+    implementation="#default#VML" declareNamespace />  
+    <v:group id="myShape" >
+      
+      <v:shape id="path1"
+          allowoverlap="true" 
+          coordsize="407,407" 
+          filled="t" fillcolor="black" stroked="f"  
+          path="M212,65
+                C276,81,292,91,305,103,361,155,
+                 363,245,311,302,300,314,286,324,
+                 271,332,248,343,227,347,202,347,
+                 190,346,174,343,163,339,143,333">
+        <v:path textpathok="t"></v:path>
+        <v:textpath id="myText" style="v-text-align: left" on ="t" string="C is for Cookie, That's Good Enough For Me!"></v:textpath>
+      
+        
+      </v:shape>
+    </v:group>
+  
+<![endif]-->
+</div>
+    <p>The text is not part of an image.  Hover over the image and see it animate. 
+    <em>(Photo Credit: Renee Comet. Photo from <a href="http://commons.wikimedia.org/wiki/File:Chocolate_chip_cookie.jpg">Wikimedia Commons</a>)</em></p>
+</div>
+<p>As <a href="http://instagram.com/p/QHl8qUBWih/">a</a> <a href="http://instagram.com/p/WFwvYlBWu5/">semi</a>&#8211;<a href="http://instagram.com/p/XqnvQjhWj3/">retired</a> <a href="http://instagram.com/p/U2ky_-BWhS/">calligrapher</a>, I have always been obessesed with typography on-line.  Typography on the web has improved immensely since I started doing web-development in the 1990&#8217;s, but passing by <a href="http://instagram.com/p/Zij_DYhWq4/">this poster at work</a> for the last two years has <strong>inspired me into researching textpaths in HTML5.</strong>  Designers have been using textpaths for years in print, but doing this on the web is a little tricky.  <strong><a href="http://en.wikipedia.org/wiki/Scalable_Vector_Graphics">SVG</a>, which supports textpaths in modern browsers</strong>, is not supported by IE &lt;= 8.  <strong>Older IE does, however, support <a href="http://msdn.microsoft.com/en-us/library/ee384217%28v=vs.85%29.aspx">VML</a></strong>, another vector markup format that can do textpaths as well.  After playing around, I found it is possible to <strong>put both on a web page and even code common CSS to style them</strong> &mdash; all without JavaScript.   JavaScript can, however, be added to add some interesting animation effects, as these demos illustrate:</p>
+<ul class="right-of-float">
+<li><a href="/tests/textpath/example1-svg-vml.html">A clean room example of the cookie animation</a></li>
+<li><a href="/tests/textpath/example2-svg-vml.html">Animating text on a more complex path</a></li>
+<li><a href="/tests/textpath/example3-svg-vml.html">Using the outside of a martini glass as a set of textpaths.</a></li>
+<li><a href="/tests/textpath/example3-svg-vml-animation.html">Animating the martini glass textpath curves with tweening</a></li>
+</ul>
+<p>I&#8217;ll explain how we can <strong>layout and style textpaths in all browsers</strong>, including IE &lt;= 8.  I also explain <strong>what a Bezier Curve is</strong>, and introduce a tool, the <strong>Bezier Curve Construction Set</strong>, that will help you create your own scriptless textpaths.  The only script you&#8217;ll need is when we cover animated textpaths, where I will show how I <strong>push text on a path</strong> as well <strong>tween a textpath</strong>.   Note that all the demos and code in this article use <a href="http://jquery.org">jQuery</a>, but there is no reason why you couldn&#8217;t use any other framework (or no framework at all) to do the same thing.</p>
+<h2>How to do this in modern browsers</h2>
+<p>Let&#8217;s walk through the SVG code that generates the curve that you see in the example above:</p>
+<blockquote class="code">
+<pre>
+&lt;svg id="myShape" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
+  &lt;defs&gt;
+    &lt;path <span class="hilite">id="path1"</span>
+          fill="none" stroke="black" stroke-width="1"
+          <span class="hilite3">d="M 212,65
+             C 276,81 292,91 305,103 361,155 
+               363,245 311,302 300,314 286,324 
+               271,332 248,343 227,347 202,347 
+               190,346 174,343 163,339 143,333"</span>&gt;
+    &lt;/path&gt;
+  &lt;/defs&gt;
+  &lt;text id="myText"&gt;
+    &lt;textPath  <span class="hilite">xlink:href="#path1"</span> &gt;
+      &lt;tspan <span class="hilite2">dy="0.3em"</span>&gt;C is for Cookie, That's Good Enough For Me!&lt;/tspan&gt;
+    &lt;/textPath&gt;
+  &lt;/text&gt;
+&lt;/svg&gt;
+</pre>
+</blockquote>
+<p>SVG is XML-based markup that describes an image &mdash; an browser that supports it can read this description and draws it on the fly.  In the markup above &mdash; the <code>&lt;defs&gt;</code> section contains the <code>&lt;path&gt;</code> (called <span class="hilite"><code>path1</code></span>) that we will use to draw the <code>textpath</code> with (you can see it referencing <code>#path1</code> in the <code>textpath</code>&#8216;s <code>xlink:href</code> attribute).  <span class="hilite3">This path is described in the <code>d</code> attribute.</span>  If you are not familiar with SVG, you are probably feeling a little intimidated by this jumble of letters and numbers.  Let me walk you through what each part means:</p>
+<ol>
+<li>The <code>M</code> (the <strong>Move command</strong> tells the browser to move it&#8217;s virtual pen at the co-ordinate that follows it (in this case <code>212,65</code>.  This wil be the starting point of our curve</li>
+<li>The <code>C</code> (the <strong>Cubic Bezier Curve command</strong> tells the computer to draw a path described by each group of six numbers that follow it (I&#8217;ll explain what these numbers mean in the next section).</li>
+</ol>
+<p>Paths can also contain other commands like <code>L</code> (the Line-to command) which can draw a line from the last coordinate from the previous to it&#8217;s own co-ordinate.  There are more commands available, but we will concentrate on these three commands in this article (for more information about all the SVG path commands, check out <a href="http://www.w3.org/TR/SVG/paths.html#PathElement">Path Element</a> section of the <a href="http://www.w3.org/TR/SVG/Overview.html">SVG 1.1 Specification</a>).</p>
+<p>Also note the <span class="hilite2"><code>dy="0.3em"</code></span> in the <code>&lt;tspan&gt;</code> tag.  By default, text will sit on top of a SVG textpath curve.  Setting <code>dy="0.3em"</code> will make the textpath <em>go through</em> the text instead.  Later in this article, you will see that <strong><em>this is an important point if you are creating textpaths that will look consistant in IE <= 8.</em></strong>.</p>
+<h2>So, what the heck is a Cubic Bezier Curve?</h2>
+<p>A Bezier Curve is a numeric representation of a curve and is commonly used in computer graphics.  Bezier Curves were famously used in 1962 by the French engineer Pierre Bezier to design automobile bodies at Renault (although he <a href="http://en.wikipedia.org/wiki/Pierre_B%C3%A9zier">wasn&#8217;t the first to use them for automotive design</a> or come up with the math behind them &#8230; then again, <a href="http://www.cracked.com/article_16072_5-famous-inventors-who-stole-their-big-idea.html">a lot of people in history got credit for things they didn&#8217;t originally invent</a>).</p>
+<p>To describe what the numbers mean, let&#8217;s take a simple example of <code>M 200, 300 C 100, 100, 500, 100, 400, 300</code>:</p>
+<p><div id="attachment_6077" style="width: 622px" class="wp-caption aligncenter"><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/05/diagram1.png" alt="A diagram showing the SVG path  M 200, 300 C 100, 100  500, 100  400, 300" width="612" height="371" class="size-full wp-image-6077" srcset="http://www.useragentman.com/blog/wp-content/uploads/2013/05/diagram1.png 612w, http://www.useragentman.com/blog/wp-content/uploads/2013/05/diagram1-300x181.png 300w" sizes="(max-width: 612px) 100vw, 612px" /><p class="wp-caption-text">A diagram showing the SVG path  M 200, 300 C 100, 100, 500, 100, 400, 300</p></div></p>
+<p>The browser starts the curve at <code>(200, 300)</code> (which is the co-ordinate in the M, or &#8220;Move&#8221; command) and ends the curve at <code>(400, 300)</code> (the last co-ordinate in the C, or &#8220;Cubic Curve&#8221; command).  The first and second co-ordinates in the C command (<code>(100, 100)</code> and <code>(500, 100)</code>) are called <strong>control points</strong>.  The computer draws the beginning of the curve as if the line is being drawn towards the first control point and at the end of the curve looks like it is being drawn from the last control point.  This concept may be a little difficult to understand at first, so let&#8217;s take a look at an interactive version of the diagram to solidify your understanding of this concept.  Drag and drop any of the points in it, and see how the path syntax changes at the bottom of the frame:</p>
+<div style="width: 622px" class="wp-caption aligncenter">
+<iframe src="/tests/textpath/bezier-curve-construction-set.html#path=M%20200%2C%20300%20C%20100%2C%20100%2C%20500%2C%20100%2C%20400%2C%20300&#038;imageURL=http://www.useragentman.com/tests/textpath/images/grid.png&#038;showFooter=1&#038;noInfo=1" width="612" height="371" class="size-full wp-image-6077"  scrolling="no"></iframe></p>
+<p class="wp-caption-text">Drag and drop any of the points in this interactive frame to see how the VML/SVG path changes.  I hope this helps your understanding of how the C command works.</p>
+</div>
+<p>Now I understand this SVG path notation may be hard to grasp (it took me a while to), so I wrote a tool to help, the <a href="/tests/textpath/bezier-curve-construction-set.html">Bezier Curve Construction Set</a> (it is actually what powers the interactive diagram above).  You can use this tool to play around with Bezier Curves, and even include a background image that you may want use to guide you.  I made all the demos in this article with the help of this tool.</p>
+<p><a class="exampleLink" href="/tests/textpath/bezier-curve-construction-set.html">See the Bezier Curve Construction Set In Action.</a></p>
+<h2>So, What About IE?</h2>
+<p>While IE9+ can render the SVG above, there are, unfortunately, still users of IE8 and lower.  The good news is that these browsers can render VML, another Vector Markup Language (gee, maybe that&#8217;s what it stands for ;-) ).  VML was <a href="http://www.w3.org/TR/NOTE-VML">submitted as a web standard in 1998</a>, but wasn&#8217;t accepted.  However, the W3C took bits of VML and competing vector format, <a href="http://www.w3.org/TR/1998/NOTE-PGML-19980410">PGML</a> and came up with SVG.  Because of this heritage, VML&#8217;s path syntax is very similar to SVG&#8217;s &mdash; although some of the commands differ, both use the <code>M</code>, <code>C</code> and <code>L</code> commands.  The rest of the markup, however, is quite different:</p>
+<blockquote class="code">
+<pre>
+&lt;?import namespace="v" urn="urn:schemas-microsoft-com:vml" 
+     implementation="#default#VML" declareNamespace /&gt;   
+&lt;v:group id="myShape" &gt;
+   
+   &lt;v:shape id="path1"
+         allowoverlap="true" 
+         coordsize="407,407" 
+         filled="t" fillcolor="black" stroked="f"  
+          <span class="hilite3">path="M 212,65
+               C 276,81 292,91 305,103 
+                 361,155 363,245 311,302
+                 300,314 286,324 271,332
+                 248,343 227,347 202,347 
+                 190,346 174,343 163,339"</span>&gt;
+      &lt;v:path textpathok="t"&gt;&lt;/v:path&gt;
+      &lt;v:textpath id="myText" style="v-text-align: left" on ="t" 
+          string="C is for Cookie, That's Good Enough For Me!"&gt;&lt;/v:textpath&gt;
+   
+      
+   &lt;/v:shape&gt;
+&lt;/v:group&gt;
+</pre>
+</blockquote>
+<p>So, how do we make this markup work in all browsers?  Conditional Comments to the rescue!</p>
+<blockquote class="code">
+<pre>
+&lt;!--
+    This first bit will be hidden from IE8 and below.
+    All other user agents will render it.
+--&gt;
+
+&lt;!--[if IE 9 | !IE]&gt;&lt;!--&gt;
+&lt;svg id="myShape" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
+  &lt;defs&gt;
+     &lt;path id="path1" 
+           <span class="hilite3">d="M 212,65
+              C 276,81 292,91 305,103 
+                361,155 363,245 311,302
+                300,314 286,324 271,332
+                248,343 227,347 202,347 
+                190,346 174,343 163,339</span>" &gt;
+     &lt;/path&gt;
+  &lt;/defs&gt;
+  &lt;text id="myText"&gt;
+   &lt;textPath  xlink:href="#path1"&gt;
+      &lt;tspan dy="0.3em"&gt;C is for Cookie, That's Good Enough For Me!&lt;/tspan&gt;
+   &lt;/textPath&gt;
+  &lt;/text&gt;
+  
+&lt;/svg&gt;
+&lt;!--&lt;![endif]--&gt;
+
+&lt;!--
+    Only IE8 and below will see and render the VML markup
+    below.
+--&gt;
+
+&lt;!--[if lt IE 9 ]&gt;
+   &lt;?import namespace="v" urn="urn:schemas-microsoft-com:vml" 
+            implementation="#default#VML" declareNamespace /&gt;   
+      &lt;v:group id="myShape" &gt;
+         
+         &lt;v:shape id="path1"
+               allowoverlap="true" 
+               coordsize="407,407" 
+               filled="t" fillcolor="black" stroked="f"  
+               <span class="hilite3">path="M 212,65
+                       C 276,81 292,91 305,103 
+                         361,155 363,245 311,302
+                         300,314 286,324 271,332
+                         248,343 227,347 202,347 
+                         190,346 174,343 163,339"</span>&gt;
+            &lt;v:path textpathok="t"&gt;&lt;/v:path&gt;
+            &lt;v:textpath id="myText" style="v-text-align: left" 
+               on ="t" string="C is for Cookie, That's Good Enough For Me!"&gt;&lt;/v:textpath&gt;
+
+         &lt;/v:shape&gt;
+      &lt;/v:group&gt;
+   
+&lt;![endif]--&gt;
+</pre>
+</blockquote>
+<p>In the <code>&lt;head&gt;</code>, I also add the <a href="https://github.com/zoltan-dulac/svg-vml-textpaths/blob/master/css/vml.css">vml.css</a> style-sheet, which also acts as a CSS reset for all the examples in this article.</p>
+<p>I mentioned earlier that the SVG version needed the <code>dy="0.3em"</code> in the <code>&lt;tspan&gt;</code> tag to ensure parity with IE <= 8.  Let us show you some screenshots showing where the path is relative to the text in both browsers:
+
+
+
+<table class="dataTable">
+<thead>
+<tr>
+<th>IE <= 8</th>
+<th>Chrome 26 (without dy=&#8221;0.3&#8243;)</th>
+<th>Chrome 26 (with dy=&#8221;0.3&#8243;)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2013/05/cookie-with-path-screenshot-ie.jpg" alt="cookie-with-path-screenshot-ie" width="250" height="350" class="alignnone size-full wp-image-6137" srcset="http://www.useragentman.com/blog/wp-content/uploads/2013/05/cookie-with-path-screenshot-ie.jpg 250w, http://www.useragentman.com/blog/wp-content/uploads/2013/05/cookie-with-path-screenshot-ie-214x300.jpg 214w" sizes="(max-width: 250px) 100vw, 250px" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2013/05/cookie-with-path-screenshot-chrome.jpg" alt="cookie-with-path-screenshot-chrome" width="250" height="350" class="alignnone size-full wp-image-6136" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2013/05/cookie-with-path-screenshot-chome-dy.jpg" alt="cookie-with-path-screenshot-chome-dy" width="250" height="350" class="alignnone size-full wp-image-6135" srcset="http://www.useragentman.com/blog/wp-content/uploads/2013/05/cookie-with-path-screenshot-chome-dy.jpg 250w, http://www.useragentman.com/blog/wp-content/uploads/2013/05/cookie-with-path-screenshot-chome-dy-214x300.jpg 214w" sizes="(max-width: 250px) 100vw, 250px" />
+</td>
+</tr>
+</table>
+<p><a href="/tests/textpath/example1-svg-vml-dy-test.html" class="exampleLink">See the demo where I got these screenshots from.</a></p>
+<p>I actually like the SVG default behaviour of placing the text on top of the path, but there I don&#8217;t believe there is any way for IE to do this.  :-/</p>
+<h2>Can I Use CSS With SVG and VML?</h2>
+<p>Absolutely!  As a matter of fact, there are several CSS properties that are unique to both technologies.  Let&#8217;s walk through the CSS of the example at the top of the page:</p>
+<blockquote class="code">
+<pre>
+/***********************************************
+ * Note that I don't use the SVG or VML node
+ * names in my CSS.  I try to style the common
+ * elements by using IDs on the similar nodes.
+ ***********************************************/
+
+/* 
+ * This rule is for the root of the SVG and VML 
+ * (i.e. the whole shape).
+ */
+#myShape {
+  width: 407px;
+  height: 407px;
+  cursor: pointer;
+ 
+  /* SVG */
+ 
+  /*
+   * Webkit is the only browser that makes the transform 
+   * origin 0 0 (WHY?!?!). We also can't use 50% 50%, 
+   * because for SVG Webkit  doesn't understand that 
+   * either (WHY!??!)
+   */
+  -webkit-transform-origin: 203.5px 203.5px;
+  
+  
+  /*
+   * Even though it doesn't really do anything, 
+   * we do -webkit-transform here. The translateZ(0)
+   * turns on GPU acceleration for animation on the
+   * node (if available).  I put the rotate(0deg)
+   * here as since we need to have the same tranform
+   * functions for all the animation states, otherwise
+   * the transition will fail.
+   */ 
+  -webkit-transform: translateZ(0) rotate(0deg);
+          
+  
+  /* 
+   * We animate on hover for browsers that do CSS transitions.
+   * The 
+   */
+       -o-transition: -o-transform 1s ease-out;
+  -webkit-transition: -webkit-transform 1s ease-out;
+          transition: transform 1s ease-out;
+  
+  /* 
+   * VML: a rotation in VML is surprisingly simple, and
+   * doesn't need the horrible Matrix filter notation (yay!) 
+   */
+  <span class="hilite">rotation: 0;</span>
+  
+  /* 
+   * This is needed by the VML in IE &lt; 8 in order to grab
+   * the mouseover events that do the animation in JavaScript
+   */
+  background: url('../images/transparent.gif');
+}
+
+/* IE9 will put the curve underneath the cookie unless we
+ * set positioning to the &lt;SVG&gt; tag.  We don't do this in 
+ * VML since positioning a &lt;v:group&gt; will mess up layout.
+ */
+svg#myShape {
+  position: relative;
+}
+
+/*
+ * This rule is to style the text (i.e. the &lt;text&gt; node in SVG
+ * and the &lt;v:shape&gt; node in VML).
+ */
+#myText {
+
+  font-size: 50px;
+  
+  /* SVG only.  For VML, the fill happens in the &lt;v:shape&gt; tag. */
+  <span class="hilite2">fill: black;</span>
+  
+  /* Note: VML will not accept @font-face fonts (!!!) */
+  font-family: "Georgia", "Times New Roman", sans-serif;
+  font-style: italic;
+}
+
+
+
+
+/*
+ * On hover, we want the shape animate in a full circle.
+ * Note we don't bother with -ms-transform since this 
+ * is going to be handled by JavaScript, due to IE9's
+ * support of CSS transitions (IE10, which does support
+ * transitions, doesn't use the -ms vendor prefix with
+ * either transforms or transitions).
+ */
+#myShape:hover {
+       -o-transform: rotate(360deg);
+  -webkit-transform: translateZ(0) rotate(360deg);
+          transform: translateZ(0) rotate(360deg);
+  
+  /* 
+   * You would think this would work, but it doesn't,
+   * even without the transition. (I leave it here for 
+   * to call this fact out).   Seems like we can't 
+   * rotate in VML on hover, so we do this with 
+   * JavaScript instead via the mouseover
+   * event.
+   */
+  rotation: 45;
+}
+
+#cookie {
+  left: -4px;
+  position: absolute;
+  top: 0;
+}
+
+</pre>
+</blockquote>
+<p>The interesting bits:</p>
+<ul>
+<li>The <span class="hilite2"><a href="https://developer.mozilla.org/en-US/docs/SVG/Tutorial/Fills_and_Strokes"><code>fill: black</code></a></span> is needed for the SVG <code>&lt;text&gt;</code> tag instead of using <code>color</code> to set the text&#8217;s color.  This is because SVG thinks of all objects, including text, as shapes, which can have independent <code>stroke</code> (i.e. outline) and <code>fill</code> styles.  You will note that for the VML, we must set <code>filled="t"</code> and <code>fillcolor="black"</code> inside the <code>&lt;v:shape&gt;</code> tag (It&#8217;s a shame this can&#8217;t be done in CSS).
+</li>
+<li>While modern browsers can use variations of the <code>transform</code> property, the really surprising thing here is the <span class="hilite"><a href="http://msdn.microsoft.com/en-us/library/bb263877%28v=vs.85%29.aspx"><code>rotation</code></a></span> property in VML.  This is so intuitive, you would think that older IE would use this kind of CSS syntax for HTML elements as well <a href="http://www.useragentman.com/IETransformsTranslator/index.html">instead of using the really ugly numbers in the Matrix Filter</a>.  The problem here is that you cannot set a different value for this property using a <code>:hover</code> pseudo-class (Why IE?!?! WHY!?!?? It&#8217;s as if the people who built the IE back in the day hated web developers!).</li>
+<li>Note that I avoid using selectors with tag names, due to the huge difference between VML and SVG.  Instead I put the same id&#8217;s on the VML and SVG tags that render the same thing (e.g. <code>#myText</code> for styling the text in the vector markup, <code>#myShape</code> for styling the width and height of the vector markup&#8217;s canvas, etc).</li>
+</ul>
+<p>For those interested, Opera has <a href="http://www.opera.com/docs/specs/presto25/svg/cssproperties/">a list of SVG-specific CSS properties</a> and which ones it currently supports, and the <a href="http://www.w3.org/TR/NOTE-VML">VML submission to the W3C</a> has <a href="http://www.w3.org/TR/NOTE-VML#_Toc416858381">a section on CSS for VML</a>.</p>
+<p>This CSS works well in IE <= 9 but the animations don't, so we include this script for these challenged browsers:
+
+
+
+<blockquote class="code">
+<pre>
+/*
+ * This implements the rotation animation in 
+ * IE &lt;= 9, using jQuery.animate() on VML's 
+ * rotation CSS property (for IE &lt;= 8) and
+ * IE9's -ms-transform CSS property.
+ */
+
+var IEAnimation = new function () {
+   var me = this,
+         $myShape;
+   
+   me.init = function () {
+     
+      $myShape = $('#myShape');
+      $myShape.hover(hoverIn, hoverOut);
+   
+   }
+   
+   function hoverIn(e) {
+     
+     // rotate from 0 to 360 in 1000 millseconds.
+     
+      $myShape.stop().animate({
+        
+        // This animated VML's rotation CSS property
+        // for IE &lt;= 8
+        
+         rotation: 360
+      }, {
+         duration: 1000,
+         step: function (now, tween) {
+           
+           // We need to animation IE9's -ms-transform property
+           // in the step method, since it is non-numeric.  now
+           // will be a number of degrees given in the rotation
+           // property.  Even though that property doesn't exist
+           // in IE9 and above, animate() still uses it to 
+           // populate the step method's now parameter.
+           
+            $myShape.css('msTransform', 'rotate(' + now + 'deg)');
+         }
+      });
+   }
+   
+   function hoverOut(e) {
+     
+     // rotate from 360 to 0 in 1000 millseconds.  Same
+     // idea as the hoverIn() method.
+     
+      $myShape.stop().animate({
+         rotation: 0
+      }, {
+         duration: 1000,
+         step: function (now, tween) {
+            $myShape.css('msTransform', 'rotate(' + now + 'deg)');
+         }
+      });
+   }
+   
+}
+
+$(document).ready(IEAnimation.init)
+</pre>
+</blockquote>
+<h2>Other Types of Animations.</h2>
+<h3>Animating Text Along An Arbitrary Path.</h2>
+<p>Click on the screenshot below to see text animate along an image of a roller-coaster:<br />
+<div id="attachment_6106" style="width: 355px" class="wp-caption aligncenter"><a href="/tests/textpath/example2-svg-vml.html"><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/05/roller-coaster-screenshot.jpg" alt="It&#039;s also possible to animate text along an arbitrary path.  Click the screenshot above to see text animate on the path of a roller-coaster." width="345" height="195" class="size-full wp-image-6106" srcset="http://www.useragentman.com/blog/wp-content/uploads/2013/05/roller-coaster-screenshot.jpg 345w, http://www.useragentman.com/blog/wp-content/uploads/2013/05/roller-coaster-screenshot-300x169.jpg 300w" sizes="(max-width: 345px) 100vw, 345px" /></a><p class="wp-caption-text">It&#8217;s also possible to animate text along an arbitrary path.  Click the screenshot above to see text animate on the path of a roller-coaster.</p></div></p>
+<p>The SVG is rather similar to the &#8220;Cookie&#8221; example above, but let me highlight a few points:</p>
+<blockquote class="code">
+<pre>
+&lt;!--[if IE 9 | !IE]&gt;&lt;!--&gt;
+  &lt;svg id="myShape" xmlns="http://www.w3.org/2000/svg"
+       xmlns:xlink="http://www.w3.org/1999/xlink"
+      &gt;
+    &lt;defs&gt;
+      
+      &lt;!-- This is a path with two curves fused together --&gt;
+      &lt;path id="path1"
+            fill="none" stroke="black" stroke-width="1"
+            d="M 1, 281 
+               C 479, 74, 502, 65, 779, 200
+                 834, 236, 915, 343, 1023, 468"&gt;
+      &lt;/path&gt;
+    &lt;/defs&gt;
+    &lt;text id="myText"&gt;
+      &lt;textpath  <span class="hilite3">class="textpath"</span> xlink:href="#path1" startOffset="0%"&gt;
+        <span class="hilite2">&lt;tspan dy="0.3em"&gt;Type Doesn't Have To Be Flat!&lt;/tspan&gt;</span>
+      &lt;/textpath&gt;
+        &lt;/text&gt;
+    
+  &lt;/svg&gt;
+&lt;!--&lt;![endif]--&gt;
+
+&lt;!--[if lt IE 9 ]&gt;
+  &lt;?import namespace="v" urn="urn:schemas-microsoft-com:vml" 
+           implementation="#default#VML" declareNamespace /&gt;  
+    &lt;v:group id="myShape" &gt;
+      
+      &lt;!-- This is a path with two curves fused together --&gt;
+      &lt;v:shape id="path1"
+          allowoverlap="true" 
+          coordsize="1024,481" 
+          filled="t" fillcolor="black" stroked="f"  
+          path="M 1, 281 
+                C 479, 74, 502, 65, 779, 200
+                  834, 236, 915, 343, 1023, 468
+            "&gt;
+ 
+          &lt;v:path textpathok="t"  /&gt;
+        &lt;v:textpath id="myText" on="t" <span class="hilite2">string="Type Doesn't Have To Be Flat!"</span> /&gt;
+
+      &lt;/v:shape&gt;
+    &lt;/v:group&gt;
+  
+&lt;![endif]--&gt;
+</pre>
+</blockquote>
+<p>Note that take <span class="hilite3">the <code>&lt;textpath&gt;</code> node and set its class to <code>"textpath"</code>.</span> This is because I cannot use jQuery to search for SVG nodeNames (e.g. <code>$('textpath')</code>), but I can search for classes of SVG nodes (e.g. <code>$('.textpath')</code>).</p>
+<p>Let&#8217;s also take a look at  <span class="hilite2">where the text appears in each format</span>.  In SVG, it appears as text inside inside the <code>&lt;tspan&gt;</code> node, while in VML, it appears inside the <code>&lt;v:textpath&gt;</code>&#8216;s <code>string</code> attribute.  This is the same as the previous example, but this difference comes into play  when we are animate the text along it&#8217;s path using <code>jQuery.animate()</code>.  In SVG browsers, we manipulate the <code>&lt;textPath&gt;</code> node&#8217;s <code>startOffset</code> attribute, increasing it from <code>0%</code> to <code>100%</code>.  For VML browsers, we have to add spaces at the beginning of the <code>&lt;v:textpath&gt;</code> node&#8217;s <code>string</code> attribute.  Here is a simplified version of the actual  JavaScript code.</p>
+<blockquote class="code">
+<pre>
+var originalText = "Text Doesn't Have To Be Flat!";
+$textpath = $('textPath');   // note Chrome doesn't like 'textpath' with a lower case 'p'.
+        
+/*
+ * Since we want $textpath to be set to the SVG node, not the VML node,
+ * we check the parentNode to make sure.
+ */
+if ($textpath[0].parentNode.nodeName != 'text') {
+  $textpath = [];
+}
+
+$('#hoverControl").hover(hoverIn, hoverOut);
+
+function hoverIn(e) {
+  
+  /*
+   * We are animting using a dummy CSS property,
+   * appropriately called 'dummy'. :-)
+   */
+  $myShape.stop().animate({
+    dummy: 100
+  }, {
+    duration: duration,
+    
+    /*
+     * now is going to be between 0 and 100.  
+     */
+    step: function (now, tween) {
+      
+      // For SVG browsers, we modify the startOffset attribute to push the text
+      if ($('svg textPath').length > 0) {
+        $textpath[0].setAttribute('startOffset', now + '%');
+        
+      // In IE <= 8, we have to add spaces to the beginning of the original
+      // test on the path. :-/
+      } else {
+        ('#myText').string = getSpaces(now) + originalText;
+      }
+      
+    }
+  });
+}
+
+
+/*
+ * getSpaces(): returns a string with n space in it.
+ */
+function getSpaces(n) {
+  var r = '';
+  for (var i=0; i<n; i++) {
+    r += ' ';
+  }
+  return r;
+}
+</pre>
+</blockquote>
+<p>The above is just a partial listing of the demo source.  <a href="https://github.com/zoltan-dulac/svg-vml-textpaths/blob/master/js/example2-animation.js">The full source is available here at GitHub</a>.</p>
+<p><a href="/tests/textpath/example2-svg-vml.html" class="exampleLink">See the roller-coaster demo in action.</a></p>
+<h3>Tweening the Text Path Itself</h3>
+<p>To illustrate how to tween on the path itself, let's use this example of text wrapping around a martini glass:</p>
+<p><div id="attachment_6111" style="width: 241px" class="wp-caption aligncenter"><a href="/tests/textpath/example3-svg-vml-animation.html"><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/05/martini-screenshot.jpg" alt="Click the screenshot to see the martini example with tweened path animations." width="231" height="399" class="size-full wp-image-6111" srcset="http://www.useragentman.com/blog/wp-content/uploads/2013/05/martini-screenshot.jpg 231w, http://www.useragentman.com/blog/wp-content/uploads/2013/05/martini-screenshot-173x300.jpg 173w" sizes="(max-width: 231px) 100vw, 231px" /></a><p class="wp-caption-text">Click the screenshot to see the martini example with tweened path animations.</p></div></p>
+<blockquote class="code">
+<pre>
+&lt;!--[if IE 9 | !IE]&gt;&lt;!--&gt;
+&lt;svg id="myShape" xmlns="http://www.w3.org/2000/svg"
+     xmlns:xlink="http://www.w3.org/1999/xlink"&gt;
+  &lt;defs&gt;
+    
+   
+    <span class="hilite">&lt;filter id="drop-shadow"&gt;
+      &lt;feGaussianBlur in="SourceAlpha" stdDeviation="3" result="blurred"/&gt;
+      &lt;feOffset in="blurred" dx="0" dy="0" result="final_blur"/&gt;
+      &lt;feMerge&gt;
+        &lt;feMergeNode in="final_blur"/&gt;
+        &lt;feMergeNode in="SourceGraphic"/&gt;
+      &lt;/feMerge&gt;
+    &lt;/filter&gt;</span>
+    &lt;path id="headerPath"
+          fill="none" stroke="white" stroke-width="1"
+          d="M 27, 143 C 190, 111, 378, 122, 508, 148" &gt;
+    &lt;/path&gt;
+    
+    &lt;path id="leftGlassPath"
+          fill="none" stroke="white" stroke-width="1"
+          d="M 5, 182 
+              C 201, 479, 233, 478, 232, 529 
+              L 232, 732" &gt;
+    &lt;/path&gt;
+    
+    &lt;path id="rightGlassPath"
+          fill="none" stroke="white" stroke-width="1"
+          d="M 318, 735 
+              L 318, 530 
+              C 317, 478, 329, 478, 531, 183" &gt;
+    &lt;/path&gt;
+    
+    &lt;path id="bottomGlassPath"
+          fill="none" stroke="white" stroke-width="1"
+          d="M 153, 831 C 215, 894, 372, 878, 398, 821" &gt;
+    &lt;/path&gt;
+  &lt;/defs&gt;
+  &lt;text id="headerText"  &gt;
+    &lt;textPath class="textpath"  xlink:href="#headerPath" startOffset="50%" &gt;
+      &lt;tspan dy="0.3em"&gt;A Perfect Martini!&lt;/tspan&gt;&lt;/textPath&gt;
+  &lt;/text&gt;
+  
+  &lt;text id="leftGlassText" &gt;
+    &lt;textPath class="textpath" xlink:href="#leftGlassPath" 
+              <span class="hilite">style="filter:url(#drop-shadow)"</span> startOffset="50%" &gt;
+    &lt;tspan dy="0.3em"&gt;
+      A hint of dry vermouth, two shots of gin and stirred &mdash; never, ever shaken.
+    &lt;/tspan&gt;
+  &lt;/textPath&gt;
+ &lt;/text&gt;
+      
+      
+  &lt;text id="rightGlassText" &gt;
+    &lt;textPath class="textpath" xlink:href="#rightGlassPath" 
+              <span class="hilite">style="filter:url(#drop-shadow)"</span> startOffset="50%" &gt;
+    &lt;tspan dy="0.3em"&gt;
+      Garnished with a blue cheese olive, a pickled onion, or a twist of lemon.
+    &lt;/tspan&gt;
+  &lt;/textPath&gt;
+ &lt;/text&gt;
+ 
+ &lt;text id="bottomGlassText"&gt;
+    &lt;textPath class="textpath" xlink:href="#bottomGlassPath" 
+              <span class="hilite">style="filter:url(#drop-shadow)"</span> startOffset="50%" &gt; 
+      &lt;tspan dy="0.3em"&gt;A drink of refinement and class.&lt;/tspan&gt;
+    &lt;/textPath&gt;
+ &lt;/text&gt;
+  
+&lt;/svg&gt;
+&lt;!--&lt;![endif]--&gt;
+
+&lt;!--[if lt IE 9 ]&gt;
+  &lt;?import namespace="v" urn="urn:schemas-microsoft-com:vml" 
+              implementation="#default#VML" declareNamespace /&gt;  
+    &lt;v:group id="myShape" class="vml" &gt;
+      
+      &lt;v:shape id="headerPath"  
+          allowoverlap="true" 
+          coordsize="597,960" 
+          filled="t" fillcolor="white" stroked="f"  
+          path="M 27, 143 C 190, 111, 378, 122, 508, 148"&gt;
+             
+             
+             
+        &lt;v:path textpathok="t" /&gt;
+        &lt;v:textpath id="headerText" on="t" string="A Perfect Martini!" /&gt;
+      
+        
+      &lt;/v:shape&gt;
+      
+      &lt;v:shape id="leftGlassPath"  
+          allowoverlap="true" 
+          coordsize="597,960" 
+          filled="t"  stroked="f"  
+          path="M 5, 182 
+              C 201, 479, 233, 478, 232, 529 
+              L 232, 732"&gt;
+        &lt;v:path textpathok="t"  /&gt;
+        
+        &lt;v:textpath id="leftGlassText" on="t" 
+              string="A hint of dry vermouth, two shots of gin and stirred &mdash; never, ever shaken." /&gt;
+        <span class="hilite2">&lt;v:shadow id="shadow2" on="True" color="#000000"
+              offset="2px,-2px" obscured="True" opacity="50%"/&gt;</span> 
+      &lt;/v:shape&gt;
+      
+      &lt;v:shape id="rightGlassPath"  
+          allowoverlap="true" 
+          coordsize="597,960" 
+          filled="t"  stroked="f"  
+          path="M 318, 735 
+              L 318, 530 
+              C 317, 478, 329, 478, 531, 183
+            "&gt;
+        &lt;v:path textpathok="t"  /&gt;
+        
+        &lt;v:textpath id="rightGlassText" on="t" 
+              string="Garnished with a blue cheese olive, a pickled onion, or a twist of lemon."   /&gt;
+        <span class="hilite2">&lt;v:shadow id="shadow2" on="True" color="#000000"   
+              offset="2px,-2px" obscured="True" opacity="50%"/&gt;</span> 
+      &lt;/v:shape&gt;
+      
+      &lt;v:shape id="bottomGlassPath"  
+          allowoverlap="true" 
+          coordsize="597,960" 
+          filled="t"  stroked="f"  
+          path="M 153, 831 C 215, 894, 372, 878, 398, 821"&gt;
+
+        &lt;v:path textpathok="t"  /&gt;
+        
+        &lt;v:textpath id="bottomGlassText" on="t" string="A drink of refinement and class."   /&gt;
+       <span class="hilite2">&lt;v:shadow id="shadow3" on="True" color="#000000"
+              offset="2px,2px" obscured="True" opacity="50%"/&gt;</span> 
+      &lt;/v:shape&gt;
+      
+    &lt;/v:group&gt;
+  
+&lt;![endif]--&gt;
+</pre>
+</blockquote>
+<p>Before we get into the animation code, let's look at the markup that produces the shadow behind the text.  Unfortunately, text-shadowing in most browsers is not as straight-forward as using the <code>text-shadow</code> CSS property.  While it works in Chrome and Safari, it doesn't in Firefox, Opera or IE.  The closest cross-browser solution for SVG is to <span class="hilite">use an SVG Filter</span> (SVG filters are a whole topic itself &mdash; a great place to start to learn is thge <a rel="nofollow" class="external text" href="http://www.w3.org/Graphics/SVG/IG/resources/svgprimer.html#filters">W3C SVG primer on Filters</a>).  Firefox, Chrome, and Safari support SVG filters.  <span class="hilite2">IE uses the <a href="http://msdn.microsoft.com/en-us/library/bb229490%28v=vs.85%29.aspx"><code>shadow</code> tag</a></span>.  <strong>Unforunately, there is no drop-shadowing supported in Opera.</strong>  You will also note that these text-shadows are not consistant (the SVG filter I included is a blurred one, while the IE one is not).  There are several challenges like this when dealing with some of the fancier styling you may want to do with SVG and VML text.</p>
+<p>As for the animation, each of the VML/SVG nodes that have a path in it also has a <code>data-end-d</code> attribute to it.  The <code>data-end-d</code> does not do anything nativelty in VML or SVG &mdash; I use JavaScript to tween the animation of the curve to the value in this attribute.  I have posted this code (as well as all the code in this article) in GitHub, so invite you to <a href="https://github.com/zoltan-dulac/svg-vml-textpaths/blob/master/js/example3-animation.js">walk through the code yourself</a> to see how this works (I hope the comments are self-explanatory).  One thing to note: when tweening SVG paths in JavaScript, you must set the textpath's xlink:href attribute in the <code>text-path</code> to the same path in order to force a repaint in older WebKit browsers (I was wondering why the iPad I was using wouldn't tween the martini example until I found <a href="https://gist.github.com/mbostock/3151228">Mike Bostock's workaround for this issue</a>).</p>
+<p>If you view the martini example in IE &lt;= 8, you'll see that <strong>VML cannot embed fonts using <code>@font-face</code>.</strong>  If this is a show-stopper for you, then you are out of luck.  However, you can degrade gracefully to a system font if it's not, and I believe that neat animation effect may outweigh the lack of <code>@font-face</code> support in general coolness. :-)</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th>Internet Explorer <= 8</th>
+<th>Firefox 21 (other browsers, including IE 9+, look similar)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/05/martini-screenshot-ie.jpg"  /></td>
+<td><img src="http://www.useragentman.com/blog/wp-content/uploads/2013/05/martini-screenshot.jpg"  /></td>
+</tbody>
+</table>
+</ul>
+<p><a class="exampleLink" href="/tests/textpath/example3-svg-vml-animation.html">See the above example in action.</a></p>
+<h2>In Conclusion.</h2>
+<p>As I mentioned throughout this article, there are a few gotchas that you have to keep in mind when doing cross-browser textpaths:</p>
+<ol>
+<li>You can use CSS to style a few things (e.g. font-families, -weights and -sizes). Other things you can style in CSS in SVG only and with VML node attributes (e.g. fill and stroke colors and widths).  Still other things require SVG filters and additional VML tags (e.g. text-shadows).</li>
+<li>Both SVG and VML have their own unique CSS properties (and some of the SVG ones are not supported by all browsers).</li>
+<li>VML doesn't support <code>@font-face</code> (<a href="http://www.khaaan.com/">KHHHHAAAAAANNNN!!!!</a>).</li>
+<li>jQuery cannot do cross-browser searches for SVG nodes by tag-name, but you can search for nodes via classes and ids.</li>
+<li>When tweening SVG paths in JavaScript, you must set the textpath's xlink:href attribute in the <code>text-path</code> to the same path in order to force a repaint in older WebKit browsers.</li>
+<li>Older-IE can rotate VML objects a lot more easily than HTML objects.</li>
+</ol>
+<p>Despite the challenges, I believe this opens up a lot of typographic possibilities on the web.  There is admittedly quite a little bit of work to set up right the first time you do it, but I've found it's easy to do once you have the basic template down and know the gotchas listed in this article.  Feel free to download all the code in this article and play.  It'll be another interesting trick in your web development toolkit to show-off with.</p>
+<p><a href="https://github.com/zoltan-dulac/svg-vml-textpaths" class="exampleLink">Download all the examples from GitHub.</a></p>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/uncategorized/" rel="category tag">Uncategorized</a> </p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">0 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+		 
+			<!-- If comments are open, but there are no comments. -->
+		
+	</ul>
+
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="6053" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="6b23a5c317" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

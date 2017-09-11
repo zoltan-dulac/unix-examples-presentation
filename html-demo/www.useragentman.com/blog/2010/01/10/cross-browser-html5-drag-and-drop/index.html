@@ -1,0 +1,2292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive post-734" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Cross Browser HTML5 Drag and Drop</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><script src="//code.jquery.com/jquery-1.10.2.js"></script>	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<!-- ID is 734 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Cross Browser HTML5 Drag and Drop Comments Feed" href="http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Introducing: The Type Rendering Project' href='http://www.useragentman.com/blog/2009/11/30/introducing-the-type-rendering-project/' />
+<link rel='next' title='Cross Browser CSS Transforms &#8211; even in IE' href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/" />
+<link rel='shortlink' href='http://useragentman.com/blog/CoueB' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2010%2F01%2F10%2Fcross-browser-html5-drag-and-drop%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2010%2F01%2F10%2Fcross-browser-html5-drag-and-drop%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2009/11/30/introducing-the-type-rendering-project/" rel="prev">Introducing: The Type Rendering Project</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/" rel="next">Cross Browser CSS Transforms &#8211; even in IE</a> &raquo;</span>
+</div>
+
+
+			<h1>Cross Browser HTML5 Drag and Drop</h1>
+			<h4 class="meta">January 10th, 2010 by zoltan &middot; <a href="http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/#comments">68 Comments</a></h4>
+			<div class="entry">
+				<div class="importantNotes">
+<h3>Updates:</h3>
+<ul>
+<li><strong>May 10, 2013:</strong> This article has been translated into <a href="http://science.webhostinggeeks.com/HTML5-Drag-and-Drop">Serbo-Croatian</a> language by Anja Skrba from <a href="http://webhostinggeeks.com/"> Webhostinggeeks.com</a>.</li>
+<li><strong>Feb 3, 2009:</strong> A <a href="http://code.google.com/p/chromium/issues/detail?id=14654">bug in Webkit</a> seems to be the culprit in the permissions form example below not working correctly in Safari 4.  The code has been updated to work around this bug and the article below has been updated.  Thanks to <code>russbuelt</code> for pointing this out.</li>
+<li><strong>Feb 3, 2009:</strong> Apparently, an example made by Apple which I reported not working in Safari <em>does</em> work in Safari 4.0.4 for Mac OS X.  Thanks for Scott Straker for this information.</li>
+</div>
+<p><div id="attachment_538" style="width: 267px" class="wp-caption alignleft"><a href="http://flickr.com/photos/svartling/3822068125/"><img class="size-full wp-image-538   " title="HTML5 Drag and Drop" src="http://www.useragentman.com/blog/wp-content/uploads/2010/12/html5DragAndDrop.png" alt="Remixed version of image by Svartling." width="257" height="174" /></a><p class="wp-caption-text">Image Credit: Flickr user svartling</p></div></p>
+<p><a href="http://dev.w3.org/html5/spec/editing.html#dnd">HTML5 Drag and Drop</a> has been talked about a lot lately, but it&#8217;s hard to find really useful information about implementing it across multiple browsers.   <a href="http://hacks.mozilla.org/2009/07/html5-drag-and-drop/">Mozilla</a>, <a href="http://developer.apple.com/Mac/library/documentation/AppleApplications/Conceptual/SafariJSProgTopics/Tasks/DragAndDrop.html">Apple</a> and <a href="http://msdn.microsoft.com/en-us/library/ms537658%28VS.85%29.aspx">Microsoft</a> all have pages describing how to use it, but their examples seem to work only in their particular browser (<strike><em><a href="http://developer.apple.com/Mac/library/documentation/AppleApplications/Conceptual/SafariJSProgTopics/Tasks/DragAndDrop.html">Apple&#8217;s example</a> doesn&#8217;t even work in their own!</em></strike> <strong>Updated, Jan. 11, 2009:</strong> Although I have not been able to get this example working on Safari 2.0.4 and 3.1.2 for OS X and 4.0.4 for Windows, I have received word that it works on Safari 4.0.4 on OS X).  Remy Sharp&#8217;s great article <a href="http://html5doctor.com/native-drag-and-drop/">Native Drag and Drop</a> was a good place for me to start — however, the examples didn&#8217;t work in Internet Explorer.  I also thoroughly enjoyed JavaScript guru <a href="http://www.quirksmode.org/">Peter-Paul Koch&#8217;s</a> <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html">humorous and lengthy rant about cross-browser drag and drop headaches</a> where he uses creative and colourful language to describe what he thought of the standard, the browser manufacturers, and the WHAT-WG.</p>
+<p>When normal people see the author of the <a href="http://www.quirksmode.org/compatibility.html">Compatibility Master Tables</a> respond negatively to a web technology, they would probably assume it would be a good sign to stay away from it.</p>
+<p>However, I am not normal.  <strong>With a name like Zoltan, how could I <em>possibly</em> be normal?</strong> (and yes, <a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">it <em>is</em> my real name</a>).</p>
+<p>So, I decided to find out for myself how bad HTML5 Drag and Drop really is. Almost immediately, I understood Koch&#8217;s reaction &#8211; the browser vendors have not implemented all the same features, and there are even a few quirks in how the features that <em>are </em>implemented work.  However, after doing <em>a lot</em> of research, <strong>I found a common denominator that works well</strong>, with the help of a small bit of JavaScript that smooths out the edges.  Despite the implementation flaws, <strong>Future-proof HTML5 Drag and Drop is not too hard for developers to use in their own applications.</strong> This article will explain how to do this step by step with many examples along the way.  By the time you are done, you will be able to write useful  drag and drop scripts of your own like in this example:</p>
+<p><a class="exampleLink" href="/tests/dragAndDrop/permissionForm.html#">See an example of HTML5 Drag and Drop in action.</a></p>
+<h2>Advantages Over Existing Drag and Drop Implementations</h2>
+<p>Koch mentioned in his blog post that &#8220;Web developers MUST NOT (in the sense of RFC 2119) use HTML 5 drag and drop. They should use <a href="http://www.quirksmode.org/js/dragdrop.html">old-school scripts</a> instead&#8221;.  I would argue that developers <em>should</em> use HTML5 drag and drop for the following reasons:</p>
+<ul>
+<li><strong>JavaScript Framework Independent: </strong>Most other (but not all) drag and drop implementations are tied into 3rd party frameworks like <a href="http://www.dojotoolkit.org/">Dojo</a>, <a href="http://www.prototypejs.org/">Prototype</a> or <a href="http://jquery.com/">jQuery</a>.</li>
+<li><strong>Built-in Browser Support: </strong>HTML5 Drag and Drop is supported in Firefox 3.5+, Chrome 3.0+, Safari 3.0+ and Internet Explorer 5.0 (<strong>Note:</strong> that is not a typo &mdash; HTML5 Drag and Drop is based on work done by Microsoft <strong>in 1999</strong>).  Because it is part of HTML5, I assume Opera support should be inevitable.</li>
+<li><strong>Integration With Other Web Applications:</strong> the HTML5 specification will allow developers to <em><strong>produce  drag and drop scripts that work across frames, and across browser windows.</strong></em></li>
+<li><strong>Integration With Non-Web Applications:</strong> the HTML5 specification also allows users to <em><strong>drag and drop data to and from non-web applications</strong></em></li>
+</ul>
+<h2>The Basics of Drag and Drop, Step by Step</h2>
+<p>In order to save other developers from the headaches I got deciphering cross browser drag and drop, I present the following guide that shows how to do in five easy steps.   Every step will describe a set of related concepts, and will show examples, most of which are built on code from previous steps.  At the end of each step, I will discuss any issues and interesting bits I came across.</p>
+<div class="steps">
+<h3>Step 1: Defining a Draggable Object</h3>
+<p>First you need to define the HTML nodes that you want to drag.  Firefox requires that these nodes have their <code>draggable</code> attribute set to <code>"true"</code>, Internet Explorer requires that the node must be an <code>&lt;a&gt;</code> tag with (the <code>href</code> attribute set) or an <code>&lt;img&gt;</code> tag.</p>
+<blockquote class="code">
+<pre>&lt;a href="#" id="toDrag" draggable="true"&gt;This is a draggable item&lt;/a&gt;</pre>
+</blockquote>
+<p>To show how this works, I have written a very simple page with a the above markup in the <code>&lt;body&gt;</code>:</p>
+<blockquote class="code">
+<pre>&lt;!DOCTYPE html&gt;
+
+&lt;html lang="en"&gt;
+    &lt;head&gt;
+        &lt;meta name="generator" content="HTML Tidy, see www.w3.org"&gt;
+
+        &lt;title&gt;Test #1: A Simple Draggable Object&lt;/title&gt;
+
+      &lt;script type="text/javascript" src="../../shared/js/EventHelpers.js"&gt;
+      &lt;/script&gt;
+      &lt;script type="text/javascript" src="../../shared/js/DragDropHelpers.js"&gt;
+      &lt;/script&gt;
+
+        &lt;link rel="stylesheet" type="text/css" media="screen" href=
+        "css/test1.css"&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+        &lt;h1&gt;Test #1: A Simple Draggable Object&lt;/h1&gt;
+
+<span class="hilite">        &lt;a href="#" id="toDrag" draggable="true"&gt;This is a
+        draggable item&lt;/a&gt;</span>
+
+        &lt;p&gt;Try to drag the red box around. You will see the
+        draggable object cloned in every browser except Explorer
+        and Chrome.&lt;/p&gt;
+
+        &lt;a href=
+        "http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/"&gt;
+        Go back to the User Agent Man HTML5 Drag and Drop
+        article&lt;/a&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</blockquote>
+<p>Note that this HTML page has two scripts in the <code>&lt;head&gt;</code>:</p>
+<ul>
+<li><strong><code>EventHelpers.js</code>:</strong> this script implements cross-browser event handling routines without the need for a JavaScript framework.  All the examples in this article use it, but feel free to refactor all the code in this article to use a third party framework like Dojo, jQuery or whatever framework you like.</li>
+<li><strong><code>DragDropHelpers.js</code>:</strong> among other things that I will get to later, will activate dragging on <code>draggable="true"</code> objects in Safari and Chrome using a built-in copy of Dean Edwards&#8217; <a href="http://dean.edwards.name/my/cssQuery/">cssQuery</a>.  It does this by inserting the following CSS code into the HTML document:<br />
+<blockquote class="code">
+<pre>[draggable=true] {
+  -khtml-user-drag: element;
+  -webkit-user-drag: element;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+}</pre>
+</blockquote>
+<p>The first two rules allow the dragging of the <code>draggable="true"</code> nodes, while the last two prevent the user from selecting the text within the node (which can cause some unexpected behavior in Webkit browsers).  The <code>-khtml </code>properties work in older versions of Safari, while <code>-webkit</code> ones work in newer versions.  <strong>Without these CSS properties, these nodes will not be draggable when using the Safari web browser</strong></li>
+</ul>
+<p><a class="exampleLink" href="/tests/dragAndDrop/01-dragObject.html">See Example  #1: a draggable object</a></p>
+<p>A couple of notes:</p>
+<ol>
+<li> You&#8217;ll notice that when you hover the mouse pointer over the draggable item, it will change to <img class="alignnone size-full wp-image-599" title="The  &quot;Move&quot; cursor" src="http://www.useragentman.com/blog/wp-content/uploads/2010/01/cursor-move.gif" alt="The  &quot;Move&quot; cursor" width="24" height="28" />(i.e. I the &#8220;move&#8221; cursor).  This is not the default behavior of the web browser &#8211; it is something I added in <code>DragDropHelpers</code>, since I believe that it&#8217;s a nice visual cue to show users that an object is draggable (if you don&#8217;t want this behavior, it is possible to turn it off in your own scripts by setting <code>DragDropHelpers.showMouseoverCue</code> to false</li>
+<li>How draggable objects look in the various browsers varies.  Here are screenshots of how it looks in Windows web browsers (Note: although all screenshots were taken using Windows XP, similar results occur when viewing under Windows Vista or Windows 7):<br />
+<table class="screenshots" border="0">
+<thead>
+<tr>
+<th>Firefox (Windows XP)</th>
+<th>Safari (Windows XP)</th>
+<th>Explorer &amp; Chrome (Windows XP)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img class="alignnone size-full wp-image-514" title="Dragging of a link element, Firefox Windows" src="http://www.useragentman.com/blog/wp-content/uploads/2010/12/dragLink-firefoxWindows.png" alt="[Dragging of a link element, Firefox Windows]" width="180" height="190" /></td>
+<td><img class="alignnone size-full wp-image-514" title="Dragging of a link element, Safari Windows" src="http://www.useragentman.com/blog/wp-content/uploads/2010/12/dragLink-safariWindows.png" alt="[Dragging of a link element, Safari Windows]" width="180" height="190" /></td>
+<td><img class="alignnone size-full wp-image-514" title="Dragging of a link element, Explorer Windows" src="http://www.useragentman.com/blog/wp-content/uploads/2010/12/dragLink-explorerWindows.png" alt="[Dragging of a link element, Explorer Windows]" width="180" height="190" /></td>
+</tr>
+</tbody>
+</table>
+<p>Note the differences between these three browsers:</p>
+<ul>
+<li>Firefox for Windows shows a cloned version of the draggable object underneath the mouse pointer when the object is being dragged, while Safari displays a grey box with the text &#8220;This is a draggable item&#8221; written inside.  Explorer and Chrome don&#8217;t show any effect at all (We will address this issue later).</li>
+<li>Since we have not established <em>where</em> we are going to drag our object, all Windows browsers will change the mouse pointer cursor to <img class="alignnone size-full wp-image-567" title="&quot;Not-Allowed&quot; cursor." src="http://www.useragentman.com/blog/wp-content/uploads/2010/12/cursor_not-allowed.gif" alt="&quot;Not-Allowed&quot; cursor." width="22" height="22" /> (a.k.a. the &#8220;not-allowed&#8221; mouse pointer).  This is the expected behavior, and you will see later that it will help the user know where to drop the object.</li>
+</ul>
+<p>On OS X, Firefox and Safari look similar to Firefox for Windows, except that the &#8220;not-allowed&#8221; mouse-pointer doesn&#8217;t show up:</p>
+<table class="screenshots" border="0">
+<thead>
+<tr>
+<th>Firefox (OS X)</th>
+<th>Safari (OS X)</th>
+<th>Chrome (OS X)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img class="alignnone size-full wp-image-513" title="Dragging of a link element, Firefox OS X" src="http://www.useragentman.com/blog/wp-content/uploads/2010/12/dragLink-firefoxMac.png" alt="[Dragging of a link element, Firefox Windows]" width="180" height="190" /></td>
+<td><img class="alignnone size-full wp-image-514" title="Dragging of a link element, Safari OS X" src="http://www.useragentman.com/blog/wp-content/uploads/2010/12/dragLink-safariMac.png" alt="[Dragging of a link element, Safari OS X]" width="180" height="190" /></td>
+<td><img class="alignnone size-full wp-image-653" title="Chrome for Mac" src="http://www.useragentman.com/blog/wp-content/uploads/2010/01/dragLink-chromeMac.png" alt="Chrome for Mac" width="180" height="190" /></td>
+</tr>
+</tbody>
+</table>
+<p>The Linux browsers don&#8217;t have the &#8220;not-allowed&#8221; mouse cursor either.  Also, the cloned version of the draggable object isn&#8217;t transparent using the Linux version of Firefox, and Chrome under Linux behaves  pretty much the  same as on the other platforms (Note: all Linux testing was done using Ubuntu 9.10 using the standard Gnome window manager).</p>
+<table class="screenshots" border="0">
+<thead>
+<tr>
+<th>Firefox (Ubuntu)</th>
+<th>Chrome (Ubuntu)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img class="size-full wp-image-698 alignnone" title="dragLink-firefoxUbuntu" src="http://www.useragentman.com/blog/wp-content/uploads/2010/01/dragLink-firefoxUbuntu.png" alt="Firefox Linux" width="180" height="190" /></td>
+<td><img class="size-full wp-image-697 alignnone" title="dragLink-chromeUbuntu" src="http://www.useragentman.com/blog/wp-content/uploads/2010/01/dragLink-chromeUbuntu.png" alt="Chrome Linux" width="180" height="190" /></td>
+</tr>
+</tbody>
+</table>
+<p>The fact that Explorer and Chrome don&#8217;t have any visual dragging cues bugged me, so I put a &#8220;fix&#8221; inside <code>DragDropHelpers.js</code> which can be turned on by setting <code>DragDropHelpers.fixVisualCues</code> to true.  Let&#8217;s look at a slightly refactored version of Example #1 where we insert the following code in the <code>&lt;head&gt;:</code></p>
+<blockquote class="code">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+   &lt;head&gt;
+      &lt;title&gt;Test #1: A Simple Draggable Object (with visual cues added to Explorer and Chrome)&lt;/title&gt;
+      &lt;script type="text/javascript" src="../../shared/js/EventHelpers.js"&gt;&lt;/script&gt;
+      &lt;script type="text/javascript" src="../../shared/js/DragDropHelpers.js"&gt;&lt;/script&gt;
+<span class="hilite">      &lt;script type="text/javascript"&gt;
+      &lt;!--
+      DragDropHelpers.fixVisualCues=true;
+      --&gt;
+      &lt;/script&gt;</span>
+
+      &lt;link rel="stylesheet" type="text/css" media="screen" href="css/test1.css" /&gt;
+
+   &lt;/head&gt;
+   &lt;body&gt;
+
+      &lt;h1&gt;Test #1: A Simple Draggable Object (with visual cues added to Explorer and Chrome)&lt;/h1&gt;
+
+      &lt;a href="#" id="toDrag" draggable="true"&gt;This is a draggable item&lt;/a&gt;
+
+      &lt;p&gt;Try to drag the red box around.  You will see the draggable object cloned in all browsers.&lt;/p&gt;
+
+      &lt;a href="http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/"&gt;Go back to the User Agent Man HTML5 Drag and Drop article&lt;/a&gt;
+
+   &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</blockquote>
+</li>
+</ol>
+<p><a class="exampleLink" href="/tests/dragAndDrop/01a-dragObject.html">See Example #1a, a draggable object with visual cue fix for Explorer and Chrome</a></p>
+<p>Voila!  The visual cue now shows up.  I&#8217;ll explain how this works at the end of the article.</p>
+<h3>Step 2: Setting Events on the Draggable Object</h3>
+<p>Now that you have defined an object as draggable, you should attach some events to it so the browser knows what to do while it is being dragged.  There are three events that a draggable object can fire:</p>
+<table class="dataTable" border="0">
+<thead>
+<tr>
+<th>Event name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dragstart</code></td>
+<td>Fires when the user starts dragging of the object.</td>
+</tr>
+<tr>
+<td><code>drag</code></td>
+<td>Fires every time the mouse is moved while the object is being dragged.</td>
+</tr>
+<tr>
+<td><code>dragend</code></td>
+<td>Fires when the user releases the mouse button while dragging an object.</td>
+</tr>
+</tbody>
+</table>
+<p>A developer would attach these events the way they would any other JavaScript event &#8211; I use <code>EventHelpers.addEvent</code>, but one could use jQuery&#8217;s <code>bind()</code> method, prototype&#8217;s <code>Event.observe()</code> or whatever you favourite framework provides for event handling.  Developers can also use the old school inline events (i.e. <code>&lt;a href="#" id="toDrag" draggable="true" <span class="hilite">ondragstart="somefunction();"</span>&gt;This is a draggable item&lt;/a&gt;</code>), but I try to stay away from using those to seperate document structure from behavior.</p>
+<p>Let&#8217;s take the example in step 1 and change it so we can log when these events happen to the <code>toDrag</code> node:</p>
+<blockquote class="code">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+   &lt;head&gt;
+      &lt;title&gt;Example #2: a draggable object with events attached &lt;/title&gt;
+<span class="hilite">      &lt;script type="text/javascript" src="../../shared/js/sprintf.js"&gt;&lt;/script&gt;</span>
+      &lt;script type="text/javascript" src="../../shared/js/EventHelpers.js"&gt;&lt;/script&gt;
+      &lt;script type="text/javascript" src="../../shared/js/DragDropHelpers.js"&gt;&lt;/script&gt;
+
+<span class="hilite">      &lt;script type="text/javascript" src="js/02-dragObjectWithEvent.js"&gt;&lt;/script&gt;</span>
+
+      &lt;link rel="stylesheet" type="text/css" media="screen" href="css/test1.css" /&gt;
+
+   &lt;/head&gt;
+   &lt;body&gt;
+
+      &lt;h1&gt;Example #2: a draggable object with events attached&lt;/h1&gt;
+
+      &lt;p&gt;Try to drag the red box around.  This page will tell you if the
+      object is currently dragging, and will log all &lt;code&gt;dragstart&lt;/code&gt;
+      and &lt;code&gt;dragstop&lt;/code&gt; events&lt;/p&gt;
+
+<span class="hilite">      &lt;p&gt;&lt;strong&gt;Is dragging:&lt;/strong&gt; &lt;span id="dragEventNotice"&gt;no&lt;/span&gt;
+
+      &lt;p id="eventLog"&gt;&lt;strong&gt;Event now firing:&lt;/strong&gt;&lt;br /&gt;&lt;span id="eventNotice"&gt;&lt;/span&gt;</span>
+
+      &lt;a class="goBack" href="http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/"&gt;Go back to the User Agent Man HTML5 Drag and Drop article&lt;/a&gt;&lt;/p&gt;
+
+      &lt;a href="#" id="toDrag" draggable="true"&gt;This is a draggable item&lt;/a&gt;
+
+   &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</blockquote>
+<p>In the <code>02-dragObjectWithEvent.js</code> script, the <code>dragEventNotice</code> node will be used to report whether the user is dragging the object around, and the <code>eventNotice</code> will be used to log what events the user has fired:</p>
+<blockquote class="code">
+<pre>var dragObject = new function () {
+   var me = this;
+
+   var dragNode;
+   var eventNoticeNode, dragEventNoticeNode;
+
+   /* runs when the page is loaded */
+   me.init = function () {
+
+      if (EventHelpers.hasPageLoadHappened(arguments)) {
+         return;
+      }   
+
+      /* The node being dragged */
+      dragNode=document.getElementById('toDrag');
+
+      /* The nodes that report to the user what is happening to that node*/
+      eventNoticeNode = document.getElementById('eventNotice');
+      dragEventNoticeNode = document.getElementById('dragEventNotice');
+
+      /* The drag event handlers */
+<span class="hilite">      EventHelpers.addEvent(dragNode, 'dragstart', dragStartEvent);
+      EventHelpers.addEvent(dragNode, 'drag', dragEvent);
+      EventHelpers.addEvent(dragNode, 'dragend', dragEndEvent);</span>
+   }
+
+   /*
+    * The dragstart event handler logs to the user when the event started.
+    */
+<span class="hilite">   function dragStartEvent(e) {
+      eventNoticeNode.innerHTML =
+         sprintf("&lt;strong&gt;%s&lt;/strong&gt;: Drag Event started.&lt;br /&gt;%s",
+            new Date(),  eventNoticeNode.innerHTML);</span>
+   }
+
+   /*
+    * The drag event reports to the user that dragging is on.
+    */
+<span class="hilite">   function dragEvent(e) {
+      dragEventNoticeNode.innerHTML = "Currently dragging.";
+   }</span>
+
+   /*
+    * The dragend event logs to the user when the event had finished *and*
+    * also reports that dragging has now stopped.
+    */
+<span class="hilite">   function dragEndEvent(e) {
+      eventNoticeNode.innerHTML =
+         sprintf("&lt;strong&gt;%s&lt;/strong&gt;: Drag Event stopped.&lt;br /&gt;%s",
+            new Date(), eventNoticeNode.innerHTML);
+      dragEventNoticeNode.innerHTML = "Dragging stopped."
+   }
+}</span>
+
+// fixes visual cues in IE and Chrome.
+DragDropHelpers.fixVisualCues=true;
+
+EventHelpers.addPageLoadEvent('dragObject.init');</pre>
+</blockquote>
+<p>Before we get to the drag events, a word about the coding conventions I use for this and all the other code examples in this article:</p>
+<ul>
+<li>the <code>var me = this </code>line ensures that the script doesn&#8217;t confuse the <code>this </code>keyword of the object with the <code>this </code>keyword inside an event handler.</li>
+<li><code>EventHelpers.addPageLoadEvent()</code> (which is part of <code>EventHelpers.js</code>) will execute <code>dragObject.init</code> when the HTML has loaded.  <code>addPageLoadEvent()</code> is based on code from Dean Edwards&#8217; article <a href="http://dean.edwards.name/weblog/2005/09/busted/">The window.onload Problem &#8211; Solved!</a>.  It is similar to jQuery&#8217;s<code> $(document).ready()</code>method and prototype&#8217;s <code>dom:loaded</code> event.</li>
+<li>This code uses a JavaScript version of <code>sprintf()</code> that <a href="/blog/2009/12/22/my-favourite-third-party-javascript-libraries/">I had mentioned in a previous blog post</a>.  I have used it in all the remaining examples because I think it makes the code a lot easier to read (however, it is not necessary in order to make HTML5 drag and drop work).</li>
+</ul>
+<p>Let&#8217;s get back to the drag events — you&#8217;ll notice that I have set the <code>dragstart</code>, <code>drag</code> and <code>dragend</code> events.  When this page is loaded, it will tell you if the draggable object is currently being dragged, and will log all <code>dragstart</code> and <code>dragstop</code> events on-screen. Click on the example link below and see for yourself:</p>
+<p><a class="exampleLink" href="/tests/dragAndDrop/02-dragObjectWithEvents.html">See Example #2, a draggable object with events attached</a></p>
+<h3>Step 3: Setting Events on the Target Object</h3>
+<p>Step 2 showed us how we can drag an object around the screen and know when each drag starts and ends.  Now we need to drop the object. Let&#8217;s define a <strong>drop target</strong> to be <strong>an object where draggable objects can be dropped</strong>.  A drop target can have the following event handlers attached to it:</p>
+<table class="dataTable" border="0">
+<thead>
+<tr>
+<th>Event name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>dragenter</code></td>
+<td>Fires when a draggable object is <strong>first dragged inside</strong> an object.</td>
+</tr>
+<tr>
+<td><code>dragover</code></td>
+<td>Fires everytime a draggable object is <strong>moved inside</strong> an object.  <strong>Note: if you want to allow the draggable object to be <em>dropped </em>inside this object, <em>you must cancel the default behaviour of this event handler.</em></strong></td>
+</tr>
+<tr>
+<td><code>dragleave</code></td>
+<td>Fires when a draggable object is <strong>dragged out</strong> of an object.</td>
+</tr>
+<tr>
+<td><code>drop</code></td>
+<td>Fired when a draggable object is <strong>dropped into</strong> an object.</td>
+</tr>
+</tbody>
+</table>
+<p><strong>If you want an object to become a drop target, you must attach both the <code>dragover</code> and <code>drop</code> events to it.</strong> You may ask &#8220;I understand why I need to implement <code>drop</code> (after all, it is one half of the term &#8220;drag and drop&#8221;) but why do I need <code>dragover</code>?&#8221;  <strong>As stated in the table above, the <code>drop</code> event will not fire unless you cancel the default behaviour of the event target&#8217;s <code>dragover</code> event</strong>.  This point is really important and <strong>your scripts will not work correctly unless you do this</strong>.</p>
+<p>You may ask &#8220;Why is there even a <code>dragover</code> event in the first place?  Isn&#8217;t <code>drag</code> sufficient?&#8221; (In his article, Peter-Paul Koch <a href="http://www.quirksmode.org/blog/archives/2009/09/the_html5_drag.html#link8"> asked this question a bit more emphatically that I did</a>).  The <code>dragover</code> event object does contain some useful information, such as <strong>the coordinates of the  mouse pointer inside the event target</strong>, (When I created <code>DragDropHelpers</code>, this information allowed me to fix Explorer and Chrome&#8217;s visual cue issue that I mentioned in step #1).  These coordinates are stored in the properties <code>offsetX</code> and <code>offsetY</code>, <strong>except in Firefox 3.5</strong> which keeps these values inside of the event properties <code>layerX</code> and <code>layerY</code>.  For convenience, <code>DragDropHelpers</code> includes a method called <code>getEventCoords()</code> that will use the appropriate property to get these values (<strong>Note:</strong> <code>layerX</code> and <code>layerY</code> are only accurate when the drop target&#8217;s CSS <code>position</code> propety is set to <code>relative</code>,<code> absolute</code> or <code>fixed</code>).</p>
+<p>To show how to add drop functionality to your code, lets take the code from example #2 and add a drop target:</p>
+<blockquote class="code">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+   &lt;head&gt;
+      &lt;title&gt;Example #3: a dragable object with a drop target&lt;/title&gt;
+      &lt;script type="text/javascript" src="../../shared/js/sprintf.js"&gt;&lt;/script&gt;
+      &lt;script type="text/javascript" src="../../shared/js/EventHelpers.js"&gt;&lt;/script&gt;
+      &lt;script type="text/javascript" src="../../shared/js/DragDropHelpers.js"&gt;&lt;/script&gt;
+
+<span class="hilite">      &lt;script type="text/javascript" src="js/03-dragObjectWithTargetObject.js"&gt;&lt;/script&gt;</span>
+
+      &lt;link rel="stylesheet" type="text/css" media="screen" href="css/test1.css" /&gt;
+
+   &lt;/head&gt;
+   &lt;body&gt;
+
+      &lt;h1&gt;Example #3: a dragable object with a drop target&lt;/h1&gt;
+
+      &lt;p&gt;Try to drag the red box around and dropping it in the target object.&lt;/p&gt;
+
+      &lt;p&gt;&lt;strong&gt;Is dragging:&lt;/strong&gt; &lt;span id="dragEventNotice"&gt;no&lt;/span&gt;
+
+      &lt;p id="eventLog"&gt;&lt;strong&gt;Event now firing:&lt;/strong&gt;&lt;br /&gt;&lt;span id="eventNotice"&gt;&lt;/span&gt;
+      &lt;a class="goBack" href="http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/"&gt;Go back to the User Agent Man HTML5 Drag and Drop article&lt;/a&gt;&lt;/p&gt;
+
+      &lt;a href="#" id="toDrag" draggable="true"&gt;This is a draggable item&lt;/a&gt;
+<span class="hilite">      &lt;div id="dropTarget"&gt;This is a "target" object&lt;/div&gt;</span>
+
+   &lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</blockquote>
+<p>The drop target will be the <code>&lt;div&gt;</code> with an <code>id</code> of <code>dropTarget</code>.   The <code>03-dragObjectWithTargetObject.js</code> script is the same code in example #2 except we add two event handlers:</p>
+<ul>
+<li>a <code>dragover</code> event that reports where the mouse is inside <code>dropTarget</code></li>
+<li>a <code>drop</code> event that reports when the drop happened.</li>
+</ul>
+<blockquote class="code">
+<pre>var dragObject = new function () {
+   var me = this;
+
+   var dragNode, targetNode;
+   var eventNoticeNode, dragEventNoticeNode;
+   me.init = function () {
+
+   	if (EventHelpers.hasPageLoadHappened(arguments)) {
+   		return;
+   	}	
+
+   	dragNode=document.getElementById('toDrag');
+   	targetNode=document.getElementById('dropTarget');
+   	eventNoticeNode = document.getElementById('eventNotice');
+   	dragEventNoticeNode = document.getElementById('dragEventNotice');
+
+   	/* These are events for the draggable object */
+   	EventHelpers.addEvent(dragNode, 'dragstart', dragStartEvent);
+   	EventHelpers.addEvent(dragNode, 'drag', dragEvent);
+   	EventHelpers.addEvent(dragNode, 'dragend', dragEndEvent);
+
+   	/* These are events for the object to be dropped */
+   	<span class="hilite">EventHelpers.addEvent(targetNode, 'dragover', dragOverEvent);</span>
+   	<span class="hilite">EventHelpers.addEvent(targetNode, 'drop', dropEvent);</span>
+
+   }
+
+   function dragStartEvent(e) {
+   	showMessage("Drag Event started");
+   }
+
+   function dragEvent(e) {
+   	dragEventNoticeNode.innerHTML = "Currently dragging.&lt;br /&gt;";
+   }
+
+   function dragEndEvent(e) {
+   	showMessage("Drag Event stopped");
+   	dragEventNoticeNode.innerHTML = "Dragging stopped."
+   }
+
+<span class="hilite">   function dragOverEvent(e) {
+   	var coords = DragDropHelpers.getEventCoords(e);
+   	showMessage(sprintf(
+   	   "Drag over event happened on node with id %s at coordinate (%d, %d)",
+   	   this.id, coords.x, coords.y));
+   	EventHelpers.preventDefault(e);
+   }</span>
+
+<span class="hilite">   function dropEvent(e) {
+   	showMessage("Drop event happened on node with id " + this.id);
+   	EventHelpers.preventDefault(e);
+   }</span>
+
+   function showMessage(message) {
+   	eventNoticeNode.innerHTML =
+   		sprintf("&lt;strong&gt;%s&lt;/strong&gt;: %s&lt;br /&gt;%s",
+   			new Date(), message, eventNoticeNode.innerHTML);
+   }
+
+}
+
+// fixes visual cues in IE and Chrome.
+DragDropHelpers.fixVisualCues=true;
+
+EventHelpers.addPageLoadEvent('dragObject.init');</pre>
+</blockquote>
+<p>(<strong>Note:</strong> <code>EventHelpers.preventDefault(e)</code> does what you&#8217;d expect: it prevents the default behavior of the event handler, similar to prototype&#8217;s <code>Event.stop()</code> or jQuery&#8217;s <code>event.preventDefault()</code>)</p>
+<p><a class="exampleLink" href="/tests/dragAndDrop/03-dragObjectAndTargetObject.html">See Example #3: a dragable object with a drop target</a></p>
+<p>Note that in the above example, the time that the draggable object&#8217;s <code>dragend</code> event fires and the time that the drag target&#8217;s <code>drop</code> event fires is not consistant among browsers.  Safari and Chrome fire <code>dragend</code> first, while Firefox and Internet Explorer fire <code>drop</code> first.</p>
+<p>The two other drop target events, <code>dragenter</code> and <code>dragleave</code> are not absolutely necessary for every script, but let&#8217;s add these events to example #3 anyway to see how they work:</p>
+<blockquote class="code">
+<pre>var dragObject = new function () {
+   var me = this;
+
+   var dragNode, targetNode;
+   var eventNoticeNode, dragEventNoticeNode;
+   me.init = function () {
+
+      if (EventHelpers.hasPageLoadHappened(arguments)) {
+         return;
+      }   
+
+      dragNode=document.getElementById('toDrag');
+      targetNode=document.getElementById('dropTarget');
+      eventNoticeNode = document.getElementById('eventNotice');
+      dragEventNoticeNode = document.getElementById('dragEventNotice');
+
+      /* These are events for the draggable object */
+      EventHelpers.addEvent(dragNode, 'dragstart', dragStartEvent);
+      EventHelpers.addEvent(dragNode, 'drag', dragEvent);
+      EventHelpers.addEvent(dragNode, 'dragend', dragEndEvent);
+
+      /* These are events for the object to be dropped */
+      EventHelpers.addEvent(targetNode, 'dragover', dragOverEvent);
+      EventHelpers.addEvent(targetNode, 'drop', dropEvent);
+<span class="hilite">      EventHelpers.addEvent(targetNode, 'dragenter', dragEnterEvent);
+      EventHelpers.addEvent(targetNode, 'dragleave', dragLeaveEvent);</span>
+   }
+
+   function dragStartEvent(e) {
+      showMessage("Drag Event started");
+   }
+
+   function dragEvent(e) {
+      dragEventNoticeNode.innerHTML = "Currently dragging.&lt;br /&gt;";
+   }
+
+   function dragEndEvent(e) {
+      showMessage("Drag Event stopped");
+      dragEventNoticeNode.innerHTML = "Dragging stopped.";
+   }
+
+   function dragOverEvent(e) {
+      var coords = DragDropHelpers.getEventCoords(e);
+
+      showMessage(sprintf(
+         "Drag over event happened on node with id %s at coordinate (%d, %d)",
+         this.id, coords.x, coords.y));
+
+      EventHelpers.preventDefault(e);
+   }
+
+   function dropEvent(e) {
+      showMessage("Drop event happened on node with id " + this.id);
+      EventHelpers.preventDefault(e);
+
+   }
+
+<span class="hilite">   function dragEnterEvent(e) {
+      showMessage("Drag Enter event happened on node with id " + this.id);
+   }
+
+   function dragLeaveEvent(e) {
+      showMessage("Drag Leave event happened on node with id " + this.id);
+   }</span>
+
+   function showMessage(message) {
+      eventNoticeNode.innerHTML =
+         sprintf("&lt;strong&gt;%s&lt;/strong&gt;: %s&lt;br /&gt;%s",
+            new Date(), message, eventNoticeNode.innerHTML);
+   }
+
+}
+
+// fixes visual cues in IE and Chrome.
+DragDropHelpers.fixVisualCues=true;
+
+EventHelpers.addPageLoadEvent('dragObject.init');</pre>
+</blockquote>
+<p><a class="exampleLink" href="/tests/dragAndDrop/03a-dragEnterDragLeave.html">See Example #3a: a drop target with dragenter and dragleave event handlers</a></p>
+<p>(Note that in Firefox 3.5, a <code>dragleave</code> event will fire just before a <code>drop</code> event, which the other browsers don&#8217;t fire <code>dragleave</code> when dropping).</p>
+<h3>Step 4: Passing Data Between the Draggable and Target Objects</h3>
+<p>Once a draggable object is dropped into a drop target, the two objects can pass information between them using the drop event&#8217;s <code>dataTransfer</code> property.  This property has two methods, <code>setData()</code> and <code>getData()</code>.  In order to pass data between the two, a developer must use <code>setData()</code> during one of the draggable node&#8217;s drag events (e.g. <code>dragstart</code>).  The drop target can then receive this data during one of it&#8217;s events using the <code>getData()</code> method.</p>
+<table class="dataTable" border="0">
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="methodName"><code>setData(dataType, data)</code></td>
+<td>
+<p>Sets the data that can be shared between the draggable node and the drag target.</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>dataType</code> &#8211; The type of data that is to be set.  So far, the only cross-browser dataTypes that can be set are &#8216;Text&#8217; and &#8216;Url&#8217;.</li>
+<li><code>data</code> &#8211; The data that is going to be set.</li>
+</ul>
+</td>
+</tr>
+<tr>
+<td class="methodName"><code>getData(dataType)</code></td>
+<td>
+<p>Gets the data that was previously set by <code>dataTransfer.setData()</code>.  <strong>It can also get data that was set by a <code>dataTransfer.setData()</code> call from another page, another browser window, and <em>another vendor&#8217;s web browser on the same machine</em>.</strong> It also can get data that was set by a drop event of another desktop application (for example, Windows WordPad).</p>
+<p><strong>Parameters</strong></p>
+<ul>
+<li><code>dataType</code> &#8211; The type of data that is to be set.  So far, the only cross-browser dataTypes that can be set are &#8216;Text&#8217; and &#8216;Url&#8217;.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p><code>setData()</code> takes one string parameter, which is the data you want to share between the draggable object and a drop target.</p>
+<p>Let&#8217;s take the code from step #3 and mix it up a bit: instead of having one draggable object, let&#8217;s make four.  I have taken <a href="http://commons.wikimedia.org/wiki/File:The_Fabs.JPG">four photos of the Beatles from the Wikmedia Commons</a> and made them draggable.</p>
+<blockquote class="code">
+<pre>&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+   &lt;head&gt;
+      &lt;title&gt;Test 4: setData() and getData()&lt;/title&gt;
+      &lt;script type="text/javascript" src="../../shared/js/sprintf.js"&gt;&lt;/script&gt;
+      &lt;script type="text/javascript" src="../../shared/js/helpers.js"&gt;&lt;/script&gt;
+      &lt;script type="text/javascript" src="../../shared/js/DragDropHelpers.js"&gt;&lt;/script&gt;
+
+<span class="hilite">      &lt;script type="text/javascript" src="js/04-setDataGetData.js"&gt;&lt;/script&gt;</span>
+
+      &lt;link rel="stylesheet" type="text/css" media="screen" href="css/test1.css" /&gt;
+
+   &lt;/head&gt;
+   &lt;body&gt;
+
+      &lt;h1&gt;Test 4: &lt;code&gt;setData()&lt;/code&gt; and &lt;code&gt;getData()&lt;/code&gt;&lt;/h1&gt;
+
+<span class="hilite">      &lt;img draggable="true" src="images/george.png" alt="George Harrison" /&gt;
+      &lt;img draggable="true" src="images/john.png" alt="John Lennon" /&gt;
+      &lt;img draggable="true" src="images/paul.png" alt="Paul McCartney" /&gt;
+      &lt;img draggable="true" src="images/ringo.png" alt="Ringo Starr" /&gt;</span>
+
+      &lt;div id="dropTarget"&gt;&lt;span&gt;Drop an image here to find out more information about it.&lt;/span&gt;&lt;/div&gt;
+
+   &lt;/body&gt;
+&lt;/html&gt;</pre>
+</blockquote>
+<p>The script <code>04-setDataGetData.js</code> uses <code>dataTransfer.setData()</code> and <code>.getData()</code> to copy the <code>&lt;img&gt;</code> of the Beatle being dragged, as well as placing the <code>alt</code> attribute&#8217;s contents underneath the image.</p>
+<blockquote class="code">
+<pre>var dragObject = new function () {
+   var me = this;
+
+   var targetNode;
+   var eventNoticeNode, dragEventNoticeNode;
+
+   var dataTransferCommentString;
+
+   me.init = function () {
+
+      if (EventHelpers.hasPageLoadHappened(arguments)) {
+         return;
+      }   
+
+      targetNode=document.getElementById('dropTarget');
+      eventNoticeNode = document.getElementById('eventNotice');
+      dragEventNoticeNode = document.getElementById('dragEventNotice');
+
+      /* These are events for the draggable objects */
+      var dragNodes = cssQuery('[draggable=true]');
+      for (var i = 0; i &lt; dragNodes.length; i++) {
+         var  dragNode=dragNodes[i]
+         EventHelpers.addEvent(dragNode, 'dragstart', dragStartEvent);
+      }
+
+      /* These are events for the object to be dropped */
+      EventHelpers.addEvent(targetNode, 'dragover', dragOverEvent);
+      EventHelpers.addEvent(targetNode, 'drop', dropEvent);
+   }
+
+   function dragStartEvent(e) {
+<span class="hilite">      e.dataTransfer.setData('Text',
+         sprintf('&lt;img src="%s" alt="%s" /&gt;&lt;br /&gt;&lt;p class="caption"&gt;%s&lt;/p&gt;',
+            this.src, this.alt, this.alt
+         )
+      );</span>
+   }
+
+   function dragOverEvent(e) {
+      EventHelpers.preventDefault(e);
+   }
+
+   function dropEvent(e) {
+<span class="hilite">      this.innerHTML = e.dataTransfer.getData('Text');</span>
+      EventHelpers.preventDefault(e);
+   }
+
+}
+
+// fixes visual cues in IE and Chrome.
+DragDropHelpers.fixVisualCues=true;
+
+EventHelpers.addPageLoadEvent('dragObject.init');</pre>
+</blockquote>
+<p><a class="exampleLink" href="/tests/dragAndDrop/04-setDataGetData.html">See Example #4: using setData() and getData()</a></p>
+<p>As previously mentioned the data that is set in setData() can be read in other applications.  If you are in Windows, open up WordPad and drag one of the images into it.  You&#8217;ll see the data that was given to setData() during the dragstart event.</p>
+<p>This interoperability with the operating system will allow developers to do some very interesting things which are out of the scope of this article.  I will, however, want to explore this in future postings.</p>
+<h3>Step 5: Drag  and  Drop Effects</h3>
+<p>In a traditional desktop application, you can use drag and drop to copy objects, move objects, and create links to things.  You can use the HTML5 drag and drop events to do this as well, but it would be nice to give the user visual cues to show what kind of action a draggable object can do, and what kind of action a drop target can accept.  It would also be nice to only allow &#8220;copy objects&#8221; to only drop on drop targets that are programmed to accept them.</p>
+<p>These features can be implemented using <code>e.dataTransfer.effectAllowed</code> on the draggable object and <code>e.dataTransfer.dropEffect()</code>on the drop target:</p>
+<table class="dataTable" border="0">
+<thead>
+<tr>
+<th>Method</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>e.dataTransfer.effectAllowed</code></td>
+<td>Sets the type of effect a draggable object is allowed to make.  Valid values are  <code>copy</code>, <code>move</code>, <code>link</code>, <code>copyMove</code>, <code>copyLink</code>, <code>linkMove</code>, <code>all</code>, and <code>none</code>.</td>
+</tr>
+<tr>
+<td><code>e.dataTransfer.dropEffect</code></td>
+<td>Sets the type of effect a drop target is allowed to accept.  Valid effects include <code>copy</code>, <code>move</code>, and <code>link</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>When these are set correctly, drag and drop will only work when the draggable object&#8217;s <code>effectAllowed</code> and the drop target&#8217;s <code>dropEffect</code> are compatible.  To illustrate this, let&#8217;s first change the <code>dragstart</code> and <code>dragover</code> events in example #4 to do the <code>copy</code> effect:</p>
+<blockquote class="code">
+<pre>   function dragStartEvent(e) {
+<span class="hilite">      e.dataTransfer.effectAllowed="copy";</span> 
+
+      e.dataTransfer.setData('Text',
+         sprintf('&lt;img src="%s" alt="%s" /&gt;&lt;br /&gt;&lt;p class="caption"&gt;%s&lt;/p&gt;',
+            this.src, this.alt, this.alt
+         )
+      );
+   }
+
+   function dragOverEvent(e) {
+<span class="hilite">      e.dataTransfer.dropEffect = "copy";</span>
+      EventHelpers.preventDefault(e);
+   }</pre>
+</blockquote>
+<p><a class="exampleLink" href="/tests/dragAndDrop/05-dataTransfer.html">Example #5: matching drag and drop effects</a></p>
+<p>Note that unlike <a href="/tests/dragAndDrop/04-setDataGetData.html">example #4</a>, the mouse pointer has changed from the copy icon (in Windows, <img class="alignnone size-full wp-image-616" title="Windows Copy Icon" src="http://www.useragentman.com/blog/wp-content/uploads/2010/01/copyWindows.gif" alt="[Windows Copy Icon]" width="23" height="32" />) to the move icon (<img class="alignnone size-full wp-image-615" title="Windows Move Icon" src="http://www.useragentman.com/blog/wp-content/uploads/2010/01/moveWindows.gif" alt="[Windows Move Icon]" width="13" height="27" />).</p>
+<p>Now let&#8217;s change the code so that the draggable object and the drop target don&#8217;t have matching effects:</p>
+<blockquote class="code">
+<pre>   function dragStartEvent(e) {
+<span class="hilite">      e.dataTransfer.effectAllowed="copy";</span> 
+
+      e.dataTransfer.setData('Text',
+         sprintf('&lt;img src="%s" alt="%s" /&gt;&lt;br /&gt;&lt;p class="caption"&gt;%s&lt;/p&gt;',
+            this.src, this.alt, this.alt
+         )
+      );
+   }
+
+   function dragOverEvent(e) {
+<span class="hilite">      e.dataTransfer.dropEffect = "move";</span>
+      EventHelpers.preventDefault(e);
+   }</pre>
+</blockquote>
+<p><a class="exampleLink" href="/tests/dragAndDrop/05a-dataTransferNoMatch.html">See Example #5a: unmatching drag and drop effects</a></p>
+<p>You&#8217;ll see that the user is not able to drop the image on the drop target.</p>
+<p><strong>Update (Jan 28, 2010):</strong>  There is a documented bug in Safari and Chrome for Windows where <a href="http://code.google.com/p/chromium/issues/detail?id=14654">drag and drop will not occur if <code>effectAllowed</code> and <code>dropEffect</code> are set to <code>move</code></a>.  This bug does not occur in the Mac editions of these browsers.  </p>
+</div>
+<h2>A More Complex Example</h2>
+<p>Let&#8217;s take all the information we have gathered and make a &#8220;real-world&#8221; script. Let&#8217;s say you were asked to create a &#8220;user entitlement&#8221; administration widget for a website.  The widget will have three entitlement catagories: &#8220;Unassigned Users&#8221;, &#8220;Restricted Users&#8221; (e.g. users who have restricted access to the website) and &#8220;Power Users&#8221; (e.g. users who would have administration access to a website):</p>
+<p><div id="attachment_684" style="width: 403px" class="wp-caption aligncenter"><img class="size-full wp-image-684" title="permissionFormScreenshot" src="http://www.useragentman.com/blog/wp-content/uploads/2010/01/permissionFormScreenshot1.png" alt="Screenshot of the user entitlement screen we want to implement" width="393" height="185" srcset="http://www.useragentman.com/blog/wp-content/uploads/2010/01/permissionFormScreenshot1.png 393w, http://www.useragentman.com/blog/wp-content/uploads/2010/01/permissionFormScreenshot1-300x141.png 300w" sizes="(max-width: 393px) 100vw, 393px" /><p class="wp-caption-text">Screenshot of the user entitlement screen we want to implement</p></div></p>
+<p>It should be rather easy for an administrator to drag and drop users back and forth between entitlement &#8220;buckets&#8221; in order to elevate or lower a users credentials.</p>
+<p>Let&#8217;s go through the steps we established above to implement this script.</p>
+<div class="steps">
+<h3>Step 1: Defining a Draggable Objects</h3>
+<p>First let&#8217;s take a look at the table in the HTML:</p>
+<blockquote class="code">
+<pre>&lt;table&gt;
+    &lt;thead&gt;
+        &lt;tr&gt;
+            &lt;th&gt;Unassigned Users&lt;/th&gt;
+            &lt;th&gt;Restricted Users&lt;/th&gt;
+            &lt;th&gt;Power Users&lt;/th&gt;
+        &lt;/tr&gt;
+    &lt;/thead&gt;
+
+    &lt;tbody&gt;
+        &lt;tr&gt;
+            &lt;td id="unassignedUsers"&gt;
+            	&lt;a href="#" draggable="true"&gt;Moe Howard&lt;/a&gt;
+		&lt;a href="#" draggable="true"&gt;Curly Howard&lt;/a&gt;
+		&lt;a href="#" draggable="true"&gt;Shemp Howard&lt;/a&gt;
+            	&lt;a href="#" draggable="true"&gt;Larry Fine&lt;/a&gt;
+	    &lt;/td&gt;
+
+            &lt;td id="restrictedUsers"&gt;
+            &lt;/td&gt;
+
+            &lt;td id="powerUsers"&gt;
+            &lt;/td&gt;
+        &lt;/tr&gt;
+    &lt;/tbody&gt;
+    &lt;tfoot&gt;
+	&lt;td id="unassignedUsersHelp"&gt;
+	  Drag a user from this list to another list to change the
+	  user's permissions.
+	&lt;/td&gt;
+	&lt;td id="restrictedUsersHelp"&gt;
+	  Dragging user here will give this user restricted
+	  permissions.
+	&lt;/td&gt;
+	&lt;td id="powerUsersHelp" &gt;
+	  Dragging a user here will give this user power user access.
+	&lt;/td&gt;
+    &lt;/tfoot&gt;
+&lt;/table&gt;</pre>
+</blockquote>
+<p>(Note that the contents in the <code>tfoot</code> node are hidden by CSS).</p>
+<h3>Step 2: Setting Events on the Draggable Objects</h3>
+<p>The &#8220;users&#8221; are draggable objects.  In the script, we find all these nodes using Dean Edwards&#8217; <a href="http://dean.edwards.name/my/cssQuery/">cssQuery</a> and  set <code>dragstart</code> and <code>dragend</code> event handlers on each of them (Note: cssQuery allows us to select nodes by CSS selector, similar to the built-in functionality inside jQuery).</p>
+<blockquote class="code">
+<pre>userNodes = cssQuery('[draggable=true]');
+for (var i=0; i&lt;userNodes.length; i++) {
+   EventHelpers.addEvent(userNodes[i], 'dragstart', userDragStartEvent);
+   EventHelpers.addEvent(userNodes[i], 'dragend', userDragEndEvent);
+}</pre>
+</blockquote>
+<p>It then keeps track of the current node being dragged in the object variable <code>currentlyDraggedNode</code> and makes that node transparent by making it a member of the <code>draggedUser</code> class, which the page&#8217;s stylesheet defines as transparent.</p>
+<blockquote class="code">
+<pre>function userDragStartEvent(e) {
+   currentlyDraggedNode = this;
+   currentlyDraggedNode.className = 'draggedUser';
+}</pre>
+</blockquote>
+<p>The <code>dragend</code> event removes the transparency of the <code>currentlyDraggedNode</code>:</p>
+<blockquote class="code">
+<pre>function userDragEndEvent(e) {
+   currentlyDraggedNode.className = '';
+}</pre>
+</blockquote>
+<h3>Step 3: Setting Events on the Target Objects</h3>
+<p>All the table cells in the <code>&lt;tbody&gt;</code> are drop targets, so we use cssQuery again to grab all those nodes and set the appropriate events.</p>
+<blockquote class="code">
+<pre>userListNodes = cssQuery('.userList');
+
+for (var i=0; i&lt;userListNodes.length; i++) {
+   var userListNode = userListNodes[i];
+   EventHelpers.addEvent(userListNode, 'dragover', cancel);
+   EventHelpers.addEvent(userListNode, 'dragleave', userDragLeaveListEvent);
+   EventHelpers.addEvent(userListNode, 'drop', userDropListEvent);
+   EventHelpers.addEvent(userListNode, 'dragenter', userDragOverListEvent);
+}</pre>
+</blockquote>
+<p>The most important event is the <code>drop</code> event handler.  This event handler takes the <code>currentlyDraggedNode</code>, removes it from its current table cell (using <code>removeChild()</code>) and  drops it into the drop target (using <code>appendChild()</code>).</p>
+<blockquote class="code">
+<pre>function setHelpVisibility(node, isVisible) {
+   var helpNodeId = node.id + "Help";
+   var helpNode = document.getElementById(helpNodeId);
+
+   if (isVisible) {
+      helpNode.className =  'showHelp';
+   } else {
+      helpNode.className =  '';
+   }
+}
+
+function userDropListEvent(e) {
+   currentlyDraggedNode.parentNode.removeChild(currentlyDraggedNode);
+   this.appendChild(currentlyDraggedNode);
+   setHelpVisibility(this, false);
+   userDragEndEvent(e);
+}</pre>
+</blockquote>
+<p>They show the contents of the table cell below it by making it a member of the class <code>showHelp</code>.  They also</p>
+<p>prevent the <code>dragover</code> default behaviour so that <code>drop</code> events will fire in the drop target.</p>
+<blockquote class="code">
+<pre>function userDragOverListEvent(e) {
+   setHelpVisibility(this, true);
+   EventHelpers.preventDefault(e);
+}</pre>
+</blockquote>
+<p>The <code>dragleave</code> re-hides the contents of the table cell below it.</p>
+<blockquote class="code">
+<pre>function userDragLeaveListEvent(e) {
+  setHelpVisibility(this, false);
+}</pre>
+</blockquote>
+<div id="_mcePaste" style="overflow: hidden; position: absolute; left: -10000px; top: 4921px; width: 1px; height: 1px;">
+<pre>function userDragEndEvent(e) {
+   currentlyDraggedNode.className = '';
+}</pre>
+</div>
+<h3>Steps 4 and 5</h3>
+<p>We do not actually pass any data between the draggable object and the drag target — when the <code>drop</code> event occurs, the draggable object is moved from one column to another without the need of any <code>dataTransfer</code> data.  The drag and drop effects were already handled in step 3, so we are all done.</p>
+<p><a class="exampleLink" href="/tests/dragAndDrop/permissionForm.html">See the above example in action</a></p>
+</div>
+<h2>Drag and Drop Between Frames</h2>
+<p>Using the above information, it is also possible to drag and drop objects between frames (this is something that I don&#8217;t think any old school drag and drop script can do).  I made an example below, and I leave it as an exercise to the reader to go through the code and figure out how it works.</p>
+<p><a class="exampleLink" href="/tests/dragAndDrop/05a-crossFrameSetData/">See the inter-frame drag and drop example in action</a></p>
+<h2>Cross-Browser Issues I Have Seen</h2>
+<p>These are the cross-browser issues I know of so far.  I will update this list with others I find in the future.</p>
+<ul>
+<li>in Firefox 3.5, a <code>dragleave</code> event will fire just before a <code>drop</code> event, which the other browsers don’t fire <code>dragleave</code> when dropping.</li>
+<li>the time that the draggable object’s <code>dragend</code> event fires and the time that the drag target’s <code>drop</code> event fires is not consistant among browsers. Safari and Chrome fire <code>dragend</code> first, while Firefox and Internet Explorer fire <code>drop</code> first.</li>
+<li>According to <a href="http://www.alertdebugging.com/drag-and-drop-bugs/">Francisco Tolmasky</a>, <a href="http://www.alertdebugging.com/drag-and-drop-bugs/"><code>setData()</code> cannot be called during drag events in Firefox</a>.  Hopefully this will be fixed in a future release of the browser.</li>
+<li><code>DragDropHelpers</code> implements a workaround for Explorer so it can drag <em>any</em> object around. However, I did not use this functionality in any of the examples because it exposes a problem with <a href="http://lists.apple.com/archives/web-dev/2009/Jul/msg00042.html">Safari not being able to drag an object correctly when the user initiates the drag on the text inside it</a>.  This problem doesn&#8217;t happen with text inside of links, but with text inside other nodes (like a <code>&lt;div&gt;</code> tag).  I understand this problem has been fixed in the Safari nightly builds, so I left the functionality in the DragDropHelpers library for future use.</li>
+<li>DragDropHelpers.js &#8220;fixes&#8221; the dragging visual cues in Explorer and Chrome by:
+<ul>
+<li>making a transparent and absolutely positioned clone of a draggable object when it&#8217;s <code>dragstart</code> event is fired</li>
+<li>moving the cloned object near the mouse when the <code>&lt;body&gt;</code>&#8216;s <code>drag</code> event is fired.</li>
+<li>destroying the clone when draggable object&#8217;s <code>dragend</code> event is fired.</li>
+</ul>
+<p>I didn&#8217;t turn it on by default because I am not sure when (or if) this problem will be fixed in Internet Explorer or Chrome.  I also doesn&#8217;t work well when dragging objects from one window or frame to another, since the cloned visual cue can&#8217;t jump from page to page.  Feel free to use it (or not) as you see fit.</li>
+<li>As mentioned previously, because of a <a href="http://code.google.com/p/chromium/issues/detail?id=14654">bug in Webkit</a>, drag and drop will not occur if <code>effectAllowed</code> and <code>dropEffect</code>  are set to <code>move</code> in Safari 4.0.4.  Hopefully this will be fixed in a future version of Webkit.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>HTML5 drag and drop will be an important part of our front-end toolkit.  Even though the flavors that browser-vendors offer today are incomplete, it is possible to smooth out these flaws to produce useful web applications.  What I have covered here only scratches the surface &#8211; there are more properties and methods that some of browsers offer that can be used to further enhance the drag and drop experience.   But I have been working on this blog entry way to long, and my wife is giving me that &#8220;what the hell are you doing up at this hour&#8221; look, so I think I&#8217;ll stop here for now.</p>
+<h2>Download</h2>
+<p><code>DragDropHelpers</code>, and all code used in this article can be downloaded below.</p>
+<p><a class="exampleLink" href="https://github.com/zoltan-dulac/DragDropHelpers">Download the Latest Version of DragDropHelpers.js from GitHub.</a></p>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" rel="category tag">Drag and Drop</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/html5/" rel="category tag">HTML5</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/javascript/" rel="category tag">JavaScript</a>  &middot; <a href="http://www.useragentman.com/blog/tag/drag/" rel="tag">drag</a>, <a href="http://www.useragentman.com/blog/tag/drag-and-drop/" rel="tag">Drag and Drop</a>, <a href="http://www.useragentman.com/blog/tag/dragend/" rel="tag">dragend</a>, <a href="http://www.useragentman.com/blog/tag/dragenter/" rel="tag">dragenter</a>, <a href="http://www.useragentman.com/blog/tag/draggable/" rel="tag">draggable</a>, <a href="http://www.useragentman.com/blog/tag/dragleave/" rel="tag">dragleave</a>, <a href="http://www.useragentman.com/blog/tag/dragover/" rel="tag">dragover</a>, <a href="http://www.useragentman.com/blog/tag/dragstart/" rel="tag">dragstart</a>, <a href="http://www.useragentman.com/blog/tag/drop/" rel="tag">drop</a>, <a href="http://www.useragentman.com/blog/tag/dropeffect/" rel="tag">dropEffect</a>, <a href="http://www.useragentman.com/blog/tag/effectallowed/" rel="tag">effectAllowed</a>, <a href="http://www.useragentman.com/blog/tag/getdata/" rel="tag">getData</a>, <a href="http://www.useragentman.com/blog/tag/html5-drag-and-drop/" rel="tag">html5 drag and drop</a>, <a href="http://www.useragentman.com/blog/tag/on/" rel="tag">on</a>, <a href="http://www.useragentman.com/blog/tag/ondragstart/" rel="tag">ondragstart</a>, <a href="http://www.useragentman.com/blog/tag/setdata/" rel="tag">setData</a></p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">68 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						<li class="comment   " id="comment-246 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-246" title="Permalink to this comment">1</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.thecssninja.com/'><img alt='' src='http://0.gravatar.com/avatar/67fb1d8747e218b319a9f61ff5a22d26?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/67fb1d8747e218b319a9f61ff5a22d26?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.thecssninja.com/' rel='external nofollow' class='url'>Ryan</a> </strong>
+				<span class="comment_time">// Jan 11, 2010 at 12:54 am</span>
+			</p>
+			<div class="entry">
+				<p>Nice write up. One thing that Firefox has that is very useful is their :-moz-drag-over pseudo-selector to give visual cues when a user drags over a potential drag drop target.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-247 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-247" title="Permalink to this comment">2</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 11, 2010 at 1:05 am</span>
+			</p>
+			<div class="entry">
+				<p>@ryan: Thanks for the info.  It would be useful to have a common way for dropTargets so they can be easily styled. </p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-254 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-254" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.thefourelements.de'><img alt='' src='http://1.gravatar.com/avatar/13f7e3521ed0bf85a61c9367d5d6feb2?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/13f7e3521ed0bf85a61c9367d5d6feb2?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.thefourelements.de' rel='external nofollow' class='url'>dave</a> </strong>
+				<span class="comment_time">// Jan 11, 2010 at 6:29 pm</span>
+			</p>
+			<div class="entry">
+				<p>Lots of really good information on the upcoming HTML 5 Drag and Drop feature. I&#8217;ll give it a try in my next project. I think it&#8217;s a powerful feature even though the browser support isn&#8217;t good yet.</p>
+<p>Keep up the good work and thanks for sharing.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-255 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-255" title="Permalink to this comment">4</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 11, 2010 at 6:42 pm</span>
+			</p>
+			<div class="entry">
+				<p>@dave: I was surprised on how much I could do today.  There is enough there to be useful &#8211; thought I can&#8217;t wait until the browsers support the <a href="http://www.appelsiini.net/2009/10/html5-drag-and-drop-multiple-file-upload" rel="nofollow">HTML5 File API</a> so we can do some really cool stuff with it.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-346 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-346" title="Permalink to this comment">5</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://kwizcom.com'><img alt='' src='http://1.gravatar.com/avatar/481b9275ba4669dd8e313e9c9a77f651?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/481b9275ba4669dd8e313e9c9a77f651?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://kwizcom.com' rel='external nofollow' class='url'>Anthony</a> </strong>
+				<span class="comment_time">// Jan 28, 2010 at 8:08 pm</span>
+			</p>
+			<div class="entry">
+				<p>Excellent post, zoltan! This is exactly what i am looking for. I hope this is enough for me to start my new DnD project for SharePoint. Really appreciate it!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-369 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-369" title="Permalink to this comment">6</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://blog.darkhax.com/'><img alt='' src='http://1.gravatar.com/avatar/48409ce1953c290351fcb875b20eccbb?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/48409ce1953c290351fcb875b20eccbb?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://blog.darkhax.com/' rel='external nofollow' class='url'>Daniel Huckstep</a> </strong>
+				<span class="comment_time">// Feb 2, 2010 at 4:24 pm</span>
+			</p>
+			<div class="entry">
+				<p>I think when you say &#8220;HTML5 Drag and Drop is supported in Firefox 3.5+, Chrome 3.0+, Safari 3.0+ and Internet Explorer 5.0.&#8221; you mean IE 8.0.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-370 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-370" title="Permalink to this comment">7</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/fc4668664eec8df01538e98622355c16?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/fc4668664eec8df01538e98622355c16?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>russbuelt </strong>
+				<span class="comment_time">// Feb 2, 2010 at 4:26 pm</span>
+			</p>
+			<div class="entry">
+				<p>Nice article!</p>
+<p>For some reason your examples do not work in Safari Version 4.0.4 (6531.21.10) or Webkit Nightly (6531.21.10, r53765) on OS X 10.6.2. Firefox 3.5.5 works fine. =)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-371 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-371" title="Permalink to this comment">8</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/0b47d304281d2b89e5e8a19e3506b32b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/0b47d304281d2b89e5e8a19e3506b32b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Brian </strong>
+				<span class="comment_time">// Feb 2, 2010 at 4:42 pm</span>
+			</p>
+			<div class="entry">
+				<p>I&#8217;m running Firefox 3.6 on Windows and don&#8217;t get the cloning effect &#8211; it&#8217;s behaving like Chrome / IE</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-377 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-377" title="Permalink to this comment">9</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://extraordinarythoughts.com/'><img alt='' src='http://2.gravatar.com/avatar/2bb2ea4f7ad500d77ea7c6495e46acc4?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/2bb2ea4f7ad500d77ea7c6495e46acc4?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://extraordinarythoughts.com/' rel='external nofollow' class='url'>Shawn K.</a> </strong>
+				<span class="comment_time">// Feb 2, 2010 at 11:03 pm</span>
+			</p>
+			<div class="entry">
+				<p>Very nice writeup, I hadn&#8217;t realized HTML5 added more event handlers.<br />
+This will be quite nice not having to manually code drag and drop events.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-378 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-378" title="Permalink to this comment">10</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Feb 2, 2010 at 11:57 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Daniel: You are not the only person who has said this to me.  I can understand why &#8211; it through me for a double take as well, but HTML5 Drag and Drop is based on Microsoft&#8217;s implementation included in IE a while back (Nicholas C. Zakas&#8217; article, <a href="http://www.webreference.com/programming/javascript/dragdropie/" rel="nofollow">Drag and Drop In Internet Explorer</a> dated October 23, 2002, describes it in detail). From what I understand, it was decided to use Microsoft&#8217;s model as a basis since it works already and developers wouldn&#8217;t have to wait for Microsoft to play catch up like they have to do with, say, CSS3 border-radius and box-shadow.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-379 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-379" title="Permalink to this comment">11</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Feb 3, 2010 at 12:05 am</span>
+			</p>
+			<div class="entry">
+				<p>@russbuelt: I know that there a bug in Safari and Chrome for Windows where drag and drop will not occur if <code>effectAllowed</code> and <code>dropEffect</code> are set to move. I see that the first example (i.e. the permission form with the names of the Three Stooges) doesn&#8217;t work in those browsers but the others (with the red box) do.  Are you seeing something different?  Please let me know if you have time, and thanks for noticing this.  </p>
+<p>I will fix the first example and repost tomorrow.</p>
+<p>Z.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-380 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-380" title="Permalink to this comment">12</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Feb 3, 2010 at 12:12 am</span>
+			</p>
+			<div class="entry">
+				<p>@Brian: Wow &#8230; that is interesting.  I am not seeing that with my copy of Firefox 3.6.  I am wondering if it has anything to do with the version of your OS or your version of DirectX, etc (I don&#8217;t know what it would be &#8230; I am just guessing here).  Any information that you, or anyone else with a similar problem, could share would be awesome.</p>
+<p>z</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-415 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-415" title="Permalink to this comment">14</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.phpgangsta.de'><img alt='' src='http://2.gravatar.com/avatar/539ce7165882106a7016e789dbfd3560?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/539ce7165882106a7016e789dbfd3560?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.phpgangsta.de' rel='external nofollow' class='url'>PHPGangsta</a> </strong>
+				<span class="comment_time">// Feb 7, 2010 at 6:28 pm</span>
+			</p>
+			<div class="entry">
+				<p>Whao, very long article with many many examples and Code, thank you very much for that information! I#M not a frontend guy, but I hope we get more intuitive websites in the future!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-629 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-629" title="Permalink to this comment">15</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://onlinebase.nl/'><img alt='' src='http://1.gravatar.com/avatar/196247b69a7a6a12b0d816c87dababc2?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/196247b69a7a6a12b0d816c87dababc2?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://onlinebase.nl/' rel='external nofollow' class='url'>Sebastiaan</a> </strong>
+				<span class="comment_time">// Mar 10, 2010 at 3:43 am</span>
+			</p>
+			<div class="entry">
+				<p>Unfortunately this doesn&#8217;t work for me in Opera 10.5 final on Win XP. Anyone else seeing this work on Opera?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-726 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-726" title="Permalink to this comment">16</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://johnbeales.com'><img alt='' src='http://1.gravatar.com/avatar/13035b4387b0de68c88e124c58fa40c2?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/13035b4387b0de68c88e124c58fa40c2?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://johnbeales.com' rel='external nofollow' class='url'>John B</a> </strong>
+				<span class="comment_time">// Mar 24, 2010 at 7:40 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi Zoltan!  I was feeling discouraged after reading PPK&#8217;s rant, but you&#8217;ve got an amazing resource here.</p>
+<p>I have discovered an issue.  Several of your examples don&#8217;t work in Chrome on OSX, (I&#8217;m running 5.0.307.11 on OSX 10.6.2).  Specifically, from Example #3 onwards, the drop event never fires.  However, I found that this can be fixed by making sure that effectAllowed and dropEffect are properly set.</p>
+<p>Also, the visual fix for IE &amp; Chrome doesn&#8217;t seem to be working for me, but I haven&#8217;t dived into why yet.</p>
+<p>Thanks again.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-729 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-729" title="Permalink to this comment">17</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Mar 24, 2010 at 3:24 pm</span>
+			</p>
+			<div class="entry">
+				<p>@John: Thanks for the info regarding Mac Chrome .. when writing the article, I was testing with version 4, which works as expected, but have confirmed 5 doesn&#8217;t. I will update this article after testing your suggestion. Thanks for the heads up :)</p>
+<p>As for ie not showing visual cues, i am currently not experiencing this. Could you let me know which version of IE you tested this on?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-731 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-731" title="Permalink to this comment">18</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://johnbeales.com'><img alt='' src='http://1.gravatar.com/avatar/13035b4387b0de68c88e124c58fa40c2?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/13035b4387b0de68c88e124c58fa40c2?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://johnbeales.com' rel='external nofollow' class='url'>John B</a> </strong>
+				<span class="comment_time">// Mar 24, 2010 at 4:43 pm</span>
+			</p>
+			<div class="entry">
+				<p>RE: IE &#8211; I *think* I was testing on IE7/XP Home, but I don&#8217;t remember 100%, I&#8217;ve had both that and my IE8/Vista Home Premium up &amp; running over the last couple of days.</p>
+<p>In Mac Chrome, (I haven&#8217;t tested Windows yet), I&#8217;ve discovered further issues.  It seems that the dragover and drop events are not firing unless the draggable object is an a tag with the href set, (IE-ish, no?).</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-1032 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1032" title="Permalink to this comment">19</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/720d0e59e7c7f91f303c7e22b57b948f?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/720d0e59e7c7f91f303c7e22b57b948f?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Ken Corey </strong>
+				<span class="comment_time">// Apr 21, 2010 at 7:54 am</span>
+			</p>
+			<div class="entry">
+				<p>Hiya,</p>
+<p>Just ran across this in a search to solve a problem I&#8217;m having.  I tried it out on Firefox, and all worked fine.</p>
+<p>I&#8217;m trying it out on Chrome 5.0.342.9 on WinXP SP3, and the visual feedback didn&#8217;t appear, so apparently on line 148 of DragDropHelpers.js, you might want to change the version comparison to be less than 6 rather than 5&#8230;</p>
+<p>Even worse, the drop events aren&#8217;t firing at all, which is a crying shame.  I haven&#8217;t dug into it enough to see what&#8217;s going on, but it looks like I&#8217;ll have to.  I *need* this to work.</p>
+<p>-Ken</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-1045 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1045" title="Permalink to this comment">20</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/720d0e59e7c7f91f303c7e22b57b948f?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/720d0e59e7c7f91f303c7e22b57b948f?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Ken Corey </strong>
+				<span class="comment_time">// Apr 22, 2010 at 4:51 am</span>
+			</p>
+			<div class="entry">
+				<p>Just a follow on for anyone coming after me&#8230;turns out that Chrome 5 has a default value of &#8216;uninitialized&#8217; and &#8216;none&#8217; for effectAllowed and dropEffect.  Change these (both) to &#8216;copy&#8217;, and the drop events are sent using Chrome.</p>
+<p>(Look in example #5 matched to see where to do that.)</p>
+<p>-Ken</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-1059 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1059" title="Permalink to this comment">21</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Apr 22, 2010 at 6:16 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Ken: thanks a mil for these &#8212; I will be updating DragAndDropHelpers.js with these changes very soon.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-2787 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2787" title="Permalink to this comment">23</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/5b0e1d0c2d222f36bbb9e5ccff6a0d38?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/5b0e1d0c2d222f36bbb9e5ccff6a0d38?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Shreyas Patel </strong>
+				<span class="comment_time">// Aug 6, 2010 at 12:33 pm</span>
+			</p>
+			<div class="entry">
+				<p>It&#8217;s Great Material Really</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-2865 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2865" title="Permalink to this comment">24</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/92ed40ec8e2e63096cd53a580b9e3418?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/92ed40ec8e2e63096cd53a580b9e3418?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Art4Med </strong>
+				<span class="comment_time">// Aug 27, 2010 at 8:56 pm</span>
+			</p>
+			<div class="entry">
+				<p>Transparency on FireFox works for Ubuntu Lucid (10.04)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-3332 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-3332" title="Permalink to this comment">25</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/6ed9a55069e239a6258d69c653f329ab?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/6ed9a55069e239a6258d69c653f329ab?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Salman K </strong>
+				<span class="comment_time">// Sep 8, 2010 at 5:00 am</span>
+			</p>
+			<div class="entry">
+				<p>Thank you so much for the info. Will prove immensely helpful to us in our efforts to get to grip with HTML5 DnD. Best,</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						<li class="comment   " id="comment-7955 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-7955" title="Permalink to this comment">28</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/fa37bd09380f9fff36eba96c2d207e60?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/fa37bd09380f9fff36eba96c2d207e60?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Santosh Kumar </strong>
+				<span class="comment_time">// Feb 7, 2011 at 4:50 am</span>
+			</p>
+			<div class="entry">
+				<p>Very good article, Really we all(developers) are very thankfull to you.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-9076 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-9076" title="Permalink to this comment">29</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/0ab74589473f130350a1e0b9fa128893?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/0ab74589473f130350a1e0b9fa128893?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>TH </strong>
+				<span class="comment_time">// Feb 27, 2011 at 11:15 am</span>
+			</p>
+			<div class="entry">
+				<p>I´m trying to load this script through ajax, instead after page load, but I´m stuck! Can someone please help me with this? Is there a function to call or how can this be solved?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-9111 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-9111" title="Permalink to this comment">30</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/4b8bd68b95f08da0c0a482f92a1cca07?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/4b8bd68b95f08da0c0a482f92a1cca07?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Commandrea </strong>
+				<span class="comment_time">// Feb 28, 2011 at 1:13 am</span>
+			</p>
+			<div class="entry">
+				<p>Super awesome script and educational to boot! IS there a way to drag something to a  point to remove it entirely? Out of the columns or out of the frames or even into a &#8216;trash can&#8217; of sort? I&#8217;m have a ton of fun playing around with this! Thanks!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-9138 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-9138" title="Permalink to this comment">31</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Feb 28, 2011 at 11:35 am</span>
+			</p>
+			<div class="entry">
+				<p>@TH: If you want to initialize DragDropHelpers.js after a page load, you must execute the <code>DragDropHelpers.init()</code> method.  Try that and let me know if it does/doesn&#8217;t work.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-9139 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-9139" title="Permalink to this comment">32</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Feb 28, 2011 at 11:45 am</span>
+			</p>
+			<div class="entry">
+				<p>@Commandrea: Glad you like this &#8212; I will be making a follow up post soon with more things I have discovered about HTML5 Drag and Drop.  To answer your question, yes, it is quite possible.  You would have to do a <a href="http://javascript.about.com/library/bldom09.htm" rel="nofollow"><code>removeChild()</code></a> on the parent node of the object you are dragging when the <code>drop</code> event is fired.  I do this on the &#8220;permissions form&#8221; example, except I also place it in the drop target by using its <code>appendChild()</code>.    If you just want it to disappear, don&#8217;t use <code>appendChild()</code> and you are done.  Take a look in the <code>permissionsForm.js</code> script&#8217;s <code>userDropListEvent()</code> method and you&#8217;ll see what I mean.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-9155 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-9155" title="Permalink to this comment">33</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/0ab74589473f130350a1e0b9fa128893?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/0ab74589473f130350a1e0b9fa128893?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>TH </strong>
+				<span class="comment_time">// Feb 28, 2011 at 3:58 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thanks for your quick response! I´ve tried to execute DragDropHelpers.init() after xmlHttp.readyState==4, but with no luck. Any other suggestion on how to solve this?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-9374 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-9374" title="Permalink to this comment">34</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/15423feceb5f15bb1286129ac580cb82?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/15423feceb5f15bb1286129ac580cb82?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Viktor </strong>
+				<span class="comment_time">// Mar 3, 2011 at 6:45 pm</span>
+			</p>
+			<div class="entry">
+				<p>The best article that I found so far about drag and drop! It saved me tons of time. Thank you very much, Zoltan!</p>
+<p>I have a couple of additional questions and suspect the answers, but would be very grateful if someone can help me to clarify them.</p>
+<p>1) How to drag/drop multiple elements? </p>
+<p>My application has a way to mark multiple elements as selected. One possible approach is to set &#8220;draggable&#8221; to &#8220;true&#8221; on an element when it is selected and set to &#8220;false&#8221; when it is unselected. When drag operation is started on one of the selected elements the &#8220;ondragstart&#8221; callback may find all other selected elements and attach them to a transfer object. After that everything should be similar to what was described with some minor changes. Is it the right way to support dragging of multiple selections?</p>
+<p>2) How to start drag/drop programmatically?</p>
+<p>All samples assume that drag is started automatically when mouse is clicked down. What to do if drag/drop was initiated in applet or Flex component on a page and target is in HTML part of the page? How to inform the HTML part of the page that the drag operation is in progress? With having API to start drag/drop I can at least see how I can work around.</p>
+<p>-Viktor</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-9518 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-9518" title="Permalink to this comment">35</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Mar 5, 2011 at 3:43 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Viktor: I have never thought about dragging multiple selections, so my immediate answer is &#8220;I don&#8217;t know&#8221;. However,  I will be writing a follow up for this article soon (there are a few more interesting bits that I have discovered &#8212; I just need to write them down when I have a few moments), so I&#8217;ll experiment with this usecase and post my findings in a future article.  Thanks for the great idea!</p>
+<p>As for the drag/drop programatially: it would definitely be worth exploring to see if one could do that by calling <code>dispatchEvent()</code>/<code>fireEvent()</code> using the drag events.  Another great idea to look into.</p>
+<p>If you (or anyone else) finds the answers to these issues before I do, please post something here &#8212; I would definitely be interested in knowing what others find out here.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-10679 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10679" title="Permalink to this comment">36</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/648f6a119cd143db1c9a938abf6e8454?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/648f6a119cd143db1c9a938abf6e8454?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Jeroen </strong>
+				<span class="comment_time">// Mar 29, 2011 at 6:36 pm</span>
+			</p>
+			<div class="entry">
+				<p>Excellent post! Thanks so much.</p>
+<p>It appears that firefox has some interesting bugs (on mac, running 3.6).<br />
+For instance, a div draggable=true doesn&#8217;t give you a drag image unless a draggable item precedes it in the layout. That could be an image, a link or some form element such as an input.<br />
+Another funny thing: if you don&#8217;t allow a drop (so don&#8217;t prevent the default in the drag event), FF doesn&#8217;t fire dragleave on the drop target until you start dragging the drag object again. So if you style the drop target ondragenter, and undo that styling ondragleave, the styling is only removed when you drag again.<br />
+I should post them to mozilla, but I haven&#8217;t completely figured out yet when these bugs do or don&#8217;t appear.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-10680 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10680" title="Permalink to this comment">37</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Mar 29, 2011 at 7:56 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Jeroen: interesting! Would you happen to have some examples of these situations that you can post on a web server someplace? I&#8217;d love to see!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-10708 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10708" title="Permalink to this comment">38</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/891077a8130caa647575e57827275a9c?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/891077a8130caa647575e57827275a9c?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Daniel M </strong>
+				<span class="comment_time">// Mar 30, 2011 at 4:15 pm</span>
+			</p>
+			<div class="entry">
+				<p>Does IE9 support HTML5 Drag and Drop?<br />
+What about Firefox 4.0?</p>
+<p>You still working on a follow up article?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-10718 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10718" title="Permalink to this comment">39</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Mar 30, 2011 at 11:44 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Daniel: IE9 does support Drag and Drop.  So does Firefox 4.0.  And yes, I&#8217;ll be writing a follow up article.  I have three on the back-burner right now, but since you are asking I&#8217;ll speed that one up a bit :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-11038 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11038" title="Permalink to this comment">40</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/648f6a119cd143db1c9a938abf6e8454?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/648f6a119cd143db1c9a938abf6e8454?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Jeroen </strong>
+				<span class="comment_time">// Apr 7, 2011 at 7:01 am</span>
+			</p>
+			<div class="entry">
+				<p>Zoltan,<br />
+I put up an example on <a href="http://www.marritsnel.nl/dragdrop.html" rel="nofollow">http://www.marritsnel.nl/dragdrop.html</a>.<br />
+First test: drag the blue square. On FF 3.6 (mac) I don&#8217;t get a drag image. In the source I put some examples of elements that enable the drag image, if they are present. So download the example and check for yourself. Maybe you get it working without those images (that is, if you reproduce it).<br />
+Second test: drag the blue square over the red drop zone. This dropzone gets a blue border due to a class that&#8217;s set ondragenter. Then drop. The blue border remains. Then drag again. The blue border goes. This happens ondragleave. So that event is not fired correctly.</p>
+<p>Again, this is FF 3.6 mac. Haven&#8217;t tested windows or the nightlies yet. Safari/Chrome on the mac don&#8217;t exhibit this behaviour.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-11039 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11039" title="Permalink to this comment">41</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/648f6a119cd143db1c9a938abf6e8454?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/648f6a119cd143db1c9a938abf6e8454?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Jeroen </strong>
+				<span class="comment_time">// Apr 7, 2011 at 7:09 am</span>
+			</p>
+			<div class="entry">
+				<p>Well, don&#8217;t worry about that bug: I just downloaded FF 4 and both bugs are solved there.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-11225 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11225" title="Permalink to this comment">42</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.mausner.us'><img alt='' src='http://2.gravatar.com/avatar/be462ebd8918cfce2727283bea8631d2?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/be462ebd8918cfce2727283bea8631d2?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.mausner.us' rel='external nofollow' class='url'>TheAce</a> </strong>
+				<span class="comment_time">// Apr 11, 2011 at 4:20 pm</span>
+			</p>
+			<div class="entry">
+				<p>In your excellent DragDropHelper.js, function doesShowVisualCues, the test for browser version regexp should probably be modified to /Chrome\/[0-9]*\.[0-9]*/ because the Chrome version is displayed as 10.0; the regexp assumes single digit version.  Small stuff.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-11248 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11248" title="Permalink to this comment">43</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.royalcomics.com'><img alt='' src='http://2.gravatar.com/avatar/84480ace13521ac89b4a460f70143e26?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/84480ace13521ac89b4a460f70143e26?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.royalcomics.com' rel='external nofollow' class='url'>Timo</a> </strong>
+				<span class="comment_time">// Apr 12, 2011 at 5:34 am</span>
+			</p>
+			<div class="entry">
+				<p>I have tested many Drag and Drop libraries and none of them has support for transformations. DragDropHelpers has the same problem. I made an example of this behavior: <a href="http://www.royalcomics.org/puhekupla/DragDropHelpers-1.0a/tests/dragAndDrop/05-dataTransfer.html" rel="nofollow">http://www.royalcomics.org/puhekupla/DragDropHelpers-1.0a/tests/dragAndDrop/05-dataTransfer.html</a></p>
+<p>Is it possible to preserve transformations?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-11362 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11362" title="Permalink to this comment">44</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Apr 15, 2011 at 9:54 am</span>
+			</p>
+			<div class="entry">
+				<p>Thanks for your feedback.  I am actually in the middle of updating DragDropHelpers.js and will include your fix (or an equivalent improvement) very soon.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-12627 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-12627" title="Permalink to this comment">45</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/448ec6382a40bd23b3243de3cc856cb8?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/448ec6382a40bd23b3243de3cc856cb8?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Ralph </strong>
+				<span class="comment_time">// May 25, 2011 at 4:24 am</span>
+			</p>
+			<div class="entry">
+				<p>Great stuff! It was very usefull for me.</p>
+<p>Cheerz</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-15057 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-15057" title="Permalink to this comment">46</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://hostel6.ru'><img alt='' src='http://1.gravatar.com/avatar/7ca81e31b0f3122eb71b1ef9fbaaa9cc?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/7ca81e31b0f3122eb71b1ef9fbaaa9cc?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://hostel6.ru' rel='external nofollow' class='url'>Yaffle</a> </strong>
+				<span class="comment_time">// Jul 11, 2011 at 11:39 am</span>
+			</p>
+			<div class="entry">
+				<p>I create a polyfill for Opera to support basic HTML5 drag and drop, </p>
+<p><a href="https://github.com/Yaffle/polyfills/tree/master/dragAndDrop" rel="nofollow">https://github.com/Yaffle/polyfills/tree/master/dragAndDrop</a></p>
+<p>may be it will be interesting to somebody.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-15114 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-15114" title="Permalink to this comment">47</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jul 12, 2011 at 10:25 am</span>
+			</p>
+			<div class="entry">
+				<p>Thanks for posting this!  I will be looking at this with great interest to see how it can integrate with my examples.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-15309 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-15309" title="Permalink to this comment">48</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/b6ae3926bc944923e6c4cfaf06634ad4?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b6ae3926bc944923e6c4cfaf06634ad4?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>sofpy </strong>
+				<span class="comment_time">// Jul 15, 2011 at 10:33 am</span>
+			</p>
+			<div class="entry">
+				<p>Great article!!life saver!!I do have a question, i can&#8217;t get the draggable element to drop just a copy of it and keep the original on its place. How do you do that in the 4th example??</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-15338 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-15338" title="Permalink to this comment">49</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jul 15, 2011 at 4:14 pm</span>
+			</p>
+			<div class="entry">
+				<p>@sofpy: If you look at the code above the &#8220;Example #4&#8221; link, you will see that in the <code>dragstart</code> event, I call <code>e.dataTransfer.setData('Text', html)</code> where <code>html</code> is the HTML of the image I am dragging.  This data is saved into memory so that when the object is dropped, it can be accessed by calling <code>e.dataTransfer.getData('Text')</code> in the <code>drop</code> event.</p>
+<p>I hope that makes sense.  Please feel free to email me at the email address in the top sidenav if you would like to ask more detailed questions.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-17595 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-17595" title="Permalink to this comment">50</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/b77d0ba1ef674328542f67547ba083ce?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b77d0ba1ef674328542f67547ba083ce?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Terese Wahlstrom </strong>
+				<span class="comment_time">// Aug 27, 2011 at 12:09 pm</span>
+			</p>
+			<div class="entry">
+				<p>Hi,<br />
+Great article. I happened to notice that in test 1a the red box didn&#8217;t clone, in the 1b however it did in internet explorer. It&#8217;s that due to the cue-fix or are there any thing I&#8217;ve missed?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-17884 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-17884" title="Permalink to this comment">51</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Sep 2, 2011 at 8:06 am</span>
+			</p>
+			<div class="entry">
+				<p>@Terese:  could you let me know which browser you were using when it didn&#8217;t clone?  It may be a bug my script has with one of the newer versions of the current web browsers. It has been more than a year since I posted this article, and I would very much like to keep it up to date.  </p>
+<p>Thanks in advance!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-19346 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-19346" title="Permalink to this comment">53</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/d438e2773bb4b1f703ddbada91f0fa2a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/d438e2773bb4b1f703ddbada91f0fa2a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>cypherljk </strong>
+				<span class="comment_time">// Sep 22, 2011 at 3:52 pm</span>
+			</p>
+			<div class="entry">
+				<p>Hello,</p>
+<p>Excellent article.  I was looking at this article and one other for drag and drop information.  I have implemented this in an ASP / C# page and came across an issue. I have an update panel and I am dragging the contents from on panel to another.  When the initial container panel is updated the images &#8216;loose&#8217; their draggability.  I solve this by calling &#8216;DragDropHelpers.init()&#8217; and it allows me to drag an image however as soon as I drag the image it goes to the &#8216;no move&#8217; icon as if there is not a drop target when there is.  If I do not update the panel it is fine.  Any thoughts?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-19348 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-19348" title="Permalink to this comment">54</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/d438e2773bb4b1f703ddbada91f0fa2a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/d438e2773bb4b1f703ddbada91f0fa2a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>cypherljk </strong>
+				<span class="comment_time">// Sep 22, 2011 at 4:07 pm</span>
+			</p>
+			<div class="entry">
+				<p>p.s. I actually had to comment out the line in DragDropHelper.init() where it checks if the pageload has happened and returns to get it to work to the point where it is now.</p>
+<p>Thx</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-20402 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-20402" title="Permalink to this comment">55</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/d9b1ab9cb2c7c6d4a3a7644edc5ffbf5?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/d9b1ab9cb2c7c6d4a3a7644edc5ffbf5?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>joubin </strong>
+				<span class="comment_time">// Oct 5, 2011 at 5:43 pm</span>
+			</p>
+			<div class="entry">
+				<p>Great write up. Exactly what I needed. Can someone tell me how to pass the location of the user to mySQL db. via PHP preferably.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-20992 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-20992" title="Permalink to this comment">56</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Oct 12, 2011 at 7:33 pm</span>
+			</p>
+			<div class="entry">
+				<p>@joubin: I would have a hidden form on the page that would be populated with the right data on a drop event.  That would be the most straightforward way to do this.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-24858 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-24858" title="Permalink to this comment">57</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/4b04a51a5c57224734811a976f3e559f?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/4b04a51a5c57224734811a976f3e559f?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Flo </strong>
+				<span class="comment_time">// Nov 22, 2011 at 5:59 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi, and thank you for your very good tuto !<br />
+I had to make drag&amp;drop with prototype, but I think it will be easier and faster to works with html5.<br />
+For my work, I make a JS class with resizables Divs, and I need to include Drag&amp;Drop option for Divs.<br />
+You say that we couldn&#8217;t use htlm5 for Divs, is-there any option or update about that, or it&#8217;s really really only &lt;a&gt; and &lt;img&gt; ?</p>
+<p>And again, thanks for tuto !<br />
+Florent.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-29865 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-29865" title="Permalink to this comment">58</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://alanselvam.blogspot.com/'><img alt='' src='http://2.gravatar.com/avatar/b518f1defc55c597dcc8cf43ab5083e1?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b518f1defc55c597dcc8cf43ab5083e1?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://alanselvam.blogspot.com/' rel='external nofollow' class='url'>alanselvam</a> </strong>
+				<span class="comment_time">// Jan 2, 2012 at 4:22 am</span>
+			</p>
+			<div class="entry">
+				<p>superb article.. really helps to me. thx</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-45341 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-45341" title="Permalink to this comment">59</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/6de15d4d793a263db2ed0f0aa1c17dca?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/6de15d4d793a263db2ed0f0aa1c17dca?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>mgs227 </strong>
+				<span class="comment_time">// May 2, 2012 at 8:49 pm</span>
+			</p>
+			<div class="entry">
+				<p>This is great&#8230; Is there a way for the source to also be a target and the target also be a source? I want to drag items from one list to the other. and back again &#8211; if needed, and also move items within a list &#8211; to change order&#8230;</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-46143 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-46143" title="Permalink to this comment">60</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 8, 2012 at 10:40 pm</span>
+			</p>
+			<div class="entry">
+				<p>@msg227: I am almost positive you can do that.  If you try it and it doesn&#8217;t work, let me know.  I&#8217;d be very interested to see why not.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-78543 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-78543" title="Permalink to this comment">61</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/063d66bed476e70b556214cb2749b7e9?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/063d66bed476e70b556214cb2749b7e9?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>onur </strong>
+				<span class="comment_time">// Nov 3, 2012 at 9:06 am</span>
+			</p>
+			<div class="entry">
+				<p>How can i use 3 drop box and how can it show these elements alt information?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-78945 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-78945" title="Permalink to this comment">62</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 4, 2012 at 12:16 pm</span>
+			</p>
+			<div class="entry">
+				<p>@onur: Please send me an email at the address in the left nav on the top of the screen with details about what you mean. I&#8217;d love to help out but I need more information.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-93559 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-93559" title="Permalink to this comment">63</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/caf5889483f30882813c660584280d40?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/caf5889483f30882813c660584280d40?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>John </strong>
+				<span class="comment_time">// Dec 11, 2012 at 8:45 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thank you so much for this tutorial. I really learned a lot. I&#8217;m sure I&#8217;ll be asking questions as I work this into my brain, but for now, do you have a DONATE button anywhere. I&#8217;d love to contribute to your Christmas.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-93834 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-93834" title="Permalink to this comment">64</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Dec 12, 2012 at 3:56 pm</span>
+			</p>
+			<div class="entry">
+				<p>@John: I keep going back and forth on having a donate button.  I don&#8217;t want people to feel obligated to donate, but if people really want to, it would be nice to help pay the ISP bills.  I&#8217;ll get back to you &#8230; thanks for the kind words.  :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-98871 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-98871" title="Permalink to this comment">65</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/489b05ab348098046ca8e5e81ac0093c?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/489b05ab348098046ca8e5e81ac0093c?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>joe </strong>
+				<span class="comment_time">// Jan 2, 2013 at 1:15 pm</span>
+			</p>
+			<div class="entry">
+				<p>hi zoltan, i spent a lot of time through internet browsing for a good article explaining in an easy way drag and drop with html5. there are a lot of tutorials out there with either calling jQuery or Yahoo framework or the provided examples or code is oversized.<br />
+so after 40 articles i can tell you for sure, that it was awesome explained and very helpful for me as well &#8211; so thank you for spending time write this article :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-117071 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-117071" title="Permalink to this comment">66</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/f199573054574e8384d02ea3d7c8964a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f199573054574e8384d02ea3d7c8964a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Naeem </strong>
+				<span class="comment_time">// Mar 14, 2013 at 6:40 am</span>
+			</p>
+			<div class="entry">
+				<p>Great article.</p>
+<p>It was my second day on HTML5 DnD, and it helped me a lot to complete the implementation :)</p>
+<p>Thanks man</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-140534 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-140534" title="Permalink to this comment">67</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/936538728d909cd6fe96d54c8167c94a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/936538728d909cd6fe96d54c8167c94a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>pdpdizon </strong>
+				<span class="comment_time">// May 28, 2013 at 7:27 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi Zoltan, I made a derivative work based on your source code. I discussed it here: <a href="http://webdesignforcsmajors.wordpress.com/2013/05/28/html5-fun-with-drag-and-drop/" rel="nofollow">http://webdesignforcsmajors.wordpress.com/2013/05/28/html5-fun-with-drag-and-drop/</a> . If you determine that you haven&#8217;t been credited properly, let me know so I can give you proper mention. Thanks!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-145771 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-145771" title="Permalink to this comment">68</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jun 16, 2013 at 12:41 pm</span>
+			</p>
+			<div class="entry">
+				<p>@pdpdizon: Looks great! Thanks for the shout out!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="734" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="4673d5add0" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

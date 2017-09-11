@@ -1,0 +1,1939 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive post-2339" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Installing Cygwin and FontForge for Windows </title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><script src="//code.jquery.com/jquery-1.10.2.js"></script>	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<link type="text/css" rel="stylesheet" media="screen" href="/css/2339.css" /><!-- ID is 2339 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Installing Cygwin and FontForge for Windows Comments Feed" href="http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Converting @font-face Fonts Quickly In Any OS' href='http://www.useragentman.com/blog/2011/02/20/converting-font-face-fonts-quickly-in-any-os/' />
+<link rel='next' title='Pixel Perfect CSS3 border-image In Depth.' href='http://www.useragentman.com/blog/2011/03/29/pixel-perfect-css3-border-image-in-depth/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/" />
+<link rel='shortlink' href='http://useragentman.com/blog/Ug5LF' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2011%2F02%2F27%2Finstalling-cygwin-and-fontforge-for-windows%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2011%2F02%2F27%2Finstalling-cygwin-and-fontforge-for-windows%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2011/02/20/converting-font-face-fonts-quickly-in-any-os/" rel="prev">Converting @font-face Fonts Quickly In Any OS</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2011/03/29/pixel-perfect-css3-border-image-in-depth/" rel="next">Pixel Perfect CSS3 <code>border-image</code> In Depth.</a> &raquo;</span>
+</div>
+
+
+			<h1>Installing Cygwin and FontForge for Windows</h1>
+			<h4 class="meta">February 27th, 2011 by zoltan &middot; <a href="http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/#comments">50 Comments</a></h4>
+			<div class="entry">
+				<div class="importantNotes">
+<h3>Notes:</h3>
+<ul>
+<li>Since this article has been written, Fontforge has <a href="http://fontforge.github.io/en-US/downloads/windows/">an official Windows port</a> that runs without the need of Cygwin.  If you (like most end users) don&#8217;t care if FontForge is not compiled with Cygwin support, then the official port is the simpler and easier option to use.</li>
+<li>This post is a companion to my article on <a href="http://www.useragentman.com/blog/?p=2275">Converting @font-face Fonts Quickly In Any OS</a>.</li>
+<li><strong>Update &mdash; May 29, 2012:</strong> <a href="http://www.mpetroff.net">Matthew Petroff</a> has created an <a href="http://www.mpetroff.net/software/fontforge-windows/">unofficial Windows installer for FontForge</a>.  I will be testing this package in the next little while to see how well it can be used with @font-face conversion script, but as a standalone desktop application, it seems to work really well! :-)</li>
+<li><strong>Updated May 12, 2012</strong> to reflect small changes to the installation procedure (thanks to &#8220;Shanna&#8221; for information that helped find the solution).</li>
+</div>
+<p><div id="attachment_2517" style="width: 260px" class="wp-caption alignleft"><a href="http://www.useragentman.com/blog/wp-content/uploads/2011/02/fontforge.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/02/fontforge.png" alt="" title="fontforge" width="250" height="141" class="size-full wp-image-2517" /></a><p class="wp-caption-text">FontForge is a great font editor, but it can be a pain to install for Windows users. Hopefully this article will help you.</p></div> FontForge, as far as I can tell, is the best free font editing and conversion tool available for all operating systems.  Web developers edit images and photographs with tools like The Gimp and Photoshop, so why can&#8217;t we edit fonts?  The problem is FontForge was originally a UNIX X-Windows application, and the average user may have difficulty getting it to work under Windows. Since a lot of web designers out there may not be familiar with UNIX command shells and Cygwin, I have written this blog post to help.  If you find any errors, please let me know in the comments section below &mdash; I do want to make this as easy and as painless as I possibly can. </p>
+<h2>Step 1: Install Cygwin</h2>
+<p>First thing you must do in order to run FontForge under Windows is to install Cygwin.  Cygwin is a way to allow programs that run under the Linux Operating System to compile under Windows.  <strong>Do not worry &#8230; we are not going to compile any source code.</strong> FontForge has already been compiled under Cygwin and has been packaged up so that end users don&#8217;t have to.  But in order to use it, you must install Cygwin first:</p>
+
+<p>Cygwin has a nice setup program that downloads and
+        installs the necessary Cygwin packages for you.</p>
+
+        <ol type="1">
+            <li>
+                <p>Open the Cygwin, <a href="http://cygwin.com/"
+                target="_top">http://cygwin.com/</a> page in your
+                web browser</p>
+            </li>
+
+            <li>
+                <p>Click on the <a href=
+                "http://cygwin.com/setup.exe" target=
+                "_top">&#13;<span class=
+                "QUOTE">"setup.exe"</span></a> link. This link
+                downloads <tt class="filename">setup.exe</tt> from
+                the primary Cygwin server; save <tt class=
+                "filename">setup.exe</tt> to the directory that you
+                would like to store the downloaded packages in
+                (e.g. <tt class="filename">c:\download</tt>); do
+                not save <tt class="filename">setup.exe</tt> to <tt
+                class="filename">c:\cygwin</tt>, as that is the
+                default directory for the extraction and
+                installation of the downloaded packages.</p>
+            </li>
+
+            <li>
+                <p>Run <tt class="filename">setup.exe</tt>, you
+                will see the welcome screen:</p>
+
+                <div class="mediaobject">
+                    <p><img alt="" src=
+                    "/blog/wp-content/uploads/2011/02/cyi01welcome.png"></p>
+                </div>
+            </li>
+
+            <li>
+                <p>Click <span class="guibutton">Next</span> to
+                proceed to the next screen.</p>
+            </li>
+
+            <li>
+                <p>Choose, <span class="guilabel">Install from
+                Internet</span>, this will still save the package
+                files to your download directory so that you can
+                install Cygwin on any number of machines:</p>
+
+                <div class="mediaobject">
+                    <p><img alt="" src=
+                    "/blog/wp-content/uploads/2011/02/cyi02installoption.png"></p>
+                </div>
+            </li>
+
+            <li>
+                <p>Click <span class="guibutton">Next</span> to
+                proceed to the next screen.</p>
+            </li>
+
+            <li>
+                <p>The default <span class="guilabel">Install
+                Root</span> is <tt class="filename">c:\cygwin</tt>
+                which should be fine for most installations. Leave
+                <span class="guilabel">Default Text File
+                Type</span> as <acronym class=
+                "acronym">UNIX</acronym>. Leave <span class=
+                "guilabel">Install For</span> set to <span class=
+                "guilabel">All</span> unless you lack local
+                administrative privileges.</p>
+
+                <div class="mediaobject">
+                    <p><img alt="" src=
+                    "/blog/wp-content/uploads/2011/02/cyi03installto.png"></p>
+                </div>
+            </li>
+
+            <li>
+                <p>Click <span class="guibutton">Next</span> to
+                proceed to the next screen.</p>
+            </li>
+
+            <li>
+                <p><span class="guilabel">Local Package
+                Directory</span> should default to the directory
+                that you ran <tt class="filename">setup.exe</tt>
+                from:</p>
+
+                <div class="mediaobject">
+                    <p><img alt="" src=
+                    "/blog/wp-content/uploads/2011/02/cyi04directory.png"></p>
+                </div>
+            </li>
+
+            <li>
+                <p>Click <span class="guibutton">Next</span> to
+                proceed to the next screen.</p>
+            </li>
+
+            <li>
+                <p>Choose your proxy setup, or, just choose <span
+                class="guilabel">Direct Connection</span> if no
+                proxy is needed:</p>
+
+                <div class="mediaobject">
+                    <p><img alt="" src=
+                    "/blog/wp-content/uploads/2011/02/cyi05proxy.png"></p>
+                </div>
+            </li>
+
+            <li>
+                <p>Click <span class="guibutton">Next</span> to
+                proceed to the next screen.</p>
+            </li>
+
+            <li>
+                <p>Select your nearest mirror for downloading:</p>
+
+                <div class="mediaobject">
+                    <p><img alt="" src=
+                    "/blog/wp-content/uploads/2011/02/cyi06mirror.png"></p>
+                </div>
+            </li>
+
+            <li>
+                <p>Click <span class="guibutton">Next</span> to
+                proceed to the next screen; setup will download a
+                list of available packages as it moves to the next
+                screen.</p>
+            </li>
+
+            <li>
+                <p>On the next screen you will select the packages
+                that will be downloaded and installed. A listing of
+                the packages you will need is given below (This list has been updated as for May 11, 2012 thanks to Shanna's troubleshooting questions in the comments below):</p>
+
+                <ul>
+                <li>Under the <strong><tt class=
+                "literal">X11</tt></strong> category, install:</li>
+
+                <ul type="a">
+
+                <li>
+                        <p><tt class=
+                        "filename">X-start-menu-icons</tt>
+                        (optional but recommended, adds icons for X Clients to the
+                        Start menu)</p>
+                    </li>
+                    
+                    <li>
+                        <p><tt class="filename">xinit</tt>
+                        (required, scripts for starting the X
+                        server: <b class="command">xinit</b>, <b
+                        class="command">startx</b>, <b class=
+                        "command">startwin</b> (and a shortcut on
+                        the Start Menu to run it), <b class=
+                        "command">startxdmcp.bat</b> )</p>
+                    </li>
+
+                    <li>
+                        <p><tt class="filename">xorg-docs</tt>
+                        (optional, <b class="command">man</b>
+                        pages)</p>
+                    </li>
+
+                    <li>
+                        <p><tt class="filename">xorg-server</tt>
+                        (required, the Cygwin/X X Server)</p>
+                    </li>
+
+                    <li>
+                        <p><tt class="filename">libcairo2</tt></p>
+                    </li>
+                    <li>
+                        <p><tt class="filename">libXi6</tt></p>
+                    </li>
+                    <li>
+                        <p><tt class="filename">libXi-devel</tt></p>
+                    </li>
+<!--
+                    <li>
+                        <p>You may also want to ensure that the <tt
+                        class="literal">inetutils</tt> or <tt
+                        class="literal">openssh</tt> packages are
+                        selected if you wish to use <b class=
+                        "command">telnet</b> or <b class=
+                        "command">ssh</b> connections to run remote
+                        X clients.</p>
+                    </li>
+-->
+                </ul>
+               </li>
+               <li>Under the <strong>Gnome</strong> catagory, install the <code>libxml2</code> and <code>libpango1.0_0</code> packages.</li>
+               <li>Under the <strong>Graphics</strong> catagory, install the <code>giflib</code>, <code>libpng</code>, <code>jpeg</code> and <code>libtiff</code> packages (the latest non-beta version of <code>libtiff</code> at the time of this writing is <code>libtiff5</code>)</li>
+               <li>Under <strong>Editors</strong>, install <code>vim</code>.</li>
+               <li>Under <strong>Web</strong>, instal <code>wget</code></li>
+               <li>Finally, install <code>rxvt</code> in the <strong>Shells</strong> category (just <code>rxvt</code>, not any of the <code>rxvt-unicode-*</code> packages)</li>
+            </ul>
+
+
+                <div class="mediaobject">
+                    <p><img alt="" src=
+                    "/blog/wp-content/uploads/2011/02/cyi07packages.png"></p>
+                </div>
+            </li>
+
+            <li>
+                <p>Click <span class="guibutton">Next</span> to
+                begin the download process, you may want to try
+                another mirror if you see a <span class=
+                "QUOTE">"Connecting"</span> message on this screen
+                for a long period of time:</p>
+
+                <div class="mediaobject">
+                    <p><img alt="" src=
+                    "/blog/wp-content/uploads/2011/02/cyi08downloading.png"></p>
+                </div>
+            </li>
+
+            <li>
+                <p>After the packages are downloaded, setup will
+                automatically begin to install them:</p>
+
+                <div class="mediaobject">
+                    <p><img alt="" src=
+                    "/blog/wp-content/uploads/2011/02/cyi09installing.png"></p>
+                </div>
+            </li>
+
+            <li>
+                <p>I highly recommend allowing Cygwin Setup to
+                create Desktop and Start Menu icons for you; these
+                icons simply launch a <span class=
+                "application">bash</span> shell:</p>
+
+                <div class="mediaobject">
+                    <p><img alt="" src=
+                    "/blog/wp-content/uploads/2011/02/cyi10createicons.png"></p>
+                </div>
+            </li>
+
+            <li>
+                <p>Click <span class="guibutton">Finish</span> to
+                close the setup program.</p>
+            </li>
+        </ol>
+
+
+
+<h2>Step 2: Install FontForge</h2>
+
+<p>Now that you have successfully installed Cygwin and the libraries necessary to run FontForge, it is now to time to install FontForge itself.  <strong>This part is not obvious</strong>, and is the main reason why I wrote these instructions.</p>
+
+<p>There are two ways you can install FontForge: using the Cygwin setup program you just downloaded (not-so-easy) or using the "Unofficial Windows Port".</p>
+
+<p>If you get stuck, there is more help available at the <a href="http://sourceware.org/cygwinports/">Official Cygwin Ports</a> page.</p>
+
+
+
+<h3>Using the Cygwin Setup</h3>
+
+<p>This is my preferred method for installing FontForge, but may not always be successful because the download process stalls sometimes. If it doesn't work the first time, quit the process and try again.  <strong>Note that I found that installing it this way works best at around 7:00 AM - 4:00 PM EST.</strong> I believe that this is because the Cygwin Ports server is busier at night, but I am just guessing.  Your results may vary.</p>
+
+<p>If you get really frustrated installing it this way, try the <a href="#mingw">"Unofficial Windows Port"</a> method instead.</p>
+
+<ol>
+<li>Go to the directory you saved Cygwin's setup.exe when you installed Cygwin.</li>
+
+<li>Right click on setup.exe and choose "Create Shortcut..."</li>
+
+<li>Right click on the shortcut that you created and choose "Properties".  In the shortcut dialogue, change the Target field from <code>setup.exe</code> to <code>setup.exe -K http://cygwinports.org/ports.gpg</code>
+
+<div class="mediaobject">
+     <p><img alt="" src="/blog/wp-content/uploads/2011/02/ff01shortcut.png"></p>
+</div>
+</li>
+<li>Double-click on the new shortcut. Go through the steps 3 - 12 of the installation instruction of Cygwin.</li>
+<li>When you get to step 13, you must enter <code>ftp://ftp.cygwinports.org/pub/cygwinports</code>  into the <strong>User URL</strong> field and click <span class="guibutton">Add</span> button.  When you do, it will be added to the list of download sites. <strong>Ensure that the new site is the only one chosen</strong> (sometimes two will be chosen at this point, the one you just added and one you used to install Cygwin), and click <span class="guibutton">Next</span>.
+<div class="mediaobject">
+     <p><img alt="" src="/blog/wp-content/uploads/2011/02/ff02setupPause.png"></p>
+</div>
+Note that you will see this progress dialogue longer than you did in when installing Cygwin:
+
+<div class="mediaobject">
+     <p><img alt="" src="/blog/wp-content/uploads/2011/02/ff02setupPause.png"></p>
+</div>
+Be patient.  You should eventually get to the next dialogue. If it gives you an error about the version of setup.bz2 being earlier than the previous one or something similar, ignore it.
+</li>
+<li>At this point, the <strong>Select Packages</strong> will appear.  Go the <strong>Graphics</strong> 
+category and choose <strong>fontforge</strong>:
+
+<div class="mediaobject">
+     <p><img alt="" src="/blog/wp-content/uploads/2011/02/ff03chooseFontForge.png"></p>
+</div>
+Click <span class="guibutton">Next</span>.</li>
+
+<li> You will see a dialogue similar to this:
+<div class="mediaobject">
+     <p><img alt="" src="/blog/wp-content/uploads/2011/02/ff04resolveDependencies.png"></p>
+</div>
+This is just showing you it has to download the fontforge's dependencies as well. Just click <span class="guibutton">Next</span></li>
+<li>You will see the download dialogue:
+<div class="mediaobject">
+     <p><img alt="" src="/blog/wp-content/uploads/2011/02/ff05progress.png"></p>
+</div>
+
+This is the part that may take a long time to run, and may even stall.  Let it run for a while.  If it gets stuck for a long time, you may want to choose a different mirror.
+</li>
+<li>
+If you complete the install process, you should now have successfully installed fontforge.  To test your install, do the following:
+
+<ul>
+<li>Go to the Start Menu, choose "Programs" and in the "Cygwin" Program Group, launch <code>rxvt-native</code>.
+
+<a href="http://www.useragentman.com/blog/wp-content/uploads/2011/02/rxvtLaunch.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/02/rxvtLaunch.png" alt="Screenshot of how to launch rxvt under Windows XP" title="rxvtLaunch" width="672" height="302" class="aligncenter size-full wp-image-2464" srcset="http://www.useragentman.com/blog/wp-content/uploads/2011/02/rxvtLaunch.png 672w, http://www.useragentman.com/blog/wp-content/uploads/2011/02/rxvtLaunch-300x134.png 300w" sizes="(max-width: 672px) 100vw, 672px" /></a></li>
+
+
+
+<li>
+From the command line, enter the <code>startxwin</code> command.   You should see the following output
+
+<blockquote class="code">
+<pre>
+Welcome to the XWin X Server
+Vendor: The Cygwin/X Project
+Release: 1.9.4.0 (10904000)
+Package version 1.9.4-1 built 2011-02-07
+
+XWin was started with the following command line:
+
+X :0 -multiwindow 
+
+_XSERVTransSocketOpenCOTSServer: Unable to open socket for inet6
+_XSERVTransOpen: transport open failed for inet6/NB07023:0
+_XSERVTransMakeAllCOTSServerListeners: failed to open listener for inet6
+winInitializeScreens - 1
+winInitializeScreen - 0
+(II) xorg.conf is not supported
+(II) See http://x.cygwin.com/docs/faq/cygwin-x-faq.html for more information
+LoadPreferences: /home/haw5855/.XWinrc not found
+LoadPreferences: Loading /etc/X11/system.XWinrc
+LoadPreferences: Done parsing the configuration file...
+winGetDisplay: DISPLAY=:0.0
+winDetectSupportedEngines - Windows NT/2000/XP
+winDetectSupportedEngines - DirectDraw installed
+winDetectSupportedEngines - Allowing PrimaryDD
+winDetectSupportedEngines - DirectDraw4 installed
+winDetectSupportedEngines - Returning, supported engines 0000001f
+winSetEngine - Multi Window or Rootless =&gt; ShadowGDI
+winScreenInit - Using Windows display depth of 32 bits per pixel
+winAllocateFBShadowGDI - Creating DIB with width: 1280 height: 800 depth: 32
+winFinishScreenInitFB - Masks: 00ff0000 0000ff00 000000ff
+winInitVisualsShadowGDI - Masks 00ff0000 0000ff00 000000ff BPRGB 8 d 24 bpp 32
+null screen fn ReparentWindow
+null screen fn RestackWindow
+InitQueue - Calling pthread_mutex_init
+InitQueue - pthread_mutex_init returned
+InitQueue - Calling pthread_cond_init
+InitQueue - pthread_cond_init returned
+winInitMultiWindowWM - Hello
+winInitMultiWindowWM - Calling pthread_mutex_lock ()
+winMultiWindowXMsgProc - Hello
+Screen 0 added at virtual desktop coordinate (0,0).
+winMultiWindowXMsgProc - Calling pthread_mutex_lock ()
+MIT-SHM extension disabled due to lack of kernel support
+XFree86-Bigfont extension local-client optimization disabled due to lack of shared memory support in the kernel
+(II) AIGLX: Loaded and initialized /usr/lib/dri/swrast_dri.so
+(II) GLX: Initialized DRISWRAST GL provider for screen 0
+winPointerWarpCursor - Discarding first warp: 640 400
+(--) 3 mouse buttons found
+(--) Setting autorepeat to delay=500, rate=31
+(--) Windows keyboard layout: "00000409" (00000409) "US", type 4
+(--) Found matching XKB configuration "English (USA)"
+(--) Model = "pc105" Layout = "us" Variant = "none" Options = "none"
+Rules = "base" Model = "pc105" Layout = "us" Variant = "none" Options = "none"
+winInitMultiWindowWM - pthread_mutex_lock () returned.
+winMultiWindowXMsgProc - pthread_mutex_lock () returned.
+winMultiWindowXMsgProc - pthread_mutex_unlock () returned.
+winGetDisplay: DISPLAY=:0.0
+winMultiWindowXMsgProc - DISPLAY=:0.0
+winInitMultiWindowWM - pthread_mutex_unlock () returned.
+winProcEstablishConnection - Hello
+winInitClipboard ()
+winClipboardProc - Hello
+DetectUnicodeSupport - Windows NT/2000/XP
+winProcEstablishConnection - winInitClipboard returned.
+winGetDisplay: DISPLAY=:0.0
+winInitMultiWindowWM - DISPLAY=:0.0
+winGetDisplay: DISPLAY=:0.0
+winClipboardProc - DISPLAY=:0.0
+winMultiWindowXMsgProc - XOpenDisplay () returned and successfully opened the display.
+winInitMultiWindowWM - XOpenDisplay () returned and successfully opened the display.
+winClipboardProc - XOpenDisplay () returned and successfully opened the display.
+</pre>
+</blockquote>
+
+You should see the XWindows icon <img class="inline" src="http://www.useragentman.com/blog/wp-content/uploads/2011/02/xwinTray.png" alt="" title="xwinTray"  /> in the tray .</li>
+
+<li>Next enter the command <code>fontforge &</code> (include the <code>&</code> if you want to run <code>fontforge</code> in the background so that you can enter in other commands into <code>rxvt</code> later).  You will see the fontforge splash screen as well as a file dialogue box.
+<div id="attachment_2472" style="width: 310px" class="wp-caption aligncenter"><a href="http://www.useragentman.com/blog/wp-content/uploads/2011/02/fontforgesplash.png"><img src="http://www.useragentman.com/blog/wp-content/uploads/2011/02/fontforgesplash-300x204.png" alt="The FontForge Splash Screen with File Dialogue" title="fontforgesplash" width="300" height="204" class="size-medium wp-image-2472" srcset="http://www.useragentman.com/blog/wp-content/uploads/2011/02/fontforgesplash-300x204.png 300w, http://www.useragentman.com/blog/wp-content/uploads/2011/02/fontforgesplash.png 888w" sizes="(max-width: 300px) 100vw, 300px" /></a><p class="wp-caption-text">The FontForge Splash Screen with File Dialogue</p></div>
+
+If this is what you see, then congratulations, you installed it correctly!</li>
+
+<li>If you get an error similar to <code>"error while loading shared libraries: ?: cannot open shared object file"</code>, then you forgot to install one of the dependencies.  You can find out which one is missing by entering in the command <code>cygcheck fontforge</code>.  You should see output similar to this:
+
+<blockquote class="code">
+<pre>
+$ cygcheck fontforge
+Found: C:\cygwin\bin\fontforge.exe
+Found: C:\cygwin\bin\fontforge.exe
+C:\cygwin\bin\fontforge.exe
+  C:\cygwin\bin\cygfontforge-1.dll
+    C:\cygwin\bin\cyggutils-1.dll
+      C:\cygwin\bin\cyggunicode-3.dll
+        C:\cygwin\bin\cygwin1.dll
+          C:\Windows\system32\ADVAPI32.DLL
+            C:\Windows\system32\msvcrt.dll
+              C:\Windows\system32\KERNELBASE.dll
+                C:\Windows\system32\ntdll.dll
+              C:\Windows\system32\API-MS-Win-Core-Console-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-DateTime-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-Debug-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-ErrorHandling-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-Fibers-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-File-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-Handle-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-Heap-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-Interlocked-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-Localization-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-LibraryLoader-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-Memory-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-Misc-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-NamedPipe-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-ProcessEnvironment-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-ProcessThreads-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-Profile-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-String-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-Synch-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-SysInfo-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-Util-L1-1-0.dll
+            C:\Windows\system32\API-MS-WIN-Service-Core-L1-1-0.dll
+            C:\Windows\system32\API-MS-WIN-Service-winsvc-L1-1-0.dll
+            C:\Windows\system32\API-MS-WIN-Service-Management-L1-1-0.dll
+            C:\Windows\system32\API-MS-WIN-Service-Management-L2-1-0.dll
+            C:\Windows\system32\API-MS-Win-Core-LocalRegistry-L1-1-0.dll
+            C:\Windows\system32\API-MS-Win-Security-Base-L1-1-0.dll
+            C:\Windows\system32\KERNEL32.dll
+              C:\Windows\system32\API-MS-Win-Core-RtlSupport-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-IO-L1-1-0.dll
+              C:\Windows\system32\API-MS-Win-Core-ThreadPool-L1-1-0.dll
+            C:\Windows\system32\RPCRT4.dll
+              C:\Windows\system32\API-MS-Win-Core-DelayLoad-L1-1-0.dll
+        C:\cygwin\bin\cyggcc_s-1.dll
+        C:\cygwin\bin\cygiconv-2.dll
+      C:\cygwin\bin\cygintl-8.dll
+      C:\cygwin\bin\cygpng12.dll
+        C:\cygwin\bin\cygz.dll
+    C:\cygwin\bin\cygfreetype-6.dll
+    C:\cygwin\bin\cygspiro-0.dll
+    C:\cygwin\bin\cyguninameslist-0.dll
+    C:\cygwin\bin\cygxml2-2.dll
+    C:\cygwin\bin\libpython2.6.dll
+  C:\cygwin\bin\cyggdraw-4.dll
+    C:\cygwin\bin\cygX11-6.dll
+      C:\cygwin\bin\cygxcb-1.dll
+        C:\cygwin\bin\cygXau-6.dll
+        C:\cygwin\bin\cygXdmcp-6.dll
+    C:\cygwin\bin\cygXft-2.dll
+      C:\cygwin\bin\cygXrender-1.dll
+      C:\cygwin\bin\cygfontconfig-1.dll
+        C:\cygwin\bin\cygexpat-1.dll
+    C:\cygwin\bin\cygXi-6.dll
+      C:\cygwin\bin\cygXext-6.dll
+    C:\cygwin\bin\cygcairo-2.dll
+      C:\cygwin\bin\cygglitz-1.dll
+      C:\cygwin\bin\cygpixman-1-0.dll
+      C:\cygwin\bin\cygxcb-render-util-0.dll
+        C:\cygwin\bin\cygxcb-render-0.dll
+    C:\cygwin\bin\cygpango-1.0-0.dll
+      C:\cygwin\bin\cygglib-2.0-0.dll
+        C:\cygwin\bin\cygpcre-0.dll
+      C:\cygwin\bin\cyggmodule-2.0-0.dll
+      C:\cygwin\bin\cyggobject-2.0-0.dll
+        C:\cygwin\bin\cyggthread-2.0-0.dll
+    C:\cygwin\bin\cygpangocairo-1.0-0.dll
+      C:\cygwin\bin\cygpangoft2-1.0-0.dll
+    C:\cygwin\bin\cygpangoxft-1.0-0.dll
+cygcheck: track_down: could not find cyggif-4.dll
+
+cygcheck: track_down: could not find cygjpeg-7.dll
+
+cygcheck: track_down: could not find cygtiff-5.dll
+</pre>
+</blockquote>
+
+In this case, the missing libraries are <code>libgif</code>, <code>jpeg</code> and <code>libtiff</code>.  Go back to step 1 and ensure that you install them (Cygwin's setup will allow you to install them, even after you did the first install).</li>
+</ol>
+
+<h3 name="mingw" id="mingw">Using "unofficial fontforge-mingw"</h3>
+
+<p><strike>A Japanese developer has posted a <a href="http://www.mingw.org/">MingW</a> port</strike>.  This developer of the mingw port has recently made a standalone version of the Cygwin version of fontforge available as well, and I encourage you to download the Cygwin one instead of the MingW one, since it seems to be a bit more up-to-date.  Both of these ports are available on the developer's <a href="http://www.geocities.jp/meir000/fontforge/">Geocities Japan</a> site (yes folks ... you read that right.  Geocities <strong>still</strong> exists in Japan!)  It is dead simple to install fontforge using this package:</p>
+
+
+<ol>
+<li>Download the package from <a href="http://www.geocities.jp/meir000/fontforge/">the project's homepage</a>.  Even though the page is in Japanese, the Dowload link is in English. :-)</li>
+<li>unzip the package</li>
+<li>To test if the installation was successful, go into the directory that contains the package and run the <code>fontforge.bat</code> batch file.</li>
+</ol>
+
+<div class="importantNotes">
+<h3>Note:</h3>
+By default, this program will run with a Japanese version of the user interface. In order to ensure it runs as English, you will need to edit the <code>fontforge.bat</code> and delete the following line:
+<blockquote>
+<code>
+<br />
+set LANG=ja_JP.UTF-8
+<br />
+<br />
+</code>
+</blockquote>
+
+Thanks to <strong>Senne</strong> for leaving this tip in the comments below.
+</div>
+
+<p>Even thought this method doesn't really need the fullblown version of Cygwin (since it is designed to be standalone), I suggest installing Cygwin in order to use the <a href="/blog/?p=2275">the CSS3 Font Converter</a>.</p>
+
+
+<h2>Futher Reading</h2>
+<ul>
+<li><a href="http://www.cygwin.com/cygwin-ug-net/">Cygwin User's Guide</a></li>
+<li><a href="http://lifehacker.com/#!5633909/who-needs-a-mouse-learn-to-use-the-command-line-for-almost-anything">A Command Line Primer for Beginners</a></li>
+</ul>
+
+<h2>Copyright Notice</h2>
+ 
+<p>Some of the contents of this post have been taken from the <a href="http://x.cygwin.com/docs/ug/cygwin-x-ug.html">Cygwin/X User's Guide</a>, copyright &copy; 2000 Harold L Hunt II and copyright &copy; 2009, 2010, 2011 Jon Turney. As per that document's license, permission is granted to copy, distribute and/or modify this document under the terms of the <a href="http://www.gnu.org/licenses/fdl-1.1.html">GNU Free Documentation License</a>, Version 1.1 or any later version published by the Free Software Foundation; with no Invariant Sections, with no Front-Cover Texts, and with no Back-Cover Texts.</p>
+
+        
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" rel="category tag">@font-face</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" rel="category tag">converting</a> &middot; <a href="http://www.useragentman.com/blog/category/cygwin/" rel="category tag">Cygwin</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" rel="category tag">FontForge</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/fonts/" rel="category tag">Fonts</a> </p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">50 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						<li class="comment   " id="comment-9646 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-9646" title="Permalink to this comment">1</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/75b18c2d8413fca2c43fe30de1a3cac3?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/75b18c2d8413fca2c43fe30de1a3cac3?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>CheshireCat </strong>
+				<span class="comment_time">// Mar 7, 2011 at 6:59 pm</span>
+			</p>
+			<div class="entry">
+				<p>It worked! There were some errors:<br />
+startxwin: XFree86_VT property unexpectedly has 0 items instead of 1<br />
+winClipboardProc &#8211; XOpenDisplay () returned and successfully opened the display.<br />
+winInitMultiWindowWM &#8211; XOpenDisplay () returned and successfully opened the display.<br />
+winMultiWindowXMsgProc &#8211; XOpenDisplay () returned and successfully opened the display.<br />
+      0 [main] xterm 8456 exception::handle: Exception: STATUS_ACCESS_VIOLATION<br />
+    550 [main] xterm 8456 open_stackdumpfile: Dumping stack trace to xterm.exe.stackdump<br />
+      0 [main] xterm 2112 exception::handle: Exception: STATUS_ACCESS_VIOLATION<br />
+    451 [main] xterm 2112 open_stackdumpfile: Dumping stack trace to xterm.exe.stackdump<br />
+      0 [main] xterm 8904 exception::handle: Exception: STATUS_ACCESS_VIOLATION<br />
+    457 [main] xterm 8904 open_stackdumpfile: Dumping stack trace to xterm.exe.stackdump<br />
+      0 [main] xterm 6248 child_copy: linked dll data write copy failed, 0x2CE000..0x2D27EC, done 0, windows pid 8420, Win32 error 487<br />
+xterm: Error 29, errno 11: Resource temporarily unavailable<br />
+Reason: spawn: fork() failed</p>
+<p>When I ran fontforge, the application ran but i didn&#8217;t see the splash scren. It seems to work though.</p>
+<p>The process was chronically slow and I needed to cancel downloads that had stuck on several occasions. All in all, I reckon it took from 1700 to well after midnight to get the Cygwin system updated and fontforge installed. Without these notes, I&#8217;m sure I would have given up, so thank you very much. It might be helpful to explain how one can generate a list of the co-requisite packages as it would probably be much quicker to download everything except the fontforge stuff from mirrors other than the cygwinports site.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-10959 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-10959" title="Permalink to this comment">2</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://readableweb.com'><img alt='' src='http://2.gravatar.com/avatar/5fd2304e36713311943065e7e2067478?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/5fd2304e36713311943065e7e2067478?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://readableweb.com' rel='external nofollow' class='url'>Richard fink</a> </strong>
+				<span class="comment_time">// Apr 5, 2011 at 10:30 am</span>
+			</p>
+			<div class="entry">
+				<p>Just wanted to let you know what a great job you did on this roundup. I&#8217;ll be spreading the word.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-11353 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11353" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://kizzx2.com'><img alt='' src='http://0.gravatar.com/avatar/6b1a4aaa3c76925b2923327f9556a738?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/6b1a4aaa3c76925b2923327f9556a738?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://kizzx2.com' rel='external nofollow' class='url'>Chris</a> </strong>
+				<span class="comment_time">// Apr 15, 2011 at 8:24 am</span>
+			</p>
+			<div class="entry">
+				<p>This is totally comprehensive &#8212; the missing manual for FontForge on Windows!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-11357 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11357" title="Permalink to this comment">4</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Apr 15, 2011 at 9:04 am</span>
+			</p>
+			<div class="entry">
+				<p>@Chris: Thanks for this! It is what I intended it to be. When I first tried to install FontForge on Windows, it was very trying. I hope budding font-editors/font-builders will find it useful.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-11600 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-11600" title="Permalink to this comment">5</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/dc2a110d4badec712b138e0e21c1ae54?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/dc2a110d4badec712b138e0e21c1ae54?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Clint </strong>
+				<span class="comment_time">// Apr 22, 2011 at 11:20 pm</span>
+			</p>
+			<div class="entry">
+				<p>This page helped me to get it up and running, too bad it took me 3 hours {with distractions}.<br />
+Thanks.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-12478 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-12478" title="Permalink to this comment">6</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/61c57f455e85c4341171ea9c59803d24?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/61c57f455e85c4341171ea9c59803d24?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>iari </strong>
+				<span class="comment_time">// May 20, 2011 at 10:28 am</span>
+			</p>
+			<div class="entry">
+				<p>on step 5 when i enter  and then next, this windows comes up saying :  unable to get setup.ini from </p>
+<p>:S</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-12726 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-12726" title="Permalink to this comment">7</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/3fa74a6b138730f95fcf88260d2c2f08?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/3fa74a6b138730f95fcf88260d2c2f08?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>adumi </strong>
+				<span class="comment_time">// May 28, 2011 at 2:08 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thanks for this tutorial !<br />
+I did manage to install cygwin with it but so far have not had much luck with Step2: installing fontforge.<br />
+Using the cygwin setup I get halfway the installation while installing libGL1-7.10.1-2 I repeatedly  get the message:<br />
+Unable to extract /usr/lib/dri/swarst_dri.so &#8212; the file is in use.<br />
+and the installation breaks.<br />
+I tried it many times after a fresh restart of the machine and made sure nothing apears in the tray menu and looked up the processes (win7) but even if one of them is indeed somehow related to this problem I can`t spot it out.<br />
+I searched the web and downloaded libGL1-7.10.1-2 seperately but I wouldn`t know where and how to plant it inside the Cygwin directory tree and and I am probably missing a lot of other stuff as well because the installation process didn`t allow me to just skip &#8211; but broke off.<br />
+I tried the Japanese version, too, but I can`t seem to find any option in it`s menus to switch it to English, so it`s pretty much chinese to me. I`m very keen on installing that fontforge, so any advice from this point onwards would be very appreciated.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-13062 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-13062" title="Permalink to this comment">8</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jun 5, 2011 at 9:28 am</span>
+			</p>
+			<div class="entry">
+				<p>@adumi: If a reboot of your machine doesn&#8217;t help, what you may want to do is download <a href="http://technet.microsoft.com/en-us/sysinternals/bb896653" rel="nofollow">Process Explorer</a> by Microsoft&#8217;s <a href="http://blogs.technet.com/b/markrussinovich/about.aspx" rel="nofollow">Mark Russinovich</a>.  It can tell you what process has opened the file so you can close it.  If you do a lot of unusual things in Windows, this program is an invaluable tool.</p>
+<p>As for the the Japanese Fontforge, my version is actually in English, so I am quite surprised.  It may have changed, so try again. I have also noticed that now on the same page, there is a Cygwin version of Fontforge available for download.  I will be testing this out in the next little while to see if this suits the needs of English language developers, and if so, update this article (if anyone else does so before I do, please drop me a line and tell me of your experiences).</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-14027 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-14027" title="Permalink to this comment">10</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/3fa74a6b138730f95fcf88260d2c2f08?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/3fa74a6b138730f95fcf88260d2c2f08?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>adumi </strong>
+				<span class="comment_time">// Jun 21, 2011 at 9:53 am</span>
+			</p>
+			<div class="entry">
+				<p>Thanks zoltan,<br />
+A restart did not solve the problem so I`ll soon try locating the culprit process with Process Explorer, thank you. If you have access to that Fontforge version for download &#8211; I`d really appreciate any kind of directions as to how to get it. many thnaks, I`ll be back here to report soon.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-17812 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-17812" title="Permalink to this comment">11</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/'><img alt='' src='http://1.gravatar.com/avatar/750def46d74f39225fd824a6483f6dff?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/750def46d74f39225fd824a6483f6dff?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' rel='external nofollow' class='url'>Dan</a> </strong>
+				<span class="comment_time">// Sep 1, 2011 at 3:47 am</span>
+			</p>
+			<div class="entry">
+				<p>Very very very helpful. I don&#8217;t know how I would have gotten FontForge up and running without this guide.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-18009 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-18009" title="Permalink to this comment">12</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/1ce8d9c3d944fd4fc6bf9f9dee0ba3e3?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/1ce8d9c3d944fd4fc6bf9f9dee0ba3e3?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>dudefellow </strong>
+				<span class="comment_time">// Sep 4, 2011 at 4:13 pm</span>
+			</p>
+			<div class="entry">
+				<p>I tried to test the download though cygwin using <a href="ftp://ftp.cygwinports.org/pub/cygwinports" rel="nofollow">ftp://ftp.cygwinports.org/pub/cygwinports</a><br />
+and received this message at the start of the download process:<br />
+Cygwin Setup<br />
+Mirror Error: Setup.ini signaure <a href="ftp://ftp.cygwinports.org/pub/cygwinports/setup.bz2.sig" rel="nofollow">ftp://ftp.cygwinports.org/pub/cygwinports/setup.bz2.sig</a> from <a href="ftp://ftp.cygwinports.org/pub/cygwinports" rel="nofollow">ftp://ftp.cygwinports.org/pub/cygwinports</a> failed to verify. Possible corrupt mirror? Setup.ini rejected.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-18227 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-18227" title="Permalink to this comment">13</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.rsouza.com'><img alt='' src='http://0.gravatar.com/avatar/f13494ed342a7bf456296269b69770e4?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f13494ed342a7bf456296269b69770e4?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.rsouza.com' rel='external nofollow' class='url'>Ricardo</a> </strong>
+				<span class="comment_time">// Sep 7, 2011 at 6:27 pm</span>
+			</p>
+			<div class="entry">
+				<p>Hey! Thanks a lot for this very useful tutorial :)<br />
+It helped me a lot.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-19497 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-19497" title="Permalink to this comment">14</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://WWW.earnonweblog.com'><img alt='' src='http://0.gravatar.com/avatar/cb91b69ae984698b82561304a22a3730?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/cb91b69ae984698b82561304a22a3730?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://WWW.earnonweblog.com' rel='external nofollow' class='url'>anisur rahman</a> </strong>
+				<span class="comment_time">// Sep 24, 2011 at 12:34 pm</span>
+			</p>
+			<div class="entry">
+				<p>I installed using japan method. But my fontforge is in japan language. I do not understand Japanese. So i cannot work on it. Is there any method to change the language from Japanese to English?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-19502 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-19502" title="Permalink to this comment">15</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Sep 24, 2011 at 2:12 pm</span>
+			</p>
+			<div class="entry">
+				<p>@anisur: I am not sure &#8212; I personally do not have this issue (my FontForge appeared in English with this package), but I&#8217;ll look further into it.  In the meantime, the only thing I would suggest is using the other method to download FontForge.  It may be a pain to do, but it would at least solve your language issue. Good luck!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-20404 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-20404" title="Permalink to this comment">16</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/9ce4da0254f38841499019235ff72e1c?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9ce4da0254f38841499019235ff72e1c?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Steve </strong>
+				<span class="comment_time">// Oct 5, 2011 at 6:40 pm</span>
+			</p>
+			<div class="entry">
+				<p>Couldn&#8217;t install X windows, tried the japan method and (surprise) the application is in Japanese! With no language selector! LINUX FOR THE DESKTOP LOL (nothing works correctly)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-20844 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-20844" title="Permalink to this comment">17</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/564a585b4b1a8211022c8f06535020ab?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/564a585b4b1a8211022c8f06535020ab?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>trlkly </strong>
+				<span class="comment_time">// Oct 11, 2011 at 12:01 pm</span>
+			</p>
+			<div class="entry">
+				<p>Can&#8217;t you just upload your package somewhere? Then we can see if it&#8217;s in English for us.</p>
+<p>Yes, I had the same problem with the intaller appearing in Japanese. And I am loathe to install Cygwin just for one project.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-20989 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-20989" title="Permalink to this comment">18</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Oct 12, 2011 at 7:08 pm</span>
+			</p>
+			<div class="entry">
+				<p>@trlkly: packaging up an English version of FontForge that doesn&#8217;t rely on installing a full-blown Cygwin may take a bit of time to do, and it would be necessary to keep track of updates of the official FontForge build to ensure that my version would be in sync.  That said, it seems there is a need for this.  I&#8217;m going to see how much effort this is .. if it isn&#8217;t too bad, maybe I can upload a copy to github for public consumption.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-21307 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-21307" title="Permalink to this comment">19</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/18d1f738c1ea568954a6262bcbd2e2e9?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/18d1f738c1ea568954a6262bcbd2e2e9?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Stefano </strong>
+				<span class="comment_time">// Oct 16, 2011 at 5:18 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi!<br />
+at first, thank you for this guide, it really helped me to faster install what I need :-)<br />
+But after intallation goes smoothly, I have a problem when starting XWindow: sthe startxwin command end p with a &#8216;unable to connect X server&#8230;&#8221; message.</p>
+<p>This is the starting session:</p>
+<p>&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-<br />
+Stefano@PC-Stefano ~<br />
+$ startxwin</p>
+<p>Welcome to the XWin X Server<br />
+Vendor: The Cygwin/X Project<br />
+Release: 1.11.1.0<br />
+OS: Windows 7 Service Pack 1 [Windows NT 6.1 build 7601] (WoW64)<br />
+Package: version 1.11.1-1 built 2011-10-05</p>
+<p>XWin was started with the following command line:</p>
+<p>X :0 -multiwindow </p>
+<p>(II) xorg.conf is not supported<br />
+(II) See <a href="http://x.cygwin.com/docs/faq/cygwin-x-faq.html" rel="nofollow">http://x.cygwin.com/docs/faq/cygwin-x-faq.html</a> for more information<br />
+LoadPreferences: /home/Stefano/.XWinrc not found<br />
+LoadPreferences: Loading /etc/X11/system.XWinrc<br />
+LoadPreferences: Done parsing the configuration file&#8230;<br />
+winDetectSupportedEngines &#8211; DirectDraw installed, allowing ShadowDD<br />
+winDetectSupportedEngines &#8211; Windows NT, allowing PrimaryDD<br />
+winDetectSupportedEngines &#8211; DirectDraw4 installed, allowing ShadowDDNL<br />
+winDetectSupportedEngines &#8211; Returning, supported engines 0000001f<br />
+winSetEngine &#8211; Multi Window or Rootless =&gt; ShadowGDI<br />
+winScreenInit &#8211; Using Windows display depth of 32 bits per pixel<br />
+winAllocateFBShadowGDI &#8211; Creating DIB with width: 2048 height: 1152 depth: 32<br />
+winFinishScreenInitFB &#8211; Masks: 00ff0000 0000ff00 000000ff<br />
+winInitVisualsShadowGDI &#8211; Masks 00ff0000 0000ff00 000000ff BPRGB 8 d 24 bpp 32<br />
+winInitMultiWindowWM &#8211; Calling pthread_mutex_lock ()<br />
+winMultiWindowXMsgProc &#8211; Calling pthread_mutex_lock ()<br />
+Screen 0 added at virtual desktop coordinate (0,0).<br />
+MIT-SHM extension disabled due to lack of kernel support<br />
+XFree86-Bigfont extension local-client optimization disabled due to lack of shared memory support in the kernel<br />
+(II) AIGLX: Loaded and initialized swrast<br />
+(II) GLX: Initialized DRISWRAST GL provider for screen 0<br />
+[dix] Could not init font path element /usr/share/fonts/TTF/, removing from list!<br />
+[dix] Could not init font path element /usr/share/fonts/OTF/, removing from list!<br />
+[dix] Could not init font path element /usr/share/fonts/Type1/, removing from list!<br />
+      1 [main] X 5792 fork: child 5236 &#8211; died waiting for dll loading, errno 11<br />
+startxwin: giving up<br />
+startxwin: unable to connect to X server: Connection refused<br />
+startxwin: server error</p>
+<p>Stefano@PC-Stefano ~<br />
+$ </p>
+<p>&#8212;&#8212;&#8212;&#8212;-<br />
+I have looked for similar questions on internet before wtiing here, but I had no luck.<br />
+I know that this is probably beyond the purpose of your guide, but I please ask you to check if you&#8217;re able to help me to find what&#8217;s the wrong step I made.<br />
+I presume it could be related to the O.S. version (Win 7 64 bit) and it&#8217;s permission rules, but any help will be appreciated.</p>
+<p>Thank you in advance.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-21331 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-21331" title="Permalink to this comment">20</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Oct 16, 2011 at 10:39 am</span>
+			</p>
+			<div class="entry">
+				<p>The most interesting part of your post has to do with this error message in your startx startup:</p>
+<blockquote><p>
+1 [main] X 5792 fork: child 5236 – died waiting for dll loading, errno 11
+</p></blockquote>
+<p>After reading about this error on the web, I <em>think</em> that you may need to <a href="http://en.wikipedia.org/wiki/Rebasing" rel="nofollow">rebase</a> Cygwin.  Look at this article and see if it helps:</p>
+<p><a href="http://www.garethhunt.com/2008/02/11/cygwin-died-waiting-for-dll-loading/" rel="nofollow">Cygwin: died waiting for dll loading</a> by <a href="http://www.garethhunt.com" rel="nofollow">Gareth Hunt</a> may help.  Even though he had trouble with apache and mod_rewrite, it looks your problem is a symptom of the same problem.</p>
+<p>Good luck!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-21334 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-21334" title="Permalink to this comment">21</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/18d1f738c1ea568954a6262bcbd2e2e9?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/18d1f738c1ea568954a6262bcbd2e2e9?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Stefano </strong>
+				<span class="comment_time">// Oct 16, 2011 at 11:04 am</span>
+			</p>
+			<div class="entry">
+				<p>GREAT! It worked for me!<br />
+You saved my late sunday spare time :-)<br />
+Thank you again for your prompt help.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-22960 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-22960" title="Permalink to this comment">22</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://themousepotatowebsite.co.za/'><img alt='' src='http://2.gravatar.com/avatar/b70aed8fb633308b67aa4a3b1fa8562e?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b70aed8fb633308b67aa4a3b1fa8562e?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://themousepotatowebsite.co.za/' rel='external nofollow' class='url'>Larry Botha</a> </strong>
+				<span class="comment_time">// Nov 2, 2011 at 4:57 pm</span>
+			</p>
+			<div class="entry">
+				<p>Zoltan&#8230; you&#8217;ve explained perfectly and succinctly what dozens of other sites have failed to do.</p>
+<p>Thanks for the help!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-23001 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-23001" title="Permalink to this comment">23</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/b3f01ffe6d029bfa2adb0e642b627ec9?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b3f01ffe6d029bfa2adb0e642b627ec9?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>xyz </strong>
+				<span class="comment_time">// Nov 3, 2011 at 4:59 am</span>
+			</p>
+			<div class="entry">
+				<p>Hey! I tried to install fontforge but to no avail&#8230; I&#8217;ve installed cygwin, but when accessing the setup from cygwin ports from the installer in Step 2:Install FontForge (substep 5), after a while it gives me the error &#8220;Unable to get setup.ini from &#8221;</p>
+<p>Please help, I need to install fontforge urgently for work, I&#8217;ve tried installing through building Fontforge from source, and that didn&#8217;t work either for me.</p>
+<p>Awaiting your response</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-23018 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-23018" title="Permalink to this comment">24</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/16e2a5ebe6c399a10f989e25262b014f?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/16e2a5ebe6c399a10f989e25262b014f?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Logra </strong>
+				<span class="comment_time">// Nov 3, 2011 at 9:44 am</span>
+			</p>
+			<div class="entry">
+				<p>Urgh &#8211; there now seems a problem with at least one possibly corrupted file (setup.bz2.sig) on the <a href="ftp://ftp.cygwinports.org/pub/cygwinports" rel="nofollow">ftp://ftp.cygwinports.org/pub/cygwinports</a> system when you hit the fontforge-installation stage.</p>
+<p>As it can&#8217;t be verified correctly, the install&#8230;um&#8230; pops like a balloon, leaving you with no options (and, after kindly telling you it may be corrupted &#8211; with a nice question mark).  Finding a mirror ftp site with fontforge is proving &#8216;interesting&#8217;, but I am still trying.  Sorry to be the barer of such fantastic news&#8230;</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-23042 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-23042" title="Permalink to this comment">25</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 3, 2011 at 5:04 pm</span>
+			</p>
+			<div class="entry">
+				<p>@xyz: I have *just* went through the install process on a new Windows machine and I did not get this error.  Note that I am not saying you are doing something wrong &#8212; I have seen this problem before.  The problem, I believe, is on the cygwinports server, and it is usually fixed in a few hours.  Try again and let me know if it does/doesn&#8217;t work.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-23045 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-23045" title="Permalink to this comment">26</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.youtube.com/watch?v=9az1Fh6tAas'><img alt='' src='http://0.gravatar.com/avatar/6c4edf2d0fcdf71a3320d51655b39579?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/6c4edf2d0fcdf71a3320d51655b39579?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.youtube.com/watch?v=9az1Fh6tAas' rel='external nofollow' class='url'>Rebecca2323</a> </strong>
+				<span class="comment_time">// Nov 3, 2011 at 5:10 pm</span>
+			</p>
+			<div class="entry">
+				<p><a href="http://www.youtube.com/watch?v=9az1Fh6tAas" rel="nofollow">http://www.youtube.com/watch?v=9az1Fh6tAas</a></p>
+<p>Check out my tutorial on how to make a font on FontForge!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-23047 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-23047" title="Permalink to this comment">27</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 3, 2011 at 5:16 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Logra: this problem is related to the one experienced earlier by @xyz in a previous comment.  Unfortunately it seems like there was a problem with the cygwinports server.  If you try it now, it will probably work (I just did it successfully a few moments ago).</p>
+<p>Thanks for posting this though &#8212; it *can* be quite frustrating dealing with the cygwinports server at times, but it will work if you are persistent.  :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-23503 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-23503" title="Permalink to this comment">28</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://owenlabs.org'><img alt='' src='http://1.gravatar.com/avatar/4fa76dd60641ea15052aefe17c3104dd?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/4fa76dd60641ea15052aefe17c3104dd?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://owenlabs.org' rel='external nofollow' class='url'>j.g. owen</a> </strong>
+				<span class="comment_time">// Nov 8, 2011 at 6:23 pm</span>
+			</p>
+			<div class="entry">
+				<p>Tuesday, November 8, 2011 5:21 pm. I&#8217;m amazed. I&#8217;m running fontforge! I have no idea if/how it works and all, but I&#8217;m astonished I got this far&#8230;. Thanx much&#8230;.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-24424 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-24424" title="Permalink to this comment">29</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://nusushika.yolasite.com'><img alt='' src='http://1.gravatar.com/avatar/1f5aab040a064870d349d033963c9b01?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/1f5aab040a064870d349d033963c9b01?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://nusushika.yolasite.com' rel='external nofollow' class='url'>nusushika</a> </strong>
+				<span class="comment_time">// Nov 17, 2011 at 10:15 am</span>
+			</p>
+			<div class="entry">
+				<p>Thank you thank you. Your post really did help me finally installed fontforge on windows 7.</p>
+<p>It seems install instructions on other websites (including fontforge on sourcefore.net) are all out of date.</p>
+<p>Thank you very much.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-24482 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-24482" title="Permalink to this comment">30</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 17, 2011 at 11:18 pm</span>
+			</p>
+			<div class="entry">
+				<p>@nusushika: It&#8217;s why I created it this tutorial. Thanks for the feedback! :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-26677 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-26677" title="Permalink to this comment">31</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/32b233793225c667ada993bb763b7302?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/32b233793225c667ada993bb763b7302?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Senne </strong>
+				<span class="comment_time">// Dec 8, 2011 at 12:30 pm</span>
+			</p>
+			<div class="entry">
+				<p>Found how to change the language to English:<br />
+1. RM on fontforge.bat -&gt; edit</p>
+<p>2. Search for the following line:</p>
+<p>   set LANG=ja_JP.UTF-8</p>
+<p>3. Remove it.<br />
+4. Safe, and run again. </p>
+<p>Easy As Pie ;)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-26798 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-26798" title="Permalink to this comment">32</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Dec 9, 2011 at 11:12 am</span>
+			</p>
+			<div class="entry">
+				<p>@Senne: Thanks for the tip!  I&#8217;m going to update the article with this information.  Since I don&#8217;t use the GUI too much, I haven&#8217;t delved a lot into this, and given the amount of questions on this subject, it seems like it was bugging a lot of people. :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-27002 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-27002" title="Permalink to this comment">33</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.idusortus.com'><img alt='' src='http://1.gravatar.com/avatar/1db6173ab779fa4d3c61b2658d694d37?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/1db6173ab779fa4d3c61b2658d694d37?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.idusortus.com' rel='external nofollow' class='url'>Id10t_</a> </strong>
+				<span class="comment_time">// Dec 11, 2011 at 3:35 am</span>
+			</p>
+			<div class="entry">
+				<p>Solid work. I stumbled here while looking for a painless cygwin install and I got *exactly* what I was looking for&#8230; PLUS info on FontForge :) Big thanks!!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30778 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30778" title="Permalink to this comment">34</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/c2de393eb1fdb626aa5a55aa7212be5b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/c2de393eb1fdb626aa5a55aa7212be5b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>SAKI </strong>
+				<span class="comment_time">// Jan 7, 2012 at 9:52 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thank you so much for posting this! After three failed attempts at installing fontforge the way it was described on the official site, I was ready to give up &#8230; but now I have a working install. :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-30783 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30783" title="Permalink to this comment">35</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 7, 2012 at 11:30 pm</span>
+			</p>
+			<div class="entry">
+				<p>@SAKI: Thanks for your feedback.  It&#8217;s comments like this that make posting stuff like this worthwhile. :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-40044 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-40044" title="Permalink to this comment">36</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/16e2a5ebe6c399a10f989e25262b014f?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/16e2a5ebe6c399a10f989e25262b014f?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Logra </strong>
+				<span class="comment_time">// Mar 23, 2012 at 12:02 pm</span>
+			</p>
+			<div class="entry">
+				<p>I know it&#8217;s been months since I had my initial troubles installing FontForge (long story short: I acquired unrelated hardware issues, and it&#8217;s taken me a while to replace the PC in question with a permanent solution).  I&#8217;ve got FontForge up and working, now.  Thank you. :-)  First order of business is creating comic breath-marks/ cat&#8217;s whiskers/ crow&#8217;s feet/ whatever marks to&#8230;er&#8230;the Komika font family, strangely enough. :-D Wish me luck!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-44463 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-44463" title="Permalink to this comment">37</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/#mingw'><img alt='' src='http://2.gravatar.com/avatar/219f2fa67ab1a860c0fff1b6ed8fcfb6?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/219f2fa67ab1a860c0fff1b6ed8fcfb6?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/#mingw' rel='external nofollow' class='url'>rcs</a> </strong>
+				<span class="comment_time">// Apr 26, 2012 at 7:55 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi;<br />
+Thank for the post.<br />
+But I got some error,with the fontforge installation. Up to that point everything was ok. In the step 9 (as above steps) &#8220;From the command line, enter the startxwin command.&#8221;. When I enter &#8216;startxwin&#8217; it ends with something like this.</p>
+<p>$ Warning: Missing charsets in String to FontSet conversion</p>
+<p>Further I enter &#8216;fontforge&#8217; as mentioned in step 9 [Next enter the command fontforge &amp; (include the &amp; if you want to run fontforge in the background so that you can enter in other commands into rxvt later). You will see the fontforge splash screen as well as a file dialogue box.].</p>
+<p>But then I didnot get the fontforge splash screen as well as a file dialogue box and INSTEAD I got the following statement.</p>
+<p>bash: /usr/bin/fontforge: Bad address</p>
+<p>Please help me, where I heve been wrong. I need to run this software urgently.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-46534 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-46534" title="Permalink to this comment">38</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/ead4622c1a04a6094223a630e015ee50?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/ead4622c1a04a6094223a630e015ee50?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Shanna </strong>
+				<span class="comment_time">// May 11, 2012 at 4:18 pm</span>
+			</p>
+			<div class="entry">
+				<p>Hello, I&#8217;m using windows7 and I&#8217;ve follow all the steps successfully except when I enter the font forge command I get this: </p>
+<p>$ fontforge<br />
+bash: /usr/bin/fontforge: Bad Address </p>
+<p>Could you help me with this please? Thanks in advance.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-46538 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-46538" title="Permalink to this comment">39</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/ead4622c1a04a6094223a630e015ee50?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/ead4622c1a04a6094223a630e015ee50?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Shanna </strong>
+				<span class="comment_time">// May 11, 2012 at 4:52 pm</span>
+			</p>
+			<div class="entry">
+				<p>Also,<br />
+I got this when I ran cygcheck fontforge</p>
+<p>$ cygcheck fontforge<br />
+Found: C:\cygwin\bin\fontforge.exe<br />
+C:\cygwin\bin\fontforge.exe<br />
+  C:\cygwin\bin\cygfontforge-1.dll<br />
+    C:\cygwin\bin\cyggutils-1.dll<br />
+      C:\cygwin\bin\cyggunicode-3.dll<br />
+        C:\cygwin\bin\cygwin1.dll<br />
+          C:\windows\system32\KERNEL32.dll<br />
+            C:\windows\system32\API-MS-Win-Core-RtlSupport-L1-1-0.dll<br />
+            C:\windows\system32\ntdll.dll<br />
+            C:\windows\system32\KERNELBASE.dll<br />
+            C:\windows\system32\API-MS-Win-Core-ProcessThreads-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-Heap-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-Memory-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-Handle-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-Synch-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-File-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-IO-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-ThreadPool-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-LibraryLoader-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-NamedPipe-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-Misc-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-SysInfo-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-Localization-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-ProcessEnvironment-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-String-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-Debug-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-ErrorHandling-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-Fibers-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-Util-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Core-Profile-L1-1-0.dll<br />
+            C:\windows\system32\API-MS-Win-Security-Base-L1-1-0.dll<br />
+        C:\cygwin\bin\cygiconv-2.dll<br />
+      C:\cygwin\bin\cyggif-4.dll<br />
+        C:\cygwin\bin\cyggcc_s-1.dll<br />
+        C:\cygwin\bin\cygX11-6.dll<br />
+          C:\cygwin\bin\cygxcb-1.dll<br />
+            C:\cygwin\bin\cygXau-6.dll<br />
+            C:\cygwin\bin\cygXdmcp-6.dll<br />
+      C:\cygwin\bin\cygintl-8.dll<br />
+      C:\cygwin\bin\cygjpeg-8.dll<br />
+      C:\cygwin\bin\cygpng14-14.dll<br />
+        C:\cygwin\bin\cygz.dll<br />
+      C:\cygwin\bin\cygtiff-5.dll<br />
+        C:\cygwin\bin\cygjbig-2.dll<br />
+    C:\cygwin\bin\cygfreetype-6.dll<br />
+      C:\cygwin\bin\cygbz2-1.dll<br />
+    C:\cygwin\bin\cygspiro-0.dll<br />
+    C:\cygwin\bin\cyguninameslist-0.dll<br />
+  C:\cygwin\bin\cyggdraw-4.dll<br />
+    C:\cygwin\bin\cygfontconfig-1.dll<br />
+      C:\cygwin\bin\cygexpat-1.dll<br />
+    C:\cygwin\bin\cygXft-2.dll<br />
+      C:\cygwin\bin\cygXrender-1.dll<br />
+  C:\windows\system32\ADVAPI32.DLL<br />
+    C:\windows\system32\msvcrt.dll<br />
+      C:\windows\system32\API-MS-Win-Core-Console-L1-1-0.dll<br />
+      C:\windows\system32\API-MS-Win-Core-DateTime-L1-1-0.dll<br />
+      C:\windows\system32\API-MS-Win-Core-Interlocked-L1-1-0.dll<br />
+    C:\windows\system32\API-MS-WIN-Service-Core-L1-1-0.dll<br />
+    C:\windows\system32\API-MS-WIN-Service-winsvc-L1-1-0.dll<br />
+    C:\windows\system32\API-MS-WIN-Service-Management-L1-1-0.dll<br />
+    C:\windows\system32\API-MS-WIN-Service-Management-L2-1-0.dll<br />
+    C:\windows\system32\API-MS-Win-Core-LocalRegistry-L1-1-0.dll<br />
+    C:\windows\system32\RPCRT4.dll<br />
+      C:\windows\system32\SspiCli.dll<br />
+        C:\windows\system32\CRYPTBASE.dll<br />
+          C:\windows\system32\API-MS-Win-Core-DelayLoad-L1-1-0.dll<br />
+        C:\windows\system32\API-MS-Win-Security-LSALookup-L1-1-0.dll<br />
+cygcheck: track_down: could not find cygxml2-2.dll</p>
+<p>cygcheck: track_down: could not find libpython2.6.dll</p>
+<p>cygcheck: track_down: could not find cygcairo-2.dll</p>
+<p>cygcheck: track_down: could not find cygpango-1.0-0.dll</p>
+<p>cygcheck: track_down: could not find cygpangocairo-1.0-0.dll</p>
+<p>cygcheck: track_down: could not find cygpangoxft-1.0-0.dll</p>
+<p>cygcheck: track_down: could not find cygXi-6.dll</p>
+<p>cygcheck: track_down: could not find libpython2.6.dll</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-46639 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-46639" title="Permalink to this comment">40</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 12, 2012 at 1:50 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Shanna: Thanks for your feedback.  It seems that fontforge may have been updated since I wrote this post and requires a few more things to be installed through cygwin.  If  you look at the original post, go to step 13 in the &#8220;Install Cygwin&#8221; section and try finding the dependencies you have listed in your cygcheck dump.  After doing this, it should fix the problem.  I am going to look at this later today and tomorrow to see if I see the same thing.  Thanks for pointing this out, and if you could keep me updated if you find out anything before I do, I&#8217;d really appreciate it.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-46647 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-46647" title="Permalink to this comment">41</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 12, 2012 at 4:47 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Shanna:  I have been able to replicate the problem and have updated the article above. The new version of FontForge does require the following libraries in order to run:</p>
+<p><code>libcairo2</code>, <code>libXi6</code>, and <code>libXi-devel </code>in the X11 category<br />
+<code>libxml2</code> and <code>libpango1.0_0</code> in the Gnome category</p>
+<p>You must add these libraries by rerunning the steps in &#8220;Step1: Installing Cygwin&#8221; above.  When you get to step 13, make sure you are using a mirror other than <code>ftp://ftp.cygwinports.org/pub/cygwinports</code>.  Then when you get to step 15, and add the libraries I listed above.  Continue all the rest of the steps (up to 19) and then try running FontForge.  You shouldn&#8217;t get the Bad Address error any more.  Please let me know if this does or doesn&#8217;t help you.  And thanks again for your feedback, which is helping me ensure that this document is kept up-to-date.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-46650 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-46650" title="Permalink to this comment">42</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 12, 2012 at 5:48 pm</span>
+			</p>
+			<div class="entry">
+				<p>@rcs: Please read my reply to Shanna.  It fixes the &#8220;Bad Address&#8221; issue.  As for the Warning when using <code>startxwin</code>, I don&#8217;t think it is an issue that will prevent you from using FontForge, but please let me know if you see otherwise.  Good luck!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-47357 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-47357" title="Permalink to this comment">43</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.ryfly.info'><img alt='' src='http://0.gravatar.com/avatar/fc3f9f6c931cbefaf3683c7ed3d663c3?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/fc3f9f6c931cbefaf3683c7ed3d663c3?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.ryfly.info' rel='external nofollow' class='url'>RyFly</a> </strong>
+				<span class="comment_time">// May 18, 2012 at 10:57 pm</span>
+			</p>
+			<div class="entry">
+				<p>Awesome walk-through!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-52242 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-52242" title="Permalink to this comment">44</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/415cf2989509bc552defe1ee5510db72?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/415cf2989509bc552defe1ee5510db72?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Sam </strong>
+				<span class="comment_time">// Jun 25, 2012 at 5:20 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi, thanks for the great walkthrough, it really helps.  I&#8217;ve followed everything to the letter (99% sure anyway) and Font Forge still won&#8217;t run &#8211; get &#8220;bash: /usr/bin/fontforge: bad address&#8221;</p>
+<p>when I cygcheck fontforge everything passes except I get this error:<br />
+&#8220;cygcheck: track_down: could not find libpython2.6.dll&#8221;</p>
+<p>I re-ran Cygwin setup and added the python (version 2.6.7-1) package from the interpreter category and it seems to have done the trick.</p>
+<p>Just thought I would post in case others have a similar problem.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-53054 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-53054" title="Permalink to this comment">45</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/8a2bfe3538667674992b8479a95bb92b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/8a2bfe3538667674992b8479a95bb92b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Susan </strong>
+				<span class="comment_time">// Jun 30, 2012 at 3:00 pm</span>
+			</p>
+			<div class="entry">
+				<p>Hi, </p>
+<p>Just yesterday I gave up on trying to install fontforge on a vista machine through cygwin. I&#8217;ve been creating fonts on Corel Draw X5, but have had issues with crashing every time I try to export characters into a TTF file. I decided to try a dedicated font creation program and was drawn to fontforge because it has the best reviews next to fontlab, but without the $650 pricetag. The instructions you gave are great, but I also encountered:</p>
+<p>This after starting xwin</p>
+<p>$ Warning: Missing charsets in String to FontSet conversion</p>
+<p>And this when trying to start fontforge</p>
+<p>&amp; -bash: /usr/bin/fontforge: Bad Address </p>
+<p>After running cygcheck I got a similar dialogue to the one above, but it ended with:</p>
+<p>cygcheck: track_down: could not find cyggutils-1.dll</p>
+<p>cygcheck: track_down: could not find cyggutils-1.dll</p>
+<p>cygcheck: track_down: could not find cyggutils-1.dll</p>
+<p>For the life of me I cannot figure out what package this message is reffering to. I do know that google seems to detest it as a search item (it keeps trying to correct me). Any help figuring out what package I need to install would be great. </p>
+<p>I&#8217;m also very curious to know more about the mingw version of fontforge, and for any updates you might have to offer concerning the cygwin version available on the same site. On another blog, a user who also runs on vista said the mingw version was easy to install and use, but that it crashes every time he tries to create a ttf file. Have you encountered anything like this? I&#8217;d really like to try again soon so that I can add custom fonts to my design packages. </p>
+<p>Thanks again for all the help you&#8217;ve provided.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-53254 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-53254" title="Permalink to this comment">46</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jul 2, 2012 at 9:20 am</span>
+			</p>
+			<div class="entry">
+				<p>@Susan: If you go through &#8220;Step 2: Install FontForge)&#8221; again, make sure you select cygutils when selecting your packages.  This should fix the problem.  It should have selected this when you installed fontforge.  :-/</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-53522 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-53522" title="Permalink to this comment">47</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/e69266f9f9b86e1e7030a6bbf1acf132?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/e69266f9f9b86e1e7030a6bbf1acf132?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>DarkBorn </strong>
+				<span class="comment_time">// Jul 4, 2012 at 6:12 pm</span>
+			</p>
+			<div class="entry">
+				<p>Just THANKS!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-53597 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-53597" title="Permalink to this comment">48</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/8a2bfe3538667674992b8479a95bb92b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/8a2bfe3538667674992b8479a95bb92b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Susan </strong>
+				<span class="comment_time">// Jul 5, 2012 at 1:28 pm</span>
+			</p>
+			<div class="entry">
+				<p>Thanks so much :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-76470 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-76470" title="Permalink to this comment">49</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/d37edac94145c355b8c50402e4506cc0?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/d37edac94145c355b8c50402e4506cc0?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Anne </strong>
+				<span class="comment_time">// Oct 27, 2012 at 8:45 am</span>
+			</p>
+			<div class="entry">
+				<p>It doesn&#8217;t give me the libxml2 package in the Gnome category. It does give me that one to select in the Libs category. Is this the same?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-88552 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-88552" title="Permalink to this comment">50</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/120de456dd6085cdee58dd35c1fe4f9f?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/120de456dd6085cdee58dd35c1fe4f9f?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Anakin </strong>
+				<span class="comment_time">// Nov 30, 2012 at 11:47 pm</span>
+			</p>
+			<div class="entry">
+				<p>Oh, and I found libxml2 in Libs category instead of Graphics.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="2339" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="160d1beb5b" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

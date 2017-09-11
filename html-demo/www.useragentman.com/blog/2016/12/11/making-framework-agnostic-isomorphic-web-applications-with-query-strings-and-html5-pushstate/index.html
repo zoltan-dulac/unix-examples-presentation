@@ -1,0 +1,783 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive post-7221" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Making Framework Agnostic Isomorphic Web Applications with Query Strings and HTML5 pushState</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><script src="//code.jquery.com/jquery-1.10.2.js"></script>	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<meta property="og:title" content="Making Framework Agnostic Isomorphic Web Applications with Query Strings and HTML5 pushState" />
+<meta property="og:description" content="A Single Page Application can share state with the client and server easily with progressive-pushstate." />
+<meta property="og:image" content="http://www.useragentman.com/og-preview/7221.jpg" />  
+
+<meta name="twitter:card" content="photo">
+<meta name="twitter:title" content="A Single Page Application can share state with the client and server easily with progressive-pushstate." />
+<meta name="twitter:image" content="http://www.useragentman.com/og-preview/7221.jpg"> 
+
+<!-- ID is 7221 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Making Framework Agnostic Isomorphic Web Applications with Query Strings and HTML5 pushState Comments Feed" href="http://www.useragentman.com/blog/2016/12/11/making-framework-agnostic-isomorphic-web-applications-with-query-strings-and-html5-pushstate/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='How To Fix Transformed Text in HTML5 Canvas In Firefox For Windows' href='http://www.useragentman.com/blog/2016/05/10/how-to-fix-small-transformed-text-in-html5-canvas-in-firefox-for-windows/' />
+<link rel='next' title='Implementing an Accessible Skip Navigation Link Requires More Thought Than You&#8217;d Think' href='http://www.useragentman.com/blog/2016/12/15/implementing-an-accessible-skip-navigation-link-requires-more-thought-than-youd-think/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2016/12/11/making-framework-agnostic-isomorphic-web-applications-with-query-strings-and-html5-pushstate/" />
+<link rel='shortlink' href='http://useragentman.com/blog/U5sKz' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2016%2F12%2F11%2Fmaking-framework-agnostic-isomorphic-web-applications-with-query-strings-and-html5-pushstate%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2016%2F12%2F11%2Fmaking-framework-agnostic-isomorphic-web-applications-with-query-strings-and-html5-pushstate%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2016/05/10/how-to-fix-small-transformed-text-in-html5-canvas-in-firefox-for-windows/" rel="prev">How To Fix Transformed Text in HTML5 Canvas In Firefox For Windows</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2016/12/15/implementing-an-accessible-skip-navigation-link-requires-more-thought-than-youd-think/" rel="next">Implementing an Accessible Skip Navigation Link Requires More Thought Than You&#8217;d Think</a> &raquo;</span>
+</div>
+
+
+			<h1>Making Framework Agnostic Isomorphic Web Applications with Query Strings and HTML5 pushState</h1>
+			<h4 class="meta">December 11th, 2016 by zoltan &middot; <a href="http://www.useragentman.com/blog/2016/12/11/making-framework-agnostic-isomorphic-web-applications-with-query-strings-and-html5-pushstate/#comments">No Comments</a></h4>
+			<div class="entry">
+				
+<div class="image-container">
+<!--
+  *
+  * Note: The widths here are a result of the two break points (360, 768),
+  * the desktop max-width of an image (835).  We then took all of these
+  * numbers and multiplied by two for a retina display.
+  * 
+  * The conditional comments are there in case IE9 is visiting this site,
+  * since it has a problem with <picture>.
+  * 	
+  * We don"t use picturefill, because all modern browsers can handle this
+  * (yay!)
+  * 
+  * We removed the JXR renditions, because they weren"t as good as the MOZ
+  * JPEG ones. 
+  *
+  * Command that generated this page and assoicated images:
+  * html5ImageConverter.sh --jxr-nconvert --jpg-quals=33 --webp-quals=30 --jp2-rates=0.39 --sizes=360/720/768/835/1536/1670 --no-png --use-mozjpeg --jxr-quals=1 /images/7221/blog-post.png 
+  *
+-->
+
+<picture class="alignnone size-full wp-image-7224 full-bleed full-width">
+  <!--[if IE 9]><video style="display: none;"><![endif]-->
+  <source srcset="/images/7221/blog-post-360.jxr 360w, /images/7221/blog-post-720.jxr 720w, /images/7221/blog-post-768.jxr 768w, /images/7221/blog-post-835.jxr 835w, /images/7221/blog-post-1536.jxr 1536w, /images/7221/blog-post-1670.jxr 1670w" type="image/vnd.ms-photo">
+  <source srcset="/images/7221/blog-post-360.jp2 360w, /images/7221/blog-post-720.jp2 720w, /images/7221/blog-post-768.jp2 768w, /images/7221/blog-post-835.jp2 835w, /images/7221/blog-post-1536.jp2 1536w, /images/7221/blog-post-1670.jp2 1670w" type="image/jp2">
+  <source srcset="/images/7221/blog-post-360.webp 360w, /images/7221/blog-post-720.webp 720w, /images/7221/blog-post-768.webp 768w, /images/7221/blog-post-835.webp 835w, /images/7221/blog-post-1536.webp 1536w, /images/7221/blog-post-1670.webp 1670w" type="image/webp">
+  
+  <!--[if IE 9]></video><![endif]-->
+  <img class="full-bleed full-width" srcset="/images/7221/blog-post-360.jpg 360w, /images/7221/blog-post-720.jpg 720w, /images/7221/blog-post-768.jpg 768w, /images/7221/blog-post-835.jpg 835w, /images/7221/blog-post-1536.jpg 1536w, /images/7221/blog-post-1670.jpg 1670w"  />
+</picture>
+
+</div>
+<p>With frameworks like <a href="https://facebook.github.io/react/" title="React JS website">React</a> in vogue today, there is a lot of HTML being rendered exclusively on the client instead of the server, where it has traditionally occured.  While this can result in some really snappy and slick interactions, there are a few issues with doing this:    </p>
+<ol>
+<li>They do not work when the client has JavaScript turned off.</li>
+<li>In low bandwidth environments, performance will be sluggish at load time if the application is JavaScript heavy, since (usually) the majority of the JavaScript needs to load before the page state can be applied to the application.  This is a huge consideration with mobile wireless connections, where you cannot guarantee a great signal all the time.</li>
+<li>Sharing that state of a &#8220;single page application&#8221; via social media/email/instant messaging platforms can be problematic <strong>unless the URL can change when the state changes</strong>.
+</ol>
+<p>To handle the first two issues, <strong>the first-render of the application should be done by the server instead of the client.</strong>  This will allow users to see the page data immediately while the page loads all the assets, increasing the performance of the page at load time. Also, as the state of the page changes, the URL should also change.  If the user wants to share that change, then it&#8217;s easy as sharing that URL.  And since the first-render of that page will be done by the server, you can program the server side code to have the application give appropriate <a href="https://developers.facebook.com/docs/sharing/webmasters" title="Open Graph information from Facebook.">Facebook Open Graph</a> and <a href="https://dev.twitter.com/cards/markup" title="Twitter Card meta information resource from Twitter">Twitter Card</a> meta tag information on first load that reflects that change to social media sites to make sharing nicer.</p>
+<p>When HTML5 single page applications first became popular a while back, we hit a snag &mdash; we couldn&#8217;t change the URL of the application without causing a browser refresh.  In order to work around this, many JavaScript routing frameworks (like Backbone) would change the <a href="https://en.wikipedia.org/wiki/Fragment_identifier" title="Wikipedia page for Fragment Identifier.">URL hash</a> of the page in order to maintain state.  This worked, but at a cost of sharing the state &mdash; social media sites would not be able to know the state of the application since the <a href="http://stackoverflow.com/questions/940905/can-i-read-the-hash-portion-of-the-url-on-my-server-side-application-php-ruby" title="Stack Overflow page, 'Can I read the hash portion of the URL on my server-side application'">URL hash is never sent to the server via HTTP</a>.  Furthermore, <a href="https://coderwall.com/p/gqqmdq/fragment-identifiers-and-the-facebook-like-button" title="Coderwall article 'Fragment Identifiers and the Facebook Like Button'">Social Media platforms like Facebook cannot use Fragment Identifiers to distinguish different states of an application</a>, which causes issues if you want Facebook users to be able to &#8220;Like&#8221; specific states of an application (e.g. the photo-gallery section of the application vs. other parts of the page).</p>
+<p>Now, however, we can use HTML5 <a href="http://caniuse.com/#search=pushState">Session Management</a> to change the browser&#8217;s URL within a single page web application without the browser going to the server to load the page for that URL.  Furthermore, when the user clicks the back button, this Session Management API can be used to ensure that state of the page for that URL can also be rendered without a full server page load.  I took this a step further and wrote <a href="https://github.com/zoltan-dulac/progressive-pushstate">progressive-pushstate</a>, a JavaScript library which parses the data from a query string and sets this as the application&#8217;s <code>history.state</code> (the JavaScript object that HTML5 Session Management uses to keep state).  Links and forms on the page that change the document&#8217;s query string can be rendered by JavaScript the same way they would be rendered if that URL and query string were requested by the web server.  This also allows us to change the query string if form elements are changed without hitting the submit button.</p>
+<p><a href="https://github.com/zoltan-dulac/progressive-pushstate" class="exampleLink">Go to the progressive-pushstate GitHub page</a></p>
+<p>If you are confused about the power of this, let&#8217;s look at some simple examples.</p>
+<h2>Example 1: A Simple Mobile/Desktop Navigation System</h2>
+<p>Let&#8217;s say you have to build a website that uses a <code>&lt;select&gt;</code> box &#8220;hamburger&#8221; menu in the mobile breakpoint, but a traditional &#8220;list of links&#8221; menu for the larger breakpoints: </p>
+
+<table class="dataTable noDataPadding">
+<caption class="visually-hidden">This table contains screenshots of a web page that uses a select-box hamburger menu in the mobile breakpoint, and a traditional nav bar for larger breakpoints</caption>
+<thead>
+<tr><th>Mobile Breakpoint</th><th>Desktop Breakpoint</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2016/11/example-2-mobile_sm.jpg" alt="screenshot of desktop version of video game demo" width="383" height="639" class="alignnone size-full wp-image-7302" />
+</td>
+<td>
+<img src="http://www.useragentman.com/blog/wp-content/uploads/2016/11/example-2-desktop_sm.jpg" alt="screenshot of desktop version of video game demo" width="300" height="229" class="alignnone size-medium wp-image-7301" />
+</td>
+</tr>
+</tbody>
+</table>
+<p><a class="exampleLink" href="http://useragentman.com/examples/progressive-pushstate/examples/example01.php">Look at live version of the the hybrid nav solution using progressive-pushstate</a></p>
+<p>Let&#8217;s look briefly at the markup that makes this happen:</p>
+<blockquote class="code">
+<pre>
+&lt;nav class="fixedsticky"&gt;
+    
+  &lt;!-- The CSS makes this visible only when the page is wider than 768px --&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;a class="pp-link" href="?f=home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a <span class="hilite">class="pp-link" href="?f=donkey-kong"</span>&gt;Donkey Kong&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="pp-link" href="?f=pac-man"&gt;Pac-Man&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="pp-link" href="?f=robotron"&gt;Robotron&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="pp-link" href="?f=tempest"&gt;Tempest&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;!-- The CSS makes this visible only when the page is narrower than 768px --&gt;
+  &lt;form <span class="hilite">class="pp-form" data-pp-events="change"</span>&gt;
+    &lt;select name="f"&gt;
+      &lt;option value="home" selected&gt;Home&lt;/option&gt;
+      &lt;option <span class="hilite">value="donkey-kong"</span>&gt;Donkey Kong&lt;/option&gt;
+      &lt;option value="pac-man"&gt;Pac-Man&lt;/option&gt;
+      &lt;option value="robotron"&gt;Robotron&lt;/option&gt;
+      &lt;option value="tempest"&gt;Tempest&lt;/option&gt;
+    &lt;/select&gt;
+
+  &lt;/form&gt;
+&lt;/nav&gt;
+
+&lt;script src="/path/to/progressive-pushstate.js"&gt;&lt;/script&gt;  
+&lt;!-- not needed for progressive-pushstate, but used in page code --&gt;
+&lt;script src="/path/to/jquery-3.1.1.min.js"&gt;&lt;/script&gt;
+&lt;script src="/path/to/example02.js"&gt;&lt;/script&gt;
+
+</pre>
+</blockquote>
+<p>If you take a look at the navigation markup, you will see that the links will submit a query string that would be identical if the form were to submit.  Since the links have a class of <code>pp-link</code>, progressive-pushstate will know to override the browser&#8217;s default behaviour and handle the links. Since the form has a class of <code>pp-form</code> and has <code>data-pp-events</code> set to <code>"change"</code>, progressive-pushstate knows that it must fire when any of its fields change.</p>
+<p>So, how does progressive-pushstate handle the link behaviour?  In example02.js, you will see the following code:</p>
+<blockquote class="code">
+<pre>
+var example1 = new function () {
+  
+  // Use me to avoid using .bind() all over the place.
+  var me = this;
+  
+  me.init = function () {
+    pp.init(me.popstateEvent);
+  };
+  
+  me.popstateEvent = function(e) {
+    currentState = e.state;
+    
+    /*
+     * At this point, `currentState.f` will be set to whatever value `f` is in
+     * the query string.
+     */
+    
+    .
+    .
+    .
+    // rest of the logic is here.
+  }
+}
+
+example1.init();
+</pre>
+</blockquote>
+<p>The <code>init()</code> method calls <code>pp.init(me.popstateEvent)</code>, which initializes progressive-pushstate so that <code>pp-link</code> links and <code>pp-form</code> forms will be handled by the script. When these links and forms are used, progressive-pushstate will convert the resultant query string  to a JavaScript object and set it as the pushState for that URL.  It will then call example01.js&#8217;s <code>popstateEvent()</code>, which will change the contents of the main part of the page by grabbing an HTML fragment that corresponds to that page (for the sake of brevity, this logic is not shown in this article, but if you want, please take a look at the <a href="https://github.com/zoltan-dulac/progressive-pushstate/blob/master/examples/js/example01.js">full source of example01.js</a> to understand how it works).  Note that the `popstateEvent()` method uses <code>e.state</code> to find out the state of the page &#8230; this is the pushState object we mentioned earlier.</p>
+<p>There is one thing I did gloss over here &mdash; if JavaScript is turned off (or if the browser doesn&#8217;t support progressive-pushstate) the mobile navigation will fail to do anything when the select box value changes.  Since we want things to be bullet proof, we add this to the the mobile menu:</p>
+<blockquote class="code">
+<pre>
+&lt;nav class="fixedsticky"&gt;
+  
+    &lt;!-- The CSS makes this visible only when the page is wider than 768px --&gt;
+    &lt;ul&gt;
+    &lt;li&gt;&lt;a class="pp-link" href="?f=home"&gt;Home&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="pp-link" href="?f=donkey-kong"&gt;Donkey Kong&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="pp-link" href="?f=pac-man"&gt;Pac-Man&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="pp-link" href="?f=robotron"&gt;Robotron&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a class="pp-link" href="?f=tempest"&gt;Tempest&lt;/a&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  
+  &lt;!-- The CSS makes this visible only when the page is narrower than 768px --&gt;
+  &lt;form class="pp-form" data-pp-events="change"&gt;
+    &lt;select name="f"&gt;
+      &lt;option value="home" selected&gt;Home&lt;/option&gt;
+      &lt;option value="donkey-kong"&gt;Donkey Kong&lt;/option&gt;
+      &lt;option value="pac-man"&gt;Pac-Man&lt;/option&gt;
+      &lt;option value="robotron"&gt;Robotron&lt;/option&gt;
+      &lt;option value="tempest"&gt;Tempest&lt;/option&gt;
+    &lt;/select&gt;
+    
+<div class="hilite">    &lt;!-- 
+      * This button only appears when the library is not supported by the
+      * browser, or if JavaScript is turned off
+    --&gt;
+    &lt;input class="pp-no-support-button" type="submit" 
+      aria-label="Go to page selected" value="Go" /&gt;</div>
+    
+  &lt;/form&gt;
+&lt;/nav&gt;
+</pre>
+</blockquote>
+<p>Note the submit button with the className <code>pp-no-support-button</code>.  We want users to press this button if the browser doesn&#8217;t support progressive-pushstate.   This will allow the page to submit the form data the old fashioned way so that the page can generate the right HTML on the server.  If you look at the code for <a href="https://github.com/zoltan-dulac/progressive-pushstate/blob/master/examples/example01.php">example01.php</a>, you will see PHP code that does this (this PHP code also does the first render of the page).</p>
+<p>We use the following CSS to show this button only when the browser can&#8217;t support progressive-pushstate (or when JavaScript is turned off):</p>
+<blockquote class="code">
+<pre>
+.pp-no-support-button {
+	display: inline-block;
+}
+
+.pp-support .pp-no-support-button {
+	display: none;
+}
+</pre>
+</blockquote>
+<p>The classes <code>pp-support</code> is set on the <code>&lt;html&gt;</code> tag by progressive-pushstate when the page loads if the browser is supported by the library &mdash; if not, the library sets the <code>pp-no-support</code> class instead. </p>
+<p>These classes allow developers to give an alternative UI if the library is no supported.  These fallback features that give an expected (but not as sexy) user experience to older and JavaScript-disabled browsers are a great example of progressive enhancement, which is why I called this library <strong>progressive-</strong>pushstate.js</p>
+<p>If you use the navigation functionality in the above example to go to several pages, try hitting the back button.  You will notice it remembers history perfectly.  This is because pressing the browser history buttons (i.e. back and forward) will also invoke the <code>popstateEvent</code> as well.  History management happens for free!</p>
+<p>Let&#8217;s take a look at another example.</p>
+<h2>Example 2: A &#8220;Search As You Type&#8221; Page</h2>
+<p>Many Search Engines (including Google) will show results while the user types in a form.  Let&#8217;s look at an example that uses progressive-pushstate:</p>
+<p><div id="attachment_7315" style="width: 425px" class="wp-caption aligncenter"><img src="http://www.useragentman.com/blog/wp-content/uploads/2016/11/example-3.jpg" alt="Screen capture of search example" width="415" height="238" class="size-full wp-image-7315" srcset="http://www.useragentman.com/blog/wp-content/uploads/2016/11/example-3.jpg 415w, http://www.useragentman.com/blog/wp-content/uploads/2016/11/example-3-300x172.jpg 300w" sizes="(max-width: 415px) 100vw, 415px" /><p class="wp-caption-text">This basic search form will go to the server while the user is typing in a search term.</p></div></p>
+<p><a class="exampleLink" href="http://useragentman.com/examples/progressive-pushstate/examples/example02-form.php">Look at live version of the search example.</a></p>
+<p>You will note that the form will do a search while the user types a search string into it.  This is because we instructed progressive-pushstate to do a search <code>oninput</code>:</p>
+<blockquote class="code">
+<pre>
+&lt;form class="pp-form" <span class="hilite">data-pp-events="input submit"</span>&gt;
+  &lt;label for="country"&gt;
+    Country: 
+    &lt;input
+      autofocus
+      type="text"
+      id="country"
+      name="country"
+      placeholder="Please enter in a country."
+      autocomplete="off" 
+      value=""/&gt;
+    &lt;/label&gt;
+&lt;/form&gt;
+</pre>
+</blockquote>
+<p>The library automatically throttles these submissions in order to prevent really fast typers that type 200 characters a minute from killing the web server with 200 requests a minute.  Note also that history is again baked in, so if users make mistakes or want to see previous searches, they can just press the back button.  Finally, the fallback is simple for JavaScript disabled browsers or browsers that don&#8217;t support this library &mdash; users can just hit enter to do a search.  This will cause a page refresh, but that&#8217;s okay, since the page still works as intended.</p>
+<h2>Example 3: A Filtered Table</h2>
+<p>Since I am currently working on an accessibility project with my current client, I wanted to build a page with a table that listed all the <a href="https://en.wikipedia.org/wiki/Web_Content_Accessibility_Guidelines">Web Content Accessibility Guidelines</a> with a way to filter them by principle (Perceivable, Operable, Understandable and Robust) as well as level (A, AA and AAA).</p>
+<p><div id="attachment_7341" style="width: 710px" class="wp-caption aligncenter"><img src="http://www.useragentman.com/blog/wp-content/uploads/2016/12/wcag-example.jpg" alt="A screen shot of the table filtering example." class="size-full wp-image-7341" /><p class="wp-caption-text">A screen shot of the table filtering example.</p></div></p>
+<p><a class="exampleLink" href="http://useragentman.com/examples/progressive-pushstate/examples/example03-wcag.php">Look at live version of filtered table example.</a></p>
+<p>Again, with a modern browser with Javascript turned on, you will see a nice animation when new rows are added to the table.  When you refresh the page, the table with the proper filters will be generated on the server side.</p>
+<div class="importantNotes">
+<strong>Note the submit button at the end of the form.</strong> Unlike the previous examples, the content only changes when we submit.  This is to ensure that this page conforms to the WCAG 2.0 (specifically, <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/consistent-behavior-unpredictable-change.html">3.2.2 – On Input (Level A)</a>.  We force progressive-pushstate to only allow state changes when the form submits.  This is done by setting the form&#8217;s <code>data-pp-events</code> to <code>"submit"</code></p>
+<blockquote class="code">
+<pre>
+&lt;form class="pp-form" autocomplete="off" <span class="hilite">data-pp-events="submit"</span>&gt;
+  .
+  .
+  .
+&lt;/form&gt;
+</pre>
+</blockquote>
+<p>If you are using progressive-pushstate to create an accessible website that complies with this international standard, you <strong>must</strong> do this if you are <a href="https://www.w3.org/TR/2016/NOTE-WCAG20-TECHS-20161007/G80">providing a submit button to initiate a change of context</a>.  Note that <a href="https://www.w3.org/TR/2008/REC-WCAG20-20081211/#context-changedef">change of <em>content</em> is not always a change of <em>context</em></a>.
+</div>
+<h2>Pitfalls and Solutions to Isomorphic Applications</h2>
+<p>When coding isomorphic applications, developers should ensure that the client and the server both display the same data for each URL.  For example, the AJAX requests used in examples #1 and #2 return HTML.  This is the same HTML that would be inserted into the page by the server for that page&#8217;s state.  We do this by using PHP&#8217;s <code>include</code> to call the same PHP code that the AJAX request calls.</p>
+<p>The method was used in these examples for simplicity sake &mdash; however, most single page web applications that do AJAX requests return JSON that is parsed by the front-end JavaScript and translated to HTML.  If you want the same JSON payload to be parsed and translated to HTML on the server, you&#8217;d have to port that same code into whatever server side language you are using or run the same JavaScript you run on the client on the server as well.  Running JavaScript on the server is the preferable way to go since you only have to code your presentation logic once.</p>
+<p>Running server-side JavaScript is possible using Node, but what if you have an existing site that runs a different server-side technology?  Don&#8217;t fret! Many of them can still run JavaScript.  For example:</p>
+<ul>
+<li>I have worked on projects where we took <a href="http://olado.github.io/doT/index.html">DoT templates</a> and ran them on the server using <a href="https://github.com/erickzanardo/dj>DoT for Java</a> and <a href="https://developer.mozilla.org/en-US/docs/Mozilla/Projects/Rhino">Rhino</a>,a JavaScript engine that runs within the Java 6 and 7.</li>
+<li><a href="http://winterbe.com/">Benjamin Winterberg</a> has written <a href="http://winterbe.com/posts/2015/02/16/isomorphic-react-webapps-on-the-jvm/">an interesting article on running React components on the server</a> using <a href="http://www.oracle.com/technetwork/articles/java/jf14-nashorn-2126515.html">Nashorn</a> (the JavaScript engine that ships with Java 8)</li>
+<li>If you are using PHP, I have heard that PHP&#8217;s documentation on <a href="http://php.net/manual/en/book.v8js.php">V8 Javascript Engine Integration</a> can help devs run JavaScript within it.</li>
+<li>If you are really kickin&#8217; it old school, <a href="https://metacpan.org/pod/JavaScript::SpiderMonkey">you can even run JavaScript in Perl as well.</a></li>
+</ul>
+<p>In short, there doesn&#8217;t seem to be a shortage of solutions of running JavaScript on a server if you can&#8217;t use Node.</p>
+<h2>Do I Have To Use progressive-pushstate To Make My Applications Isomorphic?</h2>
+<p>Not at all. Here are some other solutions excellent solutions (just to name a few):</p>
+<ul>
+<li>If you use React, Smashing Magazine&#8217;s has a great article, <a href="https://www.smashingmagazine.com/2016/03/server-side-rendering-react-node-express/">Server-Side Rendering With React, Node And Express</a> (even if you don&#8217;t use React, this has a great write-up on the advantages of programming isomorphically)</li>
+<li><a href="http://redux.js.org/docs/recipes/ServerRendering.html">The Redux document on server rendering</a> also has a great write-up on how to do this.</li>
+<li>There is also a framework to <a href="https://github.com/saymedia/angularjs-server">run AngularJS apps on the server, using NodeJS</a>
+</ul>
+<p>You will notice that all of these solutions (and a lot of others) rely on you using a specific framework.  This is why I created progressive-pushstate &mdash; I wanted something more generic, since it is not always possible to use these frameworks in every project (e.g. when you are interfacing with an existing package, when you are modifying an existing codebase, etc).  Also, I have found <strong>JavaScript packages are like opinions &mdash; everyone has one and even the most popular ones tend to change or disappear over time.</strong></p>
+<h2>Other Features of progressive-pushstate</h2>
+<p>There are more features to progressive-pushstate than shown in these examples. A full breakdown is available on the <a href="https://github.com/zoltan-dulac/progressive-pushstate">progressive-pushstate github page</a>.</p>
+<h2>Planned Upcoming Features of progressive-pushstate</h2>
+<ul>
+<li>One thing I would think would be great is if instead of using standard query strings (e.g. <code>http://domain.com/page?a=x&#038;b=y&#038;c=z</code>) developers could use directories slugs instead, like Expression Engine does (e.g. <code>http://domain.com/page/a/x/b/y/c/z</code>).  I did not do this in the first release because the work I do usually involves forms, and using query strings is the default way forms send information to the browser, so it just made sense to do it that way.</li>
+<li>Another feature I would love to add is to ensure we can progressive-pushstate&#8217;s data into a separate property in the pushState. That is to say, instead of having <code>http://domain.com/page?a=x&#038;b=y&#038;c=z</code> resulting in a pushState of this:<br />
+<blockquote class="code">
+<pre>
+{
+  a: 'x',
+  b: 'y',
+  c: 'z'
+}
+</pre>
+</blockquote>
+<p>it can result of a pushState of this:</p>
+<blockquote class="code">
+<pre>
+{
+  pp: {
+    a: 'x',
+    b: 'y',
+    c: 'z'
+  }
+}
+</pre>
+</blockquote>
+<p>The advantage for doing this, in my opinion, is to allow progressive-pushstate to play nice with other JavaScript libraries that work with the HTML5 Session API.
+</li>
+</ul>
+<p>I definitely want to add both of these features in a not-so-distant future release when I get some extra time.  If anyone else  would like to work on these or any other improvement, please feel free to send me a pull request.  Alternatively, if you don&#8217;t have the time to contribute would like to request a different features for this library, please feel to leave a comment below or on the <a href="https://github.com/zoltan-dulac/progressive-pushstate/issues">issue page for progressive-pushstate</a>.</p>
+<h2>Browser Support for progressive-pushstate</h2>
+<p>It works in all modern browsers (including many of the older browsers in current use, like IE10+ and Android Browser 4.3+) and if you ensure the server side can do the render all the states without JavaScript, the fallback for unsupported browsers (like Opera Mini or IE <= 9) is to let the server render the page.
+
+<a href="https://github.com/zoltan-dulac/progressive-pushstate" class="exampleLink">Go to the progressive-pushstate GitHub page</a></p>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" rel="category tag">Events</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" rel="category tag">Events</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" rel="category tag">forms</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/html5/" rel="category tag">HTML5</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" rel="category tag">pushState</a>  &middot; <a href="http://www.useragentman.com/blog/tag/isomorphic/" rel="tag">isomorphic</a>, <a href="http://www.useragentman.com/blog/tag/isomorphic-applications/" rel="tag">isomorphic applications</a>, <a href="http://www.useragentman.com/blog/tag/isomorphic-web/" rel="tag">isomorphic web</a>, <a href="http://www.useragentman.com/blog/tag/isomorphic-web-applications/" rel="tag">isomorphic web applications</a>, <a href="http://www.useragentman.com/blog/tag/javascript-2/" rel="tag">javascript</a>, <a href="http://www.useragentman.com/blog/tag/node/" rel="tag">node</a>, <a href="http://www.useragentman.com/blog/tag/php/" rel="tag">php</a>, <a href="http://www.useragentman.com/blog/tag/pushstate/" rel="tag">pushState</a>, <a href="http://www.useragentman.com/blog/tag/query-strings/" rel="tag">query strings</a>, <a href="http://www.useragentman.com/blog/tag/server-side-javascript/" rel="tag">server-side javascript</a></p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">0 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+		 
+			<!-- If comments are open, but there are no comments. -->
+		
+	</ul>
+
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="7221" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="720e538e34" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

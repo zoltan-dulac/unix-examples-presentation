@@ -1,0 +1,168 @@
+#introExample {
+ 
+   /*
+    * These border widths must match the border-image numbers
+    */ 
+    border-width: 16px 16px 16px 16px;
+ 
+   /* Note that all browsers use their respective vendor prefix. */
+   -moz-border-image:    url('/border-image/images/border/pictureFrameSmall.png') 16 16 16 16 stretch;
+   -webkit-border-image: url('/border-image/images/border/pictureFrameSmall.png') 16 16 16 16 stretch;
+   -o-border-image:      url('/border-image/images/border/pictureFrameSmall.png') 16 16 16 16 stretch;
+   border-image:         url('/border-image/images/border/pictureFrameSmall.png') 16 16 16 16 stretch;
+   
+   /* Fallbacks for other browsers that don't support border-image yet */
+   border-color: #5a4945;
+   border-style: ridge;
+   
+   width: 300px;
+   float: left;
+   padding: 10px 10px 27px 10px;
+   margin: 0 10px 0px 0; 
+   background-image: url('/border-image/images/backgrounds/clouds.jpg');
+   font-weight: bold;
+}
+  
+#introExample p, #introExample code {
+   color: white;
+   text-shadow: 2px 2px 3px #333333,
+                -2px -2px 3px #333333,
+				-2px 2px 3px #333333,
+				2px -2px 3px #333333;
+}
+
+
+/* 
+ * The "poor man's" version of text-shadow for IE's Visual filters.
+ */
+body.ie6 #introExample p,
+body.ie7 #introExample p,
+body.ie8 #introExample p,
+body.ie9 #introExample p {
+	zoom: 1;
+	background: #000003; 
+	-ms-filter: "progid:DXImageTransform.Microsoft.Chroma(color='#000003') progid:DXImageTransform.Microsoft.Glow(Color=#3e3e3e, Strength=4)";
+	filter: progid:DXImageTransform.Microsoft.Chroma(color='#000003') 
+		 progid:DXImageTransform.Microsoft.Glow(Color=#3e3e3e, Strength=4); 
+
+} 
+
+
+
+#example1 {
+	
+   /*
+    * These border widths must match the border-image numbers
+    */
+    border-width: 23px 22px 22px 26px;
+ 	border-color: black;
+   /*
+    * Note that all browsers use their respective vendor prefix.
+    */
+   -moz-border-image:    url('/border-image/images/borders/chain.png') 23 22 22 26 round;
+   -webkit-border-image: url('/border-image/images/borders/chain.png') 23 22 22 26 round;
+   -o-border-image:      url('/border-image/images/borders/chain.png') 23 22 22 26 round;
+   border-image:         url('/border-image/images/borders/chain.png') 23 22 22 26 round;
+   
+   /* 
+    * You should include a border-color and border-style as a fallback for 
+    * browsers that don't support border-image.
+    */
+	border-color: #cccccc;
+    border-style: solid;
+   
+    padding: 28px;
+    margin: 26px;
+}
+
+#percentageExample {
+	/*
+    * These border widths must match the border-image numbers
+    */
+    border-width: 23px 22px 22px 26px;
+ 	border-color: black;
+   /*
+    * Note that all browsers use their respective vendor prefix.
+    */
+   -moz-border-image:    url('/border-image/images/borders/chain.png') 28% 27% 27% 32% round;
+   -webkit-border-image: url('/border-image/images/borders/chain.png') 28% 27% 27% 32% round;
+   -o-border-image:      url('/border-image/images/borders/chain.png') 28% 27% 27% 32% round; 
+   border-image:         url('/border-image/images/borders/chain.png') 28% 27% 27% 32% round;
+   
+   /* 
+    * You should include a border-color and border-style as a fallback for 
+    * browsers that don't support border-image.
+    */
+	border-color: #cccccc;
+    border-style: solid;
+   
+    padding: 28px;
+    margin: 26px;
+	
+}
+
+.centered {
+	text-align: center;
+}
+
+.centered img {
+	float: none !important;
+	border: none !important;
+}
+
+.example2 {
+	padding: 20px;
+	
+	/* Fallback for browsers that don't support border-image */
+	border-color: #ffbe5c;
+	border-style: solid;
+}
+
+#stretchExample {
+	border-width: 28px 28px 29px 29px;
+   -moz-border-image:    url('/border-image/images/borders/border.png') 28 28 29 29 stretch;
+   -webkit-border-image: url('/border-image/images/borders/border.png') 28 28 29 29 stretch;
+   -o-border-image:      url('/border-image/images/borders/border.png') 28 28 29 29 stretch;
+   border-image:         url('/border-image/images/borders/border.png') 28 28 29 29 stretch;
+}
+
+#repeatExample {
+	border-width: 28px 28px 29px 29px;
+   -moz-border-image:    url('/border-image/images/borders/border.png') 28 28 29 29 repeat;
+   -webkit-border-image: url('/border-image/images/borders/border.png') 28 28 29 29 repeat;
+   -o-border-image:      url('/border-image/images/borders/border.png') 28 28 29 29 repeat;
+   border-image:         url('/border-image/images/borders/border.png') 28 28 29 29 repeat;
+}
+
+#roundExample {
+	border-width: 28px 28px 29px 29px;
+   -moz-border-image:    url('/border-image/images/borders/border.png') 28 28 29 29 round;
+   -webkit-border-image: url('/border-image/images/borders/border.png') 28 28 29 29 round;
+   -o-border-image:      url('/border-image/images/borders/border.png') 28 28 29 29 round;
+   border-image:         url('/border-image/images/borders/border.png') 28 28 29 29 round;
+}
+
+table.dataTable td {
+	width: 50%;
+	
+	margin: 0;
+	vertical-align: top;
+}
+
+table.dataTable td img {
+margin: 0 0 10px 0 !important;
+border: none;	
+}
+
+table.dataTable th {
+	white-space: normal !important;
+}
+
+table.dataTable div.wp-caption {
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+table.dataTable td img.wp-image-2638 {
+	margin-top: 36px !important;
+}

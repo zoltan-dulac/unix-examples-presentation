@@ -1,0 +1,37 @@
+#!/bin/sh
+
+FILES=`find www.useragentman.com -name "*.html"`
+DEST_DIR="cleaned-site"
+
+if [ -d "$DEST_DIR" ]
+then
+	rm -rf "$DEST_DIR" log.txt
+fi
+
+for i in $FILES
+do
+	DIR=`dirname cleaned-site/$i`
+
+	if [ ! -d "$DIR" ]
+	then
+		mkdir -p $DIR
+	fi
+
+	(
+		echo
+		echo "FILE: $i"
+		echo "-----------------"
+	) >> log.txt
+
+	tidy -indent $i > cleaned-site/$i 2>> log.txt
+	RETURN_CODE="$?"
+
+
+	if [ "$RETURN_CODE" != "2" ]
+	then
+		echo "OK - $i" 1>&2
+		echo "File formatted " 2>> log.txt
+	else
+		echo "ERR $RETURN_CODE - $i" 1>&2
+	fi
+done

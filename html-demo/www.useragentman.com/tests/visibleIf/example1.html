@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE8" /> 
+		
+		<title>visibleIf example</title>
+		
+		<link rel="stylesheet" href="../../shared/css/useragentmanExample.css" type="text/css" media="all" />
+		
+		<link rel="stylesheet" href="../../shared/css/visibleIf.css" type="text/css" media="all" />
+		
+		
+		<script type="text/javascript" src="../../shared/js/EventHelpers.js"></script>
+		
+		<script type="text/javascript" src="../../shared/js/visibleIf.js"></script>
+	</head>
+	<body id="myExample">
+		<div id="exampleIntro">
+			This example uses <code>visibleIf</code> to show and hide form fields as
+			the user inputs data.  Tell the form you have an iPhone, use Opera Mini, and have a data plan less than 5 Megabytes with text.  As you answer
+			these questions, you'll see how the form changes as you ask each question.
+			
+			<a href="http://www.useragentman.com/blog/2010/06/20/visibleif-html5-custom-data-attributes-with-javascript-make-dynamic-interactive-forms/">Back to User Agent Man <code>visibleIf</code> article </a>
+		</div>
+		<form class="visibleIf-disableIfInvisible">
+			<fieldset>
+				<legend>Phone Information</legend>
+			
+				<p>Please enter in the following information about your phone</p>
+				<table class="formTable">
+					<tr>
+						<th>
+							Phone Type :
+						</th>
+						<td>
+							<select name="phoneType">
+								<option value="">Select One ...</option>
+								<option value="iPhone">iPhone</option>
+								<option value="Milestone">Motorola Milestone/Droid</option>
+								<option value="Pre">Palm Pre</option>
+								<option value="Other">Other</option>
+							</select>
+						</td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule="phoneType=='iPhone'">
+						<th>Browser Type:</th>
+						<td>
+							<select name="iPhoneBrowserType">
+								<option value="">Select One...</option>
+								<option value="Safari">Safari</option>
+								<option value="Opera Mini">Opera Mini</option>
+								<option value="Other">Other</option>
+							</select>
+						</td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule="phoneType=='Milestone'">
+						<th>
+							Browser Type :
+						</th>
+						<td>
+							<select name="milestoneBrowserType">
+								<option value="">Select One...</option>
+								<option value="Chrome">Chrome</option>
+								<option value="Opera Mini">Opera Mini</option>
+								<option value="Dolphin">Dolphin</option>
+								<option value="Skyfire">Skyfire</option>
+								<option value="Mozilla Fennec">Fennec</option>
+								<option value="Other">Other</option>
+							</select>
+						</td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule="phoneType=='Pre'">
+						<th>
+							Browser Type:
+						</th>
+						<td>
+							Palm Pre Webkit Browser
+							<input type="hidden" name="browserType" value="Pre WebKit Browser" />
+						</td>
+					</tr>
+					
+					<tr class="visibleIf" data-visibleif-rule="iPhoneBrowserType=='Other' || milestoneBrowserType=='Other'">
+						<th>
+							Specify Other Browser Type :
+						</th>
+						<td>
+							<input type="text" name="otherBrowserType" value="" />
+						</td>
+					</tr>
+					
+					
+				</table>
+			</fieldset>
+			
+		
+			<fieldset class="visibleIf" data-visibleif-rule="phoneType!=''">
+				<legend>Plan Information</legend>
+				
+				<p>Please enter in the following information about your cellular
+				plan</p>
+				
+				<table class="formTable">
+					<tr>
+						<th>
+							Plan Features :
+						</th>
+						
+						<td>
+							<label for="hasVoiceID"><input type="checkbox" id="hasVoiceID" name="hasVoice" value="true" /> Voice</label>
+							<label for="hasDataID"><input type="checkbox"  id="hasDataID" name="hasData" value="true" /> Data</label>
+							<label for-"hasTextID"><input type="checkbox" id="hasTextID" name="hasText" value="true" /> Text</label>
+						</td>
+					</tr>
+					<tr class="visibleIf" data-visibleif-rule="hasData == 'true'">
+						<th>
+							Data Cap (Per Month) :
+						</th>
+						
+						<td>
+							<select name="dataCap">
+								<option value="">Select One ...</option>
+								<option value="1">1 MB</option>
+								<option value="5">5 MB</option>
+								<option value="100">100 MB</option>
+								<option value="500">500 MB</option>
+								<option value="1000">1 GB</option>
+								<option value="infinity">unlimited</option>
+							</select>
+							
+							<div>
+								
+								
+								
+							<div class="visibleIf" 
+							data-visibleif-rule="parseInt(dataCap) <= 5  && !(iPhoneBrowserType=='Opera Mini' || milestoneBrowserType=='Opera Mini' )">
+							You really should be using Opera Mini to compress you data.
+							
+								<span class="visibleIf" data-visibleif-rule="hasText=='true'">You should also consider
+								using SMS for Tweets and Facebook status updates.</span>
+							</div>
+							
+						</td>
+						
+						
+					</tr>
+				</table>
+			</fieldset>
+			
+			<fieldset class="visibleIf" data-visibleif-rule="phoneType!=''">
+				<legend>Apps Used</legend>
+				
+				<p>Check off the applications that you use on your phone.</p>
+				
+				<table class="formTable">
+					<tr class="visibleIf" data-visibleif-rule="hasData=='true'">
+						<th>Apps with Internet Connectivity :</th>
+						<td>
+							<input type='checkbox' name='hasFacebook' value='true' /> Facebook<br />
+							<input type='checkbox' name='hasTwitter' value='true'/> Twitter<br />
+							<input type='checkbox' name='hasGoogleMaps' /> Google Maps<br />
+						</td>
+						
+					</tr>
+					
+					<tr>
+						<th>Apps without Internet Connectivity :</th>
+						<td>
+							<input type='checkbox' name='hasCalandar' value='true' /> Calendar<br />
+							<input type='checkbox' name='hasToDoList' value='true'/> To Do List<br />
+							<input type='checkbox' name='hasNotes' /> Notes
+							
+						</td>
+						
+					</tr>
+				</table>
+				
+			</fieldset>
+			
+			
+			<div class="buttonRow">
+				<input type="submit" name="Next &gt;" />
+			</div>
+		</form>
+		
+		
+	</body>
+</html>

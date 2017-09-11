@@ -1,0 +1,414 @@
+@import "/shared/fonts/NeonLights/stylesheet.css";
+@import "/shared/fonts/Queer/stylesheet.css";
+
+#intro {
+    background: none repeat scroll 0 0 black;
+    color: #D6E2FC;
+    float: left;
+    font-size: 30px;
+    height: 196px;
+    line-height: 30px;
+    margin-right: 10px;
+    margin-top: 4px;
+    padding: 30px;
+    text-align: center;
+    width: 300px;
+	
+    
+}
+
+body.ie6 #intro, 
+body.ie7 #intro,
+body.ie8 #intro {
+	padding: 30px 40px;
+	width: 280px;
+}
+
+#intro .box {
+	font-family: "Neon", "Queer", "Arial","Helvetica",sans-serif;
+	color: white;
+	
+	background: black;
+	padding: 20px;
+    
+	box-shadow: 0 0 15px #ff00de;
+   -webkit-box-shadow: 0 0 15px #ff00de;
+   -moz-box-shadow: 0 0 15px #ff00de;
+}
+
+#intro .box code {
+	color: #ffff99;
+	font-family:  "Neon", "Arial","Helvetica",sans-serif;
+	text-transform: uppercase;
+}
+
+#intro .box em {
+	font-family: "Neon", "Arial","Helvetica",sans-serif !important;
+	font-style: oblique;
+	margin-left: -8px;
+}
+
+#intro .box .text {
+   text-shadow: 0 0 7px  #ff00de, 0 0 8px  #ff00de,
+	0 0 10px #ff00de, 0 0 15px #ff00de;
+   -sand-chroma-override: #000001;
+}
+
+body.ie7 #intro .box .text,
+body.ie8 #intro .box .text {
+	
+	margin-top: 20px;
+	left: 10px;
+}	
+
+body.ie6 #intro .box,
+body.ie7 #intro .box,
+body.ie8 #intro .box {
+   zoom: 1;
+   margin-left: -20px;
+   padding: 10px;
+   margin-top: -10px;
+
+   filter: progid:DXImageTransform.Microsoft.Shadow(Color=#770068, Strength=10, Direction=0),
+           progid:DXImageTransform.Microsoft.Shadow(Color=#770068, Strength=10 Direction=90),
+           progid:DXImageTransform.Microsoft.Shadow(Color=#770068, Strength=10, Direction=180),
+           progid:DXImageTransform.Microsoft.Shadow(Color=#770068, Strength=10, Direction=270);
+}
+
+body.ie7 #intro .description {
+	position: relative;
+	top: -10px;
+	padding-bottom: 0;
+}
+body.ie8 #intro .description {
+	position: relative;
+	top: 10px;
+}
+
+
+#intro .description {
+	background: black;
+	color: white;
+	font-family: "Arial", sans-serif;
+	font-size: 10px;
+	line-height: 1.4em;
+	margin: 20px -30px 0px -30px;
+	padding: 0 20px 10px 20px; 
+}
+
+#intro .description a {
+	color: #ccccff;
+}
+
+#box0, #box1, #box2, #box3, #box4 {
+	width: 200px;
+}
+
+
+#box0 {
+	border: solid 1px #808080;
+	background: #ffffcc;
+    box-shadow: 5px 5px 0px #ff0000;
+	-webkit-box-shadow: 5px 5px 0px #ff0000;
+	-moz-box-shadow: 5px 5px 0px #ff0000;
+	margin: 10px;
+	padding: 10px;
+}
+
+
+#box1 {
+	border: solid 1px #808080;
+	background: #ffffcc;
+    box-shadow: 5px 5px 0px #ff0000;
+	-webkit-box-shadow: 5px 5px 0px #ff0000;
+	-moz-box-shadow: 5px 5px 0px #ff0000;
+	margin: 10px;
+	padding: 10px;
+	width: 200px;
+}
+
+body.ie6 #box1,
+body.ie7 #box1,
+body.ie8 #box1 {
+   zoom: 1;
+   filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=5, OffY=5, Color=#ff0000);
+}
+
+
+
+#box1a, #box1a-after {
+  border: solid 1px #808080;
+  box-shadow: 5px 5px 0px #ff0000;
+  -webkit-box-shadow: 5px 5px 0px #ff0000;
+  -moz-box-shadow: 5px 5px 0px #ff0000;
+  margin: 10px;
+  padding: 10px;
+  
+}
+
+body.ie6 #box1a,
+body.ie7 #box1a,
+body.ie8 #box1a {
+   zoom: 1;
+   filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=5, OffY=5, Color=#ff0000);
+}
+
+body.ie6 #box1a-after,
+body.ie7 #box1a-after,
+body.ie8 #box1a-after {
+   zoom: 1;
+   background-color: #ffffff;
+   filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=5, OffY=5, Color=#ff0000),
+           progid:DXImageTransform.Microsoft.Chroma(Color='#ffffff');
+}
+
+
+#box1b, #box1b-after {
+	border: solid 1px #808080;
+	background: #ffffcc;
+    box-shadow: -10px -5px 0px #ff0000;
+	-webkit-box-shadow: -10px -5px 0px #ff0000;
+	-moz-box-shadow: -10px -5px 0px #ff0000;
+	margin: 10px;
+	padding: 10px;
+	width: 200px	
+}
+
+body.ie6 #box1b,
+body.ie7 #box1b,
+body.ie8 #box1b {
+   filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=-10, OffY=-5, Color=#ff0000);
+} 
+
+body.ie6 #box1b-after,
+body.ie7 #box1b-after,
+body.ie8 #box1b-after {
+   filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=-10, OffY=-5, Color=#ff0000);
+   margin-left: 10px;
+   margin-top: 5px;
+}
+
+
+
+
+#glowShadow1 {
+	width: 200px;
+	background: white;
+    box-shadow: 0 2px 2px #cccccc,
+				0 -2px 2px #cccccc,
+				2px 0 2px #cccccc,
+				-2px 0 2px #cccccc;
+	-webkit-box-shadow: 0 2px 2px #cccccc,
+				0 -2px 2px #cccccc,
+				2px 0 2px #cccccc,
+				-2px 0 2px #cccccc;
+	-moz-box-shadow: 0 2px 2px #cccccc,
+				0 -2px 2px #cccccc,
+				2px 0 2px #cccccc,
+				-2px 0 2px #cccccc;			
+	
+	margin: 20px auto;
+	padding: 10px;
+	text-align: center;
+}	
+
+body.ie6 #glowShadow1,
+body.ie7 #glowShadow1,
+body.ie8 #glowShadow1 {
+	
+	filter: progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=5, Direction=0),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=5, Direction=90),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=5, Direction=180),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=5, Direction=270);
+}
+
+/* #glowShadow2 {
+	box-shadow: 0 0 5px #666666;
+	
+	width: 200px;
+	background: white;
+	margin: 20px auto;
+	padding: 10px;
+	text-align: center;
+}	
+
+body.ie6 #glowShadow2,
+body.ie7 #glowShadow2,
+body.ie8 #glowShadow2 {
+	
+	filter: progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=5, Direction=0),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=5, Direction=90),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=5, Direction=180),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#cccccc, Strength=5, Direction=270);
+} */
+
+#glowShadow2 {
+	width: 200px;
+	background: white;
+    box-shadow: 0 0 15px #cccccc;
+	-webkit-box-shadow: 0 0 15px #cccccc;
+	-moz-box-shadow: 0 0 15px #cccccc;
+	
+	margin: 20px auto;
+	padding: 10px;
+	text-align: center;
+}	
+
+body.ie6 #glowShadow2,
+body.ie7 #glowShadow2,
+body.ie8 #glowShadow2 {
+	margin-left: -15px;
+	filter: progid:DXImageTransform.Microsoft.Shadow(Color=#eeeeee, Strength=15, Direction=0),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#eeeeee, Strength=15, Direction=90),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#eeeeee, Strength=15, Direction=180),
+			progid:DXImageTransform.Microsoft.Shadow(Color=#eeeeee, Strength=15, Direction=270)
+			;
+}
+
+#glowShadow2a {
+	width: 200px;
+	background: white;
+    box-shadow: 0 0 12px #aaaaaa;
+	-webkit-box-shadow: 0 0 12px #aaaaaa;
+	-moz-box-shadow: 0 0 12px #aaaaaa;
+	margin: 20px auto;
+	padding: 10px;
+	text-align: center;
+}
+
+body.ie6 #glowShadow2a,
+body.ie7 #glowShadow2a,
+body.ie8 #glowShadow2a {
+	border: solid 1px #cccccc;	
+	filter:  
+			progid:DXImageTransform.Microsoft.Glow(Color=#cccccc, Strength=4),
+			progid:DXImageTransform.Microsoft.DropShadow(Color=#f3f3f3, OffX=0, OffY=4),
+			progid:DXImageTransform.Microsoft.DropShadow(Color=#f3f3f3, OffX=0, OffY=-4),
+			progid:DXImageTransform.Microsoft.DropShadow(Color=#f3f3f3, OffX=4, OffY=0),
+			progid:DXImageTransform.Microsoft.DropShadow(Color=#f3f3f3, OffX=-4, OffY=0)
+			;
+			
+}
+
+#blurredShadow {
+	box-shadow: 5px 5px 5px #cccccc;
+	-webkit-box-shadow: 5px 5px 5px #cccccc;
+	-moz-box-shadow: 5px 5px 5px #cccccc;
+	 
+	margin: 20px auto;
+	text-align: center;
+}
+
+#blurredShadow,
+body.ie6 #blurredShadow .content,
+body.ie7 #blurredShadow .content,
+body.ie8 #blurredShadow .content {
+	width: 200px;
+		
+	padding: 10px;
+	background: white;
+	border: solid 1px black;
+}
+
+body.ie6 #blurredShadow,
+body.ie7 #blurredShadow,
+body.ie8 #blurredShadow {
+	background: #cccccc;
+	filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=5);
+	border: none;
+}
+
+body.ie6 #blurredShadow .content,
+body.ie7 #blurredShadow .content,
+body.ie8 #blurredShadow .content {
+	position: relative;
+	margin-top: -10px;
+	margin-left: -10px;
+	margin-bottom: -10px;
+	margin-right: -10px;
+}
+
+
+
+
+#shadow4 {
+	box-shadow: 3px 3px 3px #cccccc;
+	-moz-box-shadow: 3px 3px 3px #cccccc;
+	-webkit-box-shadow: 3px 3px 3px #cccccc;
+
+	
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=3, Direction=135, Color='#cccccc');
+	
+	border: solid 1px black;
+	width: 200px;
+	background: white;
+	margin: 20px auto;
+	padding: 10px;
+	text-align: center;
+}
+
+#shadow4a {
+	box-shadow: 7px 7px 7px #cccccc;
+	-moz-box-shadow: 7px 7px 7px #cccccc;
+	-webkit-box-shadow: 7px 7px 7px #cccccc;
+
+	/* For IE 5.5 - 7 */
+	filter: progid:DXImageTransform.Microsoft.Shadow(Strength=7, Direction=135, Color='#cccccc');
+	
+	border: solid 1px black;
+	width: 200px;
+	background: white;
+	margin: 20px auto;
+	padding: 10px;
+	text-align: center;
+}
+
+table.firstExample {
+	
+}
+
+table.firstExample tbody td div,
+table.firstExample tbody td img {
+	display: block;
+	margin: 10px auto 0 auto !important;
+	float: none;
+}
+
+table.dataTable thead th {
+	
+}
+
+table.firstExample tbody td img {
+	margin-top: 0px !important;
+}
+
+.dataTable tbody > tr > td img {
+	border: none !important;
+}	
+
+table.dataTable img {
+	margin: 0;	
+}
+
+
+table.dataTable td.withGrid {
+	background: url("/tests/cssSandpaper/images/background.gif") repeat !important;
+}
+
+table.dataTable td {
+	vertical-align: top;
+}
+.dataTable tbody > tr > td + td, .dataTable tbody > tr > td + td + td {
+	margin: 0;
+	padding: 0;
+}
+
+ table.dataTable {
+	border-collapse: separate; 
+}
+
+table.blurredComparison tbody td img {
+	margin-left: 67px; 
+	
+}

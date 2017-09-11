@@ -1,0 +1,1576 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive post-338" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  How to Detect Font-Smoothing Using JavaScript</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" /><script src="//code.jquery.com/jquery-1.10.2.js"></script>	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	<!-- ID is 338 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; How to Detect Font-Smoothing Using JavaScript Comments Feed" href="http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='Configuring JavaScript Applications With XML' href='http://www.useragentman.com/blog/2009/10/27/configuring-javascript-applications/' />
+<link rel='next' title='Introducing: The Type Rendering Project' href='http://www.useragentman.com/blog/2009/11/30/introducing-the-type-rendering-project/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/" />
+<link rel='shortlink' href='http://useragentman.com/blog/ylnRk' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2009%2F11%2F29%2Fhow-to-detect-font-smoothing-using-javascript%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2009%2F11%2F29%2Fhow-to-detect-font-smoothing-using-javascript%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2009/10/27/configuring-javascript-applications/" rel="prev">Configuring JavaScript Applications With XML</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2009/11/30/introducing-the-type-rendering-project/" rel="next">Introducing: The Type Rendering Project</a> &raquo;</span>
+</div>
+
+
+			<h1>How to Detect Font-Smoothing Using JavaScript</h1>
+			<h4 class="meta">November 29th, 2009 by zoltan &middot; <a href="http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/#comments">74 Comments</a></h4>
+			<div class="entry">
+				<div class="importantNotes">
+<h3>Update: Jan. 11, 2012</h3>
+<p>This script has been used as the basis of a <a href="http://wellcaffeinated.net/articles/2012/01/25/font-smoothing-detection-modernizr-style">Modernizr plugin</a> by <a href="http://wellcaffeinated.net/">Jasper Palfree</a>.</p>
+</div>
+<p><div id="attachment_404" style="width: 260px" class="wp-caption alignleft"><img class="size-full wp-image-404 " title="fontSmoothingLeader" src="http://www.useragentman.com/blog/wp-content/uploads/2009/11/fontSmoothingLeader.png" alt="Image a remix of Wikimedia Images http://bit.ly/5LufSS and http://bit.ly/6Jjlbd" width="250" height="250" srcset="http://www.useragentman.com/blog/wp-content/uploads/2009/11/fontSmoothingLeader.png 250w, http://www.useragentman.com/blog/wp-content/uploads/2009/11/fontSmoothingLeader-150x150.png 150w" sizes="(max-width: 250px) 100vw, 250px" /><p class="wp-caption-text"></p>
+<div>Examples of font-smoothing and subpixel-rendering as performed by technologies like ClearType.  Image Credit: Wikimedia Commons users <a href='http://commons.wikimedia.org/wiki/File:Antialias-vrs-Cromapixel.png'>Pandries</a> and <a href='http://commons.wikimedia.org/wiki/File:ClearType02.png'>Kalan</a></div>
+<p></p></div></p>
+<p>In <a title="&quot;More @font-face in Depth&quot; article" href="http://www.useragentman.com/blog/2009/10/09/more-font-face-fun/">an earlier article</a>, I mentioned that <a title=" Boing Boing’s Redesign Uncovers the Dark Side of Web Fonts" href="http://www.webmonkey.com/blog/Boing_Boing_s_Redesign_Uncovers_the_Dark_Side_of_Web_Fonts">Boing-Boing had a few issues when they wanted to use @font-face embedding inside their website</a>.  In short, the problem was that some fonts look bad on computer monitors without font-smoothing enabled in the operating system.  This brought on a lot of discussion as to whether there was a way to detect whether or not font-smoothing was being used using JavaScript.  I initially thought there wasn&#8217;t a way, but after seeing a promising but incomplete method of detecting font-smoothing, I spent a few days devising a way to do it.</p>
+<h2>Internet Explorer Does Something Easily (For a Change)</h2>
+<p><a href="http://paulirish.com/">Paul Irish</a> mentioned to me and a few other colleagues that he came across <a href="http://silkworth.net/browser_os/cleartype.html">a page using an Active X control that detects font-smoothing in IE</a>.  I was so hopeful &#8230; until I realized that this only works on browsers that have come into contact with <a href="http://www.microsoft.com/typography/cleartype/tuner/tune.aspx">Microsoft&#8217;s online Cleartype Tuner</a>, which I visited with my copy of IE months before.  If a users had never visited this page, the script would fail.</p>
+<p>I was more disappointed because Googling &#8220;javascript cleartype&#8221; did not point to anything useful.  However, searching for &#8220;javascript font-smoothing&#8221; pointed me to an article that told me about Internet Explorer&#8217;s <a href="http://www.java2s.com/Code/JavaScript/Window-Browser/ScreenfontSmoothingEnabled.htm">screen.fontSmoothingEnabled</a> property.  This gives us what we need &#8230; but only in Internet Explorer.  How on Earth can we detect font-smoothing in other browsers, and in non-Windows operating systems?</p>
+<h2>Canvas to the Rescue</h2>
+<p><div id="attachment_390" style="width: 420px" class="wp-caption aligncenter"><img class="size-full wp-image-390" title="aliasAndAntiAliasComparison" src="http://www.useragentman.com/blog/wp-content/uploads/2009/11/aliasAndAntiAliasComparison.png" alt="aliasAndAntiAliasComparison" width="410" height="244" srcset="http://www.useragentman.com/blog/wp-content/uploads/2009/11/aliasAndAntiAliasComparison.png 410w, http://www.useragentman.com/blog/wp-content/uploads/2009/11/aliasAndAntiAliasComparison-300x178.png 300w" sizes="(max-width: 410px) 100vw, 410px" /><p class="wp-caption-text">Letter &#39;O&#39; , Arial font, 32 px, rendered both without (left) and with (right) font-smoothing</p></div></p>
+<p style="text-align: center;">
+<p>I then thought about about the screenshots I made for <a href="/blog/2009/09/20/font-face-in-depth/">the @font-face in Depth article</a>.  Can a browser render a black glyph and detect if there is some sort of non-black pixel colouring around the its edges of the glyphs? <strong> A human can tell the difference</strong>:  if there are some non-black pixels around the edge of the glyph, it must be using font-smoothing.</p>
+<p>But <strong>web browsers can do this too!</strong> Just have the browser draw a letter in black inside a <code>canvas</code> tag, and then have it sift through the canvas&#8217; pixels to see if there are any that are <strong>not</strong> pure black or pure white (more accurately, have the browser check the alpha channel to see if there are any semi-transparent pixels, which have a value that is not 0 or 255).    If there are no semi-transparent pixels, then the algorithm assumes that no font-smoothing is being used. I wrote an JavaScript routine that does this &#8211; it starts from co-ordinate (8,1) and scans left to right, to the bottom of the canvas (any point on near the top on the left-hand side of the canvas would have done as well).</p>
+<p>The result is a JavaScript object, <code>TypeHelpers</code>, which implements this routine in one method, <code>hasSmoothing()</code>:</p>
+<blockquote class="code">
+<pre>var TypeHelpers = new function(){
+
+   // I use me instead of this.  For reasons why, please read:
+   // http://w3future.com/html/stories/callbacks.xml
+   var me = this;
+
+   me.hasSmoothing = function(){
+
+      // IE has screen.fontSmoothingEnabled - sweet!
+      if (typeof(screen.fontSmoothingEnabled) != "undefined") {
+         return screen.fontSmoothingEnabled;
+      } else {
+
+         try {
+
+            // Create a 35x35 Canvas block.
+            var canvasNode = document.createElement('canvas');
+            canvasNode.width = "35";
+            canvasNode.height = "35"
+
+            // We must put this node into the body, otherwise
+            // Safari Windows does not report correctly.
+            canvasNode.style.display = 'none';
+            document.body.appendChild(canvasNode);
+            var ctx = canvasNode.getContext('2d');
+
+            // draw a black letter 'O', 32px Arial.
+            ctx.textBaseline = "top";
+            ctx.font = "32px Arial";
+            ctx.fillStyle = "black";
+            ctx.strokeStyle = "black";
+
+            ctx.fillText("O", 0, 0);
+
+            // start at (8,1) and search the canvas from left to right,
+            // top to bottom to see if we can find a non-black pixel.  If
+            // so we return true.
+            for (var j = 8; j &lt;= 32; j++) {
+               for (var i = 1; i &lt;= 32; i++) {
+
+                  var imageData = ctx.getImageData(i, j, 1, 1).data;
+                  var alpha = imageData[3];
+
+                  if (alpha != 255 &amp;&amp; alpha != 0) {
+                     return true; // font-smoothing must be on.
+                  }
+               }
+
+            }
+
+            // didn't find any non-black pixels - return false.
+            return false;
+         }
+         catch (ex) {
+            // Something went wrong (for example, Opera cannot use the
+            // canvas fillText() method.  Return null (unknown).
+            return null;
+         }
+      }
+   }
+
+   me.insertClasses = function(){
+      var result = me.hasSmoothing();
+      var htmlNode = document.getElementsByTagName('html')[0];
+      if (result == true) {
+         htmlNode.className += " hasFontSmoothing-true";
+      } else if (result == false) {
+            htmlNode.className += " hasFontSmoothing-false";
+      } else { // result == null
+            htmlNode.className += " hasFontSmoothing-unknown";
+      }
+   }
+
+}
+
+// if EventHelpers.js is included, insert the hasFontSmoothing CSS classes
+if (window.EventHelpers) {
+   EventHelpers.addPageLoadEvent('TypeHelpers.insertClasses')
+}</pre>
+</blockquote>
+<p>Note the object also has an <code>insertClasses()</code> method.  This method, when run, adds a class to the <code>html</code> tag:</p>
+<ul>
+<li><code>hasFontSmoothing-true</code> if font-smoothing is being used</li>
+<li><code>hasFontSmoothing-false</code> if it is not</li>
+<li><code>hasFontSmoothing-unknown</code> if the user agent is unable to tell</li>
+</ul>
+<p>This makes it easy for developers who don&#8217;t want to mess with JavaScript code and just want  to use CSS.</p>
+<p>Also note the <code>EventHelpers.addPageLoadEvent()</code> call at the end of the code.  This method (which is part of <code>EventHelpers.js</code>, included with the archive below) <a href="http://dean.edwards.name/weblog/2005/09/busted/">implements Dean Edwards&#8217; window.onload alternative which doesn&#8217;t wait for all the objects in the page to be loaded</a>.   I use this implementation to execute <code>TypeHelpers.insertClasses()</code> when the page loads so any font-detection CSS rules will work right away.  Please feel free to change this code to use the equivalent function call in Dojo, Prototype, jQuery, or whatever JavaScript code framework you prefer.</p>
+<h2>Example #1: JavaScript Font Smoothing Detection</h2>
+<p>Enough of theory &#8230; let&#8217;s look at it in practice!  To show how to detect font-smoothing with JavaScript, I created a page that, when the page is loaded, checks to see if it can tell if font-smoothing has been implemented and tells the user.  Here is the code that does this check:</p>
+<blockquote class="code">
+<pre>function displayInfo() {
+
+   var message;
+   var isFontSmoothingOn = TypeHelpers.hasSmoothing();
+   if (isFontSmoothingOn == true) {
+      message = "This browser is using a font-smoothing technology";
+   } else if (isFontSmoothingOn == false) {
+      message = "This browser isn't using a font-smoothing technology"
+   } else {
+      message = "We could not detect if font-smoothing is being used."
+   }
+   document.getElementById('detectInfo').innerHTML = message;
+
+}
+
+window.onload = displayInfo;</pre>
+</blockquote>
+<p><a class="exampleLink" href="/tests/fontSmoothing/">See the above code in action</a></p>
+<h2>Example #2: CSS Font Smoothing Detection</h2>
+<p>As implied earlier, this library can help CSS use different fonts if the browser is using a font-smoothing technology.   For example, using the following CSS will allow a browser to use the Droid Sans embedded font only if it using font-smoothing — otherwise, it will use Arial:</p>
+<blockquote class="code">
+<pre>@font-face {
+	font-family: "Droid Sans";
+	src: url("/shared/fonts/DroidSans/DroidSans.eot");
+	src: local("Droid Sans"),
+	     local("Droid Sans"),
+	     url("/shared/fonts/DroidSans/DroidSans.ttf") format("truetype");
+}
+
+body {
+	font-family: "Arial", "Helvetica", sans-serif;
+}
+
+html.hasFontSmoothing-true body {
+	font-family: "Droid Sans", "Arial", "Helvetica", sans-serif;
+}</pre>
+</blockquote>
+<p>We can also serve special content to users depending on the way fonts are rendered on their browser.  We first create content for all three scenerios (browser uses font-smoothing, browser doesn&#8217;t use font-smoothing, and the &#8220;we cannot detect&#8221; case) and wrap the content inside &lt;code&gt;div&lt;/code&gt; tags using appropriate CSS classes:</p>
+<blockquote class="code">
+<pre>&lt;div class="fontSmoothingMessage initiallyHidden"&gt;
+    &lt;p&gt;You browser &lt;strong&gt;is&lt;/strong&gt; rendering this page
+    with font-smoothing. Because of that, we will attempt
+    to serve up the Droid Sans font to render this page,
+    because we think it looks cool. If you are using a
+    browser (such as Google Chrome) that cannot render
+    downloaded True Type fonts by default, then the page
+    will be rendered using Arial instead.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div class="noFontSmoothingMessage initiallyHidden"&gt;
+    Your browser &lt;strong&gt;is not&lt;/strong&gt; rendering this
+    page with font-smoothing. It is for that reason we have
+    decided to use the plain old Arial font to render this
+    page, because it is hinted for use for displays that
+    don't employ a font-smoothing technology.
+&lt;/div&gt;
+
+&lt;div class="unknownFontSmoothingMessage initiallyHidden"&gt;
+    &lt;strong&gt;We are not sure&lt;/strong&gt; if your browser is
+    rendering this page with a font-smoothing technology.
+    It is for that reason we have decided to use the plain
+    old Arial font to render this page, because it is
+    hinted for use for displays that don't employ a
+    font-smoothing technology.
+&lt;/div&gt;</pre>
+</blockquote>
+<p>Note all the <code>div</code> tags are members of the class <code>initiallyHidden</code>.  This class will be used to hide all font-smoothing related content until the script kicks in.</p>
+<p>However, all this will not work unless we use the following CSS code:</p>
+<blockquote class="code">
+<pre>.initiallyHidden {
+	display: none;
+}
+
+html.hasFontSmoothing-true .fontSmoothingMessage,
+html.hasFontSmoothing-false .noFontSmoothingMessage,
+html.hasFontSmoothing-unknown .unknownFontSmoothingMessage {
+	display: block;
+}</pre>
+</blockquote>
+<p>Of course, this whole soltution relies on whether JavaScript being turned on in the user&#8217;s browser.  This should be kept in mind when implementing this solution.</p>
+<p><a class="exampleLink" href="/tests/fontSmoothing/cssExample.html">See the above code in action</a></p>
+<h2>Download</h2>
+<p>All code used in this article can be downloaded below (<strong>Note:</strong> version 1.0 was missing the Droid Sans Fonts which have now been put into the archive.  Thanks to John Faulds for pointing this out).</p>
+<p><a class="exampleLink" href="/downloads/TypeHelpers.zip">TypeHelpers.js v.1.0a and sample code.</a></p>
+<p>With the help of <a href="http://www.nicewebtype.com">Tim Brown</a>, it was determined that the code detected font-smoothing correctly in the following browsers:</p>
+<ul>
+<li>Internet Explorer 6 and up on Windows XP and higher.</li>
+<li>Firefox 3.5 and higher on Windows XP and higher, Mac OS X 10.4 and higher, and Ubuntu Linux 9.10 (and probably lower)</li>
+<li>Chrome 3.0 on Windows XP and higher</li>
+<li>Safari 4.0.3 on Windows XP and higher and Mac OS X 10.4 and higher</li>
+</ul>
+<p>This script <strong>cannot detect font-smoothing in any version of Opera</strong> (at the time of this writing, this includes all versions up to 10.10), since it cannot write text inside the canvas element in a way we can poll the pixels afterwards.  If anyone can find a way of making it work with Opera, please write a comment below — I&#8217;d love to be able to support this browser.</p>
+<h2>Testing Caveats</h2>
+<p>Testing font-smoothing in most Windows web browsers is easy since it can be turned off inside the Display control panel. However, when using Safari for Windows, it is necessary to navigate inside Safari&#8217;s <strong>Appearance</strong> preferences and set the <strong>Font-smoothing</strong> option to <strong>Windows Standard</strong>.  This is because  by default, Safari uses it&#8217;s own built-in font-rendering engine which doesn&#8217;t seem to render aliased fonts.  In Mac OS X, it seems anti-aliasing only works for fonts below a certain size, so aliased fonts don&#8217;t seem to be an issue with that operating system.  In Ubuntu Linux I have yet to find a way of shutting of font-smoothing.  If anyone knows a way, please let me know.</p>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" rel="category tag">@font-face</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" rel="category tag">ClearType</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/css/" rel="category tag">CSS</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/css/css3/" rel="category tag">CSS3</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/fonts/" rel="category tag">Fonts</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/javascript/" rel="category tag">JavaScript</a> </p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">74 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						<li class="comment   " id="comment-118 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-118" title="Permalink to this comment">1</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://paulirish.com'><img alt='' src='http://0.gravatar.com/avatar/6cfbd373bb1dd5f26c066c1fc7e68288?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/6cfbd373bb1dd5f26c066c1fc7e68288?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://paulirish.com' rel='external nofollow' class='url'>Paul Irish</a> </strong>
+				<span class="comment_time">// Nov 29, 2009 at 4:11 pm</span>
+			</p>
+			<div class="entry">
+				<p>The canvas hack is righteous. Really nice work, Zoltan.</p>
+<p>In Win XP (not sure about vista/7), there are <a href="http://www.helpwithwindows.com/WindowsXP/tune-041.html" rel="nofollow">two smoothing options: Standard and Cleartype</a>.</p>
+<p>The Active X approach would have identified ClearType in particular, but this approach seems to give a positive result with either choice, correct? I&#8217;d bet 90% of people with Font Smoothing enabled are using ClearType, so this distinction is mostly moot.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-119 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-119" title="Permalink to this comment">2</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 29, 2009 at 4:30 pm</span>
+			</p>
+			<div class="entry">
+				<p>Paul: you are right &#8211; either ClearType or Standard font-smoothing will give a positive result.  I believe that you are right that most Windows XP and above users use ClearType &#8211; I would love to see if there were any stats on that though.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-122 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-122" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://pipwerks.com'><img alt='' src='http://0.gravatar.com/avatar/9206e4b5dd5ca43b1acf724cd7a0cde9?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9206e4b5dd5ca43b1acf724cd7a0cde9?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://pipwerks.com' rel='external nofollow' class='url'>Philip</a> </strong>
+				<span class="comment_time">// Nov 29, 2009 at 7:05 pm</span>
+			</p>
+			<div class="entry">
+				<p>Great idea!  </p>
+<p>One suggestion: In your Droid/Arial example, I&#8217;d change the CSS to let @font-face be the default, and switch to Arial only when smoothing is *not* enabled. My guess is most people will have smoothing enabled. Forcing them to wait for JS to execute will delay loading of @font-face, increasing the likelihood of seeing that dreaded flash of unstyled text when initially loading the font.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-130 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-130" title="Permalink to this comment">4</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 30, 2009 at 12:17 am</span>
+			</p>
+			<div class="entry">
+				<p>Philip: that is a great point &#8211; it&#8217;s what I was thinking when I was first drawing up that example, since I don&#8217;t like taking away functionality to JavaScript-disabled browsers if I can help it.</p>
+<p>The problem was that sometimes, the script would kick in <strong>after</strong> the Droid font would load, causing the user to first see the Arial font, then the loaded Droid font, and then back to the Arial font again.  </p>
+<p>The question is: for the amount of users that this affects, is it really an issue, and should we have Droid load by default?   I&#8217;m not sure.  Maybe the right solution is to do a combination of this script and Paul Irish&#8217;s <a href="http://paulirish.com/2009/fighting-the-font-face-fout/" rel="nofollow">Anti-@font-face-FOUT script</a>.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-131 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-131" title="Permalink to this comment">5</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.1stwebdesigner.com'><img alt='' src='http://1.gravatar.com/avatar/a7b5644c8798ecfa02fa49a90b7472af?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/a7b5644c8798ecfa02fa49a90b7472af?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.1stwebdesigner.com' rel='external nofollow' class='url'>Dainis Graveris</a> </strong>
+				<span class="comment_time">// Nov 30, 2009 at 2:49 am</span>
+			</p>
+			<div class="entry">
+				<p>Hah, great tip, I didn&#8217;t know such effects can be achieved with Javascript! Fresh information for me, thanks!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-132 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-132" title="Permalink to this comment">6</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.aaronpeters.nl/en/'><img alt='' src='http://2.gravatar.com/avatar/5cd7ac7820026bb8bbdfd05d08c99088?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/5cd7ac7820026bb8bbdfd05d08c99088?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.aaronpeters.nl/en/' rel='external nofollow' class='url'>Aaron Peters</a> </strong>
+				<span class="comment_time">// Nov 30, 2009 at 6:02 am</span>
+			</p>
+			<div class="entry">
+				<p>Zoltan,</p>
+<p>this is *great stuff* !!!</p>
+<p>FYI, anti-FOUT can be accomplished by &#8216;flushing the document early&#8217;.<br />
+Article based on first, basic testing is here: <a href="http://www.aaronpeters.nl/sandbox/flush-font-face" rel="nofollow">http://www.aaronpeters.nl/sandbox/flush-font-face</a></p>
+<p>&#8211; Aaron</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-134 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-134" title="Permalink to this comment">7</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://readableweb.com'><img alt='' src='http://2.gravatar.com/avatar/5fd2304e36713311943065e7e2067478?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/5fd2304e36713311943065e7e2067478?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://readableweb.com' rel='external nofollow' class='url'>Richard Fink</a> </strong>
+				<span class="comment_time">// Nov 30, 2009 at 10:54 am</span>
+			</p>
+			<div class="entry">
+				<p>Zoltan,<br />
+Yes both Cleartype and Standard return positive in XP.<br />
+Clever script &#8211; BTW. Maybe someday browser makers will give scripters all the methods, properties, and events we need. Until then, we query for the info indirectly. I look at it like <a href="http://readableweb.com/designing-with-web-standards-third-edition/" rel="nofollow">paying taxes</a>.<br />
+Be aware that in FF 3.6 a new ability to smooth images in the Canvas tag is appearing.<br />
+Don&#8217;t know how that might impact this work. Just mentioning it.</p>
+<p>rich</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-135 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-135" title="Permalink to this comment">8</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 30, 2009 at 11:27 am</span>
+			</p>
+			<div class="entry">
+				<p>Richard: thanks for the tip regarding Firefox 3.6.  Will be looking into it for sure and updating if needed.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-137 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-137" title="Permalink to this comment">9</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.tyssendesign.com.au'><img alt='' src='http://2.gravatar.com/avatar/bfabc6446c2fedd907a7e63949324ae9?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/bfabc6446c2fedd907a7e63949324ae9?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.tyssendesign.com.au' rel='external nofollow' class='url'>John Faulds</a> </strong>
+				<span class="comment_time">// Nov 30, 2009 at 6:00 pm</span>
+			</p>
+			<div class="entry">
+				<p>Just a heads-up that the cssExample.html in the zip references DroidSans fonts in the shared folder that aren&#8217;t actually included.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-138 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-138" title="Permalink to this comment">10</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://dustinwilson.com'><img alt='' src='http://0.gravatar.com/avatar/69e49101d8b93ff043ba38aba1ee496b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/69e49101d8b93ff043ba38aba1ee496b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://dustinwilson.com' rel='external nofollow' class='url'>Dustin Wilson</a> </strong>
+				<span class="comment_time">// Nov 30, 2009 at 6:14 pm</span>
+			</p>
+			<div class="entry">
+				<p>After reading this I initially thought I could get around Opera&#8217;s lack of support for the canvas text API, but it doesn&#8217;t work either. Opera can draw SVG images to the canvas, so I thought I could just write an SVG image containing a rendering of the letter O in 32px Arial then pixel manipulate that. It wouldn&#8217;t work because of security violations for multiple reasons. One is that images whose source are Data URIs can&#8217;t be manipulated in the canvas. Additionally for some stupid reason SVG can&#8217;t be manipulated either, even using toDataURL(). Guess there&#8217;ll have to be a wait for Opera&#8217;s support for the canvas text API.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-139 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-139" title="Permalink to this comment">11</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 30, 2009 at 11:11 pm</span>
+			</p>
+			<div class="entry">
+				<p>John: Thanks Dude!  I updated the zip file to include the fonts &#8230; something I missed during my testing.  Many thanks.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-140 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-140" title="Permalink to this comment">12</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.aceontech.com'><img alt='' src='http://1.gravatar.com/avatar/43f26fdf2bef2af1d07b95811037acaa?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/43f26fdf2bef2af1d07b95811037acaa?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.aceontech.com' rel='external nofollow' class='url'>Ace</a> </strong>
+				<span class="comment_time">// Dec 1, 2009 at 3:44 am</span>
+			</p>
+			<div class="entry">
+				<p>Thanks for doing the research on this issue, zoltan. This&#8217;ll bring us closer to unifying the way fonts are displayed across browsers and operating systems. These inconsistencies are the main reason why I don&#8217;t to make extensive use of custom fonts on websites. I made an attempt a while ago, but I was heavily disappointed after comparing the rendering between Windows and Mac, and I&#8217;m not even mentioning Linux (all using the same browser, Firefox).</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-141 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-141" title="Permalink to this comment">13</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Dec 1, 2009 at 8:41 am</span>
+			</p>
+			<div class="entry">
+				<p>Ace: it is for these reasons why we are promoting the <a href="http://www.useragentman.com/blog/2009/11/30/introducing-the-type-rendering-project/" rel="nofollow">Type Rendering Project</a>!  We hope to make this into a forum and discussion on how to make fonts look good on the web now.  Hopefully this article is a good start in that direction.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						<li class="comment   " id="comment-348 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-348" title="Permalink to this comment">16</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/37ce6e7d2587f8e8058326088196cb39?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/37ce6e7d2587f8e8058326088196cb39?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Agos </strong>
+				<span class="comment_time">// Jan 30, 2010 at 7:16 am</span>
+			</p>
+			<div class="entry">
+				<p>Testing it on the iPhone yelds negative results, but AFAIK subpixel AA is always active on the iPhone.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-350 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-350" title="Permalink to this comment">17</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jan 30, 2010 at 6:26 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Agos: That&#8217;s intreresting. That would imply that either the iphone&#8217;s browser doesn&#8217;t support canvas, or that that fonts in canvas don&#8217;t render the same as in plain HTML. I&#8217;ll have to see if I can test on a friend&#8217;s iphone and update the routine. Thanks for letting me know &#8211; I&#8217;ll let you know when there is a fix.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-384 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-384" title="Permalink to this comment">19</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.mattstow.com'><img alt='' src='http://0.gravatar.com/avatar/c4f3a04a13a69b7f7a9e52ca116724a3?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/c4f3a04a13a69b7f7a9e52ca116724a3?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.mattstow.com' rel='external nofollow' class='url'>Matt Stow</a> </strong>
+				<span class="comment_time">// Feb 3, 2010 at 11:20 pm</span>
+			</p>
+			<div class="entry">
+				<p>It would be good if this could detect whether ClearType was being used as opposed to just standard font smoothing too.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-385 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-385" title="Permalink to this comment">20</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Feb 4, 2010 at 12:37 am</span>
+			</p>
+			<div class="entry">
+				<p>Paul Irish told me about an Active X control that can do just that, but we discovered it wasn&#8217;t on every IE install.  I don&#8217;t believe there is any way to detect a specific font-smoothing technology in the other browsers. :-/</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-844 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-844" title="Permalink to this comment">22</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://generation-y.gr'><img alt='' src='http://0.gravatar.com/avatar/6536ff68ad05caaa3b271bcca1fcfcaa?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/6536ff68ad05caaa3b271bcca1fcfcaa?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://generation-y.gr' rel='external nofollow' class='url'>teoulas</a> </strong>
+				<span class="comment_time">// Apr 8, 2010 at 5:24 pm</span>
+			</p>
+			<div class="entry">
+				<p>Nice one.</p>
+<p>Here&#8217;s how to disable font anti-aliasing in Gnome, if you haven&#8217;t found out yet:<br />
+Go to System &gt; Preferences &gt; Appearance. Click &#8216;Fonts&#8217; and then select &#8216;Monochrome&#8217; rendering. For more control over font rendering click the &#8216;Details&#8230;&#8217; button. </p>
+<p>Screenshot: <a href="http://img85.imageshack.us/img85/4710/screenshotappearancepre.png" rel="nofollow">http://img85.imageshack.us/img85/4710/screenshotappearancepre.png</a></p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-1416 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-1416" title="Permalink to this comment">23</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/2534ce63518e1b57ddc12af659106035?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/2534ce63518e1b57ddc12af659106035?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Sven </strong>
+				<span class="comment_time">// May 11, 2010 at 4:56 am</span>
+			</p>
+			<div class="entry">
+				<p>I am absolutely loving this solution!</p>
+<p>Many thanks :)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-2311 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-2311" title="Permalink to this comment">24</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/2d7f0de163a17b842bdd311adf2e2e84?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/2d7f0de163a17b842bdd311adf2e2e84?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Lars G. Sehested </strong>
+				<span class="comment_time">// Jul 19, 2010 at 10:15 am</span>
+			</p>
+			<div class="entry">
+				<p>@Matt Stow: If you change &#8220;32px Arial&#8221; to e.g. &#8220;12px Arial&#8221; in line 55 of TypeHelpers, it will only set &#8220;hasFontSmoothing-true&#8221; if ClearType is enabled. I suppose it would be easy to run a test at each font size to distinguish between none, Standard or ClearType.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-3327 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-3327" title="Permalink to this comment">25</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/df44420c4c3e23b39be546444bcdc286?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/df44420c4c3e23b39be546444bcdc286?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>James </strong>
+				<span class="comment_time">// Sep 8, 2010 at 4:59 am</span>
+			</p>
+			<div class="entry">
+				<p>Great solution. Many thanks dude :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-3707 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-3707" title="Permalink to this comment">26</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.sirric.co.uk'><img alt='' src='http://0.gravatar.com/avatar/9d4d006ad43b3cbbe13bbecd7533cf7e?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9d4d006ad43b3cbbe13bbecd7533cf7e?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.sirric.co.uk' rel='external nofollow' class='url'>Ric</a> </strong>
+				<span class="comment_time">// Sep 28, 2010 at 5:21 pm</span>
+			</p>
+			<div class="entry">
+				<p>Pure genius!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-4187 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-4187" title="Permalink to this comment">28</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://lumens.se'><img alt='' src='http://0.gravatar.com/avatar/fd53657768a54d9e82a164e894c68f80?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/fd53657768a54d9e82a164e894c68f80?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://lumens.se' rel='external nofollow' class='url'>Reimund Trost</a> </strong>
+				<span class="comment_time">// Oct 20, 2010 at 5:01 pm</span>
+			</p>
+			<div class="entry">
+				<p>Awesome work Zoltan. This will come in really handy for my site which suffer from many Internet Explorer / Win XP users!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-4558 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-4558" title="Permalink to this comment">29</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.thebrungers.com'><img alt='' src='http://1.gravatar.com/avatar/1975babb2c92314117672016d08dd0e0?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/1975babb2c92314117672016d08dd0e0?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.thebrungers.com' rel='external nofollow' class='url'>Andrew Barr Brunger</a> </strong>
+				<span class="comment_time">// Nov 6, 2010 at 1:21 pm</span>
+			</p>
+			<div class="entry">
+				<p>Fantastic solution. Many thanks!</p>
+<p>I did not feel comfortable serving non-system font based on presumptions about a users browser and OS. Your script works flawlessly and is incredibly important. </p>
+<p>Andrew Barr Brunger</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-4820 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-4820" title="Permalink to this comment">30</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://i-bit.nl'><img alt='' src='http://0.gravatar.com/avatar/0edf81005a26e710a03c74f306606aa6?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/0edf81005a26e710a03c74f306606aa6?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://i-bit.nl' rel='external nofollow' class='url'>Robine</a> </strong>
+				<span class="comment_time">// Nov 16, 2010 at 3:31 am</span>
+			</p>
+			<div class="entry">
+				<p>This looks like something I should keep in mind. Currently I am using sIFR, but I will definitly give this a go. If I encounter something useful, I will let you know. Thanks for the time you took to figure this out!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-4838 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-4838" title="Permalink to this comment">31</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.michael-van-laar.de'><img alt='' src='http://1.gravatar.com/avatar/170b793334641924dcd734adb69badc4?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/170b793334641924dcd734adb69badc4?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.michael-van-laar.de' rel='external nofollow' class='url'>Michael van Laar</a> </strong>
+				<span class="comment_time">// Nov 16, 2010 at 3:34 am</span>
+			</p>
+			<div class="entry">
+				<p>Great article and even greater script. I recently combined the neccessary parts (at least as far as my rather uncomplete JavaScript knowledge allowed me to tell what was necessary) of EventHelpers.js with TypeHelpers.js and Paul Irish’s FOUT fighting script. The result is a 3 KB (only 1.3 KB with gzip) big JavaScript file which handles all of my Webfont loading problems. I use this combined script it on all my websites. (combined-script download and information here: <a href="http://www.michael-van-laar.de/blog/artikel/webfont-load-enhancer/" rel="nofollow">http://www.michael-van-laar.de/blog/artikel/webfont-load-enhancer/</a> – Website only in German, readme.txt inside the zip file in English) Works great!</p>
+<p>Of course I also included Lars G. Sehested’s &#8220;12px Arial&#8221; configuration tweak in the documentation of my combined script. You both are credited various times, so I hope my &#8220;set it and forget it&#8221; script solution is OK for you.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment  myComment " id="comment-4840 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-4840" title="Permalink to this comment">33</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 16, 2010 at 8:39 am</span>
+			</p>
+			<div class="entry">
+				<p>@Michael: I am glad you find my work (and Paul&#8217;s) of use. Remixes are more than welcome! If you make any additions or changes, please let me know. </p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-4994 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-4994" title="Permalink to this comment">34</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://matthewlein.com'><img alt='' src='http://2.gravatar.com/avatar/53480859f8a3a5029cd542e38fb5504a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/53480859f8a3a5029cd542e38fb5504a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://matthewlein.com' rel='external nofollow' class='url'>Matthew Lein</a> </strong>
+				<span class="comment_time">// Nov 23, 2010 at 8:30 am</span>
+			</p>
+			<div class="entry">
+				<p>I can verify that on the iPad, TypeHelpers.hasSmoothing() spits out false. :(</p>
+<p>I&#8217;ve seen that the canvas handling is definitely a little funky from my previous experiments, but I haven&#8217;t dug into why/fixes. I&#8217;ll let you know if I come up with anything.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-5014 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-5014" title="Permalink to this comment">35</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://matthewlein.com'><img alt='' src='http://2.gravatar.com/avatar/53480859f8a3a5029cd542e38fb5504a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/53480859f8a3a5029cd542e38fb5504a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://matthewlein.com' rel='external nofollow' class='url'>Matthew Lein</a> </strong>
+				<span class="comment_time">// Nov 23, 2010 at 8:30 am</span>
+			</p>
+			<div class="entry">
+				<p>Update: iOS 4.2 fixes the detection. So its not much of an issue.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						<li class="comment   " id="comment-6164 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-6164" title="Permalink to this comment">38</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/da2536337957f0ba7ce4a86679da9cc1?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/da2536337957f0ba7ce4a86679da9cc1?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Ian </strong>
+				<span class="comment_time">// Dec 27, 2010 at 3:52 pm</span>
+			</p>
+			<div class="entry">
+				<p>Perhaps some of you are aware that there are obvious differences in font rendering between standard and cleartype methods on XP. I use webfonts on a site that drives photo portofolios and these fonts anti alias perfectly when windows is using the standard method (antialiasing is monochrome in this case) Cleartype however(which is enabled by default in IE8, regardless of the system setting) however smooths most of these fonts in an uglier, jagged way, especially ar larger sizes :( I think Cleartype is default in Windows 7, and XP has as default the Standard method. I would rather use cleartype fonts, such as Corbel or Calibri if cleartype is enabled that a webfont that ends up looking worse.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						<li class="comment   " id="comment-8239 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-8239" title="Permalink to this comment">41</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://kaioa.com'><img alt='' src='http://0.gravatar.com/avatar/92507ec158d1ba6b67d9fc43c09d6a3a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/92507ec158d1ba6b67d9fc43c09d6a3a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://kaioa.com' rel='external nofollow' class='url'>Jos Hirth</a> </strong>
+				<span class="comment_time">// Feb 15, 2011 at 6:29 am</span>
+			</p>
+			<div class="entry">
+				<p>&gt;That would imply that [&#8230;] fonts in canvas don’t render the same as in plain HTML.</p>
+<p>Regular text rendering will typically use subpixel rendering (ClearType and the like), but that won&#8217;t work inside a Canvas. Subpixel rendering isn&#8217;t a very good idea if the result might be transformed.</p>
+<p>&gt;ctx.getImageData(i, j, 1, 1)</p>
+<p>It should be faster if you grab all 800 pixels at once. Even if you only check a few of them. The call itself is pretty expensive and the data doesn&#8217;t have much weight (relatively). Sorta like a cruiser ship with only one passenger. Doesn&#8217;t really matter if there are more of them.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-8424 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-8424" title="Permalink to this comment">42</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://iracummings.com'><img alt='' src='http://0.gravatar.com/avatar/94441b3fc90362b321eab88feffc7963?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/94441b3fc90362b321eab88feffc7963?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://iracummings.com' rel='external nofollow' class='url'>Ira F. Cummings</a> </strong>
+				<span class="comment_time">// Feb 18, 2011 at 2:16 pm</span>
+			</p>
+			<div class="entry">
+				<p>This seems to be a great solution for me, but I&#8217;m curious about some details. I&#8217;m serving FF Meta to a site using Typekit, and it&#8217;s been looking horrible—near unreadable—on PC&#8217;s with font smoothing disabled. I&#8217;ve implemented your script, so I&#8217;m off to test it.</p>
+<p>BUT in my research for this issue, some people have stated that IE doesn&#8217;t recognize the canvas. See here for the clearest discussion: <a href="http://www.typophile.com/node/77635" rel="nofollow">http://www.typophile.com/node/77635</a></p>
+<p>Is there any truth to this? Can your method detect font smoothing with IE?</p>
+<p>Lastly, could you explain or provide a suggestion on how I would use jQuery instead of the EventHelpers.js? I&#8217;m a javascript newb, so excuse my ignorance, but I&#8217;m using this on a site that is already loading jQuery.</p>
+<p>Thanks!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-8460 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-8460" title="Permalink to this comment">43</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Feb 19, 2011 at 1:52 am</span>
+			</p>
+			<div class="entry">
+				<p>@Ira: The script first checks to see if <code>screen.fontSmoothingEnabled</code> is present (which is true only in IE). If it is present, it uses it to see if font-smoothing is on.  If not, then it does the canvas check. <code>screen.fontSmoothingEnabled</code> is true if ClearType or &#8220;Standard&#8221; smoothing is on, so it should be a bulletproof test.</p>
+<p>As for using jQuery instead of EventHelpers, this should be quite easily done.  Just take out the <code>if</code> condition at the end of TypeHelpers.js and replace it with a call to <code>$.ready()</code>. <a href="http://dev.opera.com/articles/view/jquery-write-less-do-more/" rel="nofollow">This article</a> should help a little.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-8466 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-8466" title="Permalink to this comment">44</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/471c7cf14935b2f510903a0b8e6c4394?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Feb 19, 2011 at 2:14 am</span>
+			</p>
+			<div class="entry">
+				<p>@Jos: I am unsure about what you meant about your first comment, could you clarify? This algorithm does work in all the four canvas enabled desktop browsers, so I am not sure as to what you mean &#8212; I must be missing something.</p>
+<p>As for the second comment, I was unaware how expensive the <code>.getImageData()</code> call is .. thanks for the tip.  Will have to update this in a future release.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-9418 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-9418" title="Permalink to this comment">46</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://iracummings.com'><img alt='' src='http://0.gravatar.com/avatar/94441b3fc90362b321eab88feffc7963?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/94441b3fc90362b321eab88feffc7963?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://iracummings.com' rel='external nofollow' class='url'>Ira F. Cummings</a> </strong>
+				<span class="comment_time">// Mar 4, 2011 at 11:25 am</span>
+			</p>
+			<div class="entry">
+				<p>Thanks a lot. Really appreciated.</p>
+<p>Still not sure about the jQuery solution, mostly because I&#8217;m not sure what EventHelpers is doing…and how to make jQuery do the same thing. I know how to use jQuery to get basic things done, it&#8217;s the more complicated stuff that I&#8217;m not sure about how to use it in this situation. I won&#8217;t bug you with it though…see if I can figure it out with some web sleuthing.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-9419 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-9419" title="Permalink to this comment">47</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://matthewlein.com'><img alt='' src='http://2.gravatar.com/avatar/53480859f8a3a5029cd542e38fb5504a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/53480859f8a3a5029cd542e38fb5504a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://matthewlein.com' rel='external nofollow' class='url'>matthewlein</a> </strong>
+				<span class="comment_time">// Mar 4, 2011 at 11:46 am</span>
+			</p>
+			<div class="entry">
+				<p>FYI Zoltan, the @Jos comment#2 is exactly what I sent you months ago&#8230;</p>
+<p>If you get all 800 pixels its only faster for browsers that fail, but your current method of getting pixels 1 at a time is faster for browsers that pass (which is now most browsers). This happens because to get find a semi-transparent pixel, you only need to make a few calls before it finds one (around 7-8 I think, can&#8217;t remember).</p>
+<p>storing all 800 pixels (times the 4 RGBA values) is pretty slow, and only makes up for the speed when you access that data many many times.</p>
+<p>anyone interested in it can check my jsPerf:<br />
+<a href="http://jsperf.com/canvas-loops/3" rel="nofollow">http://jsperf.com/canvas-loops/3</a></p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-9521 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-9521" title="Permalink to this comment">48</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Mar 5, 2011 at 3:59 pm</span>
+			</p>
+			<div class="entry">
+				<p>@matthewlein: thanks for posting the jsPerf.  Really good at illustrating this visually.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						
+						
+						<li class="comment   " id="comment-17098 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-17098" title="Permalink to this comment">52</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/30e2d7f081f0b037d33beeeb53a5fe72?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/30e2d7f081f0b037d33beeeb53a5fe72?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>andy </strong>
+				<span class="comment_time">// Aug 19, 2011 at 6:54 am</span>
+			</p>
+			<div class="entry">
+				<p>Can&#8217;t you detect ClearType or subpixel-based hinting by detecting if there are different r/g/b values in a single pixel rather than simply a value between  and ?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-17099 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-17099" title="Permalink to this comment">53</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/30e2d7f081f0b037d33beeeb53a5fe72?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/30e2d7f081f0b037d33beeeb53a5fe72?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>andy </strong>
+				<span class="comment_time">// Aug 19, 2011 at 6:55 am</span>
+			</p>
+			<div class="entry">
+				<p>Oops. Last post got messed up.</p>
+<p>Can&#8217;t you detect ClearType or subpixel-based hinting by detecting if there are different r/g/b values in a single pixel rather than simply a value between (0,0,0) and (255,255,255)?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-17885 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-17885" title="Permalink to this comment">54</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Sep 2, 2011 at 8:10 am</span>
+			</p>
+			<div class="entry">
+				<p>@andy: It may be worth looking into this.  The problem is there is a way to tune cleartype, so I can&#8217;t rely on &#8220;every Arial O has these colored pixels in the middle&#8221;.  If you or anyone else has any ideas about how to work around this, I&#8217;m all ears.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-19930 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-19930" title="Permalink to this comment">56</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/f3c9fe102a19a2c7ff238cdb9f13c9fa?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f3c9fe102a19a2c7ff238cdb9f13c9fa?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>T </strong>
+				<span class="comment_time">// Sep 29, 2011 at 2:34 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi, first of all thanks for that your fontSmoothing detection is very cool. i have tested it a little bit and have seeen document.body.appendChild(canvasNode); is no longer needed in safari (win). if you kill this line you can fire the whole script in your head section and you do not have to wait for &#8220;dom ready&#8221;.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-20774 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-20774" title="Permalink to this comment">57</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.cnet.com'><img alt='' src='http://2.gravatar.com/avatar/2ae34843d04252814f4c684fb9a6f5cf?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/2ae34843d04252814f4c684fb9a6f5cf?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.cnet.com' rel='external nofollow' class='url'>Chris Hamm</a> </strong>
+				<span class="comment_time">// Oct 10, 2011 at 5:28 pm</span>
+			</p>
+			<div class="entry">
+				<p>The demo shown always says I am using font smoothing tech even with ClearType turned off. Is font smoothing and ClearType separate from each other?<br />
+Using Windows 7 and FF 7 as well as IE 8 and 9</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-20990 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-20990" title="Permalink to this comment">58</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Oct 12, 2011 at 7:16 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Chris: ClearType is one of many types of anti-aliasing/font smoothing technologies out there and, as far as I know, only available on the Windows platform.  In Windows XP, one can turn off font-smoothing completely, but in Windows Vista and Windows 7 it seems that one can only choose to use ClearType or &#8220;vanilla&#8221; font-smoothing.  I believe this is because<a href="http://neosmart.net/blog/2006/a-comprehensive-look-at-the-new-microsoft-fonts/" rel="nofollow"> the fonts that come with Vista and higher</a> (e.g. Consolas, Calibri, and a whole bunch of others that begin with the letter &#8216;C&#8217;) require font-smoothing or they look like crap.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-39180 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-39180" title="Permalink to this comment">59</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://michaelvanlaar.com'><img alt='' src='http://1.gravatar.com/avatar/170b793334641924dcd734adb69badc4?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/170b793334641924dcd734adb69badc4?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://michaelvanlaar.com' rel='external nofollow' class='url'>Michael van Laar</a> </strong>
+				<span class="comment_time">// Mar 16, 2012 at 4:53 pm</span>
+			</p>
+			<div class="entry">
+				<p>I use the script for years now. It seems that since the last Google Chrome Update (Version: 17.0.963.79) the script has a problem with Chrome on Win7. It always comes to the (wrong) conclusion &#8220;hasFontSmoothing-false&#8221;. In IE 9 and FF everything works as a charm.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-43250 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-43250" title="Permalink to this comment">60</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/2a916329d74fc2f4712096efba45faf6?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/2a916329d74fc2f4712096efba45faf6?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>David Craig </strong>
+				<span class="comment_time">// Apr 16, 2012 at 7:43 pm</span>
+			</p>
+			<div class="entry">
+				<p>I have just come across your script &#8211; getting frustrated at how other people&#8217;s websites look to me (with no font smoothing). However when I tried your real life example it reported that I have font smoothing on &#8211; and I don&#8217;t (at least I don&#8217;t think I do).<br />
+I am on Win7 x64 using Firefox 11.  I have cleartype off and I have edited the registry values to remove all font smoothing: [HKEY_CURRENT_USER\Control Panel\Desktop] FontSmoothing = 0 and FontSmoothingType = 0</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-44336 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-44336" title="Permalink to this comment">61</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.kss-online.com'><img alt='' src='http://0.gravatar.com/avatar/654d30fb41fce85c7c516038d2c59c78?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/654d30fb41fce85c7c516038d2c59c78?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.kss-online.com' rel='external nofollow' class='url'>Alexander Kappler</a> </strong>
+				<span class="comment_time">// Apr 25, 2012 at 4:09 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi Zoltan,<br />
+first of all, thank you for this wonderfull skript!<br />
+Since a few weeks, I do have the same Problem like Michael mentioned in the post before.<br />
+I was wondering whether you will provide an fix for that issue.<br />
+Thank you!<br />
+Alex</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-46145 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-46145" title="Permalink to this comment">62</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 8, 2012 at 10:47 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Alexander, @Michael:  Sorry for the late reply &mdash; I must have missed these among all my other messages.  When I check the script with Chrome 18, I don&#8217;t see any problems.  Can you give me a URL to a page where this actually happens?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-46147 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-46147" title="Permalink to this comment">63</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// May 8, 2012 at 11:00 pm</span>
+			</p>
+			<div class="entry">
+				<p>@David: see my response to Chris&#8217; comment above.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-47137 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-47137" title="Permalink to this comment">64</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://michaelvanlaar.com'><img alt='' src='http://1.gravatar.com/avatar/170b793334641924dcd734adb69badc4?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/170b793334641924dcd734adb69badc4?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://michaelvanlaar.com' rel='external nofollow' class='url'>Michael van Laar</a> </strong>
+				<span class="comment_time">// May 17, 2012 at 9:31 am</span>
+			</p>
+			<div class="entry">
+				<p>@Zoltan: You’re right. The problems are gone in Chrome 18. Fine! I like problems which right themselves :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-48821 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-48821" title="Permalink to this comment">65</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/180b4e4ae8d7df2c4b39967ad425f098?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/180b4e4ae8d7df2c4b39967ad425f098?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Gerrit van Aaken </strong>
+				<span class="comment_time">// May 29, 2012 at 4:26 pm</span>
+			</p>
+			<div class="entry">
+				<p>Any ideas how to tell GDI rendering apart from DirectWrite rendering on Windows Vista oder Windows 7?<br />
+IE9 does only DirectWrite, Firefox 4+ does use DirectWrite in some cases, Chrome does not at all (yet). </p>
+<p>You can visually detect DirectWrite by rotating text slightly: <a href="http://jsfiddle.net/Xq8yt/1/" rel="nofollow">http://jsfiddle.net/Xq8yt/1/</a> (Only for Windows Vista/7: DirectWrite looks good, GDI looks horrible)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-49682 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-49682" title="Permalink to this comment">66</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jun 4, 2012 at 11:56 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Gerrit: Not at this time, and I don&#8217;t see a simple solution to this.  :-/</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-49977 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-49977" title="Permalink to this comment">67</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/cb7529c9a7c3297760ec76e41bf77d0a?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/cb7529c9a7c3297760ec76e41bf77d0a?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Kazi </strong>
+				<span class="comment_time">// Jun 7, 2012 at 7:16 am</span>
+			</p>
+			<div class="entry">
+				<p>Excellent, this must be part of the modernizr feature detection javascript library. Why it isn&#8217;t?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-60649 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-60649" title="Permalink to this comment">68</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Aug 12, 2012 at 11:13 am</span>
+			</p>
+			<div class="entry">
+				<p>@Kazi: <a href="http://wellcaffeinated.net/articles/2012/01/25/font-smoothing-detection-modernizr-style" rel="nofollow">a plugin for Modernizr</a> has been created by <a href="http://wellcaffeinated.net/" rel="nofollow">Jasper Palfree</a>.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-71378 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-71378" title="Permalink to this comment">70</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.red-id.com'><img alt='' src='http://2.gravatar.com/avatar/85ae1256b4768ae4e38b8c9415c2ae2b?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/85ae1256b4768ae4e38b8c9415c2ae2b?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.red-id.com' rel='external nofollow' class='url'>ram almog</a> </strong>
+				<span class="comment_time">// Oct 8, 2012 at 4:55 am</span>
+			</p>
+			<div class="entry">
+				<p>Tip: If you are implementing this on a rtl html (right to left, like hebrew and arabic), note that you have to set the canvas to stay in ltr, or the letter you draw get out of bounds (just add canvasNode.style.direction = &#8220;ltr&#8221;; when creating the canvas.) Just spent an hour figuring this out&#8230;</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-72818 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-72818" title="Permalink to this comment">71</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Oct 15, 2012 at 8:29 pm</span>
+			</p>
+			<div class="entry">
+				<p>@ram: Thanks for the tip!  Would not have known this &#8212; very useful to know. Much appreciated. :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-144311 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-144311" title="Permalink to this comment">72</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/8c327c217f792a3285803c835dbe1116?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/8c327c217f792a3285803c835dbe1116?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Brandon Lebedev </strong>
+				<span class="comment_time">// Jun 11, 2013 at 1:58 pm</span>
+			</p>
+			<div class="entry">
+				<p>This script returns a false positive in FF 21.0 on Win7 when system cleartype is off (the default).<br />
+Also, if users follow the method linked to below, this script will return a false positive in IE9 on Win7.  Removing the `screen.fontSmoothingEnabled` test fixes the problem.<br />
+<a href="http://stackoverflow.com/questions/5427315/disable-cleartype-text-anti-aliasing-in-ie9#tab-top" rel="nofollow">http://stackoverflow.com/questions/5427315/disable-cleartype-text-anti-aliasing-in-ie9#tab-top</a></p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-145770 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-145770" title="Permalink to this comment">73</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Jun 16, 2013 at 12:36 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Brandon: Unless things have changed, Cleartype is turned on by default it Windows 7, and therefore Firefox in Windows 7 as well.</p>
+<p>The page you link to talks about how to go into the registry to disable ClearType.  This is an edge case as the vast majority of users wouldn&#8217;t do (and would not know <strong><em>how</em></strong> to do) this.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-181771 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-181771" title="Permalink to this comment">74</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://cssmatter.com/'><img alt='' src='http://0.gravatar.com/avatar/c447cff74264cdfe337f413e75840dcb?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/c447cff74264cdfe337f413e75840dcb?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://cssmatter.com/' rel='external nofollow' class='url'>Manish Salunke</a> </strong>
+				<span class="comment_time">// Oct 31, 2013 at 1:34 am</span>
+			</p>
+			<div class="entry">
+				<p>Ohh.. Great!! Thanks for sharing with us..</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="338" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="9f844fa662" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>

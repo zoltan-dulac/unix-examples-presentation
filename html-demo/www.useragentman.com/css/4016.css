@@ -1,0 +1,733 @@
+.dataTable progress {
+	display: inline-block !important;
+}
+
+.dataTable tbody td {
+    padding: 10px;
+    text-align: left;
+}
+
+.dataTable tbody td.na {
+	text-align: center;
+	font-weight: bold;
+	background-color: #eeeeee;
+}
+
+.dataTable tbody td img {
+	margin: 0;
+	border: none !important;
+	float: none !important;
+}
+
+.dataTable input {
+	margin-left: 10px;
+	font-size: 0.8em;
+}
+
+.example {
+	width: 327px;
+	padding: 10px;
+	border-radius: 10px;
+	margin: 0 auto 20px auto !important;
+	border: solid 1px black;
+}
+
+.speedometer {
+    height: 175px;
+    width: 249px;
+}
+
+div.example input {
+	width: 140px;
+	margin-top: 10px !important;
+}
+
+div.example input, div.example progress {
+	display: block;
+	margin: 0 auto;
+}
+
+div.example progress.monkey {
+	display: inline-block;
+}
+
+.shortened {
+	height: 300px !important;
+	overflow: auto !important;
+}
+
+table.small {
+	width: auto !important;
+}
+
+progress {
+	display: block;
+}
+
+
+/* All HTML5 progress enabled browsers */
+progress.example1.a {
+
+	/* Turns off styling - not usually needed, but good to know. */
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	/* gets rid of default border in Firefox and Opera. */
+	border: solid 1px black;
+	
+	/* Dimensions */
+	width: 200px;
+	height: 10px;
+	
+	
+}
+/* Polyfill */
+progress.example1.a[role]:after {
+	background-image: none; /* removes default background from polyfill */
+}
+/*
+ * Background of the progress bar background
+ */
+
+/* Firefox and Polyfill */
+progress.example1.b, progress[role][aria-valuenow].example1.b {
+	background: #ffeeee !important; /* !important only needed in polyfill */
+}
+/* Chrome */
+progress.example1.b::-webkit-progress-bar {
+	background: #ffeeee;
+}
+/*
+ * Background of the progress bar value
+ */
+
+/* IE10 */
+progress.example1.c {
+	color: black;
+}
+
+/* Firefox */
+progress.example1.c::-moz-progress-bar {
+	background-color: black;
+}
+/* Chrome */
+progress.example1.c::-webkit-progress-value {
+	background-color: black;
+}
+/* Polyfill */
+progress.example1.c[aria-valuenow]:before {
+	background-color: black;
+}
+
+/* Indeterminate */
+/* Firefox */
+progress.example1.d:not([value])::-moz-progress-bar { 
+	background-image:  url(/blog/wp-content/uploads/2012/01/indeter.gif);	
+	
+}
+
+/* Chrome */
+progress.example1.d:not([value])::-webkit-progress-bar {
+	background-image:  url(/blog/wp-content/uploads/2012/01/indeter.gif);	
+	
+}
+
+/* Polyfill */
+progress[role].example1.d {
+	background-image: url(/blog/wp-content/uploads/2012/01/indeter.gif) !important;
+}
+
+progress.example1.d:not([value]) {
+	background-image: url(/blog/wp-content/uploads/2012/01/indeter.gif) !important;
+	background-size: auto;  /* Needs to be in here for Safari */
+}
+
+
+
+
+
+
+
+
+/*
+ * Example 2: more graphical
+ */
+
+/* All HTML5 progress enabled browsers */
+progress.example2 {
+
+	/* Turns off styling - not usually needed, but good to know. */
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	
+	/* Apply border. */
+	border: inset 3px;
+	
+	/* Dimensions */
+	width: 238px;
+	height: 45px;
+	background-size: auto;  /* Needs to be in here for Safari */
+}
+
+/* Polyfill */
+progress.example2[role]:after {
+	background-image: none; /* removes default background from polyfill */
+}
+
+
+/*
+ * Background of the progress bar background
+ */
+
+/* Firefox and Polyfill */
+progress.example2 {
+	background: url("/blog/wp-content/uploads/2011/12/example2BW.png") #cccccc !important; /* !important only needed in polyfill */
+}
+/* Chrome */
+progress.example2::-webkit-progress-bar {
+	background: url("/blog/wp-content/uploads/2011/12/example2BW.png") #cccccc;
+}
+
+/*
+ * Background of the progress bar value
+ */
+
+/* Firefox */
+progress.example2::-moz-progress-bar {
+	background: url("/blog/wp-content/uploads/2011/12/example2Color.png") #8f6534;
+}
+/* Chrome */
+progress.example2::-webkit-progress-value {
+	background: url("/blog/wp-content/uploads/2011/12/example2Color.png") #8f6534;
+}
+/* Polyfill */
+progress.example2[aria-valuenow]:before {
+	background: url("/blog/wp-content/uploads/2011/12/example2Color.png") #8f6534;
+}
+/*
+ * Gradient Shadow
+ */
+
+/* All HTML5 progress enabled browsers */
+progress.example3 {
+
+	/* Turns off styling - not usually needed, but good to know. */
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	/* gets rid of default border in Firefox and Opera. */
+	border: solid #cccccc 5px;
+	border-radius: 10px;
+	/* Dimensions */
+	width: 238px;
+	height: 45px;
+}
+/* Polyfill */
+progress.example3[role]:after {
+	background-image: none; /* removes default background from polyfill */
+}
+/*
+ * Background of the progress bar background
+ */
+
+/* Firefox and Polyfill */
+progress.example3 {
+	background: #cccccc !important; /* !important only needed in polyfill */
+}
+/* Chrome */
+progress.example3::-webkit-progress-bar {
+	background: #cccccc;
+}
+/*
+ * Background of the progress bar value
+ */
+
+/* Firefox */
+progress.example3::-moz-progress-bar {
+	border-radius: 5px;
+	background-image: -moz-linear-gradient(
+		center bottom,
+		rgb(43,194,83) 37%,
+		rgb(84,240,84) 69%
+	);
+}
+/* Chrome */
+progress.example3::-webkit-progress-value {
+	border-radius: 5px;
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0, rgb(43,194,83)),
+		color-stop(1, rgb(84,240,84))
+	);
+	background-image: -webkit-linear-gradient(
+		center bottom,
+		rgb(43,194,83) 37%,
+		rgb(84,240,84) 69%
+	);
+}
+/* Polyfill */
+progress.example3[aria-valuenow]:before {
+	border-radius: 5px;
+	background-image: -moz-linear-gradient(
+		center bottom,
+		rgb(43,194,83) 37%,
+		rgb(84,240,84) 69%
+	);
+	background-image: -ms-linear-gradient(
+		center bottom,
+		rgb(43,194,83) 37%,
+		rgb(84,240,84) 69%
+	);
+	background-image: -o-linear-gradient(
+		center bottom,
+		rgb(43,194,83) 37%,
+		rgb(84,240,84) 69%
+	);
+	
+}
+/*
+ * Candy Striping Example
+ */
+
+/* All HTML5 progress enabled browsers */
+progress.example4 {
+
+	/* Turns off styling - not usually needed, but good to know. */
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	/* gets rid of default border in Firefox and Opera. */
+	border: solid #cccccc 5px;
+	border-radius: 10px;
+	/* Dimensions */
+	width: 238px;
+	height: 45px;
+}
+/* Polyfill */
+progress.example4[role]:after {
+	background-image: none; /* removes default background from polyfill */
+}
+/*
+ * Background of the progress bar background
+ */
+
+/* Firefox and Polyfill */
+progress.example4 {
+	background: #cccccc !important; /* !important only needed in polyfill */
+}
+/* Chrome */
+progress.example4::-webkit-progress-bar {
+	background: #cccccc;
+}
+/*
+ * Background of the progress bar value
+ */
+
+/* Firefox */
+progress.example4::-moz-progress-bar {
+	border-radius: 5px;
+	background-image: -moz-linear-gradient(
+		-45deg,
+		rgba(255, 255, 255, .2) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(255, 255, 255, .2) 50%,
+		rgba(255, 255, 255, .2) 75%,
+		transparent 75%,
+		transparent
+	);
+}
+/* Chrome */
+progress.example4::-webkit-progress-value {
+	border-radius: 5px;
+	background-image: -webkit-gradient(linear, 0 0, 100% 100%,
+		color-stop(.25, rgba(255, 255, 255, .2)),
+		color-stop(.25, transparent), color-stop(.5, transparent),
+		color-stop(.5, rgba(255, 255, 255, .2)),
+		color-stop(.75, rgba(255, 255, 255, .2)),
+		color-stop(.75, transparent), to(transparent)
+	);
+	background-image: -webkit-linear-gradient(
+		-45deg,
+		rgba(255, 255, 255, .2) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(255, 255, 255, .2) 50%,
+		rgba(255, 255, 255, .2) 75%,
+		transparent 75%,
+		transparent
+	);
+}
+/* Polyfill */
+progress.example4[aria-valuenow]:before {
+	border-radius: 5px;
+	background-image: -webkit-gradient(linear, 0 0, 100% 100%,
+		color-stop(.25, rgba(255, 255, 255, .2)),
+		color-stop(.25, transparent), color-stop(.5, transparent),
+		color-stop(.5, rgba(255, 255, 255, .2)),
+		color-stop(.75, rgba(255, 255, 255, .2)),
+		color-stop(.75, transparent), to(transparent)
+	);
+	background-image: -webkit-linear-gradient(
+		-45deg,
+		rgba(255, 255, 255, .2) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(255, 255, 255, .2) 50%,
+		rgba(255, 255, 255, .2) 75%,
+		transparent 75%,
+		transparent
+	);
+	background-image: -moz-linear-gradient(
+		-45deg,
+		rgba(255, 255, 255, .2) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(255, 255, 255, .2) 50%,
+		rgba(255, 255, 255, .2) 75%,
+		transparent 75%,
+		transparent
+	);
+	background-image: -ms-linear-gradient(
+		-45deg,
+		rgba(255, 255, 255, .2) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(255, 255, 255, .2) 50%,
+		rgba(255, 255, 255, .2) 75%,
+		transparent 75%,
+		transparent
+	);
+	background-image: -o-linear-gradient(
+		-45deg,
+		rgba(255, 255, 255, .2) 25%,
+		transparent 25%,
+		transparent 50%,
+		rgba(255, 255, 255, .2) 50%,
+		rgba(255, 255, 255, .2) 75%,
+		transparent 75%,
+		transparent
+	);
+}
+
+
+
+
+
+/*
+ * MONKEYS!!!
+ */
+
+/* All HTML5 progress enabled browsers */
+progress.monkey {
+
+	/* Turns off styling - not usually needed, but good to know. */
+	appearance: none;
+	-moz-appearance: none;
+	-webkit-appearance: none;
+	-ms-appearance: none;
+
+	/* gets rid of default border in Firefox and Opera. */ 
+	border: none;
+	
+	/* Dimensions */
+	width: 257px;
+	height: 48px;
+	position: relative;
+	top: -26px;
+	
+	color: black;
+}
+
+progress strong {
+	display: none;
+}
+
+progress.monkey + .after {
+	display: inline-block;
+	width: 64px;
+	height: 77px;
+	
+}
+
+
+progress.monkey[value="0"] +  .after{
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif');
+} 
+
+progress.monkey[value^="1"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -77px ;
+}
+
+progress.monkey[value^="2"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -154px ;
+}
+
+progress.monkey[value^="3"] +  .after,
+progress.monkey[value="100"] +  .after  {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -231px !important ;
+}
+
+progress.monkey[value^="4"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -308px ;
+}
+
+progress.monkey[value^="5"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -385px ;
+}
+
+progress.monkey[value^="6"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -462px ;
+}
+
+progress.monkey[value^="7"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -539px ;
+}
+
+progress.monkey[value^="8"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -616px ;
+}
+
+progress.monkey[value^="9"] +  .after {
+	background: url('/blog/wp-content/uploads/2011/12/monkeyBlit.gif') 0  -693px ;
+}
+
+
+
+
+/* Polyfill */
+progress.monkey[role]:after {
+	background-image: none; /* removes default background from polyfill */
+}
+
+
+/*
+ * Background of the progress bar background
+ */
+
+/* Firefox and Polyfill */
+progress.monkey {
+	background: #cccccc !important; /* !important only needed in polyfill */
+}
+
+/* Chrome */
+progress.monkey::-webkit-progress-bar {
+    background: #cccccc;
+}
+
+
+
+/*
+ * Background of the progress bar value 
+ */
+
+/* Firefox */
+progress.monkey::-moz-progress-bar { 
+	background: url(/blog/wp-content/uploads/2012/01/laughNow2.jpg);	
+}
+
+/* Chrome */
+progress.monkey::-webkit-progress-value {
+	background: url(/blog/wp-content/uploads/2012/01/laughNow2.jpg);	
+}
+
+/* Polyfill */
+progress.monkey[aria-valuenow]:before  {
+	background: url(/blog/wp-content/uploads/2012/01/laughNow2.jpg);	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*
+ * Example R: Possible Rotation
+ */
+progress strong {
+	display: none;
+}
+
+#progressContainer {
+	position: relative;
+	
+	height: 126px;
+}
+#progressContainer progress, #progressContainer div {
+	position: absolute;
+	
+}
+
+
+#progressContainer  input {
+	position: relative;
+	top: 140px !important;
+	margin-bottom: 20px;
+}
+
+#progressContainer  input {
+	
+}
+progress.example_r + .arrow {
+	position: absolute;
+	font-size: 100px;
+	margin-top: -132px;
+	/* Dimensions */
+	width: 238px;
+	height: 126px;
+	text-align: center;
+	-webkit-transform-origin: 50% 100%;
+	-moz-transform-origin: 50% 100%;
+	-ms-transform-origin: 50% 100%;
+	-o-transform-origin: 50% 100%;
+	
+	color: hsl(0, 70%, 50%);
+	left: 0px;
+	top: 132px;
+	line-height: 1em;
+		
+}
+
+progress.example_r + .arrow img {
+	float: none;
+	border: none;
+	margin: 17px 0 0 0;
+}
+
+/*
+ * Example R: Possible Rotation
+ */
+
+/* All HTML5 progress enabled browsers */
+progress.example_r {
+
+	/* gets rid of default border in Firefox and Opera. */
+	border: solid 1px black;
+	display: inline-block;
+	border-radius: 238px 238px 0 0;
+	
+	/* Dimensions */
+	width: 238px;
+	height: 126px;
+	padding: 0;
+	
+	color: transparent;
+}
+/* Polyfill */
+progress.example_r[role]:after {
+	background-image: none; /* removes default background from polyfill */
+}
+progress.example_r {
+}
+/* Rotation Parts */
+
+progress.example_r[value="0"] + .arrow {
+	-moz-transform: rotate(270deg);
+	-webkit-transform: rotate(270deg);
+	-o-transform: rotate(270deg);
+	-ms-transform: rotate(270deg);
+}
+progress.example_r[value^="1"]:not([value="1"]):not([value="100"]) + .arrow {
+	-moz-transform: rotate(288deg);
+	-webkit-transform: rotate(288deg);
+	-o-transform: rotate(288deg);
+	-ms-transform: rotate(288deg);
+}
+progress.example_r[value^="2"]:not([value="2"]) + .arrow {
+	-moz-transform: rotate(306deg);
+	-webkit-transform: rotate(306deg);
+	-o-transform: rotate(306deg);
+	-ms-transform: rotate(306deg);
+}
+progress.example_r[value^="3"]:not([value="3"]) + .arrow {
+	-moz-transform: rotate(324deg);
+	-webkit-transform: rotate(324deg);
+	-o-transform: rotate(324deg);
+	-ms-transform: rotate(324deg);
+}
+progress.example_r[value^="4"]:not([value="4"]) + .arrow {
+	-moz-transform: rotate(342deg);
+	-webkit-transform: rotate(342deg);
+	-o-transform: rotate(342deg);
+	-ms-transform: rotate(342deg);
+}
+progress.example_r[value^="5"]:not([value="5"]) + .arrow {
+	-moz-transform: rotate(360deg);
+	-webkit-transform: rotate(360deg);
+	-o-transform: rotate(360deg);
+	-ms-transform: rotate(360deg);
+}
+progress.example_r[value^="6"]:not([value="6"]) + .arrow {
+	-moz-transform: rotate(378deg);
+	-webkit-transform: rotate(378deg);
+	-o-transform: rotate(378deg);
+	-ms-transform: rotate(378deg);
+}
+progress.example_r[value^="7"]:not([value="7"]) + .arrow {
+	-moz-transform: rotate(396deg);
+	-webkit-transform: rotate(396deg);
+	-o-transform: rotate(396deg);
+	-ms-transform: rotate(396deg);
+}
+progress.example_r[value^="8"]:not([value="8"]) + .arrow {
+	-moz-transform: rotate(414deg);
+	-webkit-transform: rotate(414deg);
+	-o-transform: rotate(414deg);
+	-ms-transform: rotate(414deg);
+}
+progress.example_r[value^="9"]:not([value="9"]) + .arrow {
+	-moz-transform: rotate(432deg);
+	-webkit-transform: rotate(432deg);
+	-o-transform: rotate(432deg);
+	-ms-transform: rotate(432deg);
+}
+progress.example_r[value="100"] + .arrow {
+	-moz-transform: rotate(450deg);
+	-webkit-transform: rotate(450deg);
+	-o-transform: rotate(450deg);
+	-ms-transform: rotate(450deg);
+}
+/*
+ * Background of the progress bar background
+ */
+
+/* Firefox and Polyfill */
+progress.example_r {
+	background: url(/blog/wp-content/uploads/2012/01/speedometer.jpg) -1px 0 #cccccc !important; /* !important only needed in polyfill */
+}
+/* Chrome */
+progress.example_r::-webkit-progress-bar {
+	background: url(/blog/wp-content/uploads/2012/01/speedometer.jpg) -1px 0 #cccccc;
+	border-radius: 238px 238px 0 0;
+}
+/*
+ * Background of the progress bar value
+ */
+
+/* Firefox */
+progress.example_r::-moz-progress-bar {
+	background: transparent;
+}
+/* Chrome */
+progress.example_r::-webkit-progress-value {
+	background: transparent;
+}
+/* Polyfill */
+progress.example_r[aria-valuenow]:before {
+	background: transparent;
+}
+

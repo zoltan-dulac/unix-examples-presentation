@@ -1,0 +1,134 @@
+#canvasPainter {
+    border: 1px solid #CCCCCC;
+    border-radius: 10px 10px 10px 10px;
+    float: left;
+    height: 250px;
+    margin-right: 10px;
+    
+    position: relative;
+    z-index: 100;
+    width: 300px;
+}
+
+.description {
+    font-family: Arial,serif;
+    font-style: italic;
+    margin-top: 218px;
+    position: relative;
+    text-align: center;
+}
+
+.description small {
+	font-size: 0.8em;
+}
+
+
+#canvasPainter h1 {
+	font-size: 14pt;
+	font-style: italic;
+	margin-bottom: 8px;
+}
+#canvasPainter #controls a {
+	text-decoration: none;
+	color: black;
+}
+#canvasPainter canvas {
+	border: 1px solid #AAAAAA;
+}
+#canvas {
+	position: absolute;
+	left: 90px;
+	top: 10px;
+}
+#canvasInterface {
+	position: absolute;
+	left: 90px;
+	top: 10px;
+	
+}
+
+/* This CSS is here because IE7 doesn't not allow cursors over transparent objects it seems. */
+body.ie7 #canvasInterface {
+	background: #808080;
+	filter: progid:DXImageTransform.Microsoft.Chroma(Color=#808080);
+}
+
+
+#noCanvas {
+	position: absolute;
+	left: 90px;
+	top: 100px;
+	width: 400px;
+	height: 400px;
+	font-size: 16px;
+}
+#chooserWidgets {
+	display: block;
+	position: absolute;
+	left: 500px;
+	width: 300px;
+	top: 10px;
+}
+#chooserWidgets canvas {
+	margin-bottom: 10px;
+}
+#controls {
+	position: absolute;
+	top: 10px;
+	left: 8px;
+	font-size: 12px;
+	width: 70px;
+}
+#canvasPainter .ctr_btn {
+	overflow: hidden;
+	width: 70px;
+	height: 20px;
+	cursor: pointer;
+	padding-left: 3px;
+	margin-bottom: 2px;
+	border: 1px solid #AAAAAA;
+	background: #FFFFFF;
+}
+#cpainterInfo {
+	position: absolute;
+	left: 500px;
+	top: 320px;
+}
+#errorArea {
+	position: absolute;
+	width: 200px;
+	left: 800px;
+}
+body.modern #canvasInterface.state0, body.modern #canvasInterface.state1 {
+	cursor: url('/examples/cursor/canvasPainter/canvas_painter_v0.1/images/gimpBrushNoAlpha.cur'), crosshair;
+	cursor: url('/examples/cursor/canvasPainter/canvas_painter_v0.1/images/gimpBrush.png') 0 32, crosshair;
+	
+}
+body.oldIE #canvasInterface.state0, body.oldIE #canvasInterface.state1 {
+	cursor: url('/examples/cursor/canvasPainter/canvas_painter_v0.1/images/gimpBrushNoAlpha.cur'), crosshair;
+}
+body.modern #canvasInterface.state2 {
+	cursor: url('/examples/cursor/canvasPainter/canvas_painter_v0.1/images/pencil.cur'), crosshair;
+	cursor: url('/examples/cursor/canvasPainter/canvas_painter_v0.1/images/pencil.png') 4 27, crosshair;
+}
+body.oldIE #canvasInterface.state2 {
+	cursor: url('/examples/cursor/canvasPainter/canvas_painter_v0.1/images/pencil.cur'), crosshair;
+}
+body.modern #canvasInterface.state3 {
+	cursor: url('/examples/cursor/canvasPainter/canvas_painter_v0.1/images/drawRectangle.cur'), crosshair;
+	cursor: url('/examples/cursor/canvasPainter/canvas_painter_v0.1/images/drawRectangle.png') 5 26, crosshair;
+}
+body.oldIE #canvasInterface.state3 {
+	cursor: url('/examples/cursor/canvasPainter/canvas_painter_v0.1/images/drawRectangle.cur'), crosshair;
+}
+body.modern #canvasInterface.state4 {
+	cursor: url('/examples/cursor/canvasPainter/canvas_painter_v0.1/images/drawCircle.cur'), crosshair;
+	cursor: url('/examples/cursor/canvasPainter/canvas_painter_v0.1/images/drawCircle.png') 5 26, crosshair;
+}
+body.oldIE #canvasInterface.state4 {
+	cursor: url('/examples/cursor/canvasPainter/canvas_painter_v0.1/images/drawCircle.cur'), crosshair;
+}
+
+#color  {
+	width: 70px;
+}

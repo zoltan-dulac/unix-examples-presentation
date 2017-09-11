@@ -1,0 +1,923 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+
+<html xmlns="http://www.w3.org/1999/xhtml" class="responsive has-jquery post-3526" lang="en">
+<head profile="http://gmpg.org/xfn/11">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="google-site-verification" content="mPcIUE2BmItw8B1dH4oiDBff9npX4HZuKGtn4AIU7YA" />
+	<meta name="theme-color" content="#9C6F39" />
+
+	<title>  Clipping JPEG Images Into Non-Rectangular Polygons Using polyClip.js</title>
+
+	<meta name="generator" content="WordPress 4.7.5" /> <!-- leave this for stats -->
+
+	<meta http-equiv="imagetoolbar" content="no">
+
+	<link href="/css/global.css" rel="stylesheet" type="text/css" media="all" />
+
+	
+
+	<link rel="alternate" type="application/rss+xml" title="User Agent Man RSS Feed" href="http://www.useragentman.com/blog/feed/" />
+	<link rel="pingback" href="http://www.useragentman.com/blog/xmlrpc.php" />
+
+	<script>
+	  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+	  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+	  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+	  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+	
+	  ga('create', 'UA-56528829-1', 'auto');
+	  ga('send', 'pageview');
+	
+	</script>
+	
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />	
+	<script type="text/javascript" src="/shared/js/EventHelpers.js"></script>
+	
+	  <link type="text/css" rel="stylesheet" media="screen" href="/css/3526.css" />
+  
+  
+  <script src="/tests/polyClip/js/jquery-1.6.2.min.js"></script>
+
+  
+  <!--[if lt IE 9 ]>
+	<script src="/tests/polyClip/js/excanvas/excanvas.compiled.js"></script>
+  <![endif]-->
+  
+  <script src="/tests/polyClip/js/polyClip.js"></script>
+  <!-- ID is 3526 --><script src="/js/resp.js"></script> 
+
+	<!-- Needed for Forms Feature Detection -->
+	<script type="text/javascript" src="/tests/html5Forms/shared/js/modernizr.com/Modernizr-2.5.3.forms.js">
+	</script>
+	
+	<!-- Needed for Validation --> 
+	<script type="text/javascript" src="/tests/html5Forms.beta/shared/js/html5Forms.js" data-webforms2-support="validation,range,color,placeholder" data-webforms2-force-js-validation="true">
+</script>
+	<script type="text/javascript" src="/js/useragentman.js"></script>
+	
+	<link rel='dns-prefetch' href='//www.useragentman.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="User Agent Man &raquo; Clipping JPEG Images Into Non-Rectangular Polygons Using polyClip.js Comments Feed" href="http://www.useragentman.com/blog/2011/10/29/clipping-jpeg-images-into-non-rectangular-polygons-using-polyclip-js/feed/" />
+		<script type="text/javascript">
+			window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/2.2.1\/svg\/","svgExt":".svg","source":{"concatemoji":"http:\/\/www.useragentman.com\/blog\/wp-includes\/js\/wp-emoji-release.min.js?ver=4.7.5"}};
+			!function(a,b,c){function d(a){var b,c,d,e,f=String.fromCharCode;if(!k||!k.fillText)return!1;switch(k.clearRect(0,0,j.width,j.height),k.textBaseline="top",k.font="600 32px Arial",a){case"flag":return k.fillText(f(55356,56826,55356,56819),0,0),!(j.toDataURL().length<3e3)&&(k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,65039,8205,55356,57096),0,0),b=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55356,57331,55356,57096),0,0),c=j.toDataURL(),b!==c);case"emoji4":return k.fillText(f(55357,56425,55356,57341,8205,55357,56507),0,0),d=j.toDataURL(),k.clearRect(0,0,j.width,j.height),k.fillText(f(55357,56425,55356,57341,55357,56507),0,0),e=j.toDataURL(),d!==e}return!1}function e(a){var c=b.createElement("script");c.src=a,c.defer=c.type="text/javascript",b.getElementsByTagName("head")[0].appendChild(c)}var f,g,h,i,j=b.createElement("canvas"),k=j.getContext&&j.getContext("2d");for(i=Array("flag","emoji4"),c.supports={everything:!0,everythingExceptFlag:!0},h=0;h<i.length;h++)c.supports[i[h]]=d(i[h]),c.supports.everything=c.supports.everything&&c.supports[i[h]],"flag"!==i[h]&&(c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&c.supports[i[h]]);c.supports.everythingExceptFlag=c.supports.everythingExceptFlag&&!c.supports.flag,c.DOMReady=!1,c.readyCallback=function(){c.DOMReady=!0},c.supports.everything||(g=function(){c.readyCallback()},b.addEventListener?(b.addEventListener("DOMContentLoaded",g,!1),a.addEventListener("load",g,!1)):(a.attachEvent("onload",g),b.attachEvent("onreadystatechange",function(){"complete"===b.readyState&&c.readyCallback()})),f=c.source||{},f.concatemoji?e(f.concatemoji):f.wpemoji&&f.twemoji&&(e(f.twemoji),e(f.wpemoji)))}(window,document,window._wpemojiSettings);
+		</script>
+		<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 .07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+<link rel='stylesheet' id='sedlex_styles-css'  href='http://www.useragentman.com/blog/wp-content/plugins//shorten-url/core/load-styles.php?c=0&#038;load=af360b0a0cb67a7e958272a2269faf0e&#038;ver=20170907' type='text/css' media='all' />
+<link rel='https://api.w.org/' href='http://www.useragentman.com/blog/wp-json/' />
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.useragentman.com/blog/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.useragentman.com/blog/wp-includes/wlwmanifest.xml" /> 
+<link rel='prev' title='How to Simulate CSS3 box-shadow in IE6-8 Without JavaScript.' href='http://www.useragentman.com/blog/2011/08/24/how-to-simulate-css3-box-shadow-in-ie7-8-without-javascript/' />
+<link rel='next' title='Cross Browser CSS cursor Images In Depth' href='http://www.useragentman.com/blog/2011/12/21/cross-browser-css-cursor-images-in-depth/' />
+<link rel="canonical" href="http://www.useragentman.com/blog/2011/10/29/clipping-jpeg-images-into-non-rectangular-polygons-using-polyclip-js/" />
+<link rel='shortlink' href='http://useragentman.com/blog/Fbvw7' />
+<link rel="alternate" type="application/json+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2011%2F10%2F29%2Fclipping-jpeg-images-into-non-rectangular-polygons-using-polyclip-js%2F" />
+<link rel="alternate" type="text/xml+oembed" href="http://www.useragentman.com/blog/wp-json/oembed/1.0/embed?url=http%3A%2F%2Fwww.useragentman.com%2Fblog%2F2011%2F10%2F29%2Fclipping-jpeg-images-into-non-rectangular-polygons-using-polyclip-js%2F&#038;format=xml" />
+	
+
+	
+	     
+		<link href="/css/resp.css" rel="stylesheet" type="text/css" media="all" />
+		<style type="text/css">
+			@media only screen and (max-width: 768px) {
+				  blockquote.code pre, .tableContainer .tableWrap, .wideImageContainer .wideImageWrap {
+				    mask: url("#masking");
+				}
+				
+				  blockquote.code.scrolled-to-end pre, .tableContainer.scrolled-to-end .tableWrap, .wideImageContainer.scrolled-to-end .wideImageWrap {
+					mask: none;
+				}
+			}
+		</style>
+		
+		
+		
+  </head>
+
+<!-- variation of http://paulirish.com/2008/conditional-stylesheets-vs-css-hacks-answer-neither/ -->
+
+<!--[if lt IE 7 ]> <body class="ie6 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 7 ]>    <body class="ie7 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 8 ]>    <body class="ie8 ie8down ie9down custom oldIE"> <![endif]-->
+<!--[if IE 9 ]>    <body class="ie9 ie9down custom oldIE"> <![endif]-->
+<!--[if (gt IE 9) ]><body class="modern custom"> <![endif]-->
+<!--[!(IE)]><!--> <body class="notIE modern custom"> <!--<![endif]-->
+  
+		
+<!-- This is the masking filter for Firefox -- had trouble with the CSS data url .. must look into -->
+<svg width="0" height="0">
+  <defs>
+    <linearGradient id="gradient" x1="0" y1="00%" x2 ="100%" y2="0%">
+      <stop stop-color="rgb(255, 255, 255)" offset="0"/>
+      <stop stop-color="rgb(255, 255, 255)" offset="0.8"/>
+      <stop stop-color="rgb(128, 128, 128)" offset="0.9"/>
+      <stop stop-color="black" offset="1"/>
+    </linearGradient>
+
+    <mask id="masking" maskUnits="objectBoundingBox" maskContentUnits="objectBoundingBox">
+      <rect y="0" width="1" height="1" fill="url(#gradient)" />
+     
+    </mask>
+  </defs>
+</svg>
+	<a href="#content" class="bypass-block-link visually-hidden visible-when-focused">
+	Skip Navigation
+</a>
+<div id="pageContainer" class="designElement">
+            <div id="head" class="designElement">
+                <form method="get" id="search" action="https://www.google.com/search">
+                	<input type="hidden" name="as_sitesearch" value="useragentman.com">
+                    <label for="search-q"><input type="text" id="search-q" name="q"></label> 
+                    <input type="submit" value="Search">
+                </form>
+				
+
+                <h1>User Agent Man </h1>
+
+                <h2>Discoveries of a Client Side Web Developer	</h2>
+            </div>
+			<a href="http://www.useragentman.com/blog/2012/01/23/help-free-saeed-malekpour-sentenced-to-death-for-writing-code/" id="freeSaeed"><img src="/images/freeSaeed.jpg" alt="Free Saeed Malekpour, Website Developer" /></a>
+	<ul id="mainMenu">
+		<li><a href="http://www.useragentman.com/blog">Home</a></li>
+		
+		<li><a href="http://www.useragentman.com/blog/about-me/">About</a></li>
+        <li><a href="http://www.useragentman.com/blog/current-projects/">Current Projects</a></li>
+        <li><a href="http://www.useragentman.com/blog/tools/">Development Tools</a></li>
+		<li><a href="http://www.useragentman.com/blog/the-infamous-zoltan-faq/">FAQ</a></li>
+		<li><a href="http://www.useragentman.com/blog/acknowledgments/">Acknowledgments</a></li>
+                
+		<li class="rss"><a href="http://www.useragentman.com/blog/feed/">RSS</a></li>
+	</ul>
+	
+
+
+	<div id="content_box">
+
+		<div id="sideNav"> <!--  class="stickyObject-node" -->
+
+<h2>Contact Me</h2>
+
+<a href="http://twitter.com/zoltandulac"><img alt="Twitter:" src="/images/logos/twitter.png" style="position: relative; top: 4px"/></a> <a href="http://twitter.com/zoltandulac">@zoltandulac</a>
+<br />
+<a href="https://plus.google.com/116427162199664972782"><img alt="Google+:" src="/images/logos/google-plus.png" style="position: relative; top: 4px"/></a> <a href="https://plus.google.com/116427162199664972782">Zoltan Hawryluk</a>
+<br />
+<a href="https://instagram.com/zoltandulac/"><img alt="Instagram:" src="/images/logos/instagram.png" style="position: relative; top: 4px"/></a> <a href="https://instagram.com/zoltandulac/">@zoltandulac</a>
+<br />
+<script type="text/javascript">
+<!--
+// Email obfuscator script 2.1 by Tim Williams, University of Arizona
+// Random encryption key feature by Andrew Moulden, Site Engineering Ltd
+// This code is freeware provided these four comment lines remain intact
+// A wizard to generate this code is at http://www.jottings.com/obfuscator/
+{ coded = "k93sug.iW3uK@CUuw3.K9U"
+  key = "GJ3D0Nn8WP4wRHAM9YZ2QOcELtapgdFzm1hjfqeSx5lXK7vsubCiykUIoBTr6V"
+  shift=coded.length
+  link=""
+  for (i=0; i<coded.length; i++) {
+    if (key.indexOf(coded.charAt(i))==-1) {
+      ltr = coded.charAt(i)
+      link += (ltr)
+    }
+    else {     
+      ltr = (key.indexOf(coded.charAt(i))-shift+key.length) % key.length
+      link += (key.charAt(ltr))
+    }
+  }
+document.write("<a href='mailto:"+link+"'><img src='/images/logos/email.png' /> email me</a>")
+}
+//-->
+</script><noscript>Sorry, you need Javascript on to email me.</noscript>
+
+<h2>Most Popular Posts</h2>
+
+<li class=""><a href='http://www.useragentman.com/blog/2010/03/09/cross-browser-css-transforms-even-in-ie/' ><span class='title'>Cross Browser CSS Transforms &#8211; even in IE</span></a></li>
+
+<li class="category-box-shadow category-css category-css3 category-gradients category-ie-visual-filters category-javascript category-polyfills category-transform"><a href='http://www.useragentman.com/blog/2009/11/29/how-to-detect-font-smoothing-using-javascript/' ><span class='title'>How to Detect Font-Smoothing Using JavaScript</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-css category-css3 category-fonts category-javascript"><a href='http://www.useragentman.com/blog/2010/01/10/cross-browser-html5-drag-and-drop/' ><span class='title'>Cross Browser HTML5 Drag and Drop</span></a></li>
+
+<li class="category-drag-and-drop category-html5 category-javascript"><a href='http://www.useragentman.com/blog/2009/09/20/font-face-in-depth/' ><span class='title'>@font-face in Depth</span></a></li>
+
+<li class="category-font-face category-cleartype-technologies category-converting category-css category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/02/27/installing-cygwin-and-fontforge-for-windows/' ><span class='title'>Installing Cygwin and FontForge for Windows</span></a></li>
+
+<li class="category-font-face category-converting category-cygwin category-fontforge-fonts category-fonts"><a href='http://www.useragentman.com/blog/2011/01/07/css3-matrix-transform-for-the-mathematically-challenged/' ><span class='title'>The CSS3 <code>matrix()</code> Transform for the Mathematically Challenged</span></a></li>
+
+<li class="category-css category-css3 category-drag-and-drop category-math category-transform"><a href='http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/' ><span class='title'>Cross Browser HTML5 Progress Bars In Depth</span></a></li>
+				<h2>Categories</h2>
+			<ul>
+					<li class="cat-item cat-item-171"><a href="http://www.useragentman.com/blog/category/3d/" >3d</a>
+</li>
+	<li class="cat-item cat-item-191"><a href="http://www.useragentman.com/blog/category/accessibility/" >accessibility</a>
+</li>
+	<li class="cat-item cat-item-123"><a href="http://www.useragentman.com/blog/category/color/" >Color</a>
+</li>
+	<li class="cat-item cat-item-96"><a href="http://www.useragentman.com/blog/category/cygwin/" >Cygwin</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.useragentman.com/blog/category/internationalization/" >Internationalization</a>
+</li>
+	<li class="cat-item cat-item-175"><a href="http://www.useragentman.com/blog/category/localization/" >Localization</a>
+</li>
+	<li class="cat-item cat-item-95"><a href="http://www.useragentman.com/blog/category/math/" >math</a>
+</li>
+	<li class="cat-item cat-item-174"><a href="http://www.useragentman.com/blog/category/server-side-tech/" >server side tech</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.useragentman.com/blog/category/technologies/" >Technologies</a>
+<ul class='children'>
+	<li class="cat-item cat-item-51"><a href="http://www.useragentman.com/blog/category/technologies/cleartype-technologies/" >ClearType</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.useragentman.com/blog/category/technologies/css/" >CSS</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-38"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/" >CSS3</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-152"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/animation-css3/" >animation</a>
+</li>
+	<li class="cat-item cat-item-98"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/border-image/" >border-image</a>
+</li>
+	<li class="cat-item cat-item-126"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/box-shadow/" >box-shadow</a>
+</li>
+	<li class="cat-item cat-item-140"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/cursor/" >cursor</a>
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/flex-layout/" >flex-layout</a>
+</li>
+	<li class="cat-item cat-item-125"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/gradients/" >gradients</a>
+</li>
+	<li class="cat-item cat-item-122"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/hslhsla/" >hsl/hsla</a>
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix/" >matrix</a>
+</li>
+	<li class="cat-item cat-item-173"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/matrix3d/" >matrix3d</a>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/order/" >order</a>
+</li>
+	<li class="cat-item cat-item-146"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/psuedo-classes/" >psuedo-classes</a>
+</li>
+	<li class="cat-item cat-item-124"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/rgbrgba/" >rgb/rgba</a>
+</li>
+	<li class="cat-item cat-item-147"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/standard-proposal/" >standard proposal</a>
+</li>
+	<li class="cat-item cat-item-99"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/text-shadow/" >text-shadow</a>
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform/" >transform</a>
+</li>
+	<li class="cat-item cat-item-172"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transform3d-css3/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-153"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/transition/" >transition</a>
+</li>
+	<li class="cat-item cat-item-160"><a href="http://www.useragentman.com/blog/category/technologies/css/css3/viewport-units/" >viewport units</a>
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-120"><a href="http://www.useragentman.com/blog/category/technologies/css/ie-visual-filters/" >IE Visual Filters</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.useragentman.com/blog/category/technologies/fonts/" >Fonts</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-14"><a href="http://www.useragentman.com/blog/category/technologies/fonts/font-face/" >@font-face</a>
+</li>
+	<li class="cat-item cat-item-121"><a href="http://www.useragentman.com/blog/category/technologies/fonts/converting/" >converting</a>
+</li>
+	<li class="cat-item cat-item-97"><a href="http://www.useragentman.com/blog/category/technologies/fonts/fontforge-fonts/" >FontForge</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.useragentman.com/blog/category/technologies/html/" >HTML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-50"><a href="http://www.useragentman.com/blog/category/technologies/html/forms/" >Forms</a>
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/" >HTML5</a>
+		<ul class='children'>
+	<li class="cat-item cat-item-132"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" >canvas</a>
+</li>
+	<li class="cat-item cat-item-49"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/custom-data-attributes/" >Custom Data Attributes</a>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/drag-and-drop/" >Drag and Drop</a>
+</li>
+	<li class="cat-item cat-item-118"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/events-html5/" >Events</a>
+</li>
+	<li class="cat-item cat-item-145"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/forms-html5/" >forms</a>
+</li>
+	<li class="cat-item cat-item-143"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/progress/" >progress</a>
+</li>
+	<li class="cat-item cat-item-200"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/pushstate/" >pushState</a>
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.useragentman.com/blog/category/technologies/html/html5/ruby/" >Ruby</a>
+</li>
+		</ul>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.useragentman.com/blog/category/technologies/images/" >Images</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.useragentman.com/blog/category/technologies/javascript/" >JavaScript</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-36"><a href="http://www.useragentman.com/blog/category/technologies/javascript/animation/" >animation</a>
+</li>
+	<li class="cat-item cat-item-109"><a href="http://www.useragentman.com/blog/category/technologies/javascript/events/" >Events</a>
+</li>
+	<li class="cat-item cat-item-133"><a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" >jQuery</a>
+</li>
+	<li class="cat-item cat-item-119"><a href="http://www.useragentman.com/blog/category/technologies/javascript/polyfills/" >Polyfills</a>
+</li>
+	<li class="cat-item cat-item-144"><a href="http://www.useragentman.com/blog/category/technologies/javascript/requestanimationframe/" >requestAnimationFrame</a>
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.useragentman.com/blog/category/technologies/xml/" >XML</a>
+	<ul class='children'>
+	<li class="cat-item cat-item-13"><a href="http://www.useragentman.com/blog/category/technologies/xml/svg/" >SVG</a>
+</li>
+	<li class="cat-item cat-item-134"><a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" >VML</a>
+</li>
+	</ul>
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-170"><a href="http://www.useragentman.com/blog/category/transform3d/" >transform3d</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.useragentman.com/blog/category/uncategorized/" >Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-179"><a href="http://www.useragentman.com/blog/category/utf8/" >utf8</a>
+</li>
+			</ul>
+			<!--
+			<h2>Archives</h2>
+			<ul>
+					<li><a href='http://www.useragentman.com/blog/2017/04/'>April 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/02/'>February 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2017/01/'>January 2017</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/12/'>December 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2016/05/'>May 2016</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/11/'>November 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/10/'>October 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/07/'>July 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2015/01/'>January 2015</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/09/'>September 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2014/05/'>May 2014</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/09/'>September 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/05/'>May 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/04/'>April 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/03/'>March 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2013/01/'>January 2013</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/11/'>November 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/09/'>September 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/08/'>August 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/05/'>May 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2012/01/'>January 2012</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/12/'>December 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/10/'>October 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/08/'>August 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/06/'>June 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/05/'>May 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/04/'>April 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/03/'>March 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/02/'>February 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2011/01/'>January 2011</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/10/'>October 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/09/'>September 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/08/'>August 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/07/'>July 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/06/'>June 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/05/'>May 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/04/'>April 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/03/'>March 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2010/01/'>January 2010</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/11/'>November 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/10/'>October 2009</a></li>
+	<li><a href='http://www.useragentman.com/blog/2009/09/'>September 2009</a></li>
+			</ul>
+			-->
+		
+</div>
+
+		<div id="content" class="posts bypass-block-target" tabindex="-1" role="main">
+
+		
+		
+<div class="navigation">
+	<span class="previous">&laquo; <a href="http://www.useragentman.com/blog/2011/08/24/how-to-simulate-css3-box-shadow-in-ie7-8-without-javascript/" rel="prev">How to Simulate CSS3 <code>box-shadow</code> in IE6-8 Without JavaScript.</a></span>
+	<span class="next"><a href="http://www.useragentman.com/blog/2011/12/21/cross-browser-css-cursor-images-in-depth/" rel="next">Cross Browser CSS <code>cursor</code> Images In Depth</a> &raquo;</span>
+</div>
+
+
+			<h1>Clipping JPEG Images Into Non-Rectangular Polygons Using <code>polyClip.js</code></h1>
+			<h4 class="meta">October 29th, 2011 by zoltan &middot; <a href="http://www.useragentman.com/blog/2011/10/29/clipping-jpeg-images-into-non-rectangular-polygons-using-polyclip-js/#comments">24 Comments</a></h4>
+			<div class="entry">
+				<div class="box">
+<div id="explanation1">This photo is not a PNG image with an alpha channel.</div>
+<div id="explanation2"><a href="http://www.useragentman.com/blog/wp-content/uploads/2011/10/scissors.jpg">It is a JPEG</a> that has been clipped with polyClip.js</div>
+<div id="explanation3">
+<p>The text was rotated using CSS3 Transforms, with alternate CSS for older IE using the <a href="http://www.useragentman.com/IETransformTranslator">IE Transform Translator</a>.  Original photo by <a href="http://www.flickr.com/photos/free-stock/4816852597/">Emilian Robert Vicol</a> clipped with polyClip.js</p>
+</p></div>
+<div class="clipParent"><img data-polyclip=" 0,0,45,3,55,8,64,18,74,24,80,32,86,45,82,32,83,38,86,46,88,52,90,62,90,68,91,76,91,82,91,83,103,87,112,91,121,97,127,102,133,106,136,112,138,116,139,121,139,122,147,125,154,127,163,129,178,131,190,132,204,132,210,131,225,124,286,107,332,96,370,88,401,83,425,79,450,76,457,77,456,80,446,85,430,91,406,99,383,108,365,114,352,119,384,117,416,116,453,114,472,113,474,113,472,118,446,126,419,132,390,138,362,144,343,148,307,153,282,157,266,159,245,160,234,160,219,160,209,163,198,167,182,175,170,183,158,194,156,195,157,201,157,204,157,204,157,210,153,219,148,229,143,236,137,244,132,250,124,258,118,263,113,267,98,276,87,281,77,283,0,284,1,191,10,190,16,191,20,191,21,192,28,191,37,190,39,189,38,190,40,190,48,190,53,191,57,191,69,188,77,187,91,183,109,179,127,173,146,166,162,158,173,153,158,151,144,150,127,151,105,152,86,154,66,157,53,160,49,161,46,165,44,167,41,168,33,168,28,167,28,166,21,170,16,171,11,171,4,170,0,168" src="http://www.useragentman.com/blog/wp-content/uploads/2011/10/scissors.jpg" alt=""  width="480" height="360" class="alignleft size-full wp-image-3771" /></div>
+</div>
+<p>There have been many times I have come across the need to <strong>take an image and cut an irregular shape out of it.</strong>  Normally, when a developer comes across this requirement, the only thing to do is to open the image up with your favorite graphics editor, use the select tool to cut out the shape you want, and then save the result as a <a href="http://en.wikipedia.org/wiki/Portable_Network_Graphics">PNG</a>, since it is the only image format used by all web browsers that support alpha channels.  The problem is that <strong>PNG images, while compressed, are not as small as <a href="http://en.wikipedia.org/wiki/Jpeg">JPEGs</a> if the source image is a photograph</strong>, and the download time of a page can balloon to unacceptable levels if there are many of these types of image on a page.  When I first came across this problem, I didn&#8217;t think there was an obvious solution, but after a lot of thought, I created <strong>a library that uses <a href="http://en.wikipedia.org/wiki/HTML_canvas">HTML5 <code>canvas</code></a> to clip a JPEG </strong> (or any other image for that matter).  <strong>The library also supports older versions of IE</strong> (7-8) using the <a href="http://excanvas.sourceforge.net/">Excanvas JavaScript library</a> which polyfills <code>canvas</code> using <a href="http://en.wikipedia.org/wiki/Vector_Markup_Language">VML</a>.</p>
+<h2>Okay, How Can I Do The Same Thing?</h2>
+<ul>
+<li><a href="https://github.com/zoltan-dulac/polyClip">Download my script from github</a> (It includes jQuery 1.6.4 and excanvas release 3.  It should work with later versions &mdash; if it doesn&#8217;t, please let me know and I&#8217;ll fix it ;-) ) .</li>
+<li>Include them into the head of your document.<br />
+<blockquote class="code">
+<pre>
+  &lt;script src="/path/to/js/jquery-1.6.2.min.js"&gt;&lt;/script&gt;
+
+  &lt;!--[if lt IE 9 ]&gt;
+   &lt;script src="/path/to/js/excanvas/excanvas.compiled.js"&gt;&lt;/script&gt;
+  &lt;![endif]--&gt;
+  
+  &lt;script src="/path/to/js/polyClip-p.js"&gt;&lt;/script&gt;
+</pre>
+</blockquote>
+</li>
+<li>Layout your page as normal, placing <code>img</code> tags where you want the clipped images to go:<br />
+<blockquote class="code">
+<pre>
+&lt;div class="clipParent"&gt;
+  &lt;img src="images/image.jpg" /&gt;
+&lt;/div&gt;
+</pre>
+</blockquote>
+<p><strong>Note the <code>div</code> tag with the class of <code>clipParent</code></strong>.  You must surround all the image tags with <code>data-polyclip</code> attributes set one.  This is so you can style the image correctly, since the library will remove the image tag and replace it with a <code>canvas</code> element.
+</p></blockquote>
+</li>
+<li>For every image on your page that you want to clip, calculate the points of the shape you want to cut out of the image and place them in the <code>data-polyclip</code> attribute.  For example, let&#8217;s say you have the following shape you want to cut out of a photograph:
+<div class="centered ghost">
+  <img src="/tests/polyClip/images/crop.jpg"   />
+</div>
+<div class="clipParent centered inFront">
+  <img src="/tests/polyClip/images/crop.jpg" data-polyclip="487, 4, 500, 239, 19, 239, 43, 195" data-stroke="rgb(0, 0, 0)" /></p>
+<div class="point" id="pt1" style="left: 487px; top: 4px; "><span>(487, 4)</span></div>
+<div class="point" id="pt2" style="left: 500px; top: 239px"><span>(500, 239)</span></div>
+<div class="point" id="pt3" style="left: 19px; top: 239px"><span>(19, 239)</span></div>
+<div class="point" id="pt4" style="left: 43px; top: 195px; "><span>(43, 195)</span></div>
+</div>
+<p>You would then just set the <code>data-polyclip</code> attribute to those points:</p>
+<blockquote class="code">
+<pre>
+&lt;img src="image.jpg" <span class="hilite">data-polyclip="487, 4, 500, 239, 19, 239, 43, 195"</span> /&gt;
+</pre>
+</blockquote>
+<p>Note that the point co-ordinates are comma delimited.  If you don&#8217;t want to calculate these numbers by hand, you can use your favorite imagemap generation tool to do generate the list of coordinates.  Just remember to take the coordinates out of the imagemap code and stick it in the <code>data-polyclip</code> attribute (for the examples on this page, I used the on-line tool available at <a href="http://www.image-maps.com">image-maps.com</a>).</li>
+</ul>
+<h2>Why Should I Do This Instead of Using a PNG?</h2>
+<p>Compare the image above with a PNG clipped with the GIMP.   Even when I compressed the PNG with <a href="http://www.useragentman.com/blog/2009/09/16/optimizing-png-files-for-both-web-and-print/">my PNG optimization script</a>, the 191K PNG file is huge compared to it&#8217;s tiny 18K polyclipped JPEG analogue (<strong>Note:</strong> file sizes refer to the size of the full image as displayed at the top of this article):</p>
+<table class="dataTable">
+<thead>
+<tr>
+<th>JPG using polyClip.js (18K)</th>
+<th>PNG (191K)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>
+<div class="clipParent"><img data-polyclip="0,0,55,0,64,4,70,12,80,22,82,32,86,45,82,32,83,38,86,46,88,52,90,62,90,68,91,76,91,82,91,83,103,87,112,91,121,97,127,102,133,106,136,112,138,116,139,121,139,122,147,125,154,127,163,129,178,131,190,132,204,132,210,131,225,124,286,107,332,96,370,88,401,83,425,79,450,76,457,77,456,80,446,85,430,91,406,99,383,108,365,114,352,119,384,117,416,116,453,114,472,113,474,113,472,118,446,126,419,132,390,138,362,144,343,148,307,153,282,157,266,159,245,160,234,160,219,160,209,163,198,167,182,175,170,183,158,194,156,195,157,201,157,204,157,204,157,210,153,219,148,229,143,236,137,244,132,250,124,258,118,263,113,267,98,276,87,281,77,283,0,284,1,191,10,190,16,191,20,191,21,192,28,191,37,190,39,189,38,190,40,190,48,190,53,191,57,191,69,188,77,187,91,183,109,179,127,173,146,166,162,158,173,153,158,151,144,150,127,151,105,152,86,154,66,157,53,160,49,161,46,165,44,167,41,168,33,168,28,167,28,166,21,170,16,171,11,171,4,170,0,168" src="http://www.useragentman.com/blog/wp-content/uploads/2011/10/scissors.jpg" alt=""  width="480" height="360" class="alignleft size-full wp-image-3771" /></div>
+</td>
+<td>
+<div class="pngImage">
+  <img src="http://www.useragentman.com/blog/wp-content/uploads/2011/10/scissors.png" />
+  </div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>You may ask whether the amount of JavaScript used in this solution is greater than the bandwidth saved by using JPEG compression.  <strong>Not including jQuery, the amount of JavaScript clocks in at 2K or 13K</strong>, depending on the browser used (2K for the compressed polyClip script and 11K for excanvas, which will only be loaded by IE7-8). Although jQuery adds 91K to this equation, it doesn&#8217;t matter that much to me personally since I am probably using it for other parts of my page anyways.  <strong>Even with jQuery, the amount of JavaScript downloaded outweighs using a PNG,</strong> especially if your are clipping a larger image or a huge amount of smaller images.</p>
+<p><a class="exampleLink" href="https://github.com/zoltan-dulac/polyClip">Download the latest version of polyClip.js from github.</a></p>
+<h2>A Few Caveats</h2>
+<ul>
+<li>In IE7 and 8, the image may appear briefly as a black outline before the image appears. Other than that, it looks about the same as the other browsers.</li>
+<li>The image does not show up correctly in Opera Mini.  Then again, a lot of things (e.g. CSS3 text-shadows, CSS3 Transforms, etc.) don&#8217;t show up correctly in Opera Mini. :-)</li>
+</ul>
+							</div>
+			<p class="tagged"><strong>Tags:</strong> <a href="http://www.useragentman.com/blog/category/technologies/html/html5/canvas/" rel="category tag">canvas</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/html/html5/" rel="category tag">HTML5</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/images/" rel="category tag">Images</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/javascript/" rel="category tag">JavaScript</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/javascript/jquery/" rel="category tag">jQuery</a> &middot; <a href="http://www.useragentman.com/blog/category/uncategorized/" rel="category tag">Uncategorized</a> &middot; <a href="http://www.useragentman.com/blog/category/technologies/xml/vml/" rel="category tag">VML</a>  &middot; <a href="http://www.useragentman.com/blog/tag/arbitrary-clipping/" rel="tag">arbitrary clipping</a>, <a href="http://www.useragentman.com/blog/tag/clipping/" rel="tag">clipping</a>, <a href="http://www.useragentman.com/blog/tag/non-rectangular-clipping-polygon-clipping/" rel="tag">non-rectangular clipping. polygon clipping</a>, <a href="http://www.useragentman.com/blog/tag/polyclip/" rel="tag">polyClip</a>, <a href="http://www.useragentman.com/blog/tag/polygon/" rel="tag">polygon</a></p>
+			<!-- <div class="clear"></div> -->
+
+			
+<!-- You can start editing here. -->
+
+
+<div id="comments">
+
+	<h6 class="comments_headers">24 responses so far <img src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/widgets/downArrow.png" 
+	alt="&darr;" /></h6>
+	
+	<ul id="comment_list">
+
+	
+						<li class="comment   " id="comment-22834 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-22834" title="Permalink to this comment">1</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/45dd101cfcb0686ec358bbc3f3493ebf?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/45dd101cfcb0686ec358bbc3f3493ebf?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Tonttu </strong>
+				<span class="comment_time">// Nov 1, 2011 at 9:05 am</span>
+			</p>
+			<div class="entry">
+				<p>Very nice! Is there a plugin for GIMP/Photoshop to get the coordinates of selection edges automatically?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-22842 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-22842" title="Permalink to this comment">2</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 1, 2011 at 10:27 am</span>
+			</p>
+			<div class="entry">
+				<p>@Tonttu: The syntax for the coordinates are the same as the format used for HTML imagemaps.  The GIMP has an Image Map tool built in and <a href="http://docs.gimp.org/" rel="nofollow">its user manual</a> has an <a href="http://docs.gimp.org/en/plug-in-imagemap.html" rel="nofollow">excellent tutorial</a> on how to use it.  Photoshop apparently has <a href="http://www.createblog.com/photoshop-tutorials/736-photoshop-image-maps/" rel="nofollow">a built-in image-map tool as well</a>, but I have never used it.  If anyone tries it, please let me know if it works or not. :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-22925 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-22925" title="Permalink to this comment">3</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://1.gravatar.com/avatar/45dd101cfcb0686ec358bbc3f3493ebf?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/45dd101cfcb0686ec358bbc3f3493ebf?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Tonttu </strong>
+				<span class="comment_time">// Nov 2, 2011 at 6:18 am</span>
+			</p>
+			<div class="entry">
+				<p>Your technique is so novel that an automated/semi-automated tool does not yet exist. Before your script there has not been a need for generating image map coordinates based on selection edges. This non-existing tool should generate the coordinates with a definable density and also allow for manual adding of coordinate nodes. Hmm.. nodes.. this gives me an idea: maybe vector graphics nodes could be converted to coordinates?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-23046 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-23046" title="Permalink to this comment">4</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 3, 2011 at 5:11 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Tonttu: I am not sure, but I don&#8217;t think you understood what I meant by getting coordinates with the gimp.  In the GIMP&#8217;s Image Map tool, you can select points using a polygon tool.  I will add instructions on how to get these coordinates to this post in the next few days.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-24187 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-24187" title="Permalink to this comment">5</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.containerstudio.com'><img alt='' src='http://1.gravatar.com/avatar/795d9a5c8bb083786e656983b7a5277e?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://1.gravatar.com/avatar/795d9a5c8bb083786e656983b7a5277e?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.containerstudio.com' rel='external nofollow' class='url'>Nicholas</a> </strong>
+				<span class="comment_time">// Nov 15, 2011 at 5:57 am</span>
+			</p>
+			<div class="entry">
+				<p>Thank You for sharing &#8211; and for pushing the boundaries! I have just made a site for which i need to somehow compress 700kb pngs. This solution comes in very handy.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-24484 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-24484" title="Permalink to this comment">6</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 17, 2011 at 11:21 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Nicholas:  Cool!  Any chance on seeing it in action?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-30201 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-30201" title="Permalink to this comment">7</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://fernandosafont.com'><img alt='' src='http://2.gravatar.com/avatar/ecdb0cbc4d73bc732871bd152c023436?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/ecdb0cbc4d73bc732871bd152c023436?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://fernandosafont.com' rel='external nofollow' class='url'>fernando</a> </strong>
+				<span class="comment_time">// Jan 4, 2012 at 7:12 am</span>
+			</p>
+			<div class="entry">
+				<p>There&#8217;s a way to calculate the image co-ordinates if you have Illustrator installed. You can create an image map (via attributes palette), then export the code and take the co-ordinates from there. Haven&#8217;t tried it with polyclip.js though, but I will do it on my next project.<br />
+Thanks for sharing &#8211; fantastic tool!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment   " id="comment-51060 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-51060" title="Permalink to this comment">9</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/0e0cc3fafcbd772b65ebc60a57af822f?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/0e0cc3fafcbd772b65ebc60a57af822f?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Kristof Polleunis </strong>
+				<span class="comment_time">// Jun 15, 2012 at 1:41 pm</span>
+			</p>
+			<div class="entry">
+				<p>Although the technique is awesome and has it&#8217;s value I think the size of the png here is exaggerated.  I could bring it down to 28 kb using pngout which is better in performance than optipng and to a qualitylevel equal to the jpg.</p>
+<p><a href="https://dl.dropbox.com/u/471136/scissors.png" rel="nofollow">https://dl.dropbox.com/u/471136/scissors.png</a></p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-54074 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-54074" title="Permalink to this comment">10</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/f7165319ebf5c3f3201414ca5a71680e?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f7165319ebf5c3f3201414ca5a71680e?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>abv </strong>
+				<span class="comment_time">// Jul 9, 2012 at 5:05 pm</span>
+			</p>
+			<div class="entry">
+				<p>Great!<br />
+This is an extremely helpful tool, indeed!<br />
+Great work and thanks for sharing.</p>
+<p>Did anyone try to wrapper inside a jquery slider?</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-55061 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-55061" title="Permalink to this comment">11</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://browsermedia.com'><img alt='' src='http://2.gravatar.com/avatar/b0d7c692a1fb6caf7b65c667a28c4291?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/b0d7c692a1fb6caf7b65c667a28c4291?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://browsermedia.com' rel='external nofollow' class='url'>Jeff</a> </strong>
+				<span class="comment_time">// Jul 17, 2012 at 11:47 am</span>
+			</p>
+			<div class="entry">
+				<p>Awesome stuff here! I know the purpose is to not use large transparent PNGs, but can the edited file be saved as one instead of a canvas element? I ask b/c we&#8217;re building a Facebook app that will need to use transparent photos in Flash &#8212; so we&#8217;d need to save this new image and then use it Flash.</p>
+<p>Thanks!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-55207 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-55207" title="Permalink to this comment">12</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://accentgrave.net'><img alt='' src='http://2.gravatar.com/avatar/886b99e34b74ed22e51da43f7671b138?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/886b99e34b74ed22e51da43f7671b138?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://accentgrave.net' rel='external nofollow' class='url'>Julien B.</a> </strong>
+				<span class="comment_time">// Jul 18, 2012 at 12:50 pm</span>
+			</p>
+			<div class="entry">
+				<p>Yeeepeeeh ! Wonderful tool.</p>
+<p>For days, I was struggling with various browsers and methods (svg, canvas, css masks…) for achieving such clipping. That rocks ! </p>
+<p>A comment : to grab path points, from inkscape/illustrator save your path as svg, then open it in a code editor.</p>
+<p>Many, many thanks.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						
+						<li class="comment  myComment " id="comment-60638 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-60638" title="Permalink to this comment">14</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Aug 12, 2012 at 10:49 am</span>
+			</p>
+			<div class="entry">
+				<p>@Jeff: JPEGs do not support alpha channels natively, hence the reason for the script to make it happen.  Unfortunately, there is no way to save the result as a JPEG (trying to save the image in Firefox, for example, results in a PNG being saved.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-60639 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-60639" title="Permalink to this comment">15</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Aug 12, 2012 at 10:52 am</span>
+			</p>
+			<div class="entry">
+				<p>@abv: I have made a refactored version of this script that has been used in an animated slider using jQuery&#8217;s <code>animate()</code> resulting in some really cool effects.  Will post my results in a future post.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-60646 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-60646" title="Permalink to this comment">16</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Aug 12, 2012 at 11:01 am</span>
+			</p>
+			<div class="entry">
+				<p>@Kristof: It depends on the PNG.  The more colours and the more detail the PNG has, the greater the filesize, and even using PNGOUT or other optimization tools will not fix the issue without serious degradation of the image.   But you are right in that developers should always look at image optimization first before using JS whenever possible.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-61438 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-61438" title="Permalink to this comment">17</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/e79a993ca783bec90b9a4111542a2e96?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/e79a993ca783bec90b9a4111542a2e96?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Martin </strong>
+				<span class="comment_time">// Aug 16, 2012 at 7:48 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi there!</p>
+<p>First of all, great job!</p>
+<p>I&#8217;m trying to implement this on a wordpress page and I&#8217;m getting an error in the last line, I don&#8217;t know if it is WordPress thing or the fact that I&#8217;m trying to make it work in local with MAMP.</p>
+<p>if (polyClip.isOldIE) {<br />
+	$(window).bind(&#8216;load&#8217;, polyClip.init);<br />
+} else {<br />
+	$(document).ready(polyClip.init);<br />
+        // the error is: Uncaught TypeError: Property &#8216;$&#8217; of object [object Window] is not a function<br />
+}</p>
+<p>Thanks!</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-62464 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-62464" title="Permalink to this comment">18</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.nicheestates.com'><img alt='' src='http://0.gravatar.com/avatar/f5bdb9ca9de3faf3118f5f96f8063c78?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f5bdb9ca9de3faf3118f5f96f8063c78?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.nicheestates.com' rel='external nofollow' class='url'>Joe</a> </strong>
+				<span class="comment_time">// Aug 22, 2012 at 2:01 pm</span>
+			</p>
+			<div class="entry">
+				<p>Zoltan, Great script.  Can this script be used for multiple images that need to be masked on the same page?  I was thinking using clipparent in each of my divs and then the coordinates within each image source.  I haven&#8217;t tried it yet, but before I started doing all that I wanted to ask.</p>
+<p>Thanks<br />
+Joe</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-62791 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-62791" title="Permalink to this comment">19</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Aug 24, 2012 at 4:05 pm</span>
+			</p>
+			<div class="entry">
+				<p>@Joe: Absolutely!  I have used this script for a variety of clients in a production environment animating many clipped images.  As a matter of fact, I am in the middle of writing an article at the moment that will describe how to use a new version of the polyClip.js script to do animated masking, with or without <code>requestAnimationFrame</code>, with lots of statistics to show the benefits of the &#8220;with&#8221; category.  Stay tuned.  :-)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-62793 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-62793" title="Permalink to this comment">20</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Aug 24, 2012 at 4:13 pm</span>
+			</p>
+			<div class="entry">
+				<p>I am assuming that you do not have jQuery loaded into your page.  Try that first.  If that doesn&#8217;t work, please post a URL which contains the problem you have so that I can help you troubleshoot better.</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-63257 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-63257" title="Permalink to this comment">21</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.nicheestates.com'><img alt='' src='http://0.gravatar.com/avatar/f5bdb9ca9de3faf3118f5f96f8063c78?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f5bdb9ca9de3faf3118f5f96f8063c78?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.nicheestates.com' rel='external nofollow' class='url'>Joe</a> </strong>
+				<span class="comment_time">// Aug 27, 2012 at 8:13 pm</span>
+			</p>
+			<div class="entry">
+				<p>Another Quick Question.  Is there a way to resize the canvas output? I have it inside the div and the div resizes when I manually change the browser size, but for some reason when I look at it for the first time on the iphone it gets all distorted as if it was 960px or so.  This also holds true if I resize the browser to mimic the same width of an iphone or ipad and hit refresh.  Any thoughts? Thanks</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-85221 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-85221" title="Permalink to this comment">22</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://0.gravatar.com/avatar/f392414cd6fec9011e3a620ad60f8216?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/f392414cd6fec9011e3a620ad60f8216?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>rk </strong>
+				<span class="comment_time">// Nov 22, 2012 at 12:26 am</span>
+			</p>
+			<div class="entry">
+				<p>Hi there,</p>
+<p>thanks for this &#8211; it&#8217;s awesome. Jut wondering if you could outline a way to ensure the images scale when you resize the browser window? I tried adding max-width:100%; to all img and canvas elements, but still can&#8217;t get it to work..</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment  myComment " id="comment-86676 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-86676" title="Permalink to this comment">23</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><a rel='external nofollow' href='http://www.useragentman.com'><img alt='' src='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://0.gravatar.com/avatar/9a579fa051b35266678735c8a3751771?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></a></span><a href='http://www.useragentman.com' rel='external nofollow' class='url'>zoltan</a> </strong>
+				<span class="comment_time">// Nov 25, 2012 at 3:06 pm</span>
+			</p>
+			<div class="entry">
+				<p>@rk: At the moment there isn&#8217;t a resize event hook for the clipped images, but I see how this can be useful and well keep it in mind for the next release (which I am currently working on, so stay tuned).</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+						<li class="comment   " id="comment-99107 ">
+			<p class="comment_meta">
+				<span class="comment_num"><a href="#comment-99107" title="Permalink to this comment">24</a></span>
+				<strong><span class='eg-image' style='float:right; margin-left:10px; display:block; width:80px' ><img alt='' src='http://2.gravatar.com/avatar/556319643820fb918d74c0dffb3bac72?s=80&#038;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&#038;r=g' srcset='http://2.gravatar.com/avatar/556319643820fb918d74c0dffb3bac72?s=160&amp;d=http%3A%2F%2Fwww.useragentman.com%2Fimages%2Funknown.png&amp;r=g 2x' class='avatar avatar-80 photo' height='80' width='80' /></span>Miroslav </strong>
+				<span class="comment_time">// Jan 3, 2013 at 10:43 am</span>
+			</p>
+			<div class="entry">
+				<p>This could be useful for simple shape images, but making coordinates map for complex images is time consuming. Also, I&#8217;m not sure can you handle wide borders with alpha transparency (wide area with semi transparency that blends with background).<br />
+The best tool to compress PNGs was Flash. It was a long time ago, but as I remember, while compiling, Flash was dividing image into 2 parts &#8211; image border with alpha transparency and inner part converted into JPG with mask above it. Now Flash is dead and we have to reinvent things ;)</p>
+ 
+								
+			</div>
+                        <div class="clearboth"></div>
+		</li>
+                		
+			
+	</ul>
+		
+	
+
+	<!-- Comment Form -->
+		
+		
+			<h6 id="respond" class="comments_headers">Give Feedback</h6>
+
+			<br />
+			<!--
+			<div class="importantNotes">
+			<h3>Comment Section is Temporarily Down</h3>
+
+			<p>There is something <strong>really</strong> wrong with the comments
+			area of my website.  I will fix it as fast as I can, given the limits my day job provides :-).
+			Your comments are <strong>extremely</strong> important to me, so please feel free to email me at <a 			href="mailto:zoltan.dulac@gmail.com">zoltan.dulac@gmail.com</a> or 
+tweet me at my @zoltandulac twitter account ... I really appreciate any feedback you have!
+I will post your comments back here when I bring it back on line.
+			I hope you enjoy reading my blog my apologies for my technical difficulties. :-)</p>
+			</div>
+-->
+			<p>Don't be shy! Give feedback and
+			join the discussion.</p>
+			
+			<p><strong>Please Note:</strong> If you are asking for help using the information on this page or if you are reporting a bug with the code featured here, 
+			please include a URL that shows the problem you are experiencing along with the browser/version number/operating system 
+			combination where the issue manifests itself.  Without this information, I may not be able to respond.</p>
+
+			<p><img src="http://www.useragentman.com/blog/wp-content/uploads/2012/04/asterisk_orange.png" alt="An orange star" /> denotes a required field.</p>
+
+			<form action="http://www.useragentman.com/blog/wp-comments-post.php" method="post" id="comment_form" class="testValidity styleBubbleExample visibleIf-submitInvisibleData" data-webforms2-force-js-validation="true">
+			
+										<p><input class="text_input" type="text" required="required" name="author" id="author" value="" /><label for="author"><strong>Name</strong></label></p>
+				<p><input class="text_input" type="email" required="required" name="email" id="email" value="" /><label for="email"><strong>Mail</strong></label></p>
+				<p><input class="text_input" type="url" name="url" id="url" value="" /><label for="url"><strong>Website</strong></label></p>
+							
+			
+				<p><textarea required="required" data-error-message="You forgot your comment!  :-) " class="text_input text_area" name="comment" id="comment" rows="7" ></textarea></p>
+			
+							
+				<p>
+					<input name="submit" class="form_submit" type="submit" id="submit" src="http://www.useragentman.com/blog/wp-content/themes/useragentman/images/submit_comment.gif" value="Submit" />
+					<input type="hidden" name="comment_post_ID" value="3526" class="visibleIf-submitInvisibleData" />
+				</p>
+		
+				<p style="display: none;"><input type="hidden" id="akismet_comment_nonce" name="akismet_comment_nonce" value="00e28132f9" /></p>	
+			</form>
+
+		
+</div> <!-- Close #comments container -->
+<div class="clear flat"></div>
+
+		
+		</div>
+
+		
+	</div>
+
+
+<div id="foot" class="designElement">
+		<p>&copy; 2009 - 2012 &mdash; Zoltan "Du Lac" Hawryluk <!-- <a href="http://www.useragentman.com/blog/sitemap/">Sitemap</a> &mdash;  &mdash; <a href="http://www.useragentman.com/blog/terms/">Terms of Use</a>&nbsp; &nbsp;--></p>
+		<script type='text/javascript' src='http://www.useragentman.com/blog/wp-includes/js/wp-embed.min.js?ver=4.7.5'></script>
+		
+	</div>
+	
+	</div>
+	</div>
+</body>
+</html>
